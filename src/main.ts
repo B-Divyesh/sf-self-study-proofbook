@@ -267,7 +267,7 @@ function setMeta(route: string): void {
   if (canonical) canonical.href = `https://self-study-proofbook.sociobot.in${route === '/' ? '/' : route}`;
 }
 
-async function navigate(next: string, push = true): Promise<void> {
+async function navigate(next: string, push = true, focusHeading = true): Promise<void> {
   const url = new URL(next, location.origin);
   if (url.origin !== location.origin) { location.href = url.href; return; }
   if (push) history.pushState({}, '', url.pathname + url.search);
@@ -282,12 +282,16 @@ async function navigate(next: string, push = true): Promise<void> {
   bindCommon();
   if (route === '/app' || route === '/demo') bindApp();
   if (route === '/print') document.querySelector('#print-index')?.addEventListener('click', () => print());
-  document.querySelector<HTMLElement>('h1')?.focus({ preventScroll: true });
+  if (focusHeading) document.querySelector<HTMLElement>('h1')?.focus({ preventScroll: true });
   document.querySelector('.route-status')!.textContent = document.querySelector('h1')?.textContent ?? '';
   scrollTo({ top: 0, behavior: matchMedia('(prefers-reduced-motion: reduce)').matches ? 'instant' : 'smooth' });
 }
 
 function bindCommon(): void {
+  document.querySelector<HTMLAnchorElement>('.skip-link')?.addEventListener('click', (event) => {
+    event.preventDefault();
+    document.querySelector<HTMLElement>('#main')?.focus();
+  });
   document.querySelectorAll<HTMLAnchorElement>('a[data-route]').forEach((link) => link.addEventListener('click', (event) => {
     if (event.metaKey || event.ctrlKey || link.target) return;
     event.preventDefault();
@@ -518,7 +522,7 @@ async function initLicense(): Promise<void> {
 
 function registerServiceWorker(): void {
   if (!('serviceWorker' in navigator)) return;
-  navigator.serviceWorker.register('/sw.js').then((registration) => {
+  navigator.serviceWorker.register('/sw.js', { scope: '/' }).then((registration) => {
     registration.addEventListener('updatefound', () => {
       const worker = registration.installing;
       worker?.addEventListener('statechange', () => {
@@ -530,5 +534,7 @@ function registerServiceWorker(): void {
 
 window.addEventListener('popstate', () => void navigate(location.pathname + location.search, false));
 await initLicense();
-await navigate(location.pathname + location.search, false);
+// On the first load, leave focus at the document start so the skip link is the
+// first keyboard stop. Client-side route changes still announce and focus H1.
+await navigate(location.pathname + location.search, false, false);
 registerServiceWorker();

@@ -1,4 +1,42 @@
-# Self-Study Proofbook v1 handoff
+# Self-Study Proofbook v1 repair handoff
+
+## Repair: offline reload (2026-08-28)
+
+- Replaced the hand-maintained `public/sw.js` with a Vite build plugin that
+  writes `dist/sw.js` only after the production output is complete. Its cache
+  name is derived from the finished files, it precaches the shell and hashed
+  assets, and it sets the manifest start URL to the same build version.
+- Navigation requests are network-first while online and fall back to cached
+  `/index.html` (then `/offline.html`) while offline. Static Web Apps fallback
+  exclusions now leave the worker, manifest, and static assets as real files.
+- The claim regression now proves worker control and that `/index.html` is in
+  the generated cache before it disconnects, then reloads `/demo` offline and
+  observes the H1 plus all three seeded attempts.
+- Registration explicitly uses root scope. The initial page leaves focus at the
+  document start, and the skip link now moves focus to `<main>`; later client
+  route changes still focus and announce the destination H1.
+
+## Repair verification
+
+The clean production command was run exactly as `npm ci && npm run build`.
+It completed on 2026-08-28, produced `dist/index.html` and generated
+`dist/sw.js`. The current production bundle is 36.05 KB JS (11.78 KB gzip),
+17.65 KB CSS (4.75 KB gzip), 22.5 KB font, and 18.8 KB mobile hero.
+
+- `npm test`: **11/11** Chromium production-preview tests passed. This includes
+  all eight claim tests, demo isolation, export/backup, privacy request
+  interception, offline reload, 390×844 mobile layout, Axe serious/critical
+  check, keyboard skip-link and Space activation, routes, title, and console.
+- `/opt/fleet/lib/verify-url.sh` passed on local production preview `/` and
+  `/demo`: HTTP 200, correct titles and `lang=en`, one H1, main landmark, zero
+  images missing alt text, zero unlabeled buttons, and no browser console
+  errors. Evidence: `.factory/evidence/repair-local-home/` and
+  `.factory/evidence/repair-local-demo/`.
+- A direct Playwright preview check saw an active `http://127.0.0.1:4173/sw.js`
+  controller and its generated `proofbook-153160f67d4d` cache with no errors.
+- `npx @axe-core/cli@4.10.2` was attempted, but its Selenium runner cannot find
+  a system Chrome in this worker. The project’s pinned Playwright Axe
+  integration ran successfully in the full suite instead.
 
 ## Built
 

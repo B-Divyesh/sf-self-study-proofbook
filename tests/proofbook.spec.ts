@@ -20,6 +20,13 @@ test('@claim:offline-reload works offline after the first visit', async ({ page,
   await page.goto('/demo');
   await page.evaluate(() => navigator.serviceWorker.ready);
   await page.reload();
+  await expect.poll(() => page.evaluate(() => navigator.serviceWorker.controller?.scriptURL ?? '')).toMatch(/\/sw\.js$/);
+  await expect.poll(() => page.evaluate(async () => {
+    const registration = await navigator.serviceWorker.ready;
+    const names = await caches.keys();
+    const cache = await caches.open(names.find((name) => name.startsWith('proofbook-')) ?? 'missing');
+    return (await cache.match('/index.html'))?.ok ?? false;
+  })).toBe(true);
   await expect(page.getByRole('heading', { level: 1 })).toHaveText('Build proof you can revisit');
   await context.setOffline(true);
   await page.reload();
@@ -94,6 +101,17 @@ test('demo supports keyboard-sized mobile use and has no serious accessibility f
   expect(overflow).toBeLessThanOrEqual(1);
   const results = await new AxeBuilder({ page }).analyze();
   expect(results.violations.filter((item) => ['serious', 'critical'].includes(item.impact ?? ''))).toEqual([]);
+});
+
+test('demo remains usable with a keyboard', async ({ page }) => {
+  await page.goto('/demo');
+  await page.keyboard.press('Tab');
+  await expect(page.locator('.skip-link')).toBeFocused();
+  await page.keyboard.press('Enter');
+  await expect(page.locator('main')).toBeFocused();
+  await page.getByRole('button', { name: 'Save revision' }).focus();
+  await page.keyboard.press('Space');
+  await expect(page.getByText('Revision saved.')).toBeVisible();
 });
 
 test('landing page has one h1, working routes, and no console errors', async ({ page }) => {
