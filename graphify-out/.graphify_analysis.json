@@ -4,27 +4,28 @@
       "src_crypto",
       "src_crypto_decryptarchive",
       "src_crypto_encryptarchive",
+      "src_db_cleardemo",
       "src_main",
-      "src_main_appview",
+      "src_main_bindapp",
       "src_main_bindarchive",
+      "src_main_bindcommon",
+      "src_main_bindcreateforms",
+      "src_main_bindeditor",
       "src_main_csvvalue",
-      "src_main_dialogs",
       "src_main_download",
-      "src_main_duration",
-      "src_main_editor",
-      "src_main_emptyledger",
-      "src_main_escapehtml",
-      "src_main_formatdate",
-      "src_main_inline",
-      "src_main_markdown",
+      "src_main_landing",
+      "src_main_legalview",
+      "src_main_navigate",
+      "src_main_notfound",
       "src_main_opendialog",
-      "src_main_printview",
+      "src_main_persistandrender",
+      "src_main_registerserviceworker",
+      "src_main_resetinitialfocus",
       "src_main_routeinfo",
-      "src_main_safeexternalurl",
-      "src_main_secondsfor",
-      "src_main_statuslabel",
-      "src_main_topicname",
-      "src_main_updatetimerdisplay"
+      "src_main_setmeta",
+      "src_main_shell",
+      "src_main_showtoast",
+      "src_main_uid"
     ],
     "1": [
       "ref_dom",
@@ -50,30 +51,13 @@
       "tsconfig_include"
     ],
     "2": [
-      "src_db_cleardemo",
-      "src_db_resetdemo",
-      "src_db_savestate",
-      "src_main_bindapp",
-      "src_main_bindcommon",
-      "src_main_bindcreateforms",
-      "src_main_bindeditor",
-      "src_main_landing",
-      "src_main_legalview",
-      "src_main_navigate",
-      "src_main_notfound",
-      "src_main_persistandrender",
-      "src_main_registerserviceworker",
-      "src_main_setmeta",
-      "src_main_shell",
-      "src_main_showtoast",
-      "src_main_uid"
-    ],
-    "3": [
       "src_db",
       "src_db_empty_state",
       "src_db_loadstate",
       "src_db_opendb",
       "src_db_readraw",
+      "src_db_resetdemo",
+      "src_db_savestate",
       "src_sample",
       "src_sample_samplestate",
       "src_types",
@@ -82,6 +66,23 @@
       "src_types_proofbookstate",
       "src_types_revision",
       "src_types_topic"
+    ],
+    "3": [
+      "src_main_appview",
+      "src_main_dialogs",
+      "src_main_duration",
+      "src_main_editor",
+      "src_main_emptyledger",
+      "src_main_escapehtml",
+      "src_main_formatdate",
+      "src_main_inline",
+      "src_main_markdown",
+      "src_main_printview",
+      "src_main_safeexternalurl",
+      "src_main_secondsfor",
+      "src_main_statuslabel",
+      "src_main_topicname",
+      "src_main_updatetimerdisplay"
     ],
     "4": [
       "axe_core_playwright",
@@ -130,10 +131,10 @@
     ]
   },
   "cohesion": {
-    "0": 0.2028985507246377,
+    "0": 0.19333333333333333,
     "1": 0.09523809523809523,
-    "2": 0.20588235294117646,
-    "3": 0.24358974358974358,
+    "2": 0.22857142857142856,
+    "3": 0.22857142857142856,
     "4": 0.18181818181818182,
     "5": 0.2,
     "6": 0.3333333333333333,
@@ -195,8 +196,8 @@
   ],
   "surprises": [
     {
-      "source": "navigate()",
-      "target": "loadState()",
+      "source": "bindCommon()",
+      "target": "resetDemo()",
       "source_files": [
         "src/main.ts",
         "src/db.ts"
@@ -204,28 +205,6 @@
       "confidence": "EXTRACTED",
       "relation": "calls",
       "why": "bridges separate communities"
-    },
-    {
-      "source": "bindArchive()",
-      "target": "decryptArchive()",
-      "source_files": [
-        "src/main.ts",
-        "src/crypto.ts"
-      ],
-      "confidence": "EXTRACTED",
-      "relation": "calls",
-      "why": "cross-file semantic connection"
-    },
-    {
-      "source": "bindArchive()",
-      "target": "encryptArchive()",
-      "source_files": [
-        "src/main.ts",
-        "src/crypto.ts"
-      ],
-      "confidence": "EXTRACTED",
-      "relation": "calls",
-      "why": "cross-file semantic connection"
     },
     {
       "source": "bindCreateForms()",
@@ -236,7 +215,7 @@
       ],
       "confidence": "EXTRACTED",
       "relation": "calls",
-      "why": "cross-file semantic connection"
+      "why": "bridges separate communities"
     },
     {
       "source": "bindEditor()",
@@ -247,7 +226,29 @@
       ],
       "confidence": "EXTRACTED",
       "relation": "calls",
-      "why": "cross-file semantic connection"
+      "why": "bridges separate communities"
+    },
+    {
+      "source": "persistAndRender()",
+      "target": "saveState()",
+      "source_files": [
+        "src/main.ts",
+        "src/db.ts"
+      ],
+      "confidence": "EXTRACTED",
+      "relation": "calls",
+      "why": "bridges separate communities"
+    },
+    {
+      "source": "navigate()",
+      "target": "loadState()",
+      "source_files": [
+        "src/main.ts",
+        "src/db.ts"
+      ],
+      "confidence": "EXTRACTED",
+      "relation": "calls",
+      "why": "bridges separate communities"
     }
   ],
   "tokens": {
