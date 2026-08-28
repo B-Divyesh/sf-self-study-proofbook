@@ -1,0 +1,257 @@
+{
+  "communities": {
+    "0": [
+      "src_crypto",
+      "src_crypto_decryptarchive",
+      "src_crypto_encryptarchive",
+      "src_main",
+      "src_main_appview",
+      "src_main_bindarchive",
+      "src_main_csvvalue",
+      "src_main_dialogs",
+      "src_main_download",
+      "src_main_duration",
+      "src_main_editor",
+      "src_main_emptyledger",
+      "src_main_escapehtml",
+      "src_main_formatdate",
+      "src_main_inline",
+      "src_main_markdown",
+      "src_main_printview",
+      "src_main_routeinfo",
+      "src_main_safeexternalurl",
+      "src_main_secondsfor",
+      "src_main_statuslabel",
+      "src_main_topicname",
+      "src_main_updatetimerdisplay"
+    ],
+    "1": [
+      "ref_dom",
+      "ref_dom_iterable",
+      "ref_esnext",
+      "ref_node",
+      "ref_playwright_config_ts",
+      "ref_src",
+      "ref_vite_config_ts",
+      "tsconfig",
+      "tsconfig_compileroptions",
+      "tsconfig_compileroptions_lib",
+      "tsconfig_compileroptions_module",
+      "tsconfig_compileroptions_moduleresolution",
+      "tsconfig_compileroptions_noemit",
+      "tsconfig_compileroptions_nounusedlocals",
+      "tsconfig_compileroptions_nounusedparameters",
+      "tsconfig_compileroptions_skiplibcheck",
+      "tsconfig_compileroptions_strict",
+      "tsconfig_compileroptions_target",
+      "tsconfig_compileroptions_types",
+      "tsconfig_compileroptions_usedefineforclassfields",
+      "tsconfig_include"
+    ],
+    "2": [
+      "src_db",
+      "src_db_empty_state",
+      "src_db_loadstate",
+      "src_db_opendb",
+      "src_db_readraw",
+      "src_db_resetdemo",
+      "src_db_savestate",
+      "src_sample",
+      "src_sample_samplestate",
+      "src_types",
+      "src_types_attempt",
+      "src_types_attemptstatus",
+      "src_types_licensestate",
+      "src_types_proofbookstate",
+      "src_types_revision",
+      "src_types_topic"
+    ],
+    "3": [
+      "src_main_bindapp",
+      "src_main_bindcreateforms",
+      "src_main_bindeditor",
+      "src_main_landing",
+      "src_main_legalview",
+      "src_main_navigate",
+      "src_main_notfound",
+      "src_main_persistandrender",
+      "src_main_registerserviceworker",
+      "src_main_setmeta",
+      "src_main_shell",
+      "src_main_showtoast",
+      "src_main_uid"
+    ],
+    "4": [
+      "axe_core_playwright",
+      "package_devdependencies",
+      "package_devdependencies_axe_core_playwright",
+      "package_devdependencies_playwright_test",
+      "package_devdependencies_types_node",
+      "package_devdependencies_typescript",
+      "package_devdependencies_vite",
+      "playwright_test",
+      "types_node",
+      "typescript",
+      "vite"
+    ],
+    "5": [
+      "package",
+      "package_name",
+      "package_private",
+      "package_scripts",
+      "package_scripts_build",
+      "package_scripts_dev",
+      "package_scripts_preview",
+      "package_scripts_test",
+      "package_type",
+      "package_version"
+    ],
+    "6": [
+      "src_db_cleardemo",
+      "src_main_bindcommon",
+      "src_main_bindlicensedialog",
+      "src_main_initlicense",
+      "src_main_opendialog",
+      "src_main_verifylicense"
+    ],
+    "7": [
+      "public_sw",
+      "public_sw_shell"
+    ],
+    "8": [
+      "playwright_config"
+    ],
+    "9": [
+      "tests_proofbook_spec"
+    ],
+    "10": [
+      "vite_config"
+    ]
+  },
+  "cohesion": {
+    "0": 0.2134387351778656,
+    "1": 0.09523809523809523,
+    "2": 0.20833333333333334,
+    "3": 0.2564102564102564,
+    "4": 0.18181818181818182,
+    "5": 0.2,
+    "6": 0.3333333333333333,
+    "7": 1.0,
+    "8": 1.0,
+    "9": 1.0,
+    "10": 1.0
+  },
+  "gods": [
+    {
+      "id": "src_main_navigate",
+      "label": "navigate()",
+      "degree": 14
+    },
+    {
+      "id": "tsconfig_compileroptions",
+      "label": "compilerOptions",
+      "degree": 12
+    },
+    {
+      "id": "src_main_bindarchive",
+      "label": "bindArchive()",
+      "degree": 11
+    },
+    {
+      "id": "src_main_editor",
+      "label": "editor()",
+      "degree": 10
+    },
+    {
+      "id": "src_main_printview",
+      "label": "printView()",
+      "degree": 9
+    },
+    {
+      "id": "src_main_bindeditor",
+      "label": "bindEditor()",
+      "degree": 9
+    },
+    {
+      "id": "src_db_savestate",
+      "label": "saveState()",
+      "degree": 8
+    },
+    {
+      "id": "src_main_appview",
+      "label": "appView()",
+      "degree": 8
+    },
+    {
+      "id": "src_main_bindapp",
+      "label": "bindApp()",
+      "degree": 8
+    },
+    {
+      "id": "src_main_bindcommon",
+      "label": "bindCommon()",
+      "degree": 7
+    }
+  ],
+  "surprises": [
+    {
+      "source": "navigate()",
+      "target": "loadState()",
+      "source_files": [
+        "src/main.ts",
+        "src/db.ts"
+      ],
+      "confidence": "EXTRACTED",
+      "relation": "calls",
+      "why": "bridges separate communities"
+    },
+    {
+      "source": "bindCreateForms()",
+      "target": "saveState()",
+      "source_files": [
+        "src/main.ts",
+        "src/db.ts"
+      ],
+      "confidence": "EXTRACTED",
+      "relation": "calls",
+      "why": "bridges separate communities"
+    },
+    {
+      "source": "bindEditor()",
+      "target": "saveState()",
+      "source_files": [
+        "src/main.ts",
+        "src/db.ts"
+      ],
+      "confidence": "EXTRACTED",
+      "relation": "calls",
+      "why": "bridges separate communities"
+    },
+    {
+      "source": "persistAndRender()",
+      "target": "saveState()",
+      "source_files": [
+        "src/main.ts",
+        "src/db.ts"
+      ],
+      "confidence": "EXTRACTED",
+      "relation": "calls",
+      "why": "bridges separate communities"
+    },
+    {
+      "source": "bindCommon()",
+      "target": "resetDemo()",
+      "source_files": [
+        "src/main.ts",
+        "src/db.ts"
+      ],
+      "confidence": "EXTRACTED",
+      "relation": "calls",
+      "why": "bridges separate communities"
+    }
+  ],
+  "tokens": {
+    "input": 0,
+    "output": 0
+  }
+}
