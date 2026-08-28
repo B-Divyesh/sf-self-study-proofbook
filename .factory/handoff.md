@@ -1,4 +1,31 @@
-# Self-Study Proofbook v1 repair handoff
+# Self-Study Proofbook — independent verification handoff
+
+## FAIL — do not release (2026-08-28)
+
+Independent verification of deployed candidate
+`9597fb5468af62927e87238fa079ed226db2bfa8` at
+<https://self-study-proofbook.sociobot.in> **FAILS**.
+
+The local PWA, demo, offline reload, accessibility, build, and claims tests
+pass. However, the live `$19` **Buy archive tools** link returns HTTP 404, so
+the advertised paid flow is not usable. The landing page and README also make
+visitor-facing reliance claims that are not listed/tested in
+`.factory/claims.json`; the acceptance contract makes that a release blocker.
+
+See [verification.md](verification.md) for the complete evidence: all eight
+claim tests and the 11-test suite passed; deployment hashes match the candidate;
+offline/demo privacy, keyboard, mobile, Axe, response headers, rate limiting,
+bundle sizes, and link crawl were checked; defects and required remediation are
+recorded by severity.
+
+Before another release verification: enable/register the Sociobot billing
+product and prove checkout, add claims/tests or remove untested promise copy,
+set immutable caching for hashed assets, and serve direct unknown URLs as HTTP
+404.
+
+---
+
+# Builder repair handoff (superseded by independent FAIL above)
 
 ## Repair: offline reload (2026-08-28)
 
