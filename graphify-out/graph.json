@@ -76,33 +76,88 @@
       "source_location": "L29"
     },
     {
+      "id": "src_crypto_decryptarchive",
+      "label": "decryptArchive()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 0,
+      "file_type": "code",
+      "norm_label": "decryptarchive()",
+      "source_file": "src/crypto.ts",
+      "source_location": "L14"
+    },
+    {
+      "id": "src_crypto_encryptarchive",
+      "label": "encryptArchive()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 0,
+      "file_type": "code",
+      "norm_label": "encryptarchive()",
+      "source_file": "src/crypto.ts",
+      "source_location": "L1"
+    },
+    {
       "id": "src_main_appview",
       "label": "appView()",
       "_callable": true,
       "_origin": "ast",
-      "community": 1,
+      "community": 0,
       "file_type": "code",
       "norm_label": "appview()",
       "source_file": "src/main.ts",
       "source_location": "L169"
     },
     {
+      "id": "src_main_bindarchive",
+      "label": "bindArchive()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 0,
+      "file_type": "code",
+      "norm_label": "bindarchive()",
+      "source_file": "src/main.ts",
+      "source_location": "L430"
+    },
+    {
+      "id": "src_main_csvvalue",
+      "label": "csvValue()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 0,
+      "file_type": "code",
+      "norm_label": "csvvalue()",
+      "source_file": "src/main.ts",
+      "source_location": "L426"
+    },
+    {
       "id": "src_main_dialogs",
       "label": "dialogs()",
       "_callable": true,
       "_origin": "ast",
-      "community": 1,
+      "community": 0,
       "file_type": "code",
       "norm_label": "dialogs()",
       "source_file": "src/main.ts",
       "source_location": "L227"
     },
     {
+      "id": "src_main_download",
+      "label": "download()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 0,
+      "file_type": "code",
+      "norm_label": "download()",
+      "source_file": "src/main.ts",
+      "source_location": "L417"
+    },
+    {
       "id": "src_main_duration",
       "label": "duration()",
       "_callable": true,
       "_origin": "ast",
-      "community": 1,
+      "community": 0,
       "file_type": "code",
       "norm_label": "duration()",
       "source_file": "src/main.ts",
@@ -113,7 +168,7 @@
       "label": "editor()",
       "_callable": true,
       "_origin": "ast",
-      "community": 1,
+      "community": 0,
       "file_type": "code",
       "norm_label": "editor()",
       "source_file": "src/main.ts",
@@ -124,7 +179,7 @@
       "label": "emptyLedger()",
       "_callable": true,
       "_origin": "ast",
-      "community": 1,
+      "community": 0,
       "file_type": "code",
       "norm_label": "emptyledger()",
       "source_file": "src/main.ts",
@@ -135,7 +190,7 @@
       "label": "escapeHtml()",
       "_callable": true,
       "_origin": "ast",
-      "community": 1,
+      "community": 0,
       "file_type": "code",
       "norm_label": "escapehtml()",
       "source_file": "src/main.ts",
@@ -146,7 +201,7 @@
       "label": "formatDate()",
       "_callable": true,
       "_origin": "ast",
-      "community": 1,
+      "community": 0,
       "file_type": "code",
       "norm_label": "formatdate()",
       "source_file": "src/main.ts",
@@ -157,62 +212,29 @@
       "label": "inline()",
       "_callable": true,
       "_origin": "ast",
-      "community": 1,
+      "community": 0,
       "file_type": "code",
       "norm_label": "inline()",
       "source_file": "src/main.ts",
       "source_location": "L45"
     },
     {
-      "id": "src_main_landing",
-      "label": "landing()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 1,
-      "file_type": "code",
-      "norm_label": "landing()",
-      "source_file": "src/main.ts",
-      "source_location": "L109"
-    },
-    {
-      "id": "src_main_legalview",
-      "label": "legalView()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 1,
-      "file_type": "code",
-      "norm_label": "legalview()",
-      "source_file": "src/main.ts",
-      "source_location": "L243"
-    },
-    {
       "id": "src_main_markdown",
       "label": "markdown()",
       "_callable": true,
       "_origin": "ast",
-      "community": 1,
+      "community": 0,
       "file_type": "code",
       "norm_label": "markdown()",
       "source_file": "src/main.ts",
       "source_location": "L31"
     },
     {
-      "id": "src_main_notfound",
-      "label": "notFound()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 1,
-      "file_type": "code",
-      "norm_label": "notfound()",
-      "source_file": "src/main.ts",
-      "source_location": "L258"
-    },
-    {
       "id": "src_main_printview",
       "label": "printView()",
       "_callable": true,
       "_origin": "ast",
-      "community": 1,
+      "community": 0,
       "file_type": "code",
       "norm_label": "printview()",
       "source_file": "src/main.ts",
@@ -223,7 +245,7 @@
       "label": "safeExternalUrl()",
       "_callable": true,
       "_origin": "ast",
-      "community": 1,
+      "community": 0,
       "file_type": "code",
       "norm_label": "safeexternalurl()",
       "source_file": "src/main.ts",
@@ -234,29 +256,18 @@
       "label": "secondsFor()",
       "_callable": true,
       "_origin": "ast",
-      "community": 1,
+      "community": 0,
       "file_type": "code",
       "norm_label": "secondsfor()",
       "source_file": "src/main.ts",
       "source_location": "L65"
     },
     {
-      "id": "src_main_shell",
-      "label": "shell()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 1,
-      "file_type": "code",
-      "norm_label": "shell()",
-      "source_file": "src/main.ts",
-      "source_location": "L85"
-    },
-    {
       "id": "src_main_statuslabel",
       "label": "statusLabel()",
       "_callable": true,
       "_origin": "ast",
-      "community": 1,
+      "community": 0,
       "file_type": "code",
       "norm_label": "statuslabel()",
       "source_file": "src/main.ts",
@@ -267,7 +278,7 @@
       "label": "topicName()",
       "_callable": true,
       "_origin": "ast",
-      "community": 1,
+      "community": 0,
       "file_type": "code",
       "norm_label": "topicname()",
       "source_file": "src/main.ts",
@@ -278,7 +289,7 @@
       "label": "updateTimerDisplay()",
       "_callable": true,
       "_origin": "ast",
-      "community": 1,
+      "community": 0,
       "file_type": "code",
       "norm_label": "updatetimerdisplay()",
       "source_file": "src/main.ts",
@@ -329,37 +340,15 @@
       "source_location": "L15"
     },
     {
-      "id": "src_db_resetdemo",
-      "label": "resetDemo()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 2,
-      "file_type": "code",
-      "norm_label": "resetdemo()",
-      "source_file": "src/db.ts",
-      "source_location": "L44"
-    },
-    {
       "id": "src_db_savestate",
       "label": "saveState()",
       "_callable": true,
       "_origin": "ast",
-      "community": 2,
+      "community": 3,
       "file_type": "code",
       "norm_label": "savestate()",
       "source_file": "src/db.ts",
       "source_location": "L34"
-    },
-    {
-      "id": "src_db_cleardemo",
-      "label": "clearDemo()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 3,
-      "file_type": "code",
-      "norm_label": "cleardemo()",
-      "source_file": "src/db.ts",
-      "source_location": "L50"
     },
     {
       "id": "src_main_bindapp",
@@ -371,17 +360,6 @@
       "norm_label": "bindapp()",
       "source_file": "src/main.ts",
       "source_location": "L310"
-    },
-    {
-      "id": "src_main_bindcommon",
-      "label": "bindCommon()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 3,
-      "file_type": "code",
-      "norm_label": "bindcommon()",
-      "source_file": "src/main.ts",
-      "source_location": "L290"
     },
     {
       "id": "src_main_bindcreateforms",
@@ -406,26 +384,26 @@
       "source_location": "L360"
     },
     {
-      "id": "src_main_bindlicensedialog",
-      "label": "bindLicenseDialog()",
+      "id": "src_main_landing",
+      "label": "landing()",
       "_callable": true,
       "_origin": "ast",
       "community": 3,
       "file_type": "code",
-      "norm_label": "bindlicensedialog()",
+      "norm_label": "landing()",
       "source_file": "src/main.ts",
-      "source_location": "L472"
+      "source_location": "L109"
     },
     {
-      "id": "src_main_initlicense",
-      "label": "initLicense()",
+      "id": "src_main_legalview",
+      "label": "legalView()",
       "_callable": true,
       "_origin": "ast",
       "community": 3,
       "file_type": "code",
-      "norm_label": "initlicense()",
+      "norm_label": "legalview()",
       "source_file": "src/main.ts",
-      "source_location": "L509"
+      "source_location": "L243"
     },
     {
       "id": "src_main_navigate",
@@ -439,15 +417,15 @@
       "source_location": "L270"
     },
     {
-      "id": "src_main_opendialog",
-      "label": "openDialog()",
+      "id": "src_main_notfound",
+      "label": "notFound()",
       "_callable": true,
       "_origin": "ast",
       "community": 3,
       "file_type": "code",
-      "norm_label": "opendialog()",
+      "norm_label": "notfound()",
       "source_file": "src/main.ts",
-      "source_location": "L306"
+      "source_location": "L258"
     },
     {
       "id": "src_main_persistandrender",
@@ -483,6 +461,17 @@
       "source_location": "L262"
     },
     {
+      "id": "src_main_shell",
+      "label": "shell()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 3,
+      "file_type": "code",
+      "norm_label": "shell()",
+      "source_file": "src/main.ts",
+      "source_location": "L85"
+    },
+    {
       "id": "src_main_showtoast",
       "label": "showToast()",
       "_callable": true,
@@ -505,70 +494,81 @@
       "source_location": "L61"
     },
     {
+      "id": "src_db_cleardemo",
+      "label": "clearDemo()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 6,
+      "file_type": "code",
+      "norm_label": "cleardemo()",
+      "source_file": "src/db.ts",
+      "source_location": "L50"
+    },
+    {
+      "id": "src_db_resetdemo",
+      "label": "resetDemo()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 6,
+      "file_type": "code",
+      "norm_label": "resetdemo()",
+      "source_file": "src/db.ts",
+      "source_location": "L44"
+    },
+    {
+      "id": "src_main_bindcommon",
+      "label": "bindCommon()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 6,
+      "file_type": "code",
+      "norm_label": "bindcommon()",
+      "source_file": "src/main.ts",
+      "source_location": "L290"
+    },
+    {
+      "id": "src_main_bindlicensedialog",
+      "label": "bindLicenseDialog()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 6,
+      "file_type": "code",
+      "norm_label": "bindlicensedialog()",
+      "source_file": "src/main.ts",
+      "source_location": "L472"
+    },
+    {
+      "id": "src_main_initlicense",
+      "label": "initLicense()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 6,
+      "file_type": "code",
+      "norm_label": "initlicense()",
+      "source_file": "src/main.ts",
+      "source_location": "L509"
+    },
+    {
+      "id": "src_main_opendialog",
+      "label": "openDialog()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 6,
+      "file_type": "code",
+      "norm_label": "opendialog()",
+      "source_file": "src/main.ts",
+      "source_location": "L306"
+    },
+    {
       "id": "src_main_verifylicense",
       "label": "verifyLicense()",
       "_callable": true,
       "_origin": "ast",
-      "community": 3,
+      "community": 6,
       "file_type": "code",
       "norm_label": "verifylicense()",
       "source_file": "src/main.ts",
       "source_location": "L486"
-    },
-    {
-      "id": "src_crypto_decryptarchive",
-      "label": "decryptArchive()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 6,
-      "file_type": "code",
-      "norm_label": "decryptarchive()",
-      "source_file": "src/crypto.ts",
-      "source_location": "L14"
-    },
-    {
-      "id": "src_crypto_encryptarchive",
-      "label": "encryptArchive()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 6,
-      "file_type": "code",
-      "norm_label": "encryptarchive()",
-      "source_file": "src/crypto.ts",
-      "source_location": "L1"
-    },
-    {
-      "id": "src_main_bindarchive",
-      "label": "bindArchive()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 6,
-      "file_type": "code",
-      "norm_label": "bindarchive()",
-      "source_file": "src/main.ts",
-      "source_location": "L430"
-    },
-    {
-      "id": "src_main_csvvalue",
-      "label": "csvValue()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 6,
-      "file_type": "code",
-      "norm_label": "csvvalue()",
-      "source_file": "src/main.ts",
-      "source_location": "L426"
-    },
-    {
-      "id": "src_main_download",
-      "label": "download()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 6,
-      "file_type": "code",
-      "norm_label": "download()",
-      "source_file": "src/main.ts",
-      "source_location": "L417"
     },
     {
       "id": "vite_config_filesbelow",
@@ -593,220 +593,20 @@
       "source_location": "L15"
     },
     {
-      "id": "tsconfig",
-      "label": "tsconfig.json",
+      "id": "src_crypto",
+      "label": "crypto.ts",
       "_origin": "ast",
       "community": 0,
       "file_type": "code",
-      "norm_label": "tsconfig.json",
-      "source_file": "tsconfig.json",
+      "norm_label": "crypto.ts",
+      "source_file": "src/crypto.ts",
       "source_location": "L1"
-    },
-    {
-      "id": "tsconfig_compileroptions",
-      "label": "compilerOptions",
-      "_origin": "ast",
-      "community": 0,
-      "file_type": "code",
-      "norm_label": "compileroptions",
-      "source_file": "tsconfig.json",
-      "source_location": "L2"
-    },
-    {
-      "id": "tsconfig_compileroptions_lib",
-      "label": "lib",
-      "_origin": "ast",
-      "community": 0,
-      "file_type": "code",
-      "norm_label": "lib",
-      "source_file": "tsconfig.json",
-      "source_location": "L11"
-    },
-    {
-      "id": "tsconfig_compileroptions_module",
-      "label": "module",
-      "_origin": "ast",
-      "community": 0,
-      "file_type": "code",
-      "norm_label": "module",
-      "source_file": "tsconfig.json",
-      "source_location": "L5"
-    },
-    {
-      "id": "tsconfig_compileroptions_moduleresolution",
-      "label": "moduleResolution",
-      "_origin": "ast",
-      "community": 0,
-      "file_type": "code",
-      "norm_label": "moduleresolution",
-      "source_file": "tsconfig.json",
-      "source_location": "L6"
-    },
-    {
-      "id": "tsconfig_compileroptions_noemit",
-      "label": "noEmit",
-      "_origin": "ast",
-      "community": 0,
-      "file_type": "code",
-      "norm_label": "noemit",
-      "source_file": "tsconfig.json",
-      "source_location": "L10"
-    },
-    {
-      "id": "tsconfig_compileroptions_nounusedlocals",
-      "label": "noUnusedLocals",
-      "_origin": "ast",
-      "community": 0,
-      "file_type": "code",
-      "norm_label": "nounusedlocals",
-      "source_file": "tsconfig.json",
-      "source_location": "L8"
-    },
-    {
-      "id": "tsconfig_compileroptions_nounusedparameters",
-      "label": "noUnusedParameters",
-      "_origin": "ast",
-      "community": 0,
-      "file_type": "code",
-      "norm_label": "nounusedparameters",
-      "source_file": "tsconfig.json",
-      "source_location": "L9"
-    },
-    {
-      "id": "tsconfig_compileroptions_skiplibcheck",
-      "label": "skipLibCheck",
-      "_origin": "ast",
-      "community": 0,
-      "file_type": "code",
-      "norm_label": "skiplibcheck",
-      "source_file": "tsconfig.json",
-      "source_location": "L13"
-    },
-    {
-      "id": "tsconfig_compileroptions_strict",
-      "label": "strict",
-      "_origin": "ast",
-      "community": 0,
-      "file_type": "code",
-      "norm_label": "strict",
-      "source_file": "tsconfig.json",
-      "source_location": "L7"
-    },
-    {
-      "id": "tsconfig_compileroptions_target",
-      "label": "target",
-      "_origin": "ast",
-      "community": 0,
-      "file_type": "code",
-      "norm_label": "target",
-      "source_file": "tsconfig.json",
-      "source_location": "L3"
-    },
-    {
-      "id": "tsconfig_compileroptions_types",
-      "label": "types",
-      "_origin": "ast",
-      "community": 0,
-      "file_type": "code",
-      "norm_label": "types",
-      "source_file": "tsconfig.json",
-      "source_location": "L12"
-    },
-    {
-      "id": "tsconfig_compileroptions_usedefineforclassfields",
-      "label": "useDefineForClassFields",
-      "_origin": "ast",
-      "community": 0,
-      "file_type": "code",
-      "norm_label": "usedefineforclassfields",
-      "source_file": "tsconfig.json",
-      "source_location": "L4"
-    },
-    {
-      "id": "tsconfig_include",
-      "label": "include",
-      "_origin": "ast",
-      "community": 0,
-      "file_type": "code",
-      "norm_label": "include",
-      "source_file": "tsconfig.json",
-      "source_location": "L15"
-    },
-    {
-      "id": "ref_dom",
-      "label": "DOM",
-      "_origin": "ast",
-      "community": 0,
-      "file_type": "concept",
-      "norm_label": "dom",
-      "source_file": "tsconfig.json",
-      "source_location": "L11"
-    },
-    {
-      "id": "ref_dom_iterable",
-      "label": "DOM.Iterable",
-      "_origin": "ast",
-      "community": 0,
-      "file_type": "concept",
-      "norm_label": "dom.iterable",
-      "source_file": "tsconfig.json",
-      "source_location": "L11"
-    },
-    {
-      "id": "ref_esnext",
-      "label": "ESNext",
-      "_origin": "ast",
-      "community": 0,
-      "file_type": "concept",
-      "norm_label": "esnext",
-      "source_file": "tsconfig.json",
-      "source_location": "L11"
-    },
-    {
-      "id": "ref_node",
-      "label": "node",
-      "_origin": "ast",
-      "community": 0,
-      "file_type": "concept",
-      "norm_label": "node",
-      "source_file": "tsconfig.json",
-      "source_location": "L12"
-    },
-    {
-      "id": "ref_playwright_config_ts",
-      "label": "playwright.config.ts",
-      "_origin": "ast",
-      "community": 0,
-      "file_type": "concept",
-      "norm_label": "playwright.config.ts",
-      "source_file": "tsconfig.json",
-      "source_location": "L15"
-    },
-    {
-      "id": "ref_src",
-      "label": "src",
-      "_origin": "ast",
-      "community": 0,
-      "file_type": "concept",
-      "norm_label": "src",
-      "source_file": "tsconfig.json",
-      "source_location": "L15"
-    },
-    {
-      "id": "ref_vite_config_ts",
-      "label": "vite.config.ts",
-      "_origin": "ast",
-      "community": 0,
-      "file_type": "concept",
-      "norm_label": "vite.config.ts",
-      "source_file": "tsconfig.json",
-      "source_location": "L15"
     },
     {
       "id": "src_main",
       "label": "main.ts",
       "_origin": "ast",
-      "community": 1,
+      "community": 0,
       "file_type": "code",
       "norm_label": "main.ts",
       "source_file": "src/main.ts",
@@ -816,11 +616,221 @@
       "id": "src_main_routeinfo",
       "label": "routeInfo",
       "_origin": "ast",
-      "community": 1,
+      "community": 0,
       "file_type": "code",
       "norm_label": "routeinfo",
       "source_file": "src/main.ts",
       "source_location": "L17"
+    },
+    {
+      "id": "tsconfig",
+      "label": "tsconfig.json",
+      "_origin": "ast",
+      "community": 1,
+      "file_type": "code",
+      "norm_label": "tsconfig.json",
+      "source_file": "tsconfig.json",
+      "source_location": "L1"
+    },
+    {
+      "id": "tsconfig_compileroptions",
+      "label": "compilerOptions",
+      "_origin": "ast",
+      "community": 1,
+      "file_type": "code",
+      "norm_label": "compileroptions",
+      "source_file": "tsconfig.json",
+      "source_location": "L2"
+    },
+    {
+      "id": "tsconfig_compileroptions_lib",
+      "label": "lib",
+      "_origin": "ast",
+      "community": 1,
+      "file_type": "code",
+      "norm_label": "lib",
+      "source_file": "tsconfig.json",
+      "source_location": "L11"
+    },
+    {
+      "id": "tsconfig_compileroptions_module",
+      "label": "module",
+      "_origin": "ast",
+      "community": 1,
+      "file_type": "code",
+      "norm_label": "module",
+      "source_file": "tsconfig.json",
+      "source_location": "L5"
+    },
+    {
+      "id": "tsconfig_compileroptions_moduleresolution",
+      "label": "moduleResolution",
+      "_origin": "ast",
+      "community": 1,
+      "file_type": "code",
+      "norm_label": "moduleresolution",
+      "source_file": "tsconfig.json",
+      "source_location": "L6"
+    },
+    {
+      "id": "tsconfig_compileroptions_noemit",
+      "label": "noEmit",
+      "_origin": "ast",
+      "community": 1,
+      "file_type": "code",
+      "norm_label": "noemit",
+      "source_file": "tsconfig.json",
+      "source_location": "L10"
+    },
+    {
+      "id": "tsconfig_compileroptions_nounusedlocals",
+      "label": "noUnusedLocals",
+      "_origin": "ast",
+      "community": 1,
+      "file_type": "code",
+      "norm_label": "nounusedlocals",
+      "source_file": "tsconfig.json",
+      "source_location": "L8"
+    },
+    {
+      "id": "tsconfig_compileroptions_nounusedparameters",
+      "label": "noUnusedParameters",
+      "_origin": "ast",
+      "community": 1,
+      "file_type": "code",
+      "norm_label": "nounusedparameters",
+      "source_file": "tsconfig.json",
+      "source_location": "L9"
+    },
+    {
+      "id": "tsconfig_compileroptions_skiplibcheck",
+      "label": "skipLibCheck",
+      "_origin": "ast",
+      "community": 1,
+      "file_type": "code",
+      "norm_label": "skiplibcheck",
+      "source_file": "tsconfig.json",
+      "source_location": "L13"
+    },
+    {
+      "id": "tsconfig_compileroptions_strict",
+      "label": "strict",
+      "_origin": "ast",
+      "community": 1,
+      "file_type": "code",
+      "norm_label": "strict",
+      "source_file": "tsconfig.json",
+      "source_location": "L7"
+    },
+    {
+      "id": "tsconfig_compileroptions_target",
+      "label": "target",
+      "_origin": "ast",
+      "community": 1,
+      "file_type": "code",
+      "norm_label": "target",
+      "source_file": "tsconfig.json",
+      "source_location": "L3"
+    },
+    {
+      "id": "tsconfig_compileroptions_types",
+      "label": "types",
+      "_origin": "ast",
+      "community": 1,
+      "file_type": "code",
+      "norm_label": "types",
+      "source_file": "tsconfig.json",
+      "source_location": "L12"
+    },
+    {
+      "id": "tsconfig_compileroptions_usedefineforclassfields",
+      "label": "useDefineForClassFields",
+      "_origin": "ast",
+      "community": 1,
+      "file_type": "code",
+      "norm_label": "usedefineforclassfields",
+      "source_file": "tsconfig.json",
+      "source_location": "L4"
+    },
+    {
+      "id": "tsconfig_include",
+      "label": "include",
+      "_origin": "ast",
+      "community": 1,
+      "file_type": "code",
+      "norm_label": "include",
+      "source_file": "tsconfig.json",
+      "source_location": "L15"
+    },
+    {
+      "id": "ref_dom",
+      "label": "DOM",
+      "_origin": "ast",
+      "community": 1,
+      "file_type": "concept",
+      "norm_label": "dom",
+      "source_file": "tsconfig.json",
+      "source_location": "L11"
+    },
+    {
+      "id": "ref_dom_iterable",
+      "label": "DOM.Iterable",
+      "_origin": "ast",
+      "community": 1,
+      "file_type": "concept",
+      "norm_label": "dom.iterable",
+      "source_file": "tsconfig.json",
+      "source_location": "L11"
+    },
+    {
+      "id": "ref_esnext",
+      "label": "ESNext",
+      "_origin": "ast",
+      "community": 1,
+      "file_type": "concept",
+      "norm_label": "esnext",
+      "source_file": "tsconfig.json",
+      "source_location": "L11"
+    },
+    {
+      "id": "ref_node",
+      "label": "node",
+      "_origin": "ast",
+      "community": 1,
+      "file_type": "concept",
+      "norm_label": "node",
+      "source_file": "tsconfig.json",
+      "source_location": "L12"
+    },
+    {
+      "id": "ref_playwright_config_ts",
+      "label": "playwright.config.ts",
+      "_origin": "ast",
+      "community": 1,
+      "file_type": "concept",
+      "norm_label": "playwright.config.ts",
+      "source_file": "tsconfig.json",
+      "source_location": "L15"
+    },
+    {
+      "id": "ref_src",
+      "label": "src",
+      "_origin": "ast",
+      "community": 1,
+      "file_type": "concept",
+      "norm_label": "src",
+      "source_file": "tsconfig.json",
+      "source_location": "L15"
+    },
+    {
+      "id": "ref_vite_config_ts",
+      "label": "vite.config.ts",
+      "_origin": "ast",
+      "community": 1,
+      "file_type": "concept",
+      "norm_label": "vite.config.ts",
+      "source_file": "tsconfig.json",
+      "source_location": "L15"
     },
     {
       "id": "src_db",
@@ -1071,16 +1081,6 @@
       "norm_label": "version",
       "source_file": "package.json",
       "source_location": "L3"
-    },
-    {
-      "id": "src_crypto",
-      "label": "crypto.ts",
-      "_origin": "ast",
-      "community": 6,
-      "file_type": "code",
-      "norm_label": "crypto.ts",
-      "source_file": "src/crypto.ts",
-      "source_location": "L1"
     },
     {
       "id": "vite_config",
@@ -3385,5 +3385,5 @@
     }
   ],
   "hyperedges": [],
-  "built_at_commit": "9597fb5468af62927e87238fa079ed226db2bfa8"
+  "built_at_commit": "af6e3542a56f37ce5a9ec66365b2c9ae6abd4b83"
 }
