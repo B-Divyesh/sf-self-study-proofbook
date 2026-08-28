@@ -28,6 +28,13 @@ Clean install and release commands passed on 2026-08-28: `npm ci`, `npm test`, `
 - Lighthouse 12.5.1 mobile on `/demo`: Performance **100**, Accessibility **100**, Best Practices **100**, SEO **100**; LCP 1.5 s, CLS 0, TBT 40 ms. Raw evidence: `.factory/evidence/repair-2-lighthouse.json`.
 - `npx @axe-core/cli@4.10.2` was attempted with the preinstalled Chromium but its Selenium launcher exited before a session was created. The pinned `@axe-core/playwright` integration ran as part of the passing full browser suite and found no serious or critical violations at 390 px.
 
+## Deployment and live checks
+
+- Deployed the committed `dist/` output with `/opt/fleet/lib/deploy-static.sh self-study-proofbook dist`. Azure deployment `d620430f-84cb-4dbb-bb17-fad17a9aefe0` completed successfully at `https://self-study-proofbook.sociobot.in`.
+- Live `verify-url.sh` passed with the same title, language, H1, main, alt-text, labelled-button, and zero-console-error checks. Evidence is in `.factory/evidence/repair-2-live/`.
+- Live response checks confirm `/not-a-proofbook-route` is HTTP **404** and the live hashed JavaScript asset is HTTP 200 with `Cache-Control: public, max-age=31536000, immutable`.
+- Fresh live Chromium checks passed on desktop and at 390×844 reduced-motion mobile: desktop H1 was correct with no console errors; mobile had zero horizontal overflow, skip-link focus moved to main, and `/demo` reloaded offline under service-worker control with its expected H1. The landing HTML contains no checkout, $19, buy, or restore-license copy.
+
 ## Run, test, deploy
 
 Run `npm ci`, `npm test`, and `npm run build`. Deploy the static PWA with `/opt/fleet/lib/deploy-static.sh self-study-proofbook dist`.
