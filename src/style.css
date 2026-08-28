@@ -109,6 +109,8 @@ h3 { font-size: 18px; }
 .topic-list { display: flex; flex-direction: column; gap: 6px; }
 .topic-item, .attempt-row { width: 100%; min-height: 48px; padding: 10px 12px; color: var(--muted); background: transparent; border: 0; border-left: 3px solid transparent; text-align: left; cursor: pointer; }
 .topic-item { display: flex; justify-content: space-between; align-items: center; font: 13px/1.3 var(--display); }
+.topic-item strong, .topic-item small { display: block; font: inherit; font-weight: 400; }
+.topic-item small { margin-top: 4px; color: var(--muted); font-family: var(--body); font-size: 12px; line-height: 1.3; }
 .topic-item:hover, .topic-item[aria-current], .attempt-row:hover, .attempt-row[aria-current] { color: var(--ink); background: var(--panel-2); border-color: var(--phosphor); }
 .attempt-list { padding-inline: 0; }
 .attempt-list .rail-title { padding-inline: 20px; }

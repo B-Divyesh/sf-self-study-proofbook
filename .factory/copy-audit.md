@@ -23,8 +23,8 @@ serious learners, then try the separate sample ledger.
 
 | Copy | Words | Result |
 | --- | ---: | --- |
-| Each attempt becomes one cited, revisable record. | 7 | Pass |
-| See the work, not a badge | 6 | Pass |
+| Each attempt becomes one cited, revisable record. | 7 | Pass — `cited-attempt` |
+| Review your cited attempts | 4 | Pass |
 | A mastery index points back to sources, time spent, and revision history. | 12 | Pass |
 | Build evidence in three steps | 5 | Pass |
 | Name the book, paper, exam, or page. | 8 | Pass |
@@ -33,7 +33,7 @@ serious learners, then try the separate sample ledger.
 | Add a short note about what changed. | 8 | Pass |
 | Review a compact list with sources, effort, status, and revision counts. | 11 | Pass |
 | A record, not a credential | 5 | Pass |
-| Proofbook does not grade, proctor, certify, or generate answers. | 9 | Pass |
+| Proofbook records practice; it does not issue credentials. | 8 | Pass — `no-credential-service` |
 | Your entries stay in this browser unless you export them. | 9 | Pass |
 | Use source citations. | 3 | Pass |
 | Do not store copyrighted problem text you cannot redistribute. | 9 | Pass |
@@ -42,7 +42,10 @@ serious learners, then try the separate sample ledger.
 | Your archive stays in this browser until you choose to download it. | 12 | Pass |
 | Evidence of practice, kept by the learner. | 7 | Pass |
 
-Average sentence length: 7 words.
+All remaining reliance claims are registered in `.factory/claims.json` with one
+tagged Playwright test each: archive tools, cited attempts, topics and goals,
+timers, evidence status, complete JSON restoration, and the non-credential
+notice. Average sentence length: 7 words.
 
 ## Terminology
 
@@ -59,5 +62,5 @@ Average sentence length: 7 words.
 
 ## Catalog description
 
-“Record cited problems, timed attempts, revisions, and mastery evidence in a
-private offline ledger.” — 14 words, 96 characters, starts with a verb.
+“Record cited problems, track timed attempts, and keep revision evidence in a
+private offline ledger.” — 15 words, 95 characters, starts with a verb.

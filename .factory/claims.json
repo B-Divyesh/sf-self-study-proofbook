@@ -54,5 +54,54 @@
     "where": "demo banner, README",
     "test": "npm test -- --grep @claim:demo-isolation",
     "sandbox": "fresh context; load three demo attempts, leave demo, and assert the real ledger is empty"
+  },
+  {
+    "id": "archive-tools-included",
+    "claim": "JSON, CSV, printing, and password-encrypted backups are included in the local ledger.",
+    "where": "landing facts, landing archive section, README",
+    "test": "npm test -- --grep @claim:archive-tools-included",
+    "sandbox": "fresh /demo data; download JSON and CSV, create a password-encrypted backup, and open the printable index without any checkout request"
+  },
+  {
+    "id": "cited-attempt",
+    "claim": "Each attempt becomes one cited, revisable record.",
+    "where": "landing hero image caption, README",
+    "test": "npm test -- --grep @claim:cited-attempt",
+    "sandbox": "fresh /demo data; create a cited attempt, reload, and assert its source and reference in the editor and printable index"
+  },
+  {
+    "id": "topics-and-goals",
+    "claim": "Groups problem attempts by topic and study goal.",
+    "where": "README",
+    "test": "npm test -- --grep @claim:topics-and-goals",
+    "sandbox": "fresh /demo data; add a named topic and goal, assign a new attempt, reload, and assert both labels persist"
+  },
+  {
+    "id": "attempt-timer",
+    "claim": "Times an attempt and keeps its elapsed time in the print index and CSV export.",
+    "where": "landing method, README",
+    "test": "npm test -- --grep @claim:attempt-timer",
+    "sandbox": "fresh /demo data with Playwright's deterministic clock; start, advance, and pause an attempt timer, reload, then assert the elapsed time in the editor, print index, and CSV"
+  },
+  {
+    "id": "evidence-status",
+    "claim": "Adds a learner-set status and confidence score.",
+    "where": "README",
+    "test": "npm test -- --grep @claim:evidence-status",
+    "sandbox": "fresh /demo data; set status and confidence, reload, and assert both in the editor and printable index"
+  },
+  {
+    "id": "json-complete-archive",
+    "claim": "JSON is the complete archive and keeps every revision.",
+    "where": "README",
+    "test": "npm test -- --grep @claim:json-complete-archive",
+    "sandbox": "fresh /demo data; export JSON, import it into an empty real ledger, re-export, and compare topics, attempts, sources, timers, status, confidence, and revisions"
+  },
+  {
+    "id": "no-credential-service",
+    "claim": "Proofbook records practice; it does not issue credentials.",
+    "where": "landing boundaries, README, terms, printable index",
+    "test": "npm test -- --grep @claim:no-credential-service",
+    "sandbox": "fresh /demo data; open the printable index, assert its learner-maintained non-credential notice, and intercept all requests to confirm no credential service is contacted"
   }
 ]

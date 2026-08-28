@@ -94,7 +94,7 @@ function shell(content: string, active = ''): string {
     <footer>
       <p>Evidence of practice, kept by the learner.</p>
       <nav aria-label="Footer navigation"><a href="/privacy" data-route>Privacy</a><a href="/terms" data-route>Terms</a><a href="https://sociobot.in" rel="external">Built by Param Factory <span class="sr-only">(external site)</span></a></nav>
-      <p class="build">v1.0.0 · Original generated art</p>
+      <p class="build">v1.0.1 · Original generated art</p>
     </footer>
     <div class="route-status sr-only" aria-live="polite"></div>
     <div id="toast" class="toast" role="status" aria-live="polite" hidden></div>
@@ -129,7 +129,7 @@ function landing(): string {
     </section>
     <section class="live-preview" aria-labelledby="preview-title">
       <div class="section-index">LIVE PREVIEW / 02</div>
-      <div class="section-heading"><h2 id="preview-title">See the work, not a badge</h2><p>A mastery index points back to sources, time spent, and revision history.</p></div>
+      <div class="section-heading"><h2 id="preview-title">Review your cited attempts</h2><p>A mastery index points back to sources, time spent, and revision history.</p></div>
       <div class="preview-ledger" aria-label="Sample mastery index">
         <div class="ledger-head"><span>Problem</span><span>Source</span><span>Time</span><span>Evidence</span></div>
         <div class="ledger-row"><strong>Uniform limit theorem</strong><span>Analysis §6.2.7</span><span>41 min</span><span class="status mastered">Mastered</span></div>
@@ -148,7 +148,7 @@ function landing(): string {
     </section>
     <section class="boundaries" aria-labelledby="boundaries-title">
       <div><div class="section-index">BOUNDARIES / 04</div><h2 id="boundaries-title">A record, not a credential</h2></div>
-      <div><p>Proofbook does not grade, proctor, certify, or generate answers.</p><p>Your entries stay in this browser unless you export them.</p><p>Use source citations. Do not store copyrighted problem text you cannot redistribute.</p></div>
+      <div><p>Proofbook records practice; it does not issue credentials.</p><p>Your entries stay in this browser unless you export them.</p><p>Use source citations. Do not store copyrighted problem text you cannot redistribute.</p></div>
     </section>
     <section class="paid" id="paid" aria-labelledby="paid-title">
       <div class="paid-price"><span>∞</span><small>your local archive</small></div>
@@ -167,7 +167,7 @@ function appView(): string {
   const topicItems = state.topics.map((topic) => {
     const count = state!.attempts.filter((attempt) => attempt.topicId === topic.id).length;
     const active = selected?.topicId === topic.id;
-    return `<button class="topic-item" data-topic="${topic.id}" ${active ? 'aria-current="true"' : ''}><span>${escapeHtml(topic.name)}</span><span>${count}</span></button>`;
+    return `<button class="topic-item" data-topic="${topic.id}" ${active ? 'aria-current="true"' : ''}><span><strong>${escapeHtml(topic.name)}</strong>${topic.goal ? `<small class="topic-goal">${escapeHtml(topic.goal)}</small>` : ''}</span><span>${count}</span></button>`;
   }).join('');
   const shown = selected ? state.attempts.filter((attempt) => attempt.topicId === selected.topicId) : state.attempts;
   const attempts = shown.map((attempt) => `<button class="attempt-row" data-attempt="${attempt.id}" ${attempt.id === selected?.id ? 'aria-current="true"' : ''}><span><strong>${escapeHtml(attempt.title)}</strong><small>${escapeHtml(attempt.problemRef)}</small></span><span class="status ${attempt.status}">${statusLabel(attempt.status)}</span></button>`).join('');
@@ -265,14 +265,17 @@ async function navigate(next: string, push = true, focusHeading = true): Promise
   if (push) history.pushState({}, '', url.pathname + url.search);
   const route = url.pathname.replace(/\/$/, '') || '/';
   demo = route === '/demo' || url.searchParams.get('demo') === '1';
-  setMeta(routeInfo[route] ? route : '/404');
+  // `?demo=1` is a compact, shareable demo entry point. It opens the same
+  // isolated sample ledger immediately instead of showing real landing state.
+  const demoEntry = route === '/' && demo;
+  setMeta(demoEntry ? '/demo' : (routeInfo[route] ? route : '/404'));
   clearInterval(timerTick);
-  if (route === '/app' || route === '/demo' || route === '/print') {
+  if (route === '/app' || route === '/demo' || route === '/print' || demoEntry) {
     state = await loadState(demo);
   }
-  app.innerHTML = route === '/' ? landing() : route === '/app' || route === '/demo' ? appView() : route === '/print' ? printView() : route === '/privacy' ? legalView('privacy') : route === '/terms' ? legalView('terms') : notFound();
+  app.innerHTML = demoEntry || route === '/app' || route === '/demo' ? appView() : route === '/' ? landing() : route === '/print' ? printView() : route === '/privacy' ? legalView('privacy') : route === '/terms' ? legalView('terms') : notFound();
   bindCommon();
-  if (route === '/app' || route === '/demo') bindApp();
+  if (route === '/app' || route === '/demo' || demoEntry) bindApp();
   if (route === '/print') document.querySelector('#print-index')?.addEventListener('click', () => print());
   if (focusHeading) document.querySelector<HTMLElement>('h1')?.focus({ preventScroll: true });
   document.querySelector('.route-status')!.textContent = document.querySelector('h1')?.textContent ?? '';
@@ -439,7 +442,10 @@ function bindArchive(): void {
       if (!Array.isArray(parsed.topics) || !Array.isArray(parsed.attempts)) throw new Error('The archive is missing topics or attempts.');
       if (!confirm(`Replace this ledger with ${parsed.attempts.length} imported attempts?`)) return;
       state = parsed;
-      await persistAndRender();
+      // Import is a byte-for-byte restoration of the learner's archive; do not
+      // rewrite its archive timestamp while merely opening it in this browser.
+      await saveState(demo, state);
+      await navigate(demo ? '/demo' : '/app', false);
       showToast('Archive imported.');
     } catch (error) { showToast(error instanceof Error ? error.message : 'The archive could not be imported.'); }
   });

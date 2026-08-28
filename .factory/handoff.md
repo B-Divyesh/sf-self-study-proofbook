@@ -1,33 +1,35 @@
-# Review 1 handoff — Self-Study Proofbook
+# Polish 1 handoff — Self-Study Proofbook
 
-## What was done
+## Repair scope
 
-Performed the requested adversarial, no-code-change review of the deployed
-product. The complete report is `.factory/review-1.md`. This commit changes
-review documentation only; no product source, assets, configuration, or
-dependencies were changed.
+Resolved every finding F-1-1 through F-1-9 in `.factory/review-1.md`. The
+product keeps its pixel-proof-terminal visual system. The implementation adds a
+functional `?demo=1` entry to the isolated sample ledger, visible persisted
+topic goals, exact claim coverage for every visitor promise, and a full static
+404 shell with route metadata.
 
-## Verification performed
+## Verification before deployment
 
-- Fresh live first-read checks at 390 × 844 and desktop.
-- One-click demo, realistic sample data, reset, preservation of existing real
-  data, same-origin request capture, and service-worker offline reload.
-- Every command from `.factory/claims.json` in a detached clean clone: all eight
-  passed.
-- `npm test`: 13/13 passed. `npm run build`: passed and produced `dist/`.
-- Live route/metadata/link crawl, Back/focus check, and Axe scans on home,
-  demo, app, print, privacy, and terms: no serious/critical Axe violation.
-
-## Result and remaining work
-
-Verdict is **FAIL**. The blocking work is to register and test the unlisted
-user-facing promises in `.factory/claims.json`, or remove/narrow those promises.
-Minor work: give the direct 404 the shared header/footer and route metadata, and
-replace the vague live-preview heading. See `review-1.md` for IDs F-1-1 through
-F-1-9 and concrete fixes.
+- `npm ci`: passed with zero audit vulnerabilities.
+- `npm run build`: passed and produced `dist/`.
+- `npm test`: 20/20 Playwright tests passed.
+- All 15 exact commands listed in `.factory/claims.json` passed individually.
+- `/opt/fleet/lib/verify-url.sh` passed against local `/` and `/demo`; see
+  `.factory/evidence/polish-1-local-home/` and
+  `.factory/evidence/polish-1-local-demo/`.
+- The direct local unknown route returns HTTP 404 and includes its shared shell
+  and metadata; see `.factory/evidence/polish-1-local-404/`.
+- Axe integration found zero serious/critical violations on home, demo, app,
+  print, privacy, terms, and the static 404. The existing offline claim runs a
+  service-worker-controlled demo reload with `context.setOffline(true)`.
 
 ## Reproduce
 
-Run `npm ci`, every command in `.factory/claims.json`, `npm test`, and
-`npm run build`. Start from a clean browser context at
-`https://self-study-proofbook.sociobot.in/`; the sandbox is `/demo`.
+Run `npm ci`, each command in `.factory/claims.json`, `npm test`, and `npm run
+build`. The sample sandbox opens at `/demo` or `/?demo=1`; both use
+`proofbook-demo-v1`, while real data uses `proofbook-v1`.
+
+## Live deployment
+
+This section is completed after the committed repair is deployed and checked
+cold at `https://self-study-proofbook.sociobot.in`.

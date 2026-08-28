@@ -106,20 +106,133 @@ test('@claim:encrypted-backup uses AES-256-GCM and does not retain the password'
 });
 
 test('@claim:demo-isolation never copies sample data into the real ledger', async ({ page }) => {
-  await page.goto('/demo');
+  await page.goto('/?demo=1');
+  await expect(page.getByText('Demo — sample data, nothing is saved to your proofbook.')).toBeVisible();
   await expect(page.getByText('3 attempts across 3 topics.')).toBeVisible();
+  await page.getByLabel('Solution notes Markdown').fill('A temporary demo-only note.');
+  await page.getByRole('button', { name: 'Save revision' }).click();
+  await page.getByRole('button', { name: 'Reset demo' }).click();
+  await expect(page.getByLabel('Solution notes Markdown')).toHaveValue(/Assume the extracted vertex/);
   await page.getByRole('button', { name: 'Start for real' }).click();
   await expect(page).toHaveURL(/\/app$/);
   await expect(page.getByText('0 attempts across 0 topics.')).toBeVisible();
   await expect(page.getByText('Your attempts will appear here')).toBeVisible();
 });
 
-test('archive tools are available without a checkout request', async ({ page }) => {
-  await page.goto('/');
-  await expect(page.getByText('Exports and backups included')).toBeVisible();
-  await expect(page.getByRole('link', { name: 'Buy archive tools' })).toHaveCount(0);
-  await page.getByRole('link', { name: 'Start your proofbook' }).last().click();
-  await expect(page.getByRole('button', { name: 'Export encrypted backup' })).toBeVisible();
+test('@claim:archive-tools-included makes every archive tool usable without checkout', async ({ page }) => {
+  const outgoing: string[] = [];
+  page.on('request', (request) => outgoing.push(request.url()));
+  await page.goto('/demo');
+  const jsonDownload = page.waitForEvent('download');
+  await page.getByRole('button', { name: 'Export JSON' }).click();
+  expect((await readFile(await (await jsonDownload).path(), 'utf8')).includes('attempts')).toBe(true);
+  const csvDownload = page.waitForEvent('download');
+  await page.getByRole('button', { name: 'Export CSV' }).click();
+  expect((await readFile(await (await csvDownload).path(), 'utf8')).includes('topic,problem')).toBe(true);
+  await page.getByRole('button', { name: 'Export encrypted backup' }).click();
+  await page.getByLabel('Password').fill('archive password');
+  const backupDownload = page.waitForEvent('download');
+  await page.getByRole('button', { name: 'Download encrypted backup' }).click();
+  expect((await readFile(await (await backupDownload).path())).length).toBeGreaterThan(100);
+  await page.getByRole('link', { name: 'Print mastery index' }).click();
+  await expect(page.getByRole('heading', { name: 'Mastery index' })).toBeVisible();
+  expect(outgoing.every((url) => new URL(url).origin === 'http://127.0.0.1:4173')).toBe(true);
+});
+
+test('@claim:cited-attempt persists source and reference in the editor and index', async ({ page }) => {
+  await page.goto('/demo');
+  await page.getByRole('button', { name: 'Add topic' }).click();
+  await page.getByLabel('Topic name').fill('Topology');
+  await page.getByLabel('Study goal').fill('Use quotient maps carefully.');
+  await page.getByRole('button', { name: 'Add topic' }).last().click();
+  await page.getByRole('button', { name: 'Record attempt' }).click();
+  await page.getByLabel('Topic', { exact: true }).selectOption({ label: 'Topology' });
+  await page.getByLabel('Problem title').fill('Show a quotient map is continuous');
+  await page.getByLabel('Source', { exact: true }).fill('Munkres, Topology');
+  await page.getByLabel('Problem reference').fill('Section 22, Exercise 4');
+  await page.getByRole('button', { name: 'Start attempt' }).click();
+  await page.getByRole('button', { name: 'Pause timer' }).click();
+  await page.reload();
+  await expect(page.locator('.source-line')).toContainText('Munkres, Topology');
+  await expect(page.locator('.source-line')).toContainText('Section 22, Exercise 4');
+  await page.getByRole('link', { name: 'Print mastery index' }).click();
+  await expect(page.locator('tbody')).toContainText('Munkres, Topology');
+  await expect(page.locator('tbody')).toContainText('Section 22, Exercise 4');
+});
+
+test('@claim:topics-and-goals persists a topic, its goal, and an assigned attempt', async ({ page }) => {
+  await page.goto('/demo');
+  await page.getByRole('button', { name: 'Add topic' }).click();
+  await page.getByLabel('Topic name').fill('Combinatorics');
+  await page.getByLabel('Study goal').fill('Build bijections before counting.');
+  await page.getByRole('button', { name: 'Add topic' }).last().click();
+  await page.getByRole('button', { name: 'Record attempt' }).click();
+  await page.getByLabel('Topic', { exact: true }).selectOption({ label: 'Combinatorics' });
+  await page.getByLabel('Problem title').fill('Count binary necklaces');
+  await page.getByLabel('Source', { exact: true }).fill('Concrete Mathematics');
+  await page.getByLabel('Problem reference').fill('Chapter 5');
+  await page.getByRole('button', { name: 'Start attempt' }).click();
+  await page.reload();
+  await expect(page.getByRole('button', { name: /Combinatorics/ })).toBeVisible();
+  await expect(page.getByText('Build bijections before counting.')).toBeVisible();
+  await expect(page.getByRole('heading', { name: 'Count binary necklaces' })).toBeVisible();
+});
+
+test('@claim:attempt-timer persists deterministic elapsed time to exports and print', async ({ page }) => {
+  await page.clock.install({ time: new Date('2026-08-28T12:00:00.000Z') });
+  await page.goto('/demo');
+  await page.getByRole('button', { name: 'Start timer' }).click();
+  await page.clock.fastForward(65_000);
+  await page.getByRole('button', { name: 'Pause timer' }).click();
+  await expect(page.locator('[data-timer-display]')).toHaveText('33:05');
+  await page.reload();
+  await expect(page.locator('[data-timer-display]')).toHaveText('33:05');
+  const csvDownload = page.waitForEvent('download');
+  await page.getByRole('button', { name: 'Export CSV' }).click();
+  expect(await readFile(await (await csvDownload).path(), 'utf8')).toContain('"1985"');
+  await page.getByRole('link', { name: 'Print mastery index' }).click();
+  await expect(page.locator('tbody')).toContainText('33:05');
+});
+
+test('@claim:evidence-status persists learner-set evidence and confidence', async ({ page }) => {
+  await page.goto('/demo');
+  await page.getByLabel('Evidence status').selectOption('mastered');
+  await page.getByRole('radio', { name: '4' }).focus();
+  await page.keyboard.press('Space');
+  await page.getByRole('button', { name: 'Save revision' }).click();
+  await page.reload();
+  await expect(page.getByLabel('Evidence status')).toHaveValue('mastered');
+  await expect(page.getByRole('radio', { name: '4' })).toBeChecked();
+  await page.getByRole('link', { name: 'Print mastery index' }).click();
+  await expect(page.locator('tbody')).toContainText('Mastered · 4/4');
+});
+
+test('@claim:json-complete-archive restores all local proofbook data', async ({ page }) => {
+  await page.goto('/demo');
+  const originalDownload = page.waitForEvent('download');
+  await page.getByRole('button', { name: 'Export JSON' }).click();
+  const originalPath = await (await originalDownload).path();
+  const original = JSON.parse(await readFile(originalPath!, 'utf8'));
+  await page.getByRole('button', { name: 'Start for real' }).click();
+  await expect(page.getByText('0 attempts across 0 topics.')).toBeVisible();
+  page.once('dialog', (dialog) => dialog.accept());
+  await page.locator('#import-file').setInputFiles(originalPath!);
+  await expect(page.getByText('Archive imported.')).toBeVisible();
+  const restoredDownload = page.waitForEvent('download');
+  await page.getByRole('button', { name: 'Export JSON' }).click();
+  const restored = JSON.parse(await readFile(await (await restoredDownload).path(), 'utf8'));
+  const { updatedAt: _originalUpdatedAt, ...originalContents } = original;
+  const { updatedAt: _restoredUpdatedAt, ...restoredContents } = restored;
+  expect(restoredContents).toEqual(originalContents);
+});
+
+test('@claim:no-credential-service marks the printed record as a non-credential', async ({ page }) => {
+  const outgoing: string[] = [];
+  page.on('request', (request) => outgoing.push(request.url()));
+  await page.goto('/demo');
+  await page.getByRole('link', { name: 'Print mastery index' }).click();
+  await expect(page.getByText('This learner-maintained record is not an accredited credential.')).toBeVisible();
+  expect(outgoing.every((url) => new URL(url).origin === 'http://127.0.0.1:4173')).toBe(true);
 });
 
 test('demo supports keyboard-sized mobile use and has no serious accessibility findings', async ({ page }) => {
@@ -130,6 +243,14 @@ test('demo supports keyboard-sized mobile use and has no serious accessibility f
   expect(overflow).toBeLessThanOrEqual(1);
   const results = await new AxeBuilder({ page }).analyze();
   expect(results.violations.filter((item) => ['serious', 'critical'].includes(item.impact ?? ''))).toEqual([]);
+});
+
+test('all public routes have no serious or critical accessibility violations', async ({ page }) => {
+  for (const route of ['/', '/demo', '/app', '/print?demo=1', '/privacy', '/terms', '/not-a-proofbook-route']) {
+    await page.goto(route);
+    const results = await new AxeBuilder({ page }).analyze();
+    expect(results.violations.filter((item) => ['serious', 'critical'].includes(item.impact ?? ''))).toEqual([]);
+  }
 });
 
 test('demo remains usable with a keyboard', async ({ page }) => {
@@ -166,5 +287,10 @@ test('static delivery makes hashed assets immutable and unknown routes real 404s
   expect(asset.headers()['cache-control']).toBe('public, max-age=31536000, immutable');
   const missing = await page.goto('/not-a-proofbook-route');
   expect(missing?.status()).toBe(404);
+  await expect(page).toHaveTitle('Page not found — Self-Study Proofbook');
   await expect(page.getByRole('heading', { level: 1 })).toHaveText('This page is outside the ledger');
+  await expect(page.locator('header')).toHaveCount(1);
+  await expect(page.locator('footer')).toHaveCount(1);
+  await expect(page.locator('link[rel="canonical"]')).toHaveAttribute('href', 'https://self-study-proofbook.sociobot.in/404');
+  await expect(page.locator('link[rel="icon"]')).toHaveCount(1);
 });

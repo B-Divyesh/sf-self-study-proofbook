@@ -4,7 +4,7 @@ Record cited math and CS problems, timed attempts, revisions, and mastery
 evidence in a private offline ledger.
 
 Self-Study Proofbook is for serious self-learners who need evidence of what they
-can solve. It records practice; it does not grade work or issue credentials.
+can solve. Proofbook records practice; it does not issue credentials.
 
 Live site: <https://self-study-proofbook.sociobot.in>
 
@@ -30,8 +30,8 @@ Study entries stay in the browser unless the learner exports them. IndexedDB
 stores the ledger. The demo uses a separate database and never copies sample
 records into the real ledger.
 
-JSON is the open, complete archive and keeps every revision. CSV is useful for
-a spreadsheet. Backups use AES-256-GCM encryption with a key derived from the
+JSON is the complete archive and keeps every revision. CSV is useful for a
+spreadsheet. Backups use AES-256-GCM encryption with a key derived from the
 learner's password. The password is never stored.
 
 Read the in-app [privacy page](https://self-study-proofbook.sociobot.in/privacy)
