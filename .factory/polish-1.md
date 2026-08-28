@@ -26,6 +26,8 @@ Target repaired from `5bd77baab547f411ce8f619710f036a438472ce2`; review source:
   `/terms`, and direct 404 with zero serious or critical findings.
 - The local direct 404 is HTTP 404 and its captured document is
   `.factory/evidence/polish-1-local-404/index.html`.
+- A detached clone of pushed commit `255c353` ran all 15 exact claim commands,
+  then `npm test` (20/20) and `npm run build`, with zero audit vulnerabilities.
 
 ## Live evidence
 

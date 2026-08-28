@@ -22,6 +22,10 @@ topic goals, exact claim coverage for every visitor promise, and a full static
 - Axe integration found zero serious/critical violations on home, demo, app,
   print, privacy, terms, and the static 404. The existing offline claim runs a
   service-worker-controlled demo reload with `context.setOffline(true)`.
+- A detached clean clone of pushed commit `255c353` at
+  `/tmp/self-study-proofbook-clean-Sm8Tnz` completed `npm ci` with zero audit
+  vulnerabilities, every one of the 15 exact claim commands, `npm test`
+  (20/20), and `npm run build` successfully.
 
 ## Reproduce
 
