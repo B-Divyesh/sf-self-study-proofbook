@@ -478,8 +478,17 @@ function registerServiceWorker(): void {
   }).catch(() => { /* The app still works without installation support. */ });
 }
 
+function resetInitialFocus(): void {
+  // A document navigation must begin at the document focus origin. In
+  // particular, do not let focus restoration (or a future autofocus control)
+  // bypass the skip link, which is the first keyboard stop in the shell.
+  const active = document.activeElement;
+  if (active instanceof HTMLElement && active !== document.body) active.blur();
+}
+
 window.addEventListener('popstate', () => void navigate(location.pathname + location.search, false));
 // On the first load, leave focus at the document start so the skip link is the
 // first keyboard stop. Client-side route changes still announce and focus H1.
 await navigate(location.pathname + location.search, false, false);
+resetInitialFocus();
 registerServiceWorker();

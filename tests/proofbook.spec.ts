@@ -134,6 +134,9 @@ test('demo supports keyboard-sized mobile use and has no serious accessibility f
 
 test('demo remains usable with a keyboard', async ({ page }) => {
   await page.goto('/demo');
+  // A fresh document navigation starts before the shell's first tabbable item;
+  // otherwise the initial H1 focus would bypass the skip link.
+  await expect.poll(() => page.evaluate(() => document.activeElement === document.body)).toBe(true);
   await page.keyboard.press('Tab');
   await expect(page.locator('.skip-link')).toBeFocused();
   await page.keyboard.press('Enter');
