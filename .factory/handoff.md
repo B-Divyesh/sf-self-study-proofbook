@@ -31,5 +31,16 @@ build`. The sample sandbox opens at `/demo` or `/?demo=1`; both use
 
 ## Live deployment
 
-This section is completed after the committed repair is deployed and checked
-cold at `https://self-study-proofbook.sociobot.in`.
+- Deployed `6dfe00a` with `/opt/fleet/lib/deploy-static.sh self-study-proofbook
+  dist`; Azure deployment `bbaf6cdd-f9bb-4727-8d90-1cd549504bef` succeeded.
+- `https://self-study-proofbook.sociobot.in/` and `/demo` both passed
+  `verify-url.sh` cold with no application console errors. Live captures are in
+  `.factory/evidence/polish-1-live-home/` and
+  `.factory/evidence/polish-1-live-demo/`.
+- Live home SHA-256 equals the built `dist/index.html` SHA-256:
+  `f4bbc73dd87dad1cf0795c6e648a32bd5ecb07dcc127fc0d17aab1141776bf6f`.
+- Cold mobile Chromium checked `/`, `/?demo=1`, `/print?demo=1`, and
+  `/not-a-proofbook-route`: first-screen wording, demo banner/reset, three
+  samples, print disclaimer, shared 404 shell/metadata, and focusable routes
+  all passed. The direct unknown URL returned HTTP 404. Its expected browser
+  console message about the document's 404 status is not an application error.
