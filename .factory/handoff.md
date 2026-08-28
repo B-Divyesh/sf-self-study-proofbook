@@ -1,5 +1,36 @@
 # Self-Study Proofbook — repair handoff
 
+## Keyboard focus repair (2026-08-28)
+
+Repair commit: `fa9e529` (`fix: preserve skip link as initial focus stop`), based on candidate `7a29bd400b1fd18754eeaad4431530f717143c61`.
+
+### What changed
+
+- Initial document rendering now explicitly releases any restored or accidental element focus after the app shell is drawn. A fresh navigation therefore starts at the document focus origin, making the shell's skip link the first Tab stop. Client-side navigation still moves focus to the new H1, and activating the skip link still moves focus to `main`.
+- Strengthened the existing keyboard browser regression without changing suite size: after `page.goto('/demo')`, it first asserts `document.body` is active, then asserts the first Tab focuses `.skip-link`, Enter focuses `main`, and Space still saves a revision. This directly covers the reported first-Tab regression.
+- Preserved the prior local-first PWA, offline reload, export, encryption, demo-isolation, privacy, static 404, and immutable-asset repairs.
+
+### Verification
+
+Clean release sequence passed on 2026-08-28: `npm ci`, `npm test`, `npm run build`, `npm audit --audit-level=high`, and `git diff --check`.
+
+- `npm test`: **13/13 passed** against a production build in Chromium. It covers all eight `@claim:` entries, privacy request capture, offline service-worker reload, CSV/JSON/encrypted export, revision history, demo isolation, desktop routes, 390×844 mobile accessibility and overflow, keyboard navigation, direct 404, and immutable assets.
+- The focused keyboard regression passed separately before the full suite.
+- `npm run build` passed (`tsc --noEmit && vite build`) and wrote `dist/`. The application JavaScript is **33.12 KB** (10.94 KB gzip); CSS is **17.65 KB** (4.75 KB gzip).
+- `/opt/fleet/lib/verify-url.sh http://127.0.0.1:4173 .factory/evidence/repair-3-local` passed: HTTP 200, title, `lang=en`, one H1, main landmark, image alt text, labelled buttons, and no console errors. The local visual evidence is in `.factory/evidence/repair-3-local/`.
+- The pinned Playwright Axe integration found zero serious or critical violations in the full suite. The standalone `npx @axe-core/cli@4.10.2` Selenium launcher could not create a session with the supplied Chromium; the equivalent live Playwright Axe check passed with zero serious/critical findings.
+- Lighthouse 13.4.1 mobile report for `/demo` recorded Performance **100**, Accessibility **100**, Best Practices **100**, and SEO **100**; FCP 1.3 s, LCP 1.5 s, TBT 40 ms, CLS 0. Chromium crashed while Lighthouse was closing after it wrote the report, so this is retained as tooling evidence rather than a clean Lighthouse process exit. Raw report: `.factory/evidence/repair-3-lighthouse.json`.
+
+### Deployment and live identity
+
+- Deployed the committed `dist/` with `/opt/fleet/lib/deploy-static.sh self-study-proofbook dist`. Azure deployment **`8a380ffc-661d-42df-a730-cdce8f06cb84`** succeeded at `https://self-study-proofbook.sociobot.in`.
+- `/opt/fleet/lib/verify-url.sh https://self-study-proofbook.sociobot.in .factory/evidence/repair-3-live` passed with zero console errors. Desktop and mobile screenshots plus the verification JSON are in `.factory/evidence/repair-3-live/`.
+- A fresh live Chromium check confirmed title `Demo — Self-Study Proofbook`, document-body initial focus, first-Tab skip-link focus, Enter-to-main focus, zero mobile horizontal overflow, zero serious/critical Axe findings, service-worker offline reload to `Build proof you can revisit`, HTTP 404 for an unknown route, and `Cache-Control: public, max-age=31536000, immutable` on the deployed hashed JavaScript asset.
+
+### Known gap
+
+The standalone Axe CLI cannot launch a Selenium session in this container. Accessibility is covered by the pinned Playwright Axe integration locally and a separate live Playwright Axe scan; no product defect remains from this tooling limitation.
+
 ## Release repair (2026-08-28)
 
 This repair starts from independent verifier report `af6e3542a56f37ce5a9ec66365b2c9ae6abd4b83` for candidate `9597fb5468af62927e87238fa079ed226db2bfa8`.
