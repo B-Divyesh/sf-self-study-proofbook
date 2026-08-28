@@ -164,14 +164,19 @@
       "degree": 10
     },
     {
+      "id": "src_main_bindeditor",
+      "label": "bindEditor()",
+      "degree": 9
+    },
+    {
       "id": "src_main_printview",
       "label": "printView()",
       "degree": 9
     },
     {
-      "id": "src_main_bindeditor",
-      "label": "bindEditor()",
-      "degree": 9
+      "id": "src_main_bindapp",
+      "label": "bindApp()",
+      "degree": 8
     },
     {
       "id": "src_db_savestate",
@@ -184,13 +189,8 @@
       "degree": 8
     },
     {
-      "id": "src_main_bindapp",
-      "label": "bindApp()",
-      "degree": 8
-    },
-    {
-      "id": "src_db_loadstate",
-      "label": "loadState()",
+      "id": "src_main_bindcreateforms",
+      "label": "bindCreateForms()",
       "degree": 6
     }
   ],
@@ -229,8 +229,8 @@
       "why": "bridges separate communities"
     },
     {
-      "source": "persistAndRender()",
-      "target": "saveState()",
+      "source": "navigate()",
+      "target": "loadState()",
       "source_files": [
         "src/main.ts",
         "src/db.ts"
@@ -240,8 +240,8 @@
       "why": "bridges separate communities"
     },
     {
-      "source": "navigate()",
-      "target": "loadState()",
+      "source": "persistAndRender()",
+      "target": "saveState()",
       "source_files": [
         "src/main.ts",
         "src/db.ts"
