@@ -17,6 +17,7 @@
       "src_main_formatdate",
       "src_main_inline",
       "src_main_markdown",
+      "src_main_opendialog",
       "src_main_printview",
       "src_main_routeinfo",
       "src_main_safeexternalurl",
@@ -49,24 +50,11 @@
       "tsconfig_include"
     ],
     "2": [
-      "src_db",
-      "src_db_empty_state",
-      "src_db_loadstate",
-      "src_db_opendb",
-      "src_db_readraw",
-      "src_sample",
-      "src_sample_samplestate",
-      "src_types",
-      "src_types_attempt",
-      "src_types_attemptstatus",
-      "src_types_licensestate",
-      "src_types_proofbookstate",
-      "src_types_revision",
-      "src_types_topic"
-    ],
-    "3": [
+      "src_db_cleardemo",
+      "src_db_resetdemo",
       "src_db_savestate",
       "src_main_bindapp",
+      "src_main_bindcommon",
       "src_main_bindcreateforms",
       "src_main_bindeditor",
       "src_main_landing",
@@ -79,6 +67,21 @@
       "src_main_shell",
       "src_main_showtoast",
       "src_main_uid"
+    ],
+    "3": [
+      "src_db",
+      "src_db_empty_state",
+      "src_db_loadstate",
+      "src_db_opendb",
+      "src_db_readraw",
+      "src_sample",
+      "src_sample_samplestate",
+      "src_types",
+      "src_types_attempt",
+      "src_types_attemptstatus",
+      "src_types_proofbookstate",
+      "src_types_revision",
+      "src_types_topic"
     ],
     "4": [
       "axe_core_playwright",
@@ -106,18 +109,18 @@
       "package_version"
     ],
     "6": [
-      "src_db_cleardemo",
-      "src_db_resetdemo",
-      "src_main_bindcommon",
-      "src_main_bindlicensedialog",
-      "src_main_initlicense",
-      "src_main_opendialog",
-      "src_main_verifylicense"
+      "scripts_test_server",
+      "scripts_test_server_existing",
+      "scripts_test_server_port",
+      "scripts_test_server_root",
+      "scripts_test_server_types",
+      "scripts_test_server_withinroot"
     ],
     "7": [
       "vite_config",
       "vite_config_filesbelow",
-      "vite_config_pwaworker"
+      "vite_config_pwaworker",
+      "vite_config_writestaticroutes"
     ],
     "8": [
       "playwright_config"
@@ -127,14 +130,14 @@
     ]
   },
   "cohesion": {
-    "0": 0.2134387351778656,
+    "0": 0.2028985507246377,
     "1": 0.09523809523809523,
-    "2": 0.21978021978021978,
-    "3": 0.25274725274725274,
+    "2": 0.20588235294117646,
+    "3": 0.24358974358974358,
     "4": 0.18181818181818182,
     "5": 0.2,
-    "6": 0.2857142857142857,
-    "7": 0.6666666666666666,
+    "6": 0.3333333333333333,
+    "7": 0.5,
     "8": 1.0,
     "9": 1.0
   },
@@ -142,7 +145,7 @@
     {
       "id": "src_main_navigate",
       "label": "navigate()",
-      "degree": 14
+      "degree": 13
     },
     {
       "id": "tsconfig_compileroptions",
@@ -170,13 +173,13 @@
       "degree": 9
     },
     {
-      "id": "src_main_appview",
-      "label": "appView()",
+      "id": "src_db_savestate",
+      "label": "saveState()",
       "degree": 8
     },
     {
-      "id": "src_db_savestate",
-      "label": "saveState()",
+      "id": "src_main_appview",
+      "label": "appView()",
       "degree": 8
     },
     {
@@ -185,9 +188,9 @@
       "degree": 8
     },
     {
-      "id": "src_main_bindcommon",
-      "label": "bindCommon()",
-      "degree": 7
+      "id": "src_db_loadstate",
+      "label": "loadState()",
+      "degree": 6
     }
   ],
   "surprises": [
@@ -203,11 +206,22 @@
       "why": "bridges separate communities"
     },
     {
-      "source": "bindCommon()",
-      "target": "resetDemo()",
+      "source": "bindArchive()",
+      "target": "decryptArchive()",
       "source_files": [
         "src/main.ts",
-        "src/db.ts"
+        "src/crypto.ts"
+      ],
+      "confidence": "EXTRACTED",
+      "relation": "calls",
+      "why": "cross-file semantic connection"
+    },
+    {
+      "source": "bindArchive()",
+      "target": "encryptArchive()",
+      "source_files": [
+        "src/main.ts",
+        "src/crypto.ts"
       ],
       "confidence": "EXTRACTED",
       "relation": "calls",
@@ -226,17 +240,6 @@
     },
     {
       "source": "bindEditor()",
-      "target": "saveState()",
-      "source_files": [
-        "src/main.ts",
-        "src/db.ts"
-      ],
-      "confidence": "EXTRACTED",
-      "relation": "calls",
-      "why": "cross-file semantic connection"
-    },
-    {
-      "source": "persistAndRender()",
       "target": "saveState()",
       "source_files": [
         "src/main.ts",
