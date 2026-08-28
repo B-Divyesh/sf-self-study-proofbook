@@ -1,0 +1,12 @@
+{
+  "slug": "self-study-proofbook",
+  "title": "Self-Study Proofbook",
+  "summary": "Record cited problems, timed attempts, revisions, and mastery evidence in a private offline ledger.",
+  "territory": "utilities",
+  "user": "Serious self-learners in math or CS who need a credible, private record of what they can actually solve rather than a course-completion badge.",
+  "smallest_useful_product": "Local Markdown-first proof/problem ledger with source citation, attempt timer, solution revision history, and printable mastery index.",
+  "artifact_class": "pwa-offline",
+  "monetization": "one-time",
+  "constraints": "Do not redistribute textbook or exam content; support local encrypted export; clearly state that records are not accredited credentials.",
+  "state": "BUILT"
+}

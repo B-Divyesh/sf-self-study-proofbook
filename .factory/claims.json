@@ -1,0 +1,58 @@
+[
+  {
+    "id": "privacy-local",
+    "claim": "Your study entries stay in this browser unless you export them.",
+    "where": "landing facts, boundaries, privacy page, README",
+    "test": "npm test -- --grep @claim:privacy-local",
+    "sandbox": "fresh browser context on /demo; edit and save; assert every request remains same-origin"
+  },
+  {
+    "id": "offline-reload",
+    "claim": "Works offline after the first visit.",
+    "where": "landing facts, README",
+    "test": "npm test -- --grep @claim:offline-reload",
+    "sandbox": "fresh browser context on /demo; wait for the service worker, reload once, go offline, and reload"
+  },
+  {
+    "id": "csv-export",
+    "claim": "CSV export contains one row per attempt.",
+    "where": "app archive tools, landing paid section, README",
+    "test": "npm test -- --grep @claim:csv-export",
+    "sandbox": "fresh /demo data; download CSV and assert one header plus three attempt rows"
+  },
+  {
+    "id": "revision-history",
+    "claim": "Each changed solution keeps the earlier saved version.",
+    "where": "landing method, app revision history, README",
+    "test": "npm test -- --grep @claim:revision-history",
+    "sandbox": "fresh /demo data; change a solution, save, and inspect both revisions"
+  },
+  {
+    "id": "print-index",
+    "claim": "Creates a printable mastery index with sources, time, status, and revisions.",
+    "where": "landing preview and method, app archive tools, README",
+    "test": "npm test -- --grep @claim:print-index",
+    "sandbox": "fresh /demo data; open the print route and assert three complete rows and credential disclaimer"
+  },
+  {
+    "id": "encrypted-backup",
+    "claim": "Archive tools create a password-encrypted backup.",
+    "where": "landing paid section, app archive tools, README",
+    "test": "npm test -- --grep @claim:encrypted-backup",
+    "sandbox": "fresh /demo data; provide a password, download, and assert the encrypted archive signature"
+  },
+  {
+    "id": "demo-isolation",
+    "claim": "Demo changes never enter the real proofbook.",
+    "where": "demo banner, README",
+    "test": "npm test -- --grep @claim:demo-isolation",
+    "sandbox": "fresh context; load three demo attempts, leave demo, and assert the real ledger is empty"
+  },
+  {
+    "id": "paid-price",
+    "claim": "Archive tools cost $19 as a one-time purchase.",
+    "where": "landing facts and paid section, terms, README",
+    "test": "npm test -- --grep @claim:paid-price",
+    "sandbox": "fresh landing page; assert the exact price, purchase type, and Sociobot checkout URL"
+  }
+]

@@ -1,14 +1,69 @@
 # Self-Study Proofbook
 
-Live: https://self-study-proofbook.sociobot.in — built by the Param Factory (`pwa-offline`).
+Record cited math and CS problems, timed attempts, revisions, and mastery
+evidence in a private offline ledger.
 
-See `.factory/brief.json` for the researched problem this solves and `.factory/design.md` for the visual system.
+Self-Study Proofbook is for serious self-learners who need evidence of what they
+can solve. It records practice; it does not grade work or issue credentials.
 
-## Develop
+Live site: <https://self-study-proofbook.sociobot.in>
 
-```
+Demo: <https://self-study-proofbook.sociobot.in/demo>
+
+## What it does
+
+- Groups problem attempts by topic and study goal.
+- Records a source citation, problem reference, and optional source link.
+- Times an attempt and preserves each changed solution as a revision.
+- Adds a learner-set status and confidence score.
+- Exports JSON and one CSV row per attempt.
+- Creates a printable mastery index with sources, time, status, and revisions.
+- Works offline after the first visit.
+
+The free ledger holds 25 attempts and includes JSON, CSV, and printing. The $19
+one-time archive license adds unlimited attempts and password-encrypted backups.
+Payment and license checks use the Sociobot billing service.
+
+## Privacy and ownership
+
+Study entries stay in the browser unless the learner exports them. IndexedDB
+stores the ledger. The demo uses a separate database and never copies sample
+records into the real ledger.
+
+JSON is the open, complete archive. CSV is useful for a spreadsheet. A paid
+backup uses AES-GCM encryption with a key derived from the learner's password.
+The password is never stored.
+
+Read the in-app [privacy page](https://self-study-proofbook.sociobot.in/privacy)
+and [terms](https://self-study-proofbook.sociobot.in/terms).
+
+## Run and test
+
+Requires Node.js 20 or newer.
+
+```sh
 npm install
 npm run dev
 npm test
-npm run build   # -> dist/
+npm run build
 ```
+
+`npm run build` is the deployment command. It writes the static site to
+`dist/`, with `dist/index.html` at the root.
+
+Tests use Playwright 1.58.2 and Chromium. They cover every claim in
+[`.factory/claims.json`](.factory/claims.json), including offline reload,
+isolated demo storage, revision history, downloads, and the print route.
+
+## Project notes
+
+- `src/db.ts` owns the two IndexedDB namespaces.
+- `src/crypto.ts` implements password-encrypted archives with Web Crypto.
+- `public/sw.js` caches the application shell.
+- `.factory/design.md` records the product-specific visual system and art
+  provenance.
+- `.factory/demo.md` documents the clean demo sandbox.
+
+The generated hero art is original to this product. Departure Mono is bundled
+under its license in `public/fonts/DEPARTURE_MONO_LICENSE.txt`. Application code
+is available under the [MIT License](LICENSE).
