@@ -146,7 +146,7 @@
     {
       "id": "src_main_navigate",
       "label": "navigate()",
-      "degree": 13
+      "degree": 14
     },
     {
       "id": "tsconfig_compileroptions",
@@ -156,7 +156,7 @@
     {
       "id": "src_main_bindarchive",
       "label": "bindArchive()",
-      "degree": 11
+      "degree": 12
     },
     {
       "id": "src_main_editor",
@@ -164,8 +164,8 @@
       "degree": 10
     },
     {
-      "id": "src_main_bindeditor",
-      "label": "bindEditor()",
+      "id": "src_db_savestate",
+      "label": "saveState()",
       "degree": 9
     },
     {
@@ -174,14 +174,9 @@
       "degree": 9
     },
     {
-      "id": "src_main_bindapp",
-      "label": "bindApp()",
-      "degree": 8
-    },
-    {
-      "id": "src_db_savestate",
-      "label": "saveState()",
-      "degree": 8
+      "id": "src_main_bindeditor",
+      "label": "bindEditor()",
+      "degree": 9
     },
     {
       "id": "src_main_appview",
@@ -189,15 +184,42 @@
       "degree": 8
     },
     {
-      "id": "src_main_bindcreateforms",
-      "label": "bindCreateForms()",
+      "id": "src_main_bindapp",
+      "label": "bindApp()",
+      "degree": 8
+    },
+    {
+      "id": "src_db_loadstate",
+      "label": "loadState()",
       "degree": 6
     }
   ],
   "surprises": [
     {
+      "source": "navigate()",
+      "target": "loadState()",
+      "source_files": [
+        "src/main.ts",
+        "src/db.ts"
+      ],
+      "confidence": "EXTRACTED",
+      "relation": "calls",
+      "why": "bridges separate communities"
+    },
+    {
       "source": "bindCommon()",
       "target": "resetDemo()",
+      "source_files": [
+        "src/main.ts",
+        "src/db.ts"
+      ],
+      "confidence": "EXTRACTED",
+      "relation": "calls",
+      "why": "bridges separate communities"
+    },
+    {
+      "source": "bindArchive()",
+      "target": "saveState()",
       "source_files": [
         "src/main.ts",
         "src/db.ts"
@@ -219,28 +241,6 @@
     },
     {
       "source": "bindEditor()",
-      "target": "saveState()",
-      "source_files": [
-        "src/main.ts",
-        "src/db.ts"
-      ],
-      "confidence": "EXTRACTED",
-      "relation": "calls",
-      "why": "bridges separate communities"
-    },
-    {
-      "source": "navigate()",
-      "target": "loadState()",
-      "source_files": [
-        "src/main.ts",
-        "src/db.ts"
-      ],
-      "confidence": "EXTRACTED",
-      "relation": "calls",
-      "why": "bridges separate communities"
-    },
-    {
-      "source": "persistAndRender()",
       "target": "saveState()",
       "source_files": [
         "src/main.ts",
