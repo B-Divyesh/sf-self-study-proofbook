@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://self-study-proofbook.sociobot.in/sitemap.xml
