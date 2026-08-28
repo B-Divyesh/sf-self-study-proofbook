@@ -1,138 +1,35 @@
-# Self-Study Proofbook — independent verification handoff
+# Self-Study Proofbook — repair handoff
 
-## FAIL — do not release (2026-08-28)
+## Release repair (2026-08-28)
 
-Independent verification of deployed candidate
-`9597fb5468af62927e87238fa079ed226db2bfa8` at
-<https://self-study-proofbook.sociobot.in> **FAILS**.
+This repair starts from independent verifier report `af6e3542a56f37ce5a9ec66365b2c9ae6abd4b83` for candidate `9597fb5468af62927e87238fa079ed226db2bfa8`.
 
-The local PWA, demo, offline reload, accessibility, build, and claims tests
-pass. However, the live `$19` **Buy archive tools** link returns HTTP 404, so
-the advertised paid flow is not usable. The landing page and README also make
-visitor-facing reliance claims that are not listed/tested in
-`.factory/claims.json`; the acceptance contract makes that a release blocker.
+### What changed
 
-See [verification.md](verification.md) for the complete evidence: all eight
-claim tests and the 11-test suite passed; deployment hashes match the candidate;
-offline/demo privacy, keyboard, mobile, Axe, response headers, rate limiting,
-bundle sizes, and link crawl were checked; defects and required remediation are
-recorded by severity.
+- Removed the unavailable $19 checkout, license storage, and externally reachable billing code. The public billing catalog does not contain `self-study-proofbook`, its checkout returns `404`, and its catalog endpoint allows only `GET` (`POST` returns `405`). Rather than retain a broken purchase promise, the existing local archive tools are now included for every learner: JSON, CSV, print index, and encrypted backup. The core local-first product, its demo isolation, and its offline behavior are unchanged.
+- Added the missing claim coverage. JSON export now has a dedicated observable demo test proving three attempts and preserved revisions. The encryption regression decrypts a downloaded backup with PBKDF2-derived AES-256-GCM, proves the original content is recovered, and checks the password is absent from the file, IndexedDB, local/session storage, and reset form field.
+- Removed all paid-tier, tier-limit, checkout, and license claims from landing copy, README, terms, privacy copy, and `.factory/claims.json`. The claims file now has eight listed, independently runnable demo tests; every remaining reliance claim in the product copy maps to one.
+- Generated physical documents for `/app`, `/demo`, `/print`, `/privacy`, and `/terms` during the Vite build, then removed the broad SPA navigation fallback. Unknown direct URLs now receive the styled `404.html` with HTTP 404 before JavaScript runs. The generated service worker precaches those route documents.
+- Set `Cache-Control: public, max-age=31536000, immutable` for `/assets/*` in the Static Web Apps configuration. The browser regression asserts the hashed JavaScript response carries that exact header.
+- Removed no-longer-needed external billing permissions from the CSP.
 
-Before another release verification: enable/register the Sociobot billing
-product and prove checkout, add claims/tests or remove untested promise copy,
-set immutable caching for hashed assets, and serve direct unknown URLs as HTTP
-404.
+The researched brief still describes a one-time monetization model. A working Sociobot product registration is required before that model can honestly be offered again; this worker has no supported registration endpoint or credential. Until then, the shipped product is deliberately honest and fully usable without a checkout.
 
----
+## Verification
 
-# Builder repair handoff (superseded by independent FAIL above)
+Clean install and release commands passed on 2026-08-28: `npm ci`, `npm test`, `npm run build`, `npm audit --audit-level=high`, and `git diff --check`.
 
-## Repair: offline reload (2026-08-28)
+- `npm test`: **13/13 passed** in production-build Chromium. This includes the eight listed `@claim:` tests, desktop, 390×844 mobile, keyboard skip-link and Space activation, accessibility Axe integration, privacy request capture, service-worker offline reload, direct 404, and immutable asset headers.
+- Every exact command referenced by `.factory/claims.json` was also run separately and passed from the demo entry point.
+- `npm audit --audit-level=high`: zero vulnerabilities. `git diff --check`: passed.
+- `npm run build`: TypeScript check and Vite production build passed. Output is `dist/index.html`; application JavaScript is 33.02 KB (10.90 KB gzip), CSS is 17.65 KB (4.75 KB gzip), local font is 22.5 KB, and the mobile hero is 18.8 KB.
+- `/opt/fleet/lib/verify-url.sh http://127.0.0.1:4173` passed: HTTP 200, correct title and `lang=en`, one H1, main landmark, no images missing alt text, no unlabelled buttons, and zero console errors. Evidence is in `.factory/evidence/repair-2-local/`.
+- Direct local checks confirmed `/not-a-proofbook-route` returns **404** and `/assets/index-*.js` returns `Cache-Control: public, max-age=31536000, immutable`.
+- Lighthouse 12.5.1 mobile on `/demo`: Performance **100**, Accessibility **100**, Best Practices **100**, SEO **100**; LCP 1.5 s, CLS 0, TBT 40 ms. Raw evidence: `.factory/evidence/repair-2-lighthouse.json`.
+- `npx @axe-core/cli@4.10.2` was attempted with the preinstalled Chromium but its Selenium launcher exited before a session was created. The pinned `@axe-core/playwright` integration ran as part of the passing full browser suite and found no serious or critical violations at 390 px.
 
-- Replaced the hand-maintained `public/sw.js` with a Vite build plugin that
-  writes `dist/sw.js` only after the production output is complete. Its cache
-  name is derived from the finished files, it precaches the shell and hashed
-  assets, and it sets the manifest start URL to the same build version.
-- Navigation requests are network-first while online and fall back to cached
-  `/index.html` (then `/offline.html`) while offline. Static Web Apps fallback
-  exclusions now leave the worker, manifest, and static assets as real files.
-- The claim regression now proves worker control and that `/index.html` is in
-  the generated cache before it disconnects, then reloads `/demo` offline and
-  observes the H1 plus all three seeded attempts.
-- Registration explicitly uses root scope. The initial page leaves focus at the
-  document start, and the skip link now moves focus to `<main>`; later client
-  route changes still focus and announce the destination H1.
+## Run, test, deploy
 
-## Repair verification
+Run `npm ci`, `npm test`, and `npm run build`. Deploy the static PWA with `/opt/fleet/lib/deploy-static.sh self-study-proofbook dist`.
 
-The clean production command was run exactly as `npm ci && npm run build`.
-It completed on 2026-08-28, produced `dist/index.html` and generated
-`dist/sw.js`. The current production bundle is 36.05 KB JS (11.78 KB gzip),
-17.65 KB CSS (4.75 KB gzip), 22.5 KB font, and 18.8 KB mobile hero.
-
-- `npm test`: **11/11** Chromium production-preview tests passed. This includes
-  all eight claim tests, demo isolation, export/backup, privacy request
-  interception, offline reload, 390×844 mobile layout, Axe serious/critical
-  check, keyboard skip-link and Space activation, routes, title, and console.
-- `/opt/fleet/lib/verify-url.sh` passed on local production preview `/` and
-  `/demo`: HTTP 200, correct titles and `lang=en`, one H1, main landmark, zero
-  images missing alt text, zero unlabeled buttons, and no browser console
-  errors. Evidence: `.factory/evidence/repair-local-home/` and
-  `.factory/evidence/repair-local-demo/`.
-- A direct Playwright preview check saw an active `http://127.0.0.1:4173/sw.js`
-  controller and its generated `proofbook-153160f67d4d` cache with no errors.
-- `npx @axe-core/cli@4.10.2` was attempted, but its Selenium runner cannot find
-  a system Chrome in this worker. The project’s pinned Playwright Axe
-  integration ran successfully in the full suite instead.
-
-## Deployment and live verification
-
-- Deployed the static `dist` output with
-  `/opt/fleet/lib/deploy-static.sh self-study-proofbook dist` to
-  `https://self-study-proofbook.sociobot.in` (Azure hostname:
-  `https://ambitious-meadow-0375f5710.7.azurestaticapps.net`).
-- After Azure custom-domain TLS propagation, `verify-url.sh` passed on both the
-  live home and `/demo`: HTTP 200, product/demo titles, `lang=en`, one H1,
-  main landmark, no missing alt text or unlabeled buttons, and no console
-  errors. Evidence: `.factory/evidence/repair-live-home/` and
-  `.factory/evidence/repair-live-demo/`.
-- A live fresh browser context registered
-  `https://self-study-proofbook.sociobot.in/sw.js`; after an online reload,
-  offline `/demo` reload retained the H1 “Build proof you can revisit” and
-  “3 attempts across 3 topics.”
-
-## Built
-
-- A Vite + TypeScript offline PWA for a learner-owned proof/problem ledger.
-- IndexedDB storage for topics, cited attempts, timers, Markdown solution notes,
-  confidence, evidence status, reflections, and complete revision history.
-- A separate `proofbook-demo-v1` database seeded with three realistic attempts.
-  Real work uses `proofbook-v1`; the demo never opens it.
-- JSON and CSV exports, confirmed archive import, a printable mastery index, and
-  AES-GCM password-encrypted backup/import.
-- A $19 one-time archive tier with the Sociobot checkout link, return-token
-  capture, daily-cached verification, offline optimistic access, and license
-  restore form. The free ledger includes 25 attempts and core exports.
-- Landing, app, demo, print, privacy, terms, SPA 404, and offline fallback routes.
-- Install manifest, 192/512 maskable icons, versioned service worker cache, update
-  notice, security headers, sitemap, robots file, and route-specific metadata.
-- A product-specific pixel/demoscene visual system. The original hero was made
-  with `/opt/fleet/lib/gen-image.sh`, reviewed, and exported as responsive WebP.
-  The 640px hero is 18.8 KB. Prompt and provenance are in the design document.
-
-## Run and deploy
-
-```sh
-npm install
-npm test
-npm run build
-```
-
-The exact deploy command is `npm run build`. Output is `./dist`, and
-`dist/index.html` is at its root. `/demo` is the clean verification entry point.
-
-## Verification on 2026-08-28
-
-- `npm test`: 10/10 Playwright tests passed in Chromium 145.
-- Every `.factory/claims.json` entry has one passing `@claim:<id>` test.
-- Offline test: first online load, service-worker control, offline mode, then a
-  successful `/demo` reload with all three records present.
-- Axe integration: no serious or critical findings on the 390×844 demo view.
-- `/opt/fleet/lib/verify-url.sh`: home and demo passed with one H1, `lang=en`, a
-  main landmark, no missing alt text, no unlabeled buttons, and no console errors.
-- Lighthouse 12.5.1 mobile simulation: Performance 100, Accessibility 100, Best
-  Practices 100, SEO 100; LCP 1.5 s, CLS 0.044, total blocking time 0 ms.
-- Production bundle: JS 35.89 KB / 11.74 KB gzip; CSS 17.65 KB / 4.75 KB gzip;
-  font 22.5 KB; mobile hero 18.8 KB.
-- `npm audit --audit-level=high`: zero vulnerabilities.
-- `git diff --check`: passed.
-
-Evidence is under `.factory/evidence/`. Copy and terminology review is in
-`.factory/copy-audit.md`. Demo details are in `.factory/demo.md`.
-
-## Known gap and factory next step
-
-The billing API does not yet have this product registered, so its checkout URL
-returns 404 in the build environment. This is expected from the work order. The
-factory must register `self-study-proofbook` with a $19 one-time price before
-release; no provider product ID or secret is stored here.
+The demo verification entry point is `/demo`; it is isolated in `proofbook-demo-v1` and can be reset from its banner.

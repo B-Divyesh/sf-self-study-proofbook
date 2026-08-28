@@ -16,7 +16,7 @@
   {
     "id": "csv-export",
     "claim": "CSV export contains one row per attempt.",
-    "where": "app archive tools, landing paid section, README",
+    "where": "app archive tools, landing archive section, README",
     "test": "npm test -- --grep @claim:csv-export",
     "sandbox": "fresh /demo data; download CSV and assert one header plus three attempt rows"
   },
@@ -36,10 +36,17 @@
   },
   {
     "id": "encrypted-backup",
-    "claim": "Archive tools create a password-encrypted backup.",
-    "where": "landing paid section, app archive tools, README",
+    "claim": "A backup uses AES-256-GCM encryption, and its password is not stored.",
+    "where": "landing archive section, app archive tools, README",
     "test": "npm test -- --grep @claim:encrypted-backup",
-    "sandbox": "fresh /demo data; provide a password, download, and assert the encrypted archive signature"
+    "sandbox": "fresh /demo data; create a backup, decrypt it with Web Crypto AES-256-GCM, and assert neither persistent storage nor the downloaded bytes retains the password"
+  },
+  {
+    "id": "json-revisions",
+    "claim": "JSON export keeps every revision.",
+    "where": "app archive tools, landing archive section, README",
+    "test": "npm test -- --grep @claim:json-revisions",
+    "sandbox": "fresh /demo data; download JSON and assert all three sample attempts plus the two saved revisions on the analysis attempt"
   },
   {
     "id": "demo-isolation",
@@ -47,12 +54,5 @@
     "where": "demo banner, README",
     "test": "npm test -- --grep @claim:demo-isolation",
     "sandbox": "fresh context; load three demo attempts, leave demo, and assert the real ledger is empty"
-  },
-  {
-    "id": "paid-price",
-    "claim": "Archive tools cost $19 as a one-time purchase.",
-    "where": "landing facts and paid section, terms, README",
-    "test": "npm test -- --grep @claim:paid-price",
-    "sandbox": "fresh landing page; assert the exact price, purchase type, and Sociobot checkout URL"
   }
 ]

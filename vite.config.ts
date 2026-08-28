@@ -1,5 +1,5 @@
 import { createHash } from 'node:crypto';
-import { readdir, readFile, writeFile } from 'node:fs/promises';
+import { mkdir, readdir, readFile, writeFile } from 'node:fs/promises';
 import { resolve } from 'node:path';
 import { defineConfig, type Plugin } from 'vite';
 
@@ -12,6 +12,16 @@ async function filesBelow(directory: string, prefix = ''): Promise<string[]> {
   return files.flat();
 }
 
+async function writeStaticRoutes(outputDirectory: string): Promise<void> {
+  const index = await readFile(resolve(outputDirectory, 'index.html'), 'utf8');
+  await Promise.all(['app', 'demo', 'print', 'privacy', 'terms'].map(async (route) => {
+    const directory = resolve(outputDirectory, route);
+    await writeFile(resolve(outputDirectory, `${route}.html`), index);
+    await mkdir(directory, { recursive: true });
+    await writeFile(resolve(directory, 'index.html'), index);
+  }));
+}
+
 function pwaWorker(): Plugin {
   let outputDirectory = '';
 
@@ -22,6 +32,16 @@ function pwaWorker(): Plugin {
       outputDirectory = resolve(config.root, config.build.outDir);
     },
     async closeBundle() {
+      await writeStaticRoutes(outputDirectory);
+      const assets = await filesBelow(resolve(outputDirectory, 'assets'));
+      const stylesheet = assets.find((file) => file.endsWith('.css'));
+      if (stylesheet) {
+        for (const page of ['404.html', 'offline.html']) {
+          const pagePath = resolve(outputDirectory, page);
+          const html = await readFile(pagePath, 'utf8');
+          await writeFile(pagePath, html.replace('/assets/style.css', `/assets/${stylesheet}`));
+        }
+      }
       const allFiles = (await filesBelow(outputDirectory))
         // Azure consumes this deployment-only file rather than serving it. Never
         // let an unavailable deployment config prevent worker installation.

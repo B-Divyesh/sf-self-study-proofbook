@@ -38,9 +38,3 @@ export interface ProofbookState {
   selectedAttemptId: string | null;
   updatedAt: string;
 }
-
-export interface LicenseState {
-  token: string;
-  valid: boolean;
-  checkedAt: number;
-}

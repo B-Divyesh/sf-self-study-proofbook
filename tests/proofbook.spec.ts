@@ -1,6 +1,7 @@
 import { test, expect } from '@playwright/test';
 import AxeBuilder from '@axe-core/playwright';
 import { readFile } from 'node:fs/promises';
+import { webcrypto } from 'node:crypto';
 
 test.beforeEach(async ({ context }) => {
   await context.clearCookies();
@@ -56,6 +57,15 @@ test('@claim:revision-history preserves earlier solutions', async ({ page }) => 
   await expect(page.getByText('Assume the extracted vertex')).toBeVisible();
 });
 
+test('@claim:json-revisions exports every saved revision', async ({ page }) => {
+  await page.goto('/demo');
+  const downloadEvent = page.waitForEvent('download');
+  await page.getByRole('button', { name: 'Export JSON' }).click();
+  const archive = JSON.parse(await readFile(await (await downloadEvent).path(), 'utf8')) as { attempts: Array<{ title: string; revisions: unknown[] }> };
+  expect(archive.attempts).toHaveLength(3);
+  expect(archive.attempts.find((attempt) => attempt.title === 'Uniform limit of continuous functions')?.revisions).toHaveLength(2);
+});
+
 test('@claim:print-index creates a mastery review sheet', async ({ page }) => {
   await page.goto('/demo');
   await page.getByRole('link', { name: 'Print mastery index' }).click();
@@ -65,16 +75,34 @@ test('@claim:print-index creates a mastery review sheet', async ({ page }) => {
   await expect(page.getByText('not an accredited credential')).toBeVisible();
 });
 
-test('@claim:encrypted-backup downloads an encrypted archive', async ({ page }) => {
+test('@claim:encrypted-backup uses AES-256-GCM and does not retain the password', async ({ page }) => {
   await page.goto('/demo');
   await page.getByRole('button', { name: /Export encrypted backup/ }).click();
-  await page.getByLabel('Password').fill('correct horse proof');
+  const password = 'correct horse proof';
+  await page.getByLabel('Password').fill(password);
   const downloadEvent = page.waitForEvent('download');
   await page.getByRole('button', { name: 'Download encrypted backup' }).click();
   const download = await downloadEvent;
-  const bytes = await readFile(await download.path());
-  expect(bytes.subarray(0, 10).toString()).toBe('PROOFBOOK1');
+  const bytes = new Uint8Array(await readFile(await download.path()));
+  expect(new TextDecoder().decode(bytes.slice(0, 10))).toBe('PROOFBOOK1');
   expect(bytes.length).toBeGreaterThan(100);
+  const baseKey = await webcrypto.subtle.importKey('raw', new TextEncoder().encode(password), 'PBKDF2', false, ['deriveKey']);
+  const key = await webcrypto.subtle.deriveKey({ name: 'PBKDF2', hash: 'SHA-256', salt: bytes.slice(10, 26), iterations: 250_000 }, baseKey, { name: 'AES-GCM', length: 256 }, false, ['decrypt']);
+  const plaintext = await webcrypto.subtle.decrypt({ name: 'AES-GCM', iv: bytes.slice(26, 38) }, key, bytes.slice(38));
+  expect(new TextDecoder().decode(plaintext)).toContain('Dijkstra’s greedy step');
+  expect(Buffer.from(bytes).toString('utf8')).not.toContain(password);
+  await expect(page.getByLabel('Password')).toHaveValue('');
+  const savedData = await page.evaluate(async () => new Promise<string>((resolve, reject) => {
+    const request = indexedDB.open('proofbook-demo-v1');
+    request.onerror = () => reject(request.error);
+    request.onsuccess = () => {
+      const transaction = request.result.transaction('state', 'readonly');
+      const entry = transaction.objectStore('state').get('proofbook');
+      entry.onerror = () => reject(entry.error);
+      entry.onsuccess = () => resolve(JSON.stringify({ local: Object.entries(localStorage), session: Object.entries(sessionStorage), state: entry.result }));
+    };
+  }));
+  expect(savedData).not.toContain(password);
 });
 
 test('@claim:demo-isolation never copies sample data into the real ledger', async ({ page }) => {
@@ -86,11 +114,12 @@ test('@claim:demo-isolation never copies sample data into the real ledger', asyn
   await expect(page.getByText('Your attempts will appear here')).toBeVisible();
 });
 
-test('@claim:paid-price shows the exact one-time price', async ({ page }) => {
+test('archive tools are available without a checkout request', async ({ page }) => {
   await page.goto('/');
-  await expect(page.getByText('$19', { exact: true })).toBeVisible();
-  await expect(page.getByText('one-time purchase')).toBeVisible();
-  await expect(page.getByRole('link', { name: 'Buy archive tools' })).toHaveAttribute('href', /api\.sociobot\.in\/api\/v1\/products\/self-study-proofbook\/checkout/);
+  await expect(page.getByText('Exports and backups included')).toBeVisible();
+  await expect(page.getByRole('link', { name: 'Buy archive tools' })).toHaveCount(0);
+  await page.getByRole('link', { name: 'Start your proofbook' }).last().click();
+  await expect(page.getByRole('button', { name: 'Export encrypted backup' })).toBeVisible();
 });
 
 test('demo supports keyboard-sized mobile use and has no serious accessibility findings', async ({ page }) => {
@@ -124,4 +153,15 @@ test('landing page has one h1, working routes, and no console errors', async ({ 
   await page.getByRole('link', { name: 'Privacy' }).first().click();
   await expect(page).toHaveTitle('Privacy — Self-Study Proofbook');
   expect(errors).toEqual([]);
+});
+
+test('static delivery makes hashed assets immutable and unknown routes real 404s', async ({ page, request }) => {
+  await page.goto('/');
+  const script = await page.locator('script[type="module"]').getAttribute('src');
+  expect(script).toMatch(/^\/assets\/index-[\w-]+\.js$/);
+  const asset = await request.get(script!);
+  expect(asset.headers()['cache-control']).toBe('public, max-age=31536000, immutable');
+  const missing = await page.goto('/not-a-proofbook-route');
+  expect(missing?.status()).toBe(404);
+  await expect(page.getByRole('heading', { level: 1 })).toHaveText('This page is outside the ledger');
 });

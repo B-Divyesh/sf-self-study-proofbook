@@ -14,7 +14,7 @@ No sentence exceeds 22 words. No banned word appears in landing copy.
 | Start your proofbook | 3 | Pass |
 | Entries stay in this browser | 5 | Pass |
 | Works offline after your first visit | 6 | Pass |
-| Free ledger · $19 archive tools | 5 | Pass |
+| Exports and backups included | 4 | Pass |
 
 The first screen reads aloud in one breath: record problems you can solve, for
 serious learners, then try the separate sample ledger.
@@ -37,11 +37,9 @@ serious learners, then try the separate sample ledger.
 | Your entries stay in this browser unless you export them. | 9 | Pass |
 | Use source citations. | 3 | Pass |
 | Do not store copyrighted problem text you cannot redistribute. | 9 | Pass |
-| Keep a larger, encrypted archive | 5 | Pass |
-| The free ledger includes 25 attempts, JSON and CSV exports, and printing. | 12 | Pass |
-| The purchase adds unlimited attempts and password-encrypted backups. | 8 | Pass |
-| Sociobot is the merchant of record. | 6 | Pass |
-| Refunds are handled there. | 4 | Pass |
+| Keep a complete encrypted archive | 5 | Pass |
+| Record attempts, then export JSON, CSV, a print index, or a password-encrypted backup. | 11 | Pass |
+| Your archive stays in this browser until you choose to download it. | 12 | Pass |
 | Evidence of practice, kept by the learner. | 7 | Pass |
 
 Average sentence length: 7 words.
@@ -55,7 +53,7 @@ Average sentence length: 7 words.
 | Earlier saved solution | revision |
 | Summary for review or print | mastery index |
 | Downloaded complete data | archive |
-| Password-protected paid file | encrypted backup |
+| Password-protected downloaded file | encrypted backup |
 | Learner judgement | evidence status |
 | Isolated sample workspace | demo |
 

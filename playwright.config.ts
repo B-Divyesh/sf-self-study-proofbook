@@ -13,7 +13,7 @@ export default defineConfig({
     { name: 'chromium', use: { ...devices['Desktop Chrome'] } },
   ],
   webServer: {
-    command: 'npm run build && npm run preview',
+    command: 'npm run build && node scripts/test-server.mjs',
     port: 4173,
     reuseExistingServer: true,
   },

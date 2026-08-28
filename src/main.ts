@@ -1,17 +1,12 @@
 import './style.css';
 import { clearDemo, loadState, resetDemo, saveState } from './db';
 import { decryptArchive, encryptArchive } from './crypto';
-import type { Attempt, AttemptStatus, LicenseState, ProofbookState, Topic } from './types';
+import type { Attempt, AttemptStatus, ProofbookState, Topic } from './types';
 
-const PRODUCT = 'self-study-proofbook';
-const LICENSE_KEY = `sb_license:${PRODUCT}`;
-const LICENSE_STATE_KEY = `${LICENSE_KEY}:state`;
-const BILLING_BASE = 'https://api.sociobot.in/api/v1';
 const app = document.querySelector<HTMLDivElement>('#app')!;
 const path = location.pathname.replace(/\/$/, '') || '/';
 let demo = path === '/demo' || new URLSearchParams(location.search).get('demo') === '1';
 let state: ProofbookState | null = null;
-let paid = false;
 let timerTick: number | undefined;
 
 const routeInfo: Record<string, { title: string; description: string }> = {
@@ -121,7 +116,7 @@ function landing(): string {
         <ul class="facts" aria-label="Product facts">
           <li><span aria-hidden="true">■</span> Entries stay in this browser</li>
           <li><span aria-hidden="true">■</span> Works offline after your first visit</li>
-          <li><span aria-hidden="true">■</span> Free ledger · $19 archive tools</li>
+          <li><span aria-hidden="true">■</span> Exports and backups included</li>
         </ul>
       </div>
       <figure class="hero-art">
@@ -156,8 +151,8 @@ function landing(): string {
       <div><p>Proofbook does not grade, proctor, certify, or generate answers.</p><p>Your entries stay in this browser unless you export them.</p><p>Use source citations. Do not store copyrighted problem text you cannot redistribute.</p></div>
     </section>
     <section class="paid" id="paid" aria-labelledby="paid-title">
-      <div class="paid-price"><span>$19</span><small>one-time purchase</small></div>
-      <div><div class="section-index">FULL ARCHIVE / 05</div><h2 id="paid-title">Keep a larger, encrypted archive</h2><p>The free ledger includes 25 attempts, JSON and CSV exports, and printing. The purchase adds unlimited attempts and password-encrypted backups.</p><div class="paid-actions"><a class="button primary" href="${BILLING_BASE}/products/${PRODUCT}/checkout">Buy archive tools</a><button class="button secondary" id="restore-license">Restore a license</button></div><p class="legal-note">Sociobot is the merchant of record. Refunds are handled there.</p></div>
+      <div class="paid-price"><span>∞</span><small>your local archive</small></div>
+      <div><div class="section-index">FULL ARCHIVE / 05</div><h2 id="paid-title">Keep a complete encrypted archive</h2><p>Record attempts, then export JSON, CSV, a print index, or a password-encrypted backup.</p><div class="paid-actions"><a class="button primary" href="/app" data-route>Start your proofbook</a></div><p class="legal-note">Your archive stays in this browser until you choose to download it.</p></div>
     </section>
   `);
 }
@@ -189,7 +184,7 @@ function appView(): string {
     </section>
     <section class="archive-tools" aria-labelledby="archive-title">
       <div><p class="eyebrow">OWN YOUR WORK</p><h2 id="archive-title">Export and review</h2><p>JSON keeps every revision. CSV gives one row per attempt.</p></div>
-      <div class="tool-actions"><button class="button secondary" id="export-json">Export JSON</button><button class="button secondary" id="export-csv">Export CSV</button><a class="button secondary" href="/print${demo ? '?demo=1' : ''}" data-route>Print mastery index</a><button class="button secondary" id="import-json">Import archive</button><button class="button secondary" id="encrypt-export">Export encrypted backup${paid ? '' : ' · $19'}</button>${!paid && !demo ? '<button class="text-button" id="restore-license">Restore a license</button>' : ''}</div>
+      <div class="tool-actions"><button class="button secondary" id="export-json">Export JSON</button><button class="button secondary" id="export-csv">Export CSV</button><a class="button secondary" href="/print${demo ? '?demo=1' : ''}" data-route>Print mastery index</a><button class="button secondary" id="import-json">Import archive</button><button class="button secondary" id="encrypt-export">Export encrypted backup</button></div>
       <input type="file" id="import-file" accept=".json,.proofbook" hidden />
     </section>
     ${dialogs()}
@@ -229,7 +224,6 @@ function dialogs(): string {
   return `
     <dialog id="topic-dialog"><form method="dialog" id="topic-form"><div class="dialog-head"><h2>Add a topic</h2><button class="icon-button" value="cancel" aria-label="Close dialog">×</button></div><div class="field"><label for="topic-name">Topic name</label><input id="topic-name" name="name" required maxlength="60" /></div><div class="field"><label for="topic-goal">Study goal</label><input id="topic-goal" name="goal" maxlength="140" /></div><div class="dialog-actions"><button class="button secondary" value="cancel">Cancel</button><button class="button primary" value="default" id="save-topic">Add topic</button></div></form></dialog>
     <dialog id="attempt-dialog"><form method="dialog" id="new-attempt-form"><div class="dialog-head"><h2>Record an attempt</h2><button class="icon-button" value="cancel" aria-label="Close dialog">×</button></div><div class="field"><label for="attempt-topic">Topic</label><select id="attempt-topic" name="topicId" required>${topicOptions}</select></div><div class="field"><label for="attempt-title">Problem title</label><input id="attempt-title" name="title" required maxlength="100" /></div><div class="field"><label for="attempt-source">Source</label><input id="attempt-source" name="source" required maxlength="120" /></div><div class="field"><label for="attempt-ref">Problem reference</label><input id="attempt-ref" name="problemRef" required maxlength="100" /></div><div class="field"><label for="attempt-url">Source link <span>Optional</span></label><input id="attempt-url" name="sourceUrl" type="url" /></div><p class="form-help">Cite the source. Do not paste copyrighted problem text.</p><div class="dialog-actions"><button class="button secondary" value="cancel">Cancel</button><button class="button primary" value="default" id="save-attempt">Start attempt</button></div></form></dialog>
-    <dialog id="license-dialog"><form method="dialog" id="license-form"><div class="dialog-head"><h2>Restore a license</h2><button class="icon-button" value="cancel" aria-label="Close dialog">×</button></div><p>Paste the license from your purchase receipt.</p><div class="field"><label for="license-token">License</label><input id="license-token" name="token" required autocomplete="off" /></div><p id="license-status" role="status"></p><div class="dialog-actions"><button class="button secondary" value="cancel">Cancel</button><button class="button primary" id="verify-license" value="default">Verify license</button></div></form></dialog>
     <dialog id="password-dialog"><form method="dialog" id="password-form"><div class="dialog-head"><h2>Password-protect this backup</h2><button class="icon-button" value="cancel" aria-label="Close dialog">×</button></div><p>You need this password to open the backup. It cannot be recovered.</p><div class="field"><label for="backup-password">Password</label><input id="backup-password" name="password" type="password" minlength="10" required /></div><div class="dialog-actions"><button class="button secondary" value="cancel">Cancel</button><button class="button primary" id="make-backup" value="default">Download encrypted backup</button></div></form></dialog>
   `;
 }
@@ -243,14 +237,12 @@ function printView(): string {
 function legalView(kind: 'privacy' | 'terms'): string {
   const isPrivacy = kind === 'privacy';
   return shell(`<article class="legal"><p class="eyebrow">PLAIN TERMS / ${isPrivacy ? 'PRIVACY' : 'USE'}</p><h1 tabindex="-1">${isPrivacy ? 'Your work stays yours' : 'Use Proofbook honestly'}</h1>${isPrivacy ? `
-    <h2>What this app stores</h2><p>Proofbook stores topics, attempts, timers, revisions, and a license token in your browser. Demo data uses a separate browser database.</p>
-    <h2>What leaves your device</h2><p>Your study records do not leave your device unless you export them. License verification sends only your license token to Sociobot.</p>
+    <h2>What this app stores</h2><p>Proofbook stores topics, attempts, timers, and revisions in your browser. Demo data uses a separate browser database.</p>
+    <h2>What leaves your device</h2><p>Your study records do not leave your device unless you export them.</p>
     <h2>Deleting your data</h2><p>Delete attempts inside the app. You can also clear this site’s stored data in your browser settings.</p>
-    <h2>Payments</h2><p>Sociobot and Dodo handle checkout, receipts, refunds, and payment data. Proofbook does not receive your card number.</p>
     <h2>Contact</h2><p>Email <a href="mailto:privacy@sociobot.in">privacy@sociobot.in</a> with privacy questions.</p>` : `
     <h2>Your records</h2><p>You are responsible for your entries and backups. This app does not certify knowledge or issue credentials.</p>
     <h2>Source material</h2><p>Cite books, papers, and exams. Do not copy material you lack permission to store or share.</p>
-    <h2>Purchases</h2><p>The $19 archive license is a one-time purchase. Sociobot is the merchant of record. Approved refunds revoke the license.</p>
     <h2>Availability</h2><p>The app is provided as-is. Keep exported backups of work you cannot replace.</p>
     <h2>Contact</h2><p>Email <a href="mailto:support@sociobot.in">support@sociobot.in</a> for support.</p>`}</article>`, kind);
 }
@@ -299,8 +291,6 @@ function bindCommon(): void {
   }));
   document.querySelector('#reset-demo')?.addEventListener('click', async () => { state = await resetDemo(); showToast('Demo restored to its starting point.'); await navigate('/demo', false); });
   document.querySelector('#start-real')?.addEventListener('click', async () => { await clearDemo(); await navigate('/app'); });
-  document.querySelector('#restore-license')?.addEventListener('click', () => openDialog('license-dialog'));
-  bindLicenseDialog();
 }
 
 function openDialog(id: string): void {
@@ -343,7 +333,6 @@ function bindCreateForms(): void {
   const attemptForm = document.querySelector<HTMLFormElement>('#new-attempt-form');
   document.querySelector('#save-attempt')?.addEventListener('click', async (event) => {
     if (!attemptForm?.reportValidity()) { event.preventDefault(); return; }
-    if (!paid && !demo && state!.attempts.length >= 25) { event.preventDefault(); showToast('The free ledger holds 25 attempts. Archive tools remove the limit.'); return; }
     const data = new FormData(attemptForm);
     const timestamp = new Date().toISOString();
     const attempt: Attempt = {
@@ -455,7 +444,6 @@ function bindArchive(): void {
     } catch (error) { showToast(error instanceof Error ? error.message : 'The archive could not be imported.'); }
   });
   document.querySelector('#encrypt-export')?.addEventListener('click', () => {
-    if (!paid && !demo) { location.href = '/#paid'; return; }
     openDialog('password-dialog');
   });
   const passwordForm = document.querySelector<HTMLFormElement>('#password-form');
@@ -464,38 +452,10 @@ function bindArchive(): void {
     event.preventDefault();
     const password = String(new FormData(passwordForm).get('password'));
     download(await encryptArchive(JSON.stringify(state), password), 'proofbook-backup.proofbook');
+    passwordForm.reset();
     document.querySelector<HTMLDialogElement>('#password-dialog')?.close();
     showToast('Encrypted backup downloaded.');
   });
-}
-
-function bindLicenseDialog(): void {
-  const form = document.querySelector<HTMLFormElement>('#license-form');
-  document.querySelector('#verify-license')?.addEventListener('click', async (event) => {
-    if (!form?.reportValidity()) { event.preventDefault(); return; }
-    event.preventDefault();
-    const token = String(new FormData(form).get('token')).trim();
-    const status = document.querySelector('#license-status')!;
-    status.textContent = 'Checking this license…';
-    const valid = await verifyLicense(token, true);
-    status.textContent = valid ? 'License restored. Archive tools are ready.' : 'This license is not active. Check the token and try again.';
-    if (valid) setTimeout(() => { document.querySelector<HTMLDialogElement>('#license-dialog')?.close(); void navigate(location.pathname + location.search, false); }, 500);
-  });
-}
-
-async function verifyLicense(token: string, force = false): Promise<boolean> {
-  const cached = JSON.parse(localStorage.getItem(LICENSE_STATE_KEY) ?? 'null') as LicenseState | null;
-  if (!force && cached?.token === token && Date.now() - cached.checkedAt < 86_400_000) return cached.valid;
-  try {
-    const response = await fetch(`${BILLING_BASE}/products/${PRODUCT}/verify?license=${encodeURIComponent(token)}`);
-    const result = await response.json() as { valid: boolean };
-    const licenseState = { token, valid: result.valid, checkedAt: Date.now() };
-    localStorage.setItem(LICENSE_STATE_KEY, JSON.stringify(licenseState));
-    if (result.valid) localStorage.setItem(LICENSE_KEY, token);
-    return result.valid;
-  } catch {
-    return cached?.token === token && cached.valid === true;
-  }
 }
 
 function showToast(message: string): void {
@@ -504,20 +464,6 @@ function showToast(message: string): void {
   toast.textContent = message;
   toast.hidden = false;
   setTimeout(() => { toast.hidden = true; }, 3500);
-}
-
-async function initLicense(): Promise<void> {
-  const params = new URLSearchParams(location.search);
-  const returned = params.get('license');
-  if (returned) {
-    localStorage.setItem(LICENSE_KEY, returned);
-    params.delete('license');
-    history.replaceState({}, '', `${location.pathname}${params.size ? `?${params}` : ''}${location.hash}`);
-  }
-  const token = localStorage.getItem(LICENSE_KEY);
-  const cached = JSON.parse(localStorage.getItem(LICENSE_STATE_KEY) ?? 'null') as LicenseState | null;
-  paid = Boolean(token && cached?.token === token && cached.valid);
-  if (token && !demo) paid = await verifyLicense(token);
 }
 
 function registerServiceWorker(): void {
@@ -533,7 +479,6 @@ function registerServiceWorker(): void {
 }
 
 window.addEventListener('popstate', () => void navigate(location.pathname + location.search, false));
-await initLicense();
 // On the first load, leave focus at the document start so the skip link is the
 // first keyboard stop. Client-side route changes still announce and focus H1.
 await navigate(location.pathname + location.search, false, false);
