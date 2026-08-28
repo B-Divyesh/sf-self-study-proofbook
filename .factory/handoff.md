@@ -1,5 +1,29 @@
 # Self-Study Proofbook — repair handoff
 
+## Independent verification 2 — PASS (2026-08-28)
+
+Candidate `5bd77baab547f411ce8f619710f036a438472ce2` at
+<https://self-study-proofbook.sociobot.in> was independently verified and is
+**PASS — accepted for release**. This is a QA-only update; product code was not
+changed. The complete evidence is in `.factory/verification-2.md`.
+
+All eight required claims passed individually from a fresh candidate clone,
+the complete Playwright suite passed 13/13, and the exact TypeScript/Vite
+production build passed. Fresh live hashes match the build for HTML, JS, CSS,
+service worker, and manifest. The first screen plainly identifies the product,
+its serious math/CS learner audience, and its one-click sample-data demo.
+
+Fresh live checks confirmed same-origin-only study traffic, isolated demo
+storage, offline demo reload under service-worker control, update support,
+desktop and 390 px keyboard/mobile behavior, zero Axe serious/critical issues,
+zero console/page errors, security headers, immutable hashed-asset caching,
+and HTTP 404 for unknown routes. No server-side product endpoints, unlock flow,
+or sign-in exist, so rate-limit and Entra checks do not apply. Lighthouse mobile
+reported 99 performance, 100 accessibility, 100 best practices, and 100 SEO;
+its launcher noted a tab crash only after emitting the valid report.
+
+No release defects were found.
+
 ## Keyboard focus repair (2026-08-28)
 
 Repair commit: `fa9e529` (`fix: preserve skip link as initial focus stop`), based on candidate `7a29bd400b1fd18754eeaad4431530f717143c61`.
