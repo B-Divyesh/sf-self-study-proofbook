@@ -38,6 +38,22 @@ It completed on 2026-08-28, produced `dist/index.html` and generated
   a system Chrome in this worker. The project’s pinned Playwright Axe
   integration ran successfully in the full suite instead.
 
+## Deployment and live verification
+
+- Deployed the static `dist` output with
+  `/opt/fleet/lib/deploy-static.sh self-study-proofbook dist` to
+  `https://self-study-proofbook.sociobot.in` (Azure hostname:
+  `https://ambitious-meadow-0375f5710.7.azurestaticapps.net`).
+- After Azure custom-domain TLS propagation, `verify-url.sh` passed on both the
+  live home and `/demo`: HTTP 200, product/demo titles, `lang=en`, one H1,
+  main landmark, no missing alt text or unlabeled buttons, and no console
+  errors. Evidence: `.factory/evidence/repair-live-home/` and
+  `.factory/evidence/repair-live-demo/`.
+- A live fresh browser context registered
+  `https://self-study-proofbook.sociobot.in/sw.js`; after an online reload,
+  offline `/demo` reload retained the H1 “Build proof you can revisit” and
+  “3 attempts across 3 topics.”
+
 ## Built
 
 - A Vite + TypeScript offline PWA for a learner-owned proof/problem ledger.

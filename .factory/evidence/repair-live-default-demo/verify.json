@@ -1,0 +1,14 @@
+{
+  "url": "https://ambitious-meadow-0375f5710.7.azurestaticapps.net/demo",
+  "loadMs": 637,
+  "errors": [],
+  "a11y": {
+    "title": "Demo — Self-Study Proofbook",
+    "lang": "en",
+    "h1": 1,
+    "main": true,
+    "imgsMissingAlt": 0,
+    "buttonsUnlabeled": 0,
+    "textLength": 1381
+  }
+}
