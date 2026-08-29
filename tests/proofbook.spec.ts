@@ -79,7 +79,7 @@ test('@claim:encrypted-backup uses AES-256-GCM and does not retain the password'
   await page.goto('/demo');
   await page.getByRole('button', { name: /Export encrypted backup/ }).click();
   const password = 'correct horse proof';
-  await page.getByLabel('Password').fill(password);
+  await page.getByLabel('Password', { exact: true }).fill(password);
   const downloadEvent = page.waitForEvent('download');
   await page.getByRole('button', { name: 'Download encrypted backup' }).click();
   const download = await downloadEvent;
@@ -91,7 +91,7 @@ test('@claim:encrypted-backup uses AES-256-GCM and does not retain the password'
   const plaintext = await webcrypto.subtle.decrypt({ name: 'AES-GCM', iv: bytes.slice(26, 38) }, key, bytes.slice(38));
   expect(new TextDecoder().decode(plaintext)).toContain('Dijkstra’s greedy step');
   expect(Buffer.from(bytes).toString('utf8')).not.toContain(password);
-  await expect(page.getByLabel('Password')).toHaveValue('');
+  await expect(page.getByLabel('Password', { exact: true })).toHaveValue('');
   const savedData = await page.evaluate(async () => new Promise<string>((resolve, reject) => {
     const request = indexedDB.open('proofbook-demo-v1');
     request.onerror = () => reject(request.error);
@@ -131,7 +131,7 @@ test('@claim:archive-tools-included makes every archive tool usable without chec
   await page.getByRole('button', { name: 'Export CSV' }).click();
   expect((await readFile(await (await csvDownload).path(), 'utf8')).includes('topic,problem')).toBe(true);
   await page.getByRole('button', { name: 'Export encrypted backup' }).click();
-  await page.getByLabel('Password').fill('archive password');
+  await page.getByLabel('Password', { exact: true }).fill('archive password');
   const backupDownload = page.waitForEvent('download');
   await page.getByRole('button', { name: 'Download encrypted backup' }).click();
   expect((await readFile(await (await backupDownload).path())).length).toBeGreaterThan(100);
@@ -465,6 +465,23 @@ test('demo supports keyboard-sized mobile use and has no Axe violations', async 
   expect(overflow).toBeLessThanOrEqual(1);
   const results = await new AxeBuilder({ page }).analyze();
   expect(results.violations).toEqual([]);
+});
+
+test('all modal dialogs expose purpose-specific accessible names', async ({ page }) => {
+  await page.goto('/demo');
+
+  for (const dialogCase of [
+    { opener: 'Add topic', name: 'Add a topic' },
+    { opener: 'Record attempt', name: 'Record an attempt' },
+    { opener: 'Export encrypted backup', name: 'Password-protect this backup' },
+  ]) {
+    await page.getByRole('button', { name: dialogCase.opener, exact: true }).click();
+    const dialog = page.getByRole('dialog', { name: dialogCase.name, exact: true });
+    await expect(dialog).toBeVisible();
+    await expect(dialog).toHaveAccessibleName(dialogCase.name);
+    await page.keyboard.press('Escape');
+    await expect(dialog).toBeHidden();
+  }
 });
 
 test('persistent mobile demo controls and navigation targets are at least 44px', async ({ page }) => {
