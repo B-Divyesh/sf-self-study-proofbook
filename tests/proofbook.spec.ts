@@ -253,6 +253,25 @@ test('all public routes have no Axe violations', async ({ page }) => {
   }
 });
 
+test('route names and landing sections use direct, useful wording', async ({ page }) => {
+  await page.goto('/');
+  await expect(page.getByRole('heading', { level: 1 })).toHaveText('Record problems you can solve');
+  await expect(page.locator('.section-index, .paid-price')).toHaveCount(0);
+  await expect(page.locator('footer')).toContainText('Private records for math and CS self-study.');
+  await expect(page.locator('footer .build')).toHaveText('Version 1.0.1');
+
+  for (const [route, heading] of [
+    ['/privacy', 'Privacy and data storage'],
+    ['/terms', 'Terms of use'],
+    ['/not-a-proofbook-route', 'Page not found'],
+  ]) {
+    await page.goto(route);
+    await expect(page.getByRole('heading', { level: 1 })).toHaveText(heading);
+    expect(await page.locator('meta[property="og:title"]').getAttribute('content')).toContain(heading);
+    expect(await page.locator('meta[name="twitter:title"]').getAttribute('content')).toContain(heading);
+  }
+});
+
 test('demo remains usable with a keyboard', async ({ page }) => {
   await page.goto('/demo');
   // A fresh document navigation starts before the shell's first tabbable item;
@@ -275,8 +294,25 @@ test('landing page has one h1, working routes, and no console errors', async ({ 
   await expect(page.locator('main')).toHaveCount(1);
   await expect(page.getByRole('link', { name: 'Try it with sample data' })).toBeVisible();
   await page.getByRole('link', { name: 'Privacy' }).first().click();
-  await expect(page).toHaveTitle('Privacy — Self-Study Proofbook');
+  await expect(page).toHaveTitle('Privacy and data storage — Self-Study Proofbook');
   expect(errors).toEqual([]);
+});
+
+test('built deep links carry their own metadata before JavaScript runs', async ({ request }) => {
+  for (const [route, title, description] of [
+    ['/app', 'Your proofbook — Self-Study Proofbook', 'Write and review your private problem-solving record.'],
+    ['/demo', 'Demo — Self-Study Proofbook', 'Try a sample proofbook without saving to your real records.'],
+    ['/print', 'Mastery index — Self-Study Proofbook', 'Print a compact index of your problem-solving evidence.'],
+    ['/privacy', 'Privacy and data storage — Self-Study Proofbook', 'How Self-Study Proofbook stores and handles your data.'],
+    ['/terms', 'Terms of use — Self-Study Proofbook', 'Terms for using Self-Study Proofbook.'],
+  ]) {
+    const response = await request.get(route);
+    const document = await response.text();
+    expect(response.status()).toBe(200);
+    expect(document).toContain(`<title>${title}</title>`);
+    expect(document).toContain(`https://self-study-proofbook.sociobot.in${route}`);
+    expect(document).toContain(description);
+  }
 });
 
 test('static delivery makes hashed assets immutable and unknown routes real 404s', async ({ page, request }) => {
@@ -288,7 +324,7 @@ test('static delivery makes hashed assets immutable and unknown routes real 404s
   const missing = await page.goto('/not-a-proofbook-route');
   expect(missing?.status()).toBe(404);
   await expect(page).toHaveTitle('Page not found — Self-Study Proofbook');
-  await expect(page.getByRole('heading', { level: 1 })).toHaveText('This page is outside the ledger');
+  await expect(page.getByRole('heading', { level: 1 })).toHaveText('Page not found');
   await expect(page.locator('header')).toHaveCount(1);
   await expect(page.locator('footer')).toHaveCount(1);
   await expect(page.locator('link[rel="canonical"]')).toHaveAttribute('href', 'https://self-study-proofbook.sociobot.in/404');

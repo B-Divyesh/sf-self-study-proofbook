@@ -14,8 +14,8 @@ const routeInfo: Record<string, { title: string; description: string }> = {
   '/app': { title: 'Your proofbook — Self-Study Proofbook', description: 'Write and review your private problem-solving record.' },
   '/demo': { title: 'Demo — Self-Study Proofbook', description: 'Try a sample proofbook without saving to your real records.' },
   '/print': { title: 'Mastery index — Self-Study Proofbook', description: 'Print a compact index of your problem-solving evidence.' },
-  '/privacy': { title: 'Privacy — Self-Study Proofbook', description: 'How Self-Study Proofbook stores and handles your data.' },
-  '/terms': { title: 'Terms — Self-Study Proofbook', description: 'Terms for using Self-Study Proofbook.' },
+  '/privacy': { title: 'Privacy and data storage — Self-Study Proofbook', description: 'How Self-Study Proofbook stores and handles your data.' },
+  '/terms': { title: 'Terms of use — Self-Study Proofbook', description: 'Terms for using Self-Study Proofbook.' },
   '/404': { title: 'Page not found — Self-Study Proofbook', description: 'Return to Self-Study Proofbook.' },
 };
 
@@ -92,9 +92,9 @@ function shell(content: string, active = ''): string {
     </header>
     <main id="main" tabindex="-1">${content}</main>
     <footer>
-      <p>Evidence of practice, kept by the learner.</p>
+      <p>Private records for math and CS self-study.</p>
       <nav aria-label="Footer navigation"><a href="/privacy" data-route>Privacy</a><a href="/terms" data-route>Terms</a><a href="https://sociobot.in" rel="external">Built by Param Factory <span class="sr-only">(external site)</span></a></nav>
-      <p class="build">v1.0.1 · Original generated art</p>
+      <p class="build">Version 1.0.1</p>
     </footer>
     <div class="route-status sr-only" aria-live="polite"></div>
     <div id="toast" class="toast" role="status" aria-live="polite" hidden></div>
@@ -105,7 +105,6 @@ function landing(): string {
   return shell(`
     <section class="hero">
       <div class="hero-copy">
-        <p class="eyebrow">PRIVATE PRACTICE LEDGER / 01</p>
         <h1 tabindex="-1">Record problems you can solve</h1>
         <p class="lede">For serious math and CS learners who need evidence beyond course badges.</p>
         <div class="hero-actions">
@@ -128,7 +127,6 @@ function landing(): string {
       </figure>
     </section>
     <section class="live-preview" aria-labelledby="preview-title">
-      <div class="section-index">LIVE PREVIEW / 02</div>
       <div class="section-heading"><h2 id="preview-title">Review your cited attempts</h2><p>A mastery index points back to sources, time spent, and revision history.</p></div>
       <div class="preview-ledger" aria-label="Sample mastery index">
         <div class="ledger-head"><span>Problem</span><span>Source</span><span>Time</span><span>Evidence</span></div>
@@ -138,7 +136,6 @@ function landing(): string {
       </div>
     </section>
     <section class="how" aria-labelledby="how-title">
-      <div class="section-index">METHOD / 03</div>
       <h2 id="how-title">Build evidence in three steps</h2>
       <ol>
         <li><span>01</span><div><h3>Cite the problem</h3><p>Name the book, paper, exam, or page. Do not copy restricted problem text.</p></div></li>
@@ -147,12 +144,11 @@ function landing(): string {
       </ol>
     </section>
     <section class="boundaries" aria-labelledby="boundaries-title">
-      <div><div class="section-index">BOUNDARIES / 04</div><h2 id="boundaries-title">A record, not a credential</h2></div>
+      <div><h2 id="boundaries-title">A record, not a credential</h2></div>
       <div><p>Proofbook records practice; it does not issue credentials.</p><p>Your entries stay in this browser unless you export them.</p><p>Use source citations. Do not store copyrighted problem text you cannot redistribute.</p></div>
     </section>
     <section class="paid" id="paid" aria-labelledby="paid-title">
-      <div class="paid-price"><span>∞</span><small>your local archive</small></div>
-      <div><div class="section-index">FULL ARCHIVE / 05</div><h2 id="paid-title">Keep a complete encrypted archive</h2><p>Record attempts, then export JSON, CSV, a print index, or a password-encrypted backup.</p><div class="paid-actions"><a class="button primary" href="/app" data-route>Start your proofbook</a></div><p class="legal-note">Your archive stays in this browser until you choose to download it.</p></div>
+      <div><h2 id="paid-title">Keep a complete encrypted archive</h2><p>Record attempts, then export JSON, CSV, a print index, or a password-encrypted backup.</p><div class="paid-actions"><a class="button primary" href="/app" data-route>Start your proofbook</a></div><p class="legal-note">Your archive stays in this browser until you choose to download it.</p></div>
     </section>
   `);
 }
@@ -183,7 +179,7 @@ function appView(): string {
       <div class="editor-panel">${content}</div>
     </section>
     <section class="archive-tools" aria-labelledby="archive-title">
-      <div><p class="eyebrow">OWN YOUR WORK</p><h2 id="archive-title">Export and review</h2><p>JSON keeps every revision. CSV gives one row per attempt.</p></div>
+      <div><h2 id="archive-title">Export and review</h2><p>JSON keeps every revision. CSV gives one row per attempt.</p></div>
       <div class="tool-actions"><button class="button secondary" id="export-json">Export JSON</button><button class="button secondary" id="export-csv">Export CSV</button><a class="button secondary" href="/print${demo ? '?demo=1' : ''}" data-route>Print mastery index</a><button class="button secondary" id="import-json">Import archive</button><button class="button secondary" id="encrypt-export">Export encrypted backup</button></div>
       <input type="file" id="import-file" accept=".json,.proofbook" hidden />
     </section>
@@ -236,7 +232,7 @@ function printView(): string {
 
 function legalView(kind: 'privacy' | 'terms'): string {
   const isPrivacy = kind === 'privacy';
-  return shell(`<article class="legal"><p class="eyebrow">PLAIN TERMS / ${isPrivacy ? 'PRIVACY' : 'USE'}</p><h1 tabindex="-1">${isPrivacy ? 'Your work stays yours' : 'Use Proofbook honestly'}</h1>${isPrivacy ? `
+  return shell(`<article class="legal"><h1 tabindex="-1">${isPrivacy ? 'Privacy and data storage' : 'Terms of use'}</h1>${isPrivacy ? `
     <h2>What this app stores</h2><p>Proofbook stores topics, attempts, timers, and revisions in your browser. Demo data uses a separate browser database.</p>
     <h2>What leaves your device</h2><p>Your study records do not leave your device unless you export them.</p>
     <h2>Deleting your data</h2><p>Delete attempts inside the app. You can also clear this site’s stored data in your browser settings.</p>
@@ -248,15 +244,21 @@ function legalView(kind: 'privacy' | 'terms'): string {
 }
 
 function notFound(): string {
-  return shell(`<section class="not-found"><div class="error-code" aria-hidden="true">4□4</div><h1 tabindex="-1">This page is outside the ledger</h1><p>The address does not match a Proofbook page.</p><a class="button primary" href="/" data-route>Return home</a></section>`);
+  return shell(`<section class="not-found"><div class="error-code" aria-hidden="true">4□4</div><h1 tabindex="-1">Page not found</h1><p>The address does not match a Proofbook page.</p><a class="button primary" href="/" data-route>Return home</a></section>`);
 }
 
 function setMeta(route: string): void {
   const info = routeInfo[route] ?? routeInfo['/404'];
+  const canonicalUrl = `https://self-study-proofbook.sociobot.in${route === '/' ? '/' : route}`;
   document.title = info.title;
   document.querySelector('meta[name="description"]')?.setAttribute('content', info.description);
+  document.querySelector('meta[property="og:title"]')?.setAttribute('content', info.title);
+  document.querySelector('meta[property="og:description"]')?.setAttribute('content', info.description);
+  document.querySelector('meta[property="og:url"]')?.setAttribute('content', canonicalUrl);
+  document.querySelector('meta[name="twitter:title"]')?.setAttribute('content', info.title);
+  document.querySelector('meta[name="twitter:description"]')?.setAttribute('content', info.description);
   const canonical = document.querySelector<HTMLLinkElement>('link[rel="canonical"]');
-  if (canonical) canonical.href = `https://self-study-proofbook.sociobot.in${route === '/' ? '/' : route}`;
+  if (canonical) canonical.href = canonicalUrl;
 }
 
 async function navigate(next: string, push = true, focusHeading = true): Promise<void> {

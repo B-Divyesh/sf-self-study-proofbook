@@ -1,1 +1,1 @@
-Record cited problems, time attempts, and keep revision evidence in a private offline ledger.
+Record cited problems, time attempts, and keep revisions in a private offline ledger.

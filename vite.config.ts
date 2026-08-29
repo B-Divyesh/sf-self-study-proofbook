@@ -12,13 +12,50 @@ async function filesBelow(directory: string, prefix = ''): Promise<string[]> {
   return files.flat();
 }
 
+const routeMetadata: Record<string, { title: string; description: string }> = {
+  app: {
+    title: 'Your proofbook — Self-Study Proofbook',
+    description: 'Write and review your private problem-solving record.',
+  },
+  demo: {
+    title: 'Demo — Self-Study Proofbook',
+    description: 'Try a sample proofbook without saving to your real records.',
+  },
+  print: {
+    title: 'Mastery index — Self-Study Proofbook',
+    description: 'Print a compact index of your problem-solving evidence.',
+  },
+  privacy: {
+    title: 'Privacy and data storage — Self-Study Proofbook',
+    description: 'How Self-Study Proofbook stores and handles your data.',
+  },
+  terms: {
+    title: 'Terms of use — Self-Study Proofbook',
+    description: 'Terms for using Self-Study Proofbook.',
+  },
+};
+
+function routeDocument(index: string, route: string, metadata: { title: string; description: string }): string {
+  const url = `https://self-study-proofbook.sociobot.in/${route}`;
+  return index
+    .replace(/<title>[^<]*<\/title>/, `<title>${metadata.title}</title>`)
+    .replace(/<meta name="description" content="[^"]*" \/>/, `<meta name="description" content="${metadata.description}" />`)
+    .replace(/<link rel="canonical" href="[^"]*" \/>/, `<link rel="canonical" href="${url}" />`)
+    .replace(/<meta property="og:title" content="[^"]*" \/>/, `<meta property="og:title" content="${metadata.title}" />`)
+    .replace(/<meta property="og:description" content="[^"]*" \/>/, `<meta property="og:description" content="${metadata.description}" />`)
+    .replace(/<meta property="og:url" content="[^"]*" \/>/, `<meta property="og:url" content="${url}" />`)
+    .replace(/<meta name="twitter:title" content="[^"]*" \/>/, `<meta name="twitter:title" content="${metadata.title}" />`)
+    .replace(/<meta name="twitter:description" content="[^"]*" \/>/, `<meta name="twitter:description" content="${metadata.description}" />`);
+}
+
 async function writeStaticRoutes(outputDirectory: string): Promise<void> {
   const index = await readFile(resolve(outputDirectory, 'index.html'), 'utf8');
-  await Promise.all(['app', 'demo', 'print', 'privacy', 'terms'].map(async (route) => {
+  await Promise.all(Object.entries(routeMetadata).map(async ([route, metadata]) => {
     const directory = resolve(outputDirectory, route);
-    await writeFile(resolve(outputDirectory, `${route}.html`), index);
+    const document = routeDocument(index, route, metadata);
+    await writeFile(resolve(outputDirectory, `${route}.html`), document);
     await mkdir(directory, { recursive: true });
-    await writeFile(resolve(directory, 'index.html'), index);
+    await writeFile(resolve(directory, 'index.html'), document);
   }));
 }
 
