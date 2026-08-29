@@ -151,13 +151,13 @@
       "degree": 14
     },
     {
-      "id": "tsconfig_compileroptions",
-      "label": "compilerOptions",
+      "id": "src_main_bindarchive",
+      "label": "bindArchive()",
       "degree": 12
     },
     {
-      "id": "src_main_bindarchive",
-      "label": "bindArchive()",
+      "id": "tsconfig_compileroptions",
+      "label": "compilerOptions",
       "degree": 12
     },
     {
@@ -166,13 +166,13 @@
       "degree": 10
     },
     {
-      "id": "src_db_savestate",
-      "label": "saveState()",
+      "id": "src_main_printview",
+      "label": "printView()",
       "degree": 9
     },
     {
-      "id": "src_main_printview",
-      "label": "printView()",
+      "id": "src_db_savestate",
+      "label": "saveState()",
       "degree": 9
     },
     {
@@ -191,12 +191,23 @@
       "degree": 8
     },
     {
-      "id": "src_db_loadstate",
-      "label": "loadState()",
+      "id": "src_main_escapehtml",
+      "label": "escapeHtml()",
       "degree": 6
     }
   ],
   "surprises": [
+    {
+      "source": "bindArchive()",
+      "target": "saveState()",
+      "source_files": [
+        "src/main.ts",
+        "src/db.ts"
+      ],
+      "confidence": "EXTRACTED",
+      "relation": "calls",
+      "why": "bridges separate communities"
+    },
     {
       "source": "navigate()",
       "target": "loadState()",
@@ -211,17 +222,6 @@
     {
       "source": "bindCommon()",
       "target": "resetDemo()",
-      "source_files": [
-        "src/main.ts",
-        "src/db.ts"
-      ],
-      "confidence": "EXTRACTED",
-      "relation": "calls",
-      "why": "bridges separate communities"
-    },
-    {
-      "source": "bindArchive()",
-      "target": "saveState()",
       "source_files": [
         "src/main.ts",
         "src/db.ts"
