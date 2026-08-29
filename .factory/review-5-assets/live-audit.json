@@ -1,0 +1,418 @@
+{
+  "cold": {
+    "mobile": {
+      "url": "https://self-study-proofbook.sociobot.in/",
+      "title": "Self-Study Proofbook — Record problems you can solve",
+      "h1": [
+        "Record problems you can solve"
+      ],
+      "visibleBeforeScroll": [
+        {
+          "tag": "A",
+          "text": "P:PROOFBOOK",
+          "top": 10
+        },
+        {
+          "tag": "A",
+          "text": "Demo",
+          "top": 10
+        },
+        {
+          "tag": "A",
+          "text": "My proofbook",
+          "top": 10
+        },
+        {
+          "tag": "A",
+          "text": "Privacy",
+          "top": 10
+        },
+        {
+          "tag": "H1",
+          "text": "Record problems you can solve",
+          "top": 112
+        },
+        {
+          "tag": "P",
+          "text": "For serious math and CS learners who need evidence beyond course badges.",
+          "top": 279
+        },
+        {
+          "tag": "A",
+          "text": "Try it with sample data",
+          "top": 370
+        },
+        {
+          "tag": "A",
+          "text": "Start your proofbook",
+          "top": 474
+        },
+        {
+          "tag": "LI",
+          "text": "■ Entries stay in this browser",
+          "top": 536
+        },
+        {
+          "tag": "LI",
+          "text": "■ Works offline after your first visit",
+          "top": 562
+        },
+        {
+          "tag": "LI",
+          "text": "■ Free in this release; no checkout",
+          "top": 588
+        }
+      ],
+      "bodyScrollWidth": 390,
+      "innerWidth": 390,
+      "consoleErrors": [],
+      "requestOrigins": [
+        "https://self-study-proofbook.sociobot.in"
+      ]
+    },
+    "desktop": {
+      "url": "https://self-study-proofbook.sociobot.in/",
+      "title": "Self-Study Proofbook — Record problems you can solve",
+      "h1": [
+        "Record problems you can solve"
+      ],
+      "visibleBeforeScroll": [
+        {
+          "tag": "A",
+          "text": "P:PROOFBOOK",
+          "top": 14
+        },
+        {
+          "tag": "A",
+          "text": "Demo",
+          "top": 14
+        },
+        {
+          "tag": "A",
+          "text": "My proofbook",
+          "top": 14
+        },
+        {
+          "tag": "A",
+          "text": "Privacy",
+          "top": 14
+        },
+        {
+          "tag": "H1",
+          "text": "Record problems you can solve",
+          "top": 136
+        },
+        {
+          "tag": "P",
+          "text": "For serious math and CS learners who need evidence beyond course badges.",
+          "top": 533
+        },
+        {
+          "tag": "A",
+          "text": "Try it with sample data",
+          "top": 639
+        },
+        {
+          "tag": "A",
+          "text": "Start your proofbook",
+          "top": 707
+        },
+        {
+          "tag": "LI",
+          "text": "■ Entries stay in this browser",
+          "top": 769
+        },
+        {
+          "tag": "LI",
+          "text": "■ Works offline after your first visit",
+          "top": 795
+        },
+        {
+          "tag": "LI",
+          "text": "■ Free in this release; no checkout",
+          "top": 821
+        },
+        {
+          "tag": "FIGCAPTION",
+          "text": "Each attempt becomes one cited, revisable record.",
+          "top": 765
+        }
+      ],
+      "bodyScrollWidth": 1440,
+      "innerWidth": 1440,
+      "consoleErrors": [],
+      "requestOrigins": [
+        "https://self-study-proofbook.sociobot.in"
+      ]
+    }
+  },
+  "demo": {
+    "url": "https://self-study-proofbook.sociobot.in/?demo=1",
+    "title": "Demo — Self-Study Proofbook",
+    "h1": "Record and review problem attempts.",
+    "banner": "Demo — sample data, nothing is saved to your proofbook.\nReset demo\nStart for real",
+    "summary": "LOCAL LEDGER / DEMO\n\nRecord and review problem attempts.\n\n3 attempts across 3 topics.\n\nAdd topic\nRecord attempt",
+    "topics": [
+      "Real analysisWrite complete epsilon arguments without notes.1",
+      "Graph algorithmsChoose and justify the right invariant.1",
+      "Abstract algebraConnect definitions to short structural proofs.1"
+    ],
+    "attemptTitles": [
+      "Prove Dijkstra’s greedy step"
+    ],
+    "databases": [
+      "proofbook-demo-v1"
+    ],
+    "resetRestored": true,
+    "offlineReload": {
+      "h1": "Record and review problem attempts.",
+      "summaryVisible": true,
+      "bannerVisible": true
+    },
+    "requestOrigins": [
+      "https://self-study-proofbook.sociobot.in"
+    ]
+  },
+  "routes": {
+    "/": {
+      "status": 200,
+      "title": "Self-Study Proofbook — Record problems you can solve",
+      "lang": "en",
+      "h1": [
+        "Record problems you can solve"
+      ],
+      "main": 1,
+      "header": 1,
+      "footer": 1,
+      "description": "Record cited math and CS problems, timed attempts, solution revisions, and a printable mastery index in your browser.",
+      "canonical": "https://self-study-proofbook.sociobot.in/",
+      "ogTitle": "Self-Study Proofbook — Record problems you can solve",
+      "ogImage": "https://self-study-proofbook.sociobot.in/assets/proofbook-social.webp",
+      "twitterCard": "summary_large_image",
+      "favicon": "https://self-study-proofbook.sociobot.in/favicon.svg",
+      "errors": [],
+      "axeViolations": [],
+      "hrefs": [
+        "https://self-study-proofbook.sociobot.in/#main",
+        "https://self-study-proofbook.sociobot.in/",
+        "https://self-study-proofbook.sociobot.in/demo",
+        "https://self-study-proofbook.sociobot.in/app",
+        "https://self-study-proofbook.sociobot.in/privacy",
+        "https://self-study-proofbook.sociobot.in/?demo=1",
+        "https://self-study-proofbook.sociobot.in/app",
+        "https://self-study-proofbook.sociobot.in/app",
+        "https://self-study-proofbook.sociobot.in/privacy",
+        "https://self-study-proofbook.sociobot.in/terms",
+        "https://sociobot.in/"
+      ]
+    },
+    "/demo": {
+      "status": 200,
+      "title": "Demo — Self-Study Proofbook",
+      "lang": "en",
+      "h1": [
+        "Record and review problem attempts."
+      ],
+      "main": 1,
+      "header": 1,
+      "footer": 1,
+      "description": "Try a sample proofbook without saving to your real records.",
+      "canonical": "https://self-study-proofbook.sociobot.in/demo",
+      "ogTitle": "Demo — Self-Study Proofbook",
+      "ogImage": "https://self-study-proofbook.sociobot.in/assets/proofbook-social.webp",
+      "twitterCard": "summary_large_image",
+      "favicon": "https://self-study-proofbook.sociobot.in/favicon.svg",
+      "errors": [],
+      "axeViolations": [],
+      "hrefs": [
+        "https://self-study-proofbook.sociobot.in/demo#main",
+        "https://self-study-proofbook.sociobot.in/",
+        "https://self-study-proofbook.sociobot.in/demo",
+        "https://self-study-proofbook.sociobot.in/app",
+        "https://self-study-proofbook.sociobot.in/privacy",
+        "https://self-study-proofbook.sociobot.in/print?demo=1",
+        "https://self-study-proofbook.sociobot.in/privacy",
+        "https://self-study-proofbook.sociobot.in/terms",
+        "https://sociobot.in/"
+      ]
+    },
+    "/app": {
+      "status": 200,
+      "title": "Your proofbook — Self-Study Proofbook",
+      "lang": "en",
+      "h1": [
+        "Record and review problem attempts."
+      ],
+      "main": 1,
+      "header": 1,
+      "footer": 1,
+      "description": "Write and review your private problem-solving record.",
+      "canonical": "https://self-study-proofbook.sociobot.in/app",
+      "ogTitle": "Your proofbook — Self-Study Proofbook",
+      "ogImage": "https://self-study-proofbook.sociobot.in/assets/proofbook-social.webp",
+      "twitterCard": "summary_large_image",
+      "favicon": "https://self-study-proofbook.sociobot.in/favicon.svg",
+      "errors": [],
+      "axeViolations": [],
+      "hrefs": [
+        "https://self-study-proofbook.sociobot.in/app#main",
+        "https://self-study-proofbook.sociobot.in/",
+        "https://self-study-proofbook.sociobot.in/demo",
+        "https://self-study-proofbook.sociobot.in/app",
+        "https://self-study-proofbook.sociobot.in/privacy",
+        "https://self-study-proofbook.sociobot.in/print",
+        "https://self-study-proofbook.sociobot.in/privacy",
+        "https://self-study-proofbook.sociobot.in/terms",
+        "https://sociobot.in/"
+      ]
+    },
+    "/print?demo=1": {
+      "status": 200,
+      "title": "Mastery index — Self-Study Proofbook",
+      "lang": "en",
+      "h1": [
+        "Mastery index"
+      ],
+      "main": 1,
+      "header": 1,
+      "footer": 1,
+      "description": "Print a compact index of your problem-solving evidence.",
+      "canonical": "https://self-study-proofbook.sociobot.in/print",
+      "ogTitle": "Mastery index — Self-Study Proofbook",
+      "ogImage": "https://self-study-proofbook.sociobot.in/assets/proofbook-social.webp",
+      "twitterCard": "summary_large_image",
+      "favicon": "https://self-study-proofbook.sociobot.in/favicon.svg",
+      "errors": [],
+      "axeViolations": [],
+      "hrefs": [
+        "https://self-study-proofbook.sociobot.in/print?demo=1#main",
+        "https://self-study-proofbook.sociobot.in/",
+        "https://self-study-proofbook.sociobot.in/demo",
+        "https://self-study-proofbook.sociobot.in/app",
+        "https://self-study-proofbook.sociobot.in/privacy",
+        "https://self-study-proofbook.sociobot.in/demo",
+        "https://self-study-proofbook.sociobot.in/privacy",
+        "https://self-study-proofbook.sociobot.in/terms",
+        "https://sociobot.in/"
+      ]
+    },
+    "/privacy": {
+      "status": 200,
+      "title": "Privacy and data storage — Self-Study Proofbook",
+      "lang": "en",
+      "h1": [
+        "Privacy and data storage"
+      ],
+      "main": 1,
+      "header": 1,
+      "footer": 1,
+      "description": "How Self-Study Proofbook stores and handles your data.",
+      "canonical": "https://self-study-proofbook.sociobot.in/privacy",
+      "ogTitle": "Privacy and data storage — Self-Study Proofbook",
+      "ogImage": "https://self-study-proofbook.sociobot.in/assets/proofbook-social.webp",
+      "twitterCard": "summary_large_image",
+      "favicon": "https://self-study-proofbook.sociobot.in/favicon.svg",
+      "errors": [],
+      "axeViolations": [],
+      "hrefs": [
+        "https://self-study-proofbook.sociobot.in/privacy#main",
+        "https://self-study-proofbook.sociobot.in/",
+        "https://self-study-proofbook.sociobot.in/demo",
+        "https://self-study-proofbook.sociobot.in/app",
+        "https://self-study-proofbook.sociobot.in/privacy",
+        "mailto:privacy@sociobot.in",
+        "https://self-study-proofbook.sociobot.in/privacy",
+        "https://self-study-proofbook.sociobot.in/terms",
+        "https://sociobot.in/"
+      ]
+    },
+    "/terms": {
+      "status": 200,
+      "title": "Terms of use — Self-Study Proofbook",
+      "lang": "en",
+      "h1": [
+        "Terms of use"
+      ],
+      "main": 1,
+      "header": 1,
+      "footer": 1,
+      "description": "Terms for using Self-Study Proofbook.",
+      "canonical": "https://self-study-proofbook.sociobot.in/terms",
+      "ogTitle": "Terms of use — Self-Study Proofbook",
+      "ogImage": "https://self-study-proofbook.sociobot.in/assets/proofbook-social.webp",
+      "twitterCard": "summary_large_image",
+      "favicon": "https://self-study-proofbook.sociobot.in/favicon.svg",
+      "errors": [],
+      "axeViolations": [],
+      "hrefs": [
+        "https://self-study-proofbook.sociobot.in/terms#main",
+        "https://self-study-proofbook.sociobot.in/",
+        "https://self-study-proofbook.sociobot.in/demo",
+        "https://self-study-proofbook.sociobot.in/app",
+        "https://self-study-proofbook.sociobot.in/privacy",
+        "mailto:support@sociobot.in",
+        "https://self-study-proofbook.sociobot.in/privacy",
+        "https://self-study-proofbook.sociobot.in/terms",
+        "https://sociobot.in/"
+      ]
+    },
+    "/not-a-proofbook-route": {
+      "status": 404,
+      "title": "Page not found — Self-Study Proofbook",
+      "lang": "en",
+      "h1": [
+        "Page not found"
+      ],
+      "main": 1,
+      "header": 1,
+      "footer": 1,
+      "description": "This address does not match a Self-Study Proofbook page.",
+      "canonical": "https://self-study-proofbook.sociobot.in/404",
+      "ogTitle": "Page not found — Self-Study Proofbook",
+      "ogImage": "https://self-study-proofbook.sociobot.in/assets/proofbook-social.webp",
+      "twitterCard": "summary_large_image",
+      "favicon": "https://self-study-proofbook.sociobot.in/favicon.svg",
+      "errors": [],
+      "axeViolations": [],
+      "hrefs": [
+        "https://self-study-proofbook.sociobot.in/not-a-proofbook-route#main",
+        "https://self-study-proofbook.sociobot.in/",
+        "https://self-study-proofbook.sociobot.in/demo",
+        "https://self-study-proofbook.sociobot.in/app",
+        "https://self-study-proofbook.sociobot.in/privacy",
+        "https://self-study-proofbook.sociobot.in/",
+        "https://self-study-proofbook.sociobot.in/privacy",
+        "https://self-study-proofbook.sociobot.in/terms",
+        "https://sociobot.in/"
+      ]
+    }
+  },
+  "flow": {
+    "duringDatabases": [
+      "proofbook-demo-v1",
+      "proofbook-v1"
+    ],
+    "afterDatabases": [
+      "proofbook-v1"
+    ],
+    "url": "https://self-study-proofbook.sociobot.in/app",
+    "realMarkerVisible": true,
+    "sampleVisibleInReal": false,
+    "focus": {
+      "privacyFocus": "Privacy and data storage",
+      "homeFocus": "Record problems you can solve",
+      "url": "https://self-study-proofbook.sociobot.in/"
+    }
+  },
+  "links": {
+    "https://self-study-proofbook.sociobot.in/": 200,
+    "https://self-study-proofbook.sociobot.in/demo": 200,
+    "https://self-study-proofbook.sociobot.in/app": 200,
+    "https://self-study-proofbook.sociobot.in/privacy": 200,
+    "https://self-study-proofbook.sociobot.in/?demo=1": 200,
+    "https://self-study-proofbook.sociobot.in/terms": 200,
+    "https://sociobot.in/": 200,
+    "https://self-study-proofbook.sociobot.in/print?demo=1": 200,
+    "https://self-study-proofbook.sociobot.in/print": 200
+  }
+}

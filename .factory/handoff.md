@@ -1,88 +1,54 @@
-# Self-Study Proofbook — verification 8 handoff
-
-## Current result: PASS
-
-Independent QA accepts candidate `3ce39632021aafed8336b500a77d2e89abc06c80` at <https://self-study-proofbook.sociobot.in>. Fresh evidence confirms the live deployment exactly matches this candidate and no deployment-only failure was reproduced.
-
-- All 17 exact claim commands pass; `npm test` passes 33/33; `npm run build` passes and produces `dist/`.
-- Live desktop/mobile, one-click isolated demo, normal/invalid/recovery flows, privacy, offline/service-worker, accessibility, headers/cache, and identity checks pass.
-- Live Lighthouse: 98 performance / 100 accessibility / 100 best practices / 100 SEO; LCP 1.36 s, CLS 0.046.
-- No defects by severity. Server API rate-limit, Entra, backend, and package/CLI checks are not applicable to this static local-first PWA.
-
-See [verification-8.md](verification-8.md) and `verification-assets-8/` for exact evidence. Re-run with `npm ci && npm test && npm run build`; use <https://self-study-proofbook.sociobot.in/?demo=1> for the isolated demo.
-
----
-
-# Previous builder handoff — polish 4
+# Self-Study Proofbook — review 5 handoff
 
 ## Result
 
-Perfection-loop round 4 is complete. All findings in reviews 1–4 are resolved,
-including the two newly inventoried safety claims and all current copy issues.
-The product remains a static, offline-capable PWA with its original pixel proof
-terminal identity.
+Adversarial first-read review 5 is complete at commit
+`49bdd6ab132641a528a8ca1c5d487b7d10788252` and the live deployment. Verdict:
+**FAIL** with two blocking claim-coverage findings.
 
-- Work order: `self-study-proofbook-polish-4`
-- Product repair commit: `7366b9c8542532ed0583f572be3cc43ce012d9d6`
-- Deployment: `ebcc9478-6b68-4896-a3ed-268504b6f931`
-- Live URL: <https://self-study-proofbook.sociobot.in>
-- Direct demo: <https://self-study-proofbook.sociobot.in/?demo=1>
-- Finding map: [`.factory/polish-4.md`](polish-4.md)
+- F-5-1: **“Keep a complete encrypted archive”** is broader than the registered
+  encrypted-backup and complete-JSON tests.
+- F-5-2: the `print-index` command passes, but its tagged test does not assert
+  the sources, time, status, revision count, print styling, or browser print
+  action named by the claim.
 
-## What changed
+No product code was changed. The full report is [review-5.md](review-5.md), with
+fresh live evidence in `review-5-assets/`.
 
-- The first screen now states “Free in this release; no checkout.” Its primary
-  action opens the isolated `/?demo=1` sample ledger in one click.
-- App and demo pages now use the task H1 “Record and review problem attempts.”
-- README price, storage, encryption, and contributor copy now use direct words.
-- `.factory/claims.json` now contains 17 claims. `saved-data-recovery` proves
-  valid-record salvage, untouched-original download, and restore.
-  `safe-import-validation` proves malformed imports cannot replace a real ledger.
-- The prior demo isolation, route metadata, navigation focus, real 404, legal
-  links, mobile layout, accessibility, and archive behavior remain covered.
-- The catalog description is a verb-first 81-character sentence.
+## Verification completed
 
-## Exact verification
+- Fresh mobile (390 × 844) and desktop cold reads: clear first screen, no
+  overflow or console errors.
+- One-click live demo: realistic data, persistent banner, working reset,
+  separate IndexedDB namespaces, real-data preservation, and no demo-to-real
+  copying.
+- Live offline reload: banner, H1, and three sample attempts remain available;
+  request log is same-origin only.
+- Every exact `.factory/claims.json` command: 17/17 exits pass from detached
+  clone `/tmp/self-study-proofbook-review-5-U4vZEX`.
+- `npm test`: 33/33 pass.
+- `npm run build`: pass; `dist/` produced, JavaScript 13.49 KB gzip.
+- Deployed JavaScript and CSS hashes exactly match the clean build.
+- Live route/link/metadata/focus/back/404 checks pass; fresh Axe scans have zero
+  violations; `verify-url.sh` passes home and demo.
+- Every finding from reviews 1–4 was rechecked live and in code and remains
+  fixed.
 
-- Fresh clone: `/tmp/self-study-proofbook-polish-4-clean-sgAlzS` at
-  `7366b9c8542532ed0583f572be3cc43ce012d9d6`.
-- `npm ci`: pass, 25 packages audited, zero vulnerabilities.
-- Every exact `.factory/claims.json` command: 17/17 pass. Log:
-  [polish-4-clean-claims.log](evidence/polish-4-clean-claims.log).
-- `npm test`: 33/33 Playwright tests pass, including browser, keyboard,
-  routing, focus, mobile, privacy, offline, recovery, and zero-violation Axe
-  scans. Log: [polish-4-clean-full-test.log](evidence/polish-4-clean-full-test.log).
-- `npm run build`: pass; `dist/index.html` exists. JavaScript is 43.43 KB raw /
-  13.49 KB gzip; CSS is 18.69 KB raw / 4.88 KB gzip. Log:
-  [polish-4-clean-build.log](evidence/polish-4-clean-build.log).
-- Local `/opt/fleet/lib/verify-url.sh`: pass on `/` and `/?demo=1`, with no
-  console errors. Local Lighthouse mobile: 99/100/100/100, LCP 1.8 s,
-  CLS 0.046.
-- Live cold audit: all routes have one H1/main, correct titles, legal links,
-  zero Axe violations, and zero mobile overflow. Demo reset, offline reload,
-  separate storage, Start for real, focus/back restoration, saved-data recovery,
-  and five malformed-import classes all pass. Evidence:
-  [polish-4-live-audit.json](evidence/polish-4-live-audit.json).
-- Live Lighthouse mobile: 100 performance, 100 accessibility, 100 best
-  practices, 100 SEO; LCP 1.4 s; CLS 0.046. Evidence:
-  [lighthouse.json](evidence/polish-4-live-home/lighthouse.json).
-- Live JavaScript and `dist/` SHA-256 both equal
-  `19e9453a013b8d3ed534db88d895a16fee3667187200598a53320ca0b089b012`.
-- The direct unknown route returns HTTP 404 with the shared shell, metadata,
-  legal links, security headers, and return action.
-
-## Run and verify
+## How to reproduce
 
 ```sh
 npm ci
 npm test
 npm run build
-npm run preview
 ```
 
-Then open `http://127.0.0.1:4173/?demo=1`.
+Run each `test` command in `.factory/claims.json` separately from a clean clone.
+Use <https://self-study-proofbook.sociobot.in/?demo=1> for the live sandbox and
+compare the current test assertions with F-5-1 and F-5-2 before accepting a
+repair.
 
-## Known gaps and next steps
+## Required next steps
 
-None within the brief or cumulative review scope. Deployment infrastructure,
-DNS, and billing configuration remain factory-owned.
+1. Narrow or test the encrypted-backup completeness promise.
+2. Strengthen the tagged print-index test to prove its full observable claim.
+3. Repeat the clean claim commands, full suite, build, and fresh live review.
