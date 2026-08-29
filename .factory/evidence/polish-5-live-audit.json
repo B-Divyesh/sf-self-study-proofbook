@@ -1,0 +1,24 @@
+{
+  "commit": "90a16ea59f811b6ce350f1a5aa85c9609c54490f",
+  "url": "https://self-study-proofbook.sociobot.in",
+  "checked": "2026-08-29",
+  "mobileViewport": "390x844",
+  "routeChecks": {
+    "/": { "status": 200, "title": "Self-Study Proofbook — Record problems you can solve", "h1": "Record problems you can solve", "axeViolations": 0, "horizontalOverflow": false },
+    "/?demo=1": { "status": 200, "title": "Demo — Self-Study Proofbook", "h1": "Record and review problem attempts.", "banner": "Demo — sample data, nothing is saved to your proofbook.", "reset": true, "startForReal": true, "axeViolations": 0, "horizontalOverflow": false },
+    "/demo": { "status": 200, "title": "Demo — Self-Study Proofbook", "axeViolations": 0, "horizontalOverflow": false },
+    "/app": { "status": 200, "title": "Your proofbook — Self-Study Proofbook", "axeViolations": 0, "horizontalOverflow": false },
+    "/print?demo=1": { "status": 200, "title": "Mastery index — Self-Study Proofbook", "axeViolations": 0, "horizontalOverflow": false },
+    "/privacy": { "status": 200, "title": "Privacy and data storage — Self-Study Proofbook", "axeViolations": 0, "horizontalOverflow": false },
+    "/terms": { "status": 200, "title": "Terms of use — Self-Study Proofbook", "axeViolations": 0, "horizontalOverflow": false },
+    "/not-a-proofbook-route": { "status": 404, "title": "Page not found — Self-Study Proofbook", "sharedShell": true, "axeViolations": 0, "horizontalOverflow": false }
+  },
+  "demoResetRestoredSample": true,
+  "printIndex": {
+    "headings": ["Problem", "Source", "Time", "Evidence", "Revisions", "Updated"],
+    "dijkstra": ["32:00", "Revised · 3/4", "1"],
+    "printActionCalls": 1
+  },
+  "consoleErrors": 0,
+  "bundleIdentity": "index.html, service worker, manifest, JavaScript, and CSS SHA-256 values matched the deployed bytes"
+}

@@ -69,4 +69,4 @@ found**.
 ## Catalog description
 
 “Record citations, timed attempts, and revisions in a private offline ledger.”
-— 11 words, 75 characters, starts with a verb.
+— 11 words, 76 characters, starts with a verb.
