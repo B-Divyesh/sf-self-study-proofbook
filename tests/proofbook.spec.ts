@@ -556,6 +556,24 @@ test('persistent mobile demo controls and navigation targets are at least 44px',
   }
 });
 
+test('every visible first-screen action is at least 44px on mobile', async ({ page }) => {
+  await page.setViewportSize({ width: 390, height: 844 });
+  await page.goto('/');
+
+  const firstScreenActions = page.locator('.hero-copy > .hero-actions a, .hero-copy > .text-link');
+  await expect(firstScreenActions).toHaveCount(2);
+  await expect(firstScreenActions).toHaveText(['Try it with sample data', 'Start your proofbook']);
+
+  for (let index = 0; index < await firstScreenActions.count(); index += 1) {
+    const action = firstScreenActions.nth(index);
+    await expect(action).toBeVisible();
+    const box = await action.boundingBox();
+    expect(box, 'first-screen action should be rendered').not.toBeNull();
+    expect(box!.width).toBeGreaterThanOrEqual(44);
+    expect(box!.height).toBeGreaterThanOrEqual(44);
+  }
+});
+
 test('all public routes have no Axe violations', async ({ page }) => {
   for (const route of ['/', '/demo', '/app', '/print?demo=1', '/privacy', '/terms', '/not-a-proofbook-route']) {
     await page.goto(route);

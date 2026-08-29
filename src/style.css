@@ -62,7 +62,7 @@ h3 { font-size: 18px; }
 .button:hover { color: var(--ink); transform: translate(-1px,-1px); }
 .button.primary:hover { color: var(--void); }
 .button:active { transform: translate(2px,2px); box-shadow: none; }
-.text-link { display: inline-block; margin-top: 20px; font-family: var(--display); font-size: 13px; }
+.text-link { display: inline-flex; align-items: center; min-height: 44px; margin-top: 20px; padding-inline: 10px; font-family: var(--display); font-size: 13px; }
 .facts { list-style: none; padding: 0; margin: 40px 0 0; color: var(--muted); font: 13px/2 var(--display); }
 .facts span { color: var(--phosphor); margin-right: 8px; }
 .hero-art { position: relative; margin: 0; filter: saturate(.9) contrast(1.05); }
