@@ -1,0 +1,331 @@
+{
+  "origin": "https://self-study-proofbook.sociobot.in",
+  "generatedAt": "2026-08-29T18:55:45.472Z",
+  "matched": 30,
+  "total": 30,
+  "mismatches": [],
+  "comparisons": [
+    {
+      "path": "404.html",
+      "status": 200,
+      "localBytes": 2457,
+      "liveBytes": 2457,
+      "localSha256": "09b9b7410338ec991a31f87bacf59191ea840d376b55b3be2fb52c3a3cdfe233",
+      "liveSha256": "09b9b7410338ec991a31f87bacf59191ea840d376b55b3be2fb52c3a3cdfe233",
+      "match": true
+    },
+    {
+      "path": "app.html",
+      "status": 200,
+      "localBytes": 1705,
+      "liveBytes": 1705,
+      "localSha256": "43e8c763a7fc8b1fa0573f6c19f3dade9a7d1d169d7c3779deefa26b5fe7bb9e",
+      "liveSha256": "43e8c763a7fc8b1fa0573f6c19f3dade9a7d1d169d7c3779deefa26b5fe7bb9e",
+      "match": true
+    },
+    {
+      "path": "app/index.html",
+      "status": 200,
+      "localBytes": 1705,
+      "liveBytes": 1705,
+      "localSha256": "43e8c763a7fc8b1fa0573f6c19f3dade9a7d1d169d7c3779deefa26b5fe7bb9e",
+      "liveSha256": "43e8c763a7fc8b1fa0573f6c19f3dade9a7d1d169d7c3779deefa26b5fe7bb9e",
+      "match": true
+    },
+    {
+      "path": "apple-touch-icon.png",
+      "status": 200,
+      "localBytes": 914,
+      "liveBytes": 914,
+      "localSha256": "2f0de7eb3546df6d90fa41a76acf3c987c46c1ed413057ccbd844342b85f468a",
+      "liveSha256": "2f0de7eb3546df6d90fa41a76acf3c987c46c1ed413057ccbd844342b85f468a",
+      "match": true
+    },
+    {
+      "path": "assets/hero-proof-terminal-1120.webp",
+      "status": 200,
+      "localBytes": 45882,
+      "liveBytes": 45882,
+      "localSha256": "fb535e7ca6e1770056ca58df33f81b814af02db54f04e004792824ef15be8011",
+      "liveSha256": "fb535e7ca6e1770056ca58df33f81b814af02db54f04e004792824ef15be8011",
+      "match": true
+    },
+    {
+      "path": "assets/hero-proof-terminal-640.webp",
+      "status": 200,
+      "localBytes": 18802,
+      "liveBytes": 18802,
+      "localSha256": "e681c2d586390df203795ce0c7048d1bec9a0333a7e059903787dfa2ae155b34",
+      "liveSha256": "e681c2d586390df203795ce0c7048d1bec9a0333a7e059903787dfa2ae155b34",
+      "match": true
+    },
+    {
+      "path": "assets/index-DfMrCwNv.css",
+      "status": 200,
+      "localBytes": 18932,
+      "liveBytes": 18932,
+      "localSha256": "63d3393f885f34bc6b49fe69ca64774c98b157136e66879b8484b6b237503226",
+      "liveSha256": "63d3393f885f34bc6b49fe69ca64774c98b157136e66879b8484b6b237503226",
+      "match": true
+    },
+    {
+      "path": "assets/index-Dzmu7hUO.js",
+      "status": 200,
+      "localBytes": 43577,
+      "liveBytes": 43577,
+      "localSha256": "ce19e2e9d9af75572bdef3721f511eb9c68acd9dd80e632b235f9ff94b997db7",
+      "liveSha256": "ce19e2e9d9af75572bdef3721f511eb9c68acd9dd80e632b235f9ff94b997db7",
+      "match": true
+    },
+    {
+      "path": "assets/index-Dzmu7hUO.js.map",
+      "status": 200,
+      "localBytes": 94287,
+      "liveBytes": 94287,
+      "localSha256": "5d6dc3ac34d9fa706d8b39bc0446761422853f5bc3a514c48e6066e8e5fdb9e9",
+      "liveSha256": "5d6dc3ac34d9fa706d8b39bc0446761422853f5bc3a514c48e6066e8e5fdb9e9",
+      "match": true
+    },
+    {
+      "path": "assets/proofbook-social.webp",
+      "status": 200,
+      "localBytes": 47930,
+      "liveBytes": 47930,
+      "localSha256": "5a0898f8a3f46d454a8b333557152839f477871600f00cd35b298d4ab45d841b",
+      "liveSha256": "5a0898f8a3f46d454a8b333557152839f477871600f00cd35b298d4ab45d841b",
+      "match": true
+    },
+    {
+      "path": "demo.html",
+      "status": 200,
+      "localBytes": 1695,
+      "liveBytes": 1695,
+      "localSha256": "c3065ce849498135aef6551e314e390e09f3d9034eb26eb0d24030ef1efae847",
+      "liveSha256": "c3065ce849498135aef6551e314e390e09f3d9034eb26eb0d24030ef1efae847",
+      "match": true
+    },
+    {
+      "path": "demo/index.html",
+      "status": 200,
+      "localBytes": 1695,
+      "liveBytes": 1695,
+      "localSha256": "c3065ce849498135aef6551e314e390e09f3d9034eb26eb0d24030ef1efae847",
+      "liveSha256": "c3065ce849498135aef6551e314e390e09f3d9034eb26eb0d24030ef1efae847",
+      "match": true
+    },
+    {
+      "path": "favicon.svg",
+      "status": 200,
+      "localBytes": 241,
+      "liveBytes": 241,
+      "localSha256": "61665b66aa76b368565938d27600f466a9d3b8db2c8bfe24212ebbbf3f63955e",
+      "liveSha256": "61665b66aa76b368565938d27600f466a9d3b8db2c8bfe24212ebbbf3f63955e",
+      "match": true
+    },
+    {
+      "path": "fonts/DEPARTURE_MONO_LICENSE.txt",
+      "status": 200,
+      "localBytes": 4357,
+      "liveBytes": 4357,
+      "localSha256": "b65e42750f3cb65437a97f4dfd781c58f199259949db2341012be60e32500e83",
+      "liveSha256": "b65e42750f3cb65437a97f4dfd781c58f199259949db2341012be60e32500e83",
+      "match": true
+    },
+    {
+      "path": "fonts/departure-mono.woff2",
+      "status": 200,
+      "localBytes": 22496,
+      "liveBytes": 22496,
+      "localSha256": "5b4fed1daa90708aa9c6ee1190abca9dc22164a1c1def0020386e46b61038cfb",
+      "liveSha256": "5b4fed1daa90708aa9c6ee1190abca9dc22164a1c1def0020386e46b61038cfb",
+      "match": true
+    },
+    {
+      "path": "icons/icon-192.png",
+      "status": 200,
+      "localBytes": 764,
+      "liveBytes": 764,
+      "localSha256": "996913612478bf5ac9713918115d197f6d178d0d95a946acf0718d421a02d099",
+      "liveSha256": "996913612478bf5ac9713918115d197f6d178d0d95a946acf0718d421a02d099",
+      "match": true
+    },
+    {
+      "path": "icons/icon-512.png",
+      "status": 200,
+      "localBytes": 428,
+      "liveBytes": 428,
+      "localSha256": "e66e29963c3e3f3f9b7a9dfab8855b127f015f2a72e95cdf7dd1528dd0739b08",
+      "liveSha256": "e66e29963c3e3f3f9b7a9dfab8855b127f015f2a72e95cdf7dd1528dd0739b08",
+      "match": true
+    },
+    {
+      "path": "icons/source-icon.svg",
+      "status": 200,
+      "localBytes": 264,
+      "liveBytes": 264,
+      "localSha256": "91c9eb9d1d349c2599fbee920c27c3074f7693cc93b924194294f65a1a1a203c",
+      "liveSha256": "91c9eb9d1d349c2599fbee920c27c3074f7693cc93b924194294f65a1a1a203c",
+      "match": true
+    },
+    {
+      "path": "index.html",
+      "status": 200,
+      "localBytes": 1784,
+      "liveBytes": 1784,
+      "localSha256": "7c170bc61168b5b28901ebb079cc0ff03f6f782d775d35484348bf439ea037cd",
+      "liveSha256": "7c170bc61168b5b28901ebb079cc0ff03f6f782d775d35484348bf439ea037cd",
+      "match": true
+    },
+    {
+      "path": "manifest.webmanifest",
+      "status": 200,
+      "localBytes": 581,
+      "liveBytes": 581,
+      "localSha256": "f2628868c9f9b3742475fd704dbf19616e71a3f48f2461c52087ae693107677d",
+      "liveSha256": "f2628868c9f9b3742475fd704dbf19616e71a3f48f2461c52087ae693107677d",
+      "match": true
+    },
+    {
+      "path": "offline.html",
+      "status": 200,
+      "localBytes": 509,
+      "liveBytes": 509,
+      "localSha256": "161b5b3d68ad97a34c129a40e2ffe01cc2f37847f92daae459fb1c91e9828fd2",
+      "liveSha256": "161b5b3d68ad97a34c129a40e2ffe01cc2f37847f92daae459fb1c91e9828fd2",
+      "match": true
+    },
+    {
+      "path": "print.html",
+      "status": 200,
+      "localBytes": 1712,
+      "liveBytes": 1712,
+      "localSha256": "50e6b805ba651777c155809913fb98251f8ea465ee476c3ac2bd6dfd90f1247c",
+      "liveSha256": "50e6b805ba651777c155809913fb98251f8ea465ee476c3ac2bd6dfd90f1247c",
+      "match": true
+    },
+    {
+      "path": "print/index.html",
+      "status": 200,
+      "localBytes": 1712,
+      "liveBytes": 1712,
+      "localSha256": "50e6b805ba651777c155809913fb98251f8ea465ee476c3ac2bd6dfd90f1247c",
+      "liveSha256": "50e6b805ba651777c155809913fb98251f8ea465ee476c3ac2bd6dfd90f1247c",
+      "match": true
+    },
+    {
+      "path": "privacy.html",
+      "status": 200,
+      "localBytes": 1746,
+      "liveBytes": 1746,
+      "localSha256": "43637b496a50d296ef33f7dfd8962213798373cffd42ab4f8aeb8d8b5d50d44b",
+      "liveSha256": "43637b496a50d296ef33f7dfd8962213798373cffd42ab4f8aeb8d8b5d50d44b",
+      "match": true
+    },
+    {
+      "path": "privacy/index.html",
+      "status": 200,
+      "localBytes": 1746,
+      "liveBytes": 1746,
+      "localSha256": "43637b496a50d296ef33f7dfd8962213798373cffd42ab4f8aeb8d8b5d50d44b",
+      "liveSha256": "43637b496a50d296ef33f7dfd8962213798373cffd42ab4f8aeb8d8b5d50d44b",
+      "match": true
+    },
+    {
+      "path": "robots.txt",
+      "status": 200,
+      "localBytes": 86,
+      "liveBytes": 86,
+      "localSha256": "9c4ceb97caed951d34332790711c12ae661b6aecda5d3b2c8a0e463277b9b200",
+      "liveSha256": "9c4ceb97caed951d34332790711c12ae661b6aecda5d3b2c8a0e463277b9b200",
+      "match": true
+    },
+    {
+      "path": "sitemap.xml",
+      "status": 200,
+      "localBytes": 530,
+      "liveBytes": 530,
+      "localSha256": "01f9040037d201db915d03379daf66bdd7758f081c10bc7ada265d1bcf5ae110",
+      "liveSha256": "01f9040037d201db915d03379daf66bdd7758f081c10bc7ada265d1bcf5ae110",
+      "match": true
+    },
+    {
+      "path": "sw.js",
+      "status": 200,
+      "localBytes": 2188,
+      "liveBytes": 2188,
+      "localSha256": "d1069a0cb150f7766c57b8d1a5d5355182e1b012d3dabcf0b85f31d7b18c43db",
+      "liveSha256": "d1069a0cb150f7766c57b8d1a5d5355182e1b012d3dabcf0b85f31d7b18c43db",
+      "match": true
+    },
+    {
+      "path": "terms.html",
+      "status": 200,
+      "localBytes": 1655,
+      "liveBytes": 1655,
+      "localSha256": "319f5cb2b36c994134c0c42b678b05f52c17d0b9296201674e732c15c8418a2a",
+      "liveSha256": "319f5cb2b36c994134c0c42b678b05f52c17d0b9296201674e732c15c8418a2a",
+      "match": true
+    },
+    {
+      "path": "terms/index.html",
+      "status": 200,
+      "localBytes": 1655,
+      "liveBytes": 1655,
+      "localSha256": "319f5cb2b36c994134c0c42b678b05f52c17d0b9296201674e732c15c8418a2a",
+      "liveSha256": "319f5cb2b36c994134c0c42b678b05f52c17d0b9296201674e732c15c8418a2a",
+      "match": true
+    }
+  ],
+  "headers": {
+    "/": {
+      "status": 200,
+      "cacheControl": "public, must-revalidate, max-age=30",
+      "contentType": "text/html",
+      "contentSecurityPolicy": "default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' data: blob:; font-src 'self'; connect-src 'self'; worker-src 'self'; manifest-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self'; frame-ancestors 'none'",
+      "strictTransportSecurity": "max-age=10886400; includeSubDomains; preload",
+      "xContentTypeOptions": "nosniff",
+      "referrerPolicy": "strict-origin-when-cross-origin",
+      "permissionsPolicy": "camera=(), microphone=(), geolocation=()"
+    },
+    "/manifest.webmanifest": {
+      "status": 200,
+      "cacheControl": "public, must-revalidate, max-age=30",
+      "contentType": "application/manifest+json",
+      "contentSecurityPolicy": "default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' data: blob:; font-src 'self'; connect-src 'self'; worker-src 'self'; manifest-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self'; frame-ancestors 'none'",
+      "strictTransportSecurity": "max-age=10886400; includeSubDomains; preload",
+      "xContentTypeOptions": "nosniff",
+      "referrerPolicy": "strict-origin-when-cross-origin",
+      "permissionsPolicy": "camera=(), microphone=(), geolocation=()"
+    },
+    "/sw.js": {
+      "status": 200,
+      "cacheControl": "public, must-revalidate, max-age=30",
+      "contentType": "text/javascript",
+      "contentSecurityPolicy": "default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' data: blob:; font-src 'self'; connect-src 'self'; worker-src 'self'; manifest-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self'; frame-ancestors 'none'",
+      "strictTransportSecurity": "max-age=10886400; includeSubDomains; preload",
+      "xContentTypeOptions": "nosniff",
+      "referrerPolicy": "strict-origin-when-cross-origin",
+      "permissionsPolicy": "camera=(), microphone=(), geolocation=()"
+    },
+    "/assets/index-Dzmu7hUO.js": {
+      "status": 200,
+      "cacheControl": "public, max-age=31536000, immutable",
+      "contentType": "text/javascript",
+      "contentSecurityPolicy": "default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' data: blob:; font-src 'self'; connect-src 'self'; worker-src 'self'; manifest-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self'; frame-ancestors 'none'",
+      "strictTransportSecurity": "max-age=10886400; includeSubDomains; preload",
+      "xContentTypeOptions": "nosniff",
+      "referrerPolicy": "strict-origin-when-cross-origin",
+      "permissionsPolicy": "camera=(), microphone=(), geolocation=()"
+    },
+    "/repair-8-missing": {
+      "status": 404,
+      "cacheControl": "public, must-revalidate, max-age=30",
+      "contentType": "text/html",
+      "contentSecurityPolicy": "default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' data: blob:; font-src 'self'; connect-src 'self'; worker-src 'self'; manifest-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self'; frame-ancestors 'none'",
+      "strictTransportSecurity": "max-age=10886400; includeSubDomains; preload",
+      "xContentTypeOptions": "nosniff",
+      "referrerPolicy": "strict-origin-when-cross-origin",
+      "permissionsPolicy": "camera=(), microphone=(), geolocation=()"
+    }
+  }
+}

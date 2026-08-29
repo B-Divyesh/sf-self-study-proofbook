@@ -1,0 +1,33 @@
+{
+  "viewport": {
+    "width": 390,
+    "height": 844
+  },
+  "sourceBoxes": [
+    {
+      "name": "Open source link for Dijkstra’s algorithm reference in a new tab",
+      "width": 216.921875,
+      "height": 44
+    }
+  ],
+  "visibleControlCount": 29,
+  "undersized": [],
+  "overflow": 0,
+  "axeViolations": [],
+  "keyboard": {
+    "skipFirst": true,
+    "skipMovedToMain": true,
+    "spaceActivated": true
+  },
+  "requests": {
+    "count": 4,
+    "onlySameOrigin": true
+  },
+  "errors": [],
+  "reducedMotion": {
+    "matches": true,
+    "maxAnimationSeconds": 0,
+    "maxTransitionSeconds": 0,
+    "scrollBehavior": "auto"
+  }
+}
