@@ -226,6 +226,64 @@ test('@claim:json-complete-archive restores all local proofbook data', async ({ 
   expect(restoredContents).toEqual(originalContents);
 });
 
+test('rejects the verifier malformed archive before confirmation, preserves a real ledger, and recovers after reload', async ({ page }) => {
+  await page.goto('/app');
+  await page.getByRole('button', { name: 'Add topic' }).click();
+  await page.getByLabel('Topic name').fill('Recovery checks');
+  await page.getByLabel('Study goal').fill('Keep working records when imports fail.');
+  await page.getByRole('button', { name: 'Add topic' }).last().click();
+  await page.getByRole('button', { name: 'Record attempt' }).click();
+  await page.getByLabel('Topic', { exact: true }).selectOption({ label: 'Recovery checks' });
+  await page.getByLabel('Problem title').fill('Retain the valid ledger');
+  await page.getByLabel('Source', { exact: true }).fill('Proofbook recovery test');
+  await page.getByLabel('Problem reference').fill('Case 1');
+  await page.getByRole('button', { name: 'Start attempt' }).click();
+
+  let confirmationOpened = false;
+  page.on('dialog', (dialog) => { confirmationOpened = true; void dialog.dismiss(); });
+  await page.locator('#import-file').setInputFiles({
+    name: 'verifier-reproduction.json',
+    mimeType: 'application/json',
+    buffer: Buffer.from(JSON.stringify({ topics: [], attempts: [{}] })),
+  });
+
+  await expect(page.getByText(/This archive is invalid.*current proofbook was not changed/)).toBeVisible();
+  expect(confirmationOpened).toBe(false);
+  await expect(page.getByRole('heading', { name: 'Retain the valid ledger' })).toBeVisible();
+  await page.reload();
+  await expect(page.getByRole('heading', { name: 'Retain the valid ledger' })).toBeVisible();
+  await expect(page.getByText('1 attempt across 1 topic.')).toBeVisible();
+});
+
+test('recovers a legacy malformed persisted archive into a usable ledger', async ({ page }) => {
+  await page.goto('/app');
+  await page.evaluate(async () => new Promise<void>((resolve, reject) => {
+    const request = indexedDB.open('proofbook-v1');
+    request.onerror = () => reject(request.error);
+    request.onsuccess = () => {
+      const transaction = request.result.transaction('state', 'readwrite');
+      transaction.objectStore('state').put({ topics: [], attempts: [{}] }, 'proofbook');
+      transaction.oncomplete = () => { request.result.close(); resolve(); };
+      transaction.onerror = () => reject(transaction.error);
+    };
+  }));
+  await page.reload();
+  await expect(page.getByRole('heading', { level: 1 })).toHaveText('Build proof you can revisit');
+  await expect(page.getByText('0 attempts across 0 topics.')).toBeVisible();
+  await expect(page.getByText(/A damaged archive was set aside/)).toBeVisible();
+  const recoveryStored = await page.evaluate(async () => new Promise<boolean>((resolve, reject) => {
+    const request = indexedDB.open('proofbook-v1');
+    request.onerror = () => reject(request.error);
+    request.onsuccess = () => {
+      const transaction = request.result.transaction('state', 'readonly');
+      const keys = transaction.objectStore('state').getAllKeys();
+      keys.onsuccess = () => { request.result.close(); resolve(keys.result.some((key) => String(key).startsWith('recovery-'))); };
+      keys.onerror = () => reject(keys.error);
+    };
+  }));
+  expect(recoveryStored).toBe(true);
+});
+
 test('@claim:no-credential-service marks the printed record as a non-credential', async ({ page }) => {
   const outgoing: string[] = [];
   page.on('request', (request) => outgoing.push(request.url()));
@@ -243,6 +301,24 @@ test('demo supports keyboard-sized mobile use and has no Axe violations', async 
   expect(overflow).toBeLessThanOrEqual(1);
   const results = await new AxeBuilder({ page }).analyze();
   expect(results.violations).toEqual([]);
+});
+
+test('persistent mobile demo controls and navigation targets are at least 44px', async ({ page }) => {
+  await page.setViewportSize({ width: 390, height: 844 });
+  await page.goto('/demo');
+  for (const control of [
+    page.getByRole('button', { name: 'Reset demo' }),
+    page.getByRole('button', { name: 'Start for real' }),
+    page.getByRole('link', { name: 'Self-Study Proofbook home' }),
+    page.getByRole('link', { name: 'Demo', exact: true }),
+    page.getByRole('link', { name: 'My proofbook', exact: true }),
+    page.getByRole('link', { name: 'Privacy', exact: true }).first(),
+  ]) {
+    const box = await control.boundingBox();
+    expect(box, 'persistent control should be rendered').not.toBeNull();
+    expect(box!.width).toBeGreaterThanOrEqual(44);
+    expect(box!.height).toBeGreaterThanOrEqual(44);
+  }
 });
 
 test('all public routes have no Axe violations', async ({ page }) => {

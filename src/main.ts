@@ -1,6 +1,7 @@
 import './style.css';
 import { clearDemo, loadState, resetDemo, saveState } from './db';
 import { decryptArchive, encryptArchive } from './crypto';
+import { validateArchive } from './schema';
 import type { Attempt, AttemptStatus, ProofbookState, Topic } from './types';
 
 const app = document.querySelector<HTMLDivElement>('#app')!;
@@ -8,6 +9,7 @@ const path = location.pathname.replace(/\/$/, '') || '/';
 let demo = path === '/demo' || new URLSearchParams(location.search).get('demo') === '1';
 let state: ProofbookState | null = null;
 let timerTick: number | undefined;
+let recoveryNotice = false;
 
 const routeInfo: Record<string, { title: string; description: string }> = {
   '/': { title: 'Self-Study Proofbook — Record problems you can solve', description: 'Record cited math and CS problems, timed attempts, solution revisions, and a printable mastery index in your browser.' },
@@ -273,7 +275,9 @@ async function navigate(next: string, push = true, focusHeading = true): Promise
   setMeta(demoEntry ? '/demo' : (routeInfo[route] ? route : '/404'));
   clearInterval(timerTick);
   if (route === '/app' || route === '/demo' || route === '/print' || demoEntry) {
-    state = await loadState(demo);
+    const loaded = await loadState(demo);
+    state = loaded.state;
+    recoveryNotice = loaded.recovered;
   }
   app.innerHTML = demoEntry || route === '/app' || route === '/demo' ? appView() : route === '/' ? landing() : route === '/print' ? printView() : route === '/privacy' ? legalView('privacy') : route === '/terms' ? legalView('terms') : notFound();
   bindCommon();
@@ -281,6 +285,10 @@ async function navigate(next: string, push = true, focusHeading = true): Promise
   if (route === '/print') document.querySelector('#print-index')?.addEventListener('click', () => print());
   if (focusHeading) document.querySelector<HTMLElement>('h1')?.focus({ preventScroll: true });
   document.querySelector('.route-status')!.textContent = document.querySelector('h1')?.textContent ?? '';
+  if (recoveryNotice) {
+    showToast('A damaged archive was set aside and a usable empty proofbook was restored. Import a valid backup to continue.');
+    recoveryNotice = false;
+  }
   scrollTo({ top: 0, behavior: matchMedia('(prefers-reduced-motion: reduce)').matches ? 'instant' : 'smooth' });
 }
 
@@ -440,8 +448,7 @@ function bindArchive(): void {
         if (!password) return;
         text = await decryptArchive(await file.arrayBuffer(), password);
       } else text = await file.text();
-      const parsed = JSON.parse(text) as ProofbookState;
-      if (!Array.isArray(parsed.topics) || !Array.isArray(parsed.attempts)) throw new Error('The archive is missing topics or attempts.');
+      const parsed = validateArchive(JSON.parse(text));
       if (!confirm(`Replace this ledger with ${parsed.attempts.length} imported attempts?`)) return;
       state = parsed;
       // Import is a byte-for-byte restoration of the learner's archive; do not
@@ -450,6 +457,7 @@ function bindArchive(): void {
       await navigate(demo ? '/demo' : '/app', false);
       showToast('Archive imported.');
     } catch (error) { showToast(error instanceof Error ? error.message : 'The archive could not be imported.'); }
+    finally { fileInput.value = ''; }
   });
   document.querySelector('#encrypt-export')?.addEventListener('click', () => {
     openDialog('password-dialog');

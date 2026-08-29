@@ -57,7 +57,8 @@ isolated demo storage, revision history, downloads, and the print route.
 
 ## Project notes
 
-- `src/db.ts` owns the two IndexedDB namespaces.
+- `src/db.ts` owns the two IndexedDB namespaces and recovers a legacy damaged archive into a usable ledger.
+- `src/schema.ts` validates every imported topic, attempt, revision, value, and reference before the current ledger can be replaced.
 - `src/crypto.ts` implements password-encrypted archives with Web Crypto.
 - `vite.config.ts` generates the service worker and static route documents.
 - `.factory/design.md` records the product-specific visual system and art

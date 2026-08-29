@@ -39,12 +39,12 @@ button { color: inherit; }
 .skip-link:focus { transform: translateY(0); }
 .demo-banner { min-height: 44px; display: flex; align-items: center; justify-content: center; gap: 24px; padding: 6px 24px; color: var(--void); background: var(--amber); font-family: var(--display); font-size: 13px; letter-spacing: .02em; }
 .banner-actions { display: flex; gap: 16px; }
-.demo-banner .text-button { color: var(--void); border-color: var(--void); min-height: 32px; }
+.demo-banner .text-button { min-width: 44px; min-height: 44px; padding-inline: 8px; color: var(--void); border-color: var(--void); }
 .site-header { width: min(1440px, 100%); margin: auto; min-height: 72px; padding: 0 clamp(20px, 5vw, 72px); display: flex; align-items: center; justify-content: space-between; border-bottom: 1px solid var(--grid); background: rgba(11,14,19,.92); }
-.wordmark { display: inline-flex; align-items: center; gap: 10px; color: var(--ink); font: 14px/1 var(--display); letter-spacing: .1em; text-decoration: none; }
+.wordmark { display: inline-flex; align-items: center; justify-content: center; min-width: 44px; min-height: 44px; gap: 10px; color: var(--ink); font: 14px/1 var(--display); letter-spacing: .1em; text-decoration: none; }
 .wordmark-mark { display: grid; place-items: center; width: 30px; height: 30px; color: var(--void); background: var(--phosphor); }
 .site-header nav, footer nav { display: flex; gap: clamp(16px, 3vw, 36px); font-family: var(--display); font-size: 13px; }
-.site-header nav a { color: var(--muted); text-decoration: none; min-height: 44px; display: inline-flex; align-items: center; border-bottom: 2px solid transparent; }
+.site-header nav a { color: var(--muted); text-decoration: none; min-width: 44px; min-height: 44px; display: inline-flex; align-items: center; justify-content: center; border-bottom: 2px solid transparent; }
 .site-header nav a:hover, .site-header nav a[aria-current] { color: var(--ink); border-color: var(--phosphor); }
 main { width: min(1440px, 100%); margin: auto; min-height: 70vh; }
 .hero { min-height: calc(100vh - 72px); display: grid; grid-template-columns: minmax(340px, .82fr) minmax(500px, 1.18fr); align-items: center; gap: clamp(32px, 5vw, 88px); padding: 64px clamp(20px, 5vw, 72px) 80px; overflow: hidden; }
