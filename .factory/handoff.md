@@ -30,7 +30,7 @@ screen-reader landmark navigation an accurate structure.
   HTTP 404 and is captured in `.factory/evidence/polish-2-local-404/`.
 - Local Lighthouse mobile audit: Performance 99, Accessibility 100, Best
   Practices 100, SEO 100; LCP 1.7 s, CLS 0.043, TBT 50 ms. Report:
-  `.factory/evidence/polish-2-local-home/lighthouse.json`.
+  `.factory/evidence/polish-2-local-home/lighthouse-retry.json`.
 - Cold live audit: `/`, `/?demo=1`, `/demo`, `/app`, `/print?demo=1`,
   `/privacy`, and `/terms` returned 200; a deliberate unknown address returned
   404. Every route had one H1/main/header/footer, no application console error,
