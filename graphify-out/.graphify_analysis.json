@@ -232,13 +232,13 @@
       "degree": 10
     },
     {
-      "id": "src_db_loadstate",
-      "label": "loadState()",
+      "id": "src_main_printview",
+      "label": "printView()",
       "degree": 9
     },
     {
-      "id": "src_main_printview",
-      "label": "printView()",
+      "id": "src_db_loadstate",
+      "label": "loadState()",
       "degree": 9
     }
   ],
