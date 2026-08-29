@@ -68,6 +68,7 @@ pushed to `origin/main`. The authenticated Static Web Apps CLI reached project
 settings but did not return from that control-plane request within two 55-second
 safe deployment attempts; the live site still advertises the previous JS asset
 hash. No deployment token, resource group, or additional deployment config is
-present in the repository. Run the factory static deployment for this pushed
+present in the repository, and the GitHub Actions API reports zero workflow
+runs for this repository. Run the factory static deployment for this pushed
 commit, then compare live build hashes and repeat the `/demo` malformed-import
 and 390 px target checks.
