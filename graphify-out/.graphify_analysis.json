@@ -149,19 +149,24 @@
       "degree": 14
     },
     {
-      "id": "tsconfig_compileroptions",
-      "label": "compilerOptions",
+      "id": "src_main_bindarchive",
+      "label": "bindArchive()",
       "degree": 12
     },
     {
-      "id": "src_main_bindarchive",
-      "label": "bindArchive()",
+      "id": "tsconfig_compileroptions",
+      "label": "compilerOptions",
       "degree": 12
     },
     {
       "id": "src_main_editor",
       "label": "editor()",
       "degree": 10
+    },
+    {
+      "id": "src_main_bindeditor",
+      "label": "bindEditor()",
+      "degree": 9
     },
     {
       "id": "src_db_savestate",
@@ -174,9 +179,9 @@
       "degree": 9
     },
     {
-      "id": "src_main_bindeditor",
-      "label": "bindEditor()",
-      "degree": 9
+      "id": "src_main_bindapp",
+      "label": "bindApp()",
+      "degree": 8
     },
     {
       "id": "src_main_appview",
@@ -184,20 +189,15 @@
       "degree": 8
     },
     {
-      "id": "src_main_bindapp",
-      "label": "bindApp()",
-      "degree": 8
-    },
-    {
-      "id": "src_db_loadstate",
-      "label": "loadState()",
+      "id": "src_main_bindcreateforms",
+      "label": "bindCreateForms()",
       "degree": 6
     }
   ],
   "surprises": [
     {
-      "source": "navigate()",
-      "target": "loadState()",
+      "source": "bindArchive()",
+      "target": "saveState()",
       "source_files": [
         "src/main.ts",
         "src/db.ts"
@@ -209,17 +209,6 @@
     {
       "source": "bindCommon()",
       "target": "resetDemo()",
-      "source_files": [
-        "src/main.ts",
-        "src/db.ts"
-      ],
-      "confidence": "EXTRACTED",
-      "relation": "calls",
-      "why": "bridges separate communities"
-    },
-    {
-      "source": "bindArchive()",
-      "target": "saveState()",
       "source_files": [
         "src/main.ts",
         "src/db.ts"
@@ -242,6 +231,17 @@
     {
       "source": "bindEditor()",
       "target": "saveState()",
+      "source_files": [
+        "src/main.ts",
+        "src/db.ts"
+      ],
+      "confidence": "EXTRACTED",
+      "relation": "calls",
+      "why": "bridges separate communities"
+    },
+    {
+      "source": "navigate()",
+      "target": "loadState()",
       "source_files": [
         "src/main.ts",
         "src/db.ts"
