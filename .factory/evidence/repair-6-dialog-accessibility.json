@@ -1,0 +1,31 @@
+{
+  "url": "https://self-study-proofbook.sociobot.in/demo",
+  "viewport": "390x844",
+  "browser": "Playwright 1.58.2 bundled Chromium",
+  "dialogs": [
+    {
+      "opener": "Add topic",
+      "role": "dialog",
+      "name": "Add a topic",
+      "modal": true,
+      "initialFocus": "Close dialog",
+      "focusReturned": true
+    },
+    {
+      "opener": "Record attempt",
+      "role": "dialog",
+      "name": "Record an attempt",
+      "modal": true,
+      "initialFocus": "Close dialog",
+      "focusReturned": true
+    },
+    {
+      "opener": "Export encrypted backup",
+      "role": "dialog",
+      "name": "Password-protect this backup",
+      "modal": true,
+      "initialFocus": "Close dialog",
+      "focusReturned": true
+    }
+  ]
+}

@@ -1,0 +1,13 @@
+{
+  "url": "https://self-study-proofbook.sociobot.in/demo",
+  "viewport": "390x844",
+  "horizontalOverflow": 0,
+  "undersizedInteractiveTargets": 0,
+  "firstTab": "Skip to main content",
+  "skipLinkTarget": "MAIN",
+  "reducedMotionMatched": true,
+  "horizontalOverflowAt200PercentText": 0,
+  "requestsDuringEditAndSave": 4,
+  "externalRequests": [],
+  "consoleOrPageErrors": []
+}
