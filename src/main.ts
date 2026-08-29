@@ -251,11 +251,11 @@ function legalView(kind: 'privacy' | 'terms'): string {
     <h2>What this app stores</h2><p>Proofbook stores topics, attempts, timers, and revisions in your browser. Demo data uses a separate browser database.</p>
     <h2>What leaves your device</h2><p>Your study records do not leave your device unless you export them.</p>
     <h2>Deleting your data</h2><p>Delete attempts inside the app. You can also clear this site’s stored data in your browser settings.</p>
-    <h2>Contact</h2><p>Email <a href="mailto:privacy@sociobot.in">privacy@sociobot.in</a> with privacy questions.</p>` : `
+    <h2>Contact</h2><p>Email <a class="contact-link" href="mailto:privacy@sociobot.in">privacy@sociobot.in</a> with privacy questions.</p>` : `
     <h2>Your records</h2><p>You are responsible for your entries and backups. This app does not certify knowledge or issue credentials.</p>
     <h2>Source material</h2><p>Cite books, papers, and exams. Do not copy material you lack permission to store or share.</p>
     <h2>Availability</h2><p>The app is provided as-is. Keep exported backups of work you cannot replace.</p>
-    <h2>Contact</h2><p>Email <a href="mailto:support@sociobot.in">support@sociobot.in</a> for support.</p>`}</article>`, kind);
+    <h2>Contact</h2><p>Email <a class="contact-link" href="mailto:support@sociobot.in">support@sociobot.in</a> for support.</p>`}</article>`, kind);
 }
 
 function notFound(): string {

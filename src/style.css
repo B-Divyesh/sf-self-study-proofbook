@@ -197,6 +197,7 @@ td small { display: block; margin-top: 5px; color: var(--muted); }
 .legal { max-width: 850px; }
 .legal h2 { margin-top: 48px; font-size: 25px; }
 .legal p { max-width: 68ch; color: var(--muted); font-size: 18px; }
+.contact-link { display: inline-flex; min-width: 44px; min-height: 44px; padding-inline: 6px; align-items: center; justify-content: center; overflow-wrap: anywhere; vertical-align: middle; }
 .error-code { color: var(--phosphor); font: clamp(100px, 25vw, 300px)/.8 var(--display); opacity: .2; }
 .not-found h1 { margin-top: -20px; }
 footer { width: min(1440px, 100%); margin: auto; display: grid; grid-template-columns: 1fr auto; gap: 10px 40px; align-items: center; padding: 32px clamp(20px, 5vw, 72px); border-top: 1px solid var(--grid); color: var(--muted); font-size: 13px; }

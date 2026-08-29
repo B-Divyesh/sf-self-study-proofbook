@@ -639,6 +639,27 @@ test('every visible first-screen action is at least 44px on mobile', async ({ pa
   }
 });
 
+test('legal contact links are at least 44px on mobile without horizontal overflow', async ({ page }) => {
+  await page.setViewportSize({ width: 390, height: 844 });
+
+  for (const [route, address] of [
+    ['/privacy', 'privacy@sociobot.in'],
+    ['/terms', 'support@sociobot.in'],
+  ]) {
+    await page.goto(route);
+    const contactLink = page.locator(`main a[href="mailto:${address}"]`);
+    await expect(contactLink).toHaveCount(1);
+    await expect(contactLink).toBeVisible();
+    const box = await contactLink.boundingBox();
+    expect(box, `${route} contact link should be rendered`).not.toBeNull();
+    expect(box!.width).toBeGreaterThanOrEqual(44);
+    expect(box!.height).toBeGreaterThanOrEqual(44);
+
+    const overflow = await page.evaluate(() => document.documentElement.scrollWidth - document.documentElement.clientWidth);
+    expect(overflow).toBeLessThanOrEqual(1);
+  }
+});
+
 test('all public routes have no Axe violations', async ({ page }) => {
   for (const route of ['/', '/demo', '/app', '/print?demo=1', '/privacy', '/terms', '/not-a-proofbook-route']) {
     await page.goto(route);
