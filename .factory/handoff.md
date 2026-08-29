@@ -78,11 +78,44 @@ mobile footer targets, and the recorded one-time/free-release decision.
 
 The Azure Static Web App is `sf-self-study-proofbook` in resource group
 `sociobot`; its default hostname is
-`ambitious-meadow-0375f5710.7.azurestaticapps.net`. Deployment and post-release
-hash, policy, browser, offline, and Lighthouse evidence are pending the repair
-commit and push.
+`ambitious-meadow-0375f5710.7.azurestaticapps.net`. Commit `fbaa543` was pushed
+to `origin/main`, then `dist/` was deployed to its production environment with
+the work order's static configuration. The custom domain propagated the new
+hashed JavaScript immediately.
+
+- Live `verify-url.sh` passes `/` and `/demo` with zero console/page errors.
+  Screenshots and reports are under `.factory/evidence/repair-5-live-*`.
+- The deployed artifact matches local `dist/` byte-for-byte:
+  - `index.html`: `be8d0c4854e287dca6c8fd39fa80426d0e351bd04294fddf6b8b764c13dded74`
+  - `index-btKUzp9U.js`: `e20737674f2ed9099d1aacca8cb00075f0c3900df0440ee8a36c01d407d6fa39`
+  - `index-CTvWy7GA.css`: `cdb831f466decb9a12d86f2df496fdc168c657838b56bc7c3a74e3a3adfa5b3d`
+  - `sw.js`: `24bcecfa686045274ba0b5cc874d1783c991f545a595e9e55267f564598659d9`
+  - `manifest.webmanifest`: `81b757553e42c82ae0275d421ab5ea1bc0ebe6b072d8a0e7d55c7e570c06678f`
+- Live real-ledger reproductions show both native whitespace values still begin
+  as valid, then receive `aria-invalid=true` and their plain bound errors. The
+  existing 1-attempt ledger and heading survive immediate navigation and reload.
+- A live injected legacy copy with one valid and one blank attempt restores the
+  valid attempt and exposes both recovery download and restore actions.
+- Live 390×844 footer boxes measure Privacy 58.8×44, Terms 44×44, and Built by
+  Param Factory 176.2×44. There is no horizontal overflow or active reduced-
+  motion animation; the skip link is the first Tab stop.
+- Live Axe scans find zero violations on all seven public/error routes. Normal
+  routes produce no console/page errors, and the functional request log contains
+  only `https://self-study-proofbook.sociobot.in`.
+- The live worker controls `/demo`, `registration.update()` completes with an
+  active worker, and the three-attempt demo reloads with browser networking
+  disabled. The manifest start URL uses build ID `d964b2bf6383`.
+- Live Lighthouse 13.0.1 mobile: Performance **100**, Accessibility **100**,
+  Best Practices **100**, SEO **100**; FCP 1.1 s, LCP 1.4 s, TBT 10 ms,
+  CLS 0.046, transfer 89 KiB. Evidence:
+  `.factory/evidence/repair-5-lighthouse-live.json`.
+- HTML revalidates after 30 seconds; hashed assets return one-year immutable
+  caching. HSTS, `nosniff`, strict referrer policy, restrictive permissions,
+  and the self-only CSP are present. All discovered links and PWA assets return
+  200; the designed unknown route returns HTTP 404.
 
 ## Known gaps
 
-No verifier blocker remains locally. The researched paid model is intentionally
-deferred as documented above; there is no broken or misleading purchase path.
+No verifier blocker remains locally or on the deployed custom domain. The
+researched paid model is intentionally deferred as documented above; there is
+no broken or misleading purchase path.
