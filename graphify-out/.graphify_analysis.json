@@ -194,11 +194,6 @@
       "degree": 12
     },
     {
-      "id": "src_main_bindeditor",
-      "label": "bindEditor()",
-      "degree": 10
-    },
-    {
       "id": "src_schema_attempt",
       "label": "attempt()",
       "degree": 10
@@ -214,45 +209,28 @@
       "degree": 10
     },
     {
-      "id": "src_main_bindapp",
-      "label": "bindApp()",
+      "id": "src_main_bindeditor",
+      "label": "bindEditor()",
+      "degree": 10
+    },
+    {
+      "id": "src_db_loadstate",
+      "label": "loadState()",
       "degree": 9
     },
     {
-      "id": "src_main_commitnextstate",
-      "label": "commitNextState()",
+      "id": "src_main_printview",
+      "label": "printView()",
       "degree": 9
     }
   ],
   "surprises": [
     {
-      "source": "bindArchive()",
-      "target": "validateArchive()",
+      "source": "loadState()",
+      "target": "recoverArchive()",
       "source_files": [
-        "src/main.ts",
+        "src/db.ts",
         "src/schema.ts"
-      ],
-      "confidence": "EXTRACTED",
-      "relation": "calls",
-      "why": "bridges separate communities"
-    },
-    {
-      "source": "bindCommon()",
-      "target": "clearDemo()",
-      "source_files": [
-        "src/main.ts",
-        "src/db.ts"
-      ],
-      "confidence": "EXTRACTED",
-      "relation": "calls",
-      "why": "bridges separate communities"
-    },
-    {
-      "source": "bindCommon()",
-      "target": "resetDemo()",
-      "source_files": [
-        "src/main.ts",
-        "src/db.ts"
       ],
       "confidence": "EXTRACTED",
       "relation": "calls",
@@ -270,11 +248,33 @@
       "why": "bridges separate communities"
     },
     {
-      "source": "commitNextState()",
-      "target": "saveState()",
+      "source": "loadState()",
+      "target": "validateArchive()",
+      "source_files": [
+        "src/db.ts",
+        "src/schema.ts"
+      ],
+      "confidence": "EXTRACTED",
+      "relation": "calls",
+      "why": "bridges separate communities"
+    },
+    {
+      "source": "saveState()",
+      "target": "validateArchive()",
+      "source_files": [
+        "src/db.ts",
+        "src/schema.ts"
+      ],
+      "confidence": "EXTRACTED",
+      "relation": "calls",
+      "why": "bridges separate communities"
+    },
+    {
+      "source": "bindArchive()",
+      "target": "validateArchive()",
       "source_files": [
         "src/main.ts",
-        "src/db.ts"
+        "src/schema.ts"
       ],
       "confidence": "EXTRACTED",
       "relation": "calls",
