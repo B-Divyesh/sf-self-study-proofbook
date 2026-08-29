@@ -32,7 +32,7 @@
     "claim": "Creates a printable mastery index with sources, time, status, and revisions.",
     "where": "landing preview and method, app archive tools, README",
     "test": "npm test -- --grep @claim:print-index",
-    "sandbox": "fresh /demo data; open the print route and assert three complete rows and credential disclaimer"
+    "sandbox": "fresh /demo data; save a revision, open the print route, assert all six headings and a sample row's source, time, status, revised count, print stylesheet, and browser print action"
   },
   {
     "id": "encrypted-backup",

@@ -1,6 +1,6 @@
 # Landing copy audit
 
-Checked 2026-08-29 for perfection-loop round 4. Counts treat contractions and
+Checked 2026-08-29 for perfection-loop round 5. Counts treat contractions and
 hyphenated terms as one word. Sample records, table headings, navigation labels,
 and version text are labels or data, not sentences. No landing sentence exceeds
 22 words or contains a banned marketing word.
@@ -42,7 +42,7 @@ in one breath: record problems you can solve, then try the separate sample ledge
 | Your entries stay in this browser unless you export them. | 9 | Pass — `privacy-local` |
 | Use source citations. | 3 | Pass — guidance |
 | Do not store copyrighted problem text you cannot redistribute. | 9 | Pass — guidance |
-| Keep a complete encrypted archive | 5 | Pass — section heading |
+| Export a password-encrypted backup | 4 | Pass — `encrypted-backup` |
 | Record attempts, then export JSON, CSV, a print index, or a password-encrypted backup. | 13 | Pass — archive claims |
 | Start your proofbook | 3 | Pass — action |
 | Your archive stays in this browser until you choose to download it. | 12 | Pass — `privacy-local` |
@@ -68,5 +68,5 @@ found**.
 
 ## Catalog description
 
-“Record cited problems, timed attempts, and revisions in a private offline
-ledger.” — 11 words, 81 characters, starts with a verb.
+“Record citations, timed attempts, and revisions in a private offline ledger.”
+— 11 words, 75 characters, starts with a verb.

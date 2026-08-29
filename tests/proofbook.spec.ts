@@ -66,13 +66,38 @@ test('@claim:json-revisions exports every saved revision', async ({ page }) => {
   expect(archive.attempts.find((attempt) => attempt.title === 'Uniform limit of continuous functions')?.revisions).toHaveLength(2);
 });
 
-test('@claim:print-index creates a mastery review sheet', async ({ page }) => {
+test('@claim:print-index creates a printable mastery index with its stated evidence', async ({ page }) => {
+  await page.addInitScript(() => {
+    Object.defineProperty(window, '__proofbookPrintCalls', { value: 0, writable: true });
+    window.print = () => {
+      (window as Window & { __proofbookPrintCalls: number }).__proofbookPrintCalls += 1;
+    };
+  });
   await page.goto('/demo');
+  await expect(page.locator('.history details')).toHaveCount(1);
+  await page.getByLabel('Solution notes Markdown').fill('A revised cut argument that names the boundary edge first.');
+  await page.getByRole('button', { name: 'Save revision' }).click();
+  await expect(page.locator('.history details')).toHaveCount(2);
   await page.getByRole('link', { name: 'Print mastery index' }).click();
   await expect(page).toHaveURL(/\/print\?demo=1$/);
   await expect(page.getByRole('heading', { level: 1 })).toHaveText('Mastery index');
   await expect(page.locator('tbody tr')).toHaveCount(3);
+  await expect(page.locator('thead th')).toHaveText(['Problem', 'Source', 'Time', 'Evidence', 'Revisions', 'Updated']);
+  const dijkstra = page.locator('tbody tr').filter({ hasText: 'Prove Dijkstra’s greedy step' });
+  await expect(dijkstra).toHaveCount(1);
+  await expect(dijkstra.locator('td').nth(0)).toContainText('Prove Dijkstra’s greedy step');
+  await expect(dijkstra.locator('td').nth(1)).toContainText('Algorithms, Dasgupta–Papadimitriou–Vazirani');
+  await expect(dijkstra.locator('td').nth(1)).toContainText('Section 4.4, proof reconstruction');
+  await expect(dijkstra.locator('td').nth(2)).toHaveText('32:00');
+  await expect(dijkstra.locator('td').nth(3)).toHaveText('Revised · 3/4');
+  await expect(dijkstra.locator('td').nth(4)).toHaveText('2');
   await expect(page.getByText('not an accredited credential')).toBeVisible();
+  await page.emulateMedia({ media: 'print' });
+  await expect(page.locator('.no-print')).toBeHidden();
+  await expect(page.locator('.site-header')).toBeHidden();
+  await page.emulateMedia({ media: 'screen' });
+  await page.getByRole('button', { name: 'Print index' }).click();
+  await expect.poll(() => page.evaluate(() => (window as Window & { __proofbookPrintCalls: number }).__proofbookPrintCalls)).toBe(1);
 });
 
 test('@claim:encrypted-backup uses AES-256-GCM and does not retain the password', async ({ page }) => {

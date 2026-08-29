@@ -152,7 +152,7 @@ function landing(): string {
       <div><p>Proofbook records practice; it does not issue credentials.</p><p>Your entries stay in this browser unless you export them.</p><p>Use source citations. Do not store copyrighted problem text you cannot redistribute.</p></div>
     </section>
     <section class="paid" id="paid" aria-labelledby="paid-title">
-      <div><h2 id="paid-title">Keep a complete encrypted archive</h2><p>Record attempts, then export JSON, CSV, a print index, or a password-encrypted backup.</p><div class="paid-actions"><a class="button primary" href="/app" data-route>Start your proofbook</a></div><p class="legal-note">Your archive stays in this browser until you choose to download it.</p></div>
+      <div><h2 id="paid-title">Export a password-encrypted backup</h2><p>Record attempts, then export JSON, CSV, a print index, or a password-encrypted backup.</p><div class="paid-actions"><a class="button primary" href="/app" data-route>Start your proofbook</a></div><p class="legal-note">Your archive stays in this browser until you choose to download it.</p></div>
     </section>
   `);
 }
