@@ -563,7 +563,7 @@ test('route names and landing sections use direct, useful wording', async ({ pag
   }
 });
 
-test('documents the free release without exposing internal billing instructions', async ({ page }) => {
+test('README states the current price plainly and labels contributor-only technical notes', async ({ page }) => {
   const brief = JSON.parse(await readFile('.factory/brief.json', 'utf8')) as { monetization: string; release_scope_decision: string };
   const readme = await readFile('README.md', 'utf8');
   expect(brief.monetization).toBe('one-time');
@@ -572,6 +572,12 @@ test('documents the free release without exposing internal billing instructions'
   expect(readme).not.toContain('researched business model');
   expect(readme).not.toContain('Sociobot billing product');
   expect(readme).not.toContain('register and verify the hosted checkout');
+  expect(readme).toContain('Creates a backup protected by your password.');
+  expect(readme).toContain('Your browser\nstores the ledger on this device.');
+  expect(readme).toContain('Backups are encrypted in your browser using your password.');
+  expect(readme).toContain('## Technical notes for contributors');
+  expect(readme).not.toContain('Creates a password-encrypted backup with AES-256-GCM.');
+  expect(readme).not.toContain('## Project notes');
   await page.goto('/');
   await expect(page.getByText('Free in this release; no checkout')).toBeVisible();
   await expect(page.locator('a[href*="/checkout"], [data-license]')).toHaveCount(0);

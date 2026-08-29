@@ -1,0 +1,82 @@
+{
+  "checkedAt": "2026-08-29T13:44:21.430Z",
+  "homeDemo": {
+    "homeOverflow": 0,
+    "demoOverflow": 0,
+    "title": "Demo — Self-Study Proofbook",
+    "sampleAttempts": 3,
+    "reset": true,
+    "offlineReload": true,
+    "demoDatabaseRemoved": true,
+    "sameOriginRequests": true,
+    "consoleErrors": []
+  },
+  "routing": {
+    "focusAndBack": true,
+    "routes": [
+      {
+        "route": "/",
+        "status": 200,
+        "title": "Self-Study Proofbook — Record problems you can solve",
+        "axeViolations": 0
+      },
+      {
+        "route": "/demo",
+        "status": 200,
+        "title": "Demo — Self-Study Proofbook",
+        "axeViolations": 0
+      },
+      {
+        "route": "/app",
+        "status": 200,
+        "title": "Your proofbook — Self-Study Proofbook",
+        "axeViolations": 0
+      },
+      {
+        "route": "/print?demo=1",
+        "status": 200,
+        "title": "Mastery index — Self-Study Proofbook",
+        "axeViolations": 0
+      },
+      {
+        "route": "/privacy",
+        "status": 200,
+        "title": "Privacy and data storage — Self-Study Proofbook",
+        "axeViolations": 0
+      },
+      {
+        "route": "/terms",
+        "status": 200,
+        "title": "Terms of use — Self-Study Proofbook",
+        "axeViolations": 0
+      },
+      {
+        "route": "/not-a-proofbook-route",
+        "status": 404,
+        "title": "Page not found — Self-Study Proofbook",
+        "axeViolations": 0
+      }
+    ]
+  },
+  "recovery": {
+    "validRecordUsable": true,
+    "originalDownloadExact": true,
+    "validRecordsRestored": true
+  },
+  "importValidation": {
+    "rejected": [
+      "topic",
+      "attempt",
+      "revision",
+      "value",
+      "reference"
+    ],
+    "confirmations": 0,
+    "archiveUnchanged": true
+  },
+  "accessibility": {
+    "home": 0,
+    "demo": 0,
+    "routes": 0
+  }
+}

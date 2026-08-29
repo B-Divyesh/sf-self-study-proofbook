@@ -1,0 +1,221 @@
+RUN npm test -- --grep @claim:privacy-local
+
+> self-study-proofbook@1.0.0 test
+> playwright test --grep @claim:privacy-local
+
+
+Running 1 test using 1 worker
+(node:2461) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:2461) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+·
+  1 passed (2.3s)
+RUN npm test -- --grep @claim:offline-reload
+
+> self-study-proofbook@1.0.0 test
+> playwright test --grep @claim:offline-reload
+
+
+Running 1 test using 1 worker
+(node:2561) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:2561) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+·
+  1 passed (2.2s)
+RUN npm test -- --grep @claim:csv-export
+
+> self-study-proofbook@1.0.0 test
+> playwright test --grep @claim:csv-export
+
+
+Running 1 test using 1 worker
+(node:2666) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:2666) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+·
+  1 passed (2.0s)
+RUN npm test -- --grep @claim:revision-history
+
+> self-study-proofbook@1.0.0 test
+> playwright test --grep @claim:revision-history
+
+
+Running 1 test using 1 worker
+(node:2770) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:2770) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+·
+  1 passed (4.4s)
+RUN npm test -- --grep @claim:print-index
+
+> self-study-proofbook@1.0.0 test
+> playwright test --grep @claim:print-index
+
+
+Running 1 test using 1 worker
+(node:2873) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:2873) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+·
+  1 passed (2.1s)
+RUN npm test -- --grep @claim:encrypted-backup
+
+> self-study-proofbook@1.0.0 test
+> playwright test --grep @claim:encrypted-backup
+
+
+Running 1 test using 1 worker
+(node:2972) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:2972) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+·
+  1 passed (2.2s)
+RUN npm test -- --grep @claim:json-revisions
+
+> self-study-proofbook@1.0.0 test
+> playwright test --grep @claim:json-revisions
+
+
+Running 1 test using 1 worker
+(node:3091) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:3091) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+·
+  1 passed (1.9s)
+RUN npm test -- --grep @claim:demo-isolation
+
+> self-study-proofbook@1.0.0 test
+> playwright test --grep @claim:demo-isolation
+
+
+Running 1 test using 1 worker
+(node:3191) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:3191) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+·
+  1 passed (3.9s)
+RUN npm test -- --grep @claim:archive-tools-included
+
+> self-study-proofbook@1.0.0 test
+> playwright test --grep @claim:archive-tools-included
+
+
+Running 1 test using 1 worker
+(node:3292) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:3292) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+·
+  1 passed (2.5s)
+RUN npm test -- --grep @claim:cited-attempt
+
+> self-study-proofbook@1.0.0 test
+> playwright test --grep @claim:cited-attempt
+
+
+Running 1 test using 1 worker
+(node:3393) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:3393) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+·
+  1 passed (2.7s)
+RUN npm test -- --grep @claim:topics-and-goals
+
+> self-study-proofbook@1.0.0 test
+> playwright test --grep @claim:topics-and-goals
+
+
+Running 1 test using 1 worker
+(node:3510) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:3510) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+·
+  1 passed (2.5s)
+RUN npm test -- --grep @claim:attempt-timer
+
+> self-study-proofbook@1.0.0 test
+> playwright test --grep @claim:attempt-timer
+
+
+Running 1 test using 1 worker
+(node:3610) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:3610) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+·
+  1 passed (2.4s)
+RUN npm test -- --grep @claim:evidence-status
+
+> self-study-proofbook@1.0.0 test
+> playwright test --grep @claim:evidence-status
+
+
+Running 1 test using 1 worker
+(node:3711) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:3711) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+·
+  1 passed (3.1s)
+RUN npm test -- --grep @claim:json-complete-archive
+
+> self-study-proofbook@1.0.0 test
+> playwright test --grep @claim:json-complete-archive
+
+
+Running 1 test using 1 worker
+(node:3819) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:3819) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+·
+  1 passed (2.2s)
+RUN npm test -- --grep @claim:no-credential-service
+
+> self-study-proofbook@1.0.0 test
+> playwright test --grep @claim:no-credential-service
+
+
+Running 1 test using 1 worker
+(node:3921) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:3921) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+·
+  1 passed (2.4s)
+RUN npm test -- --grep @claim:saved-data-recovery
+
+> self-study-proofbook@1.0.0 test
+> playwright test --grep @claim:saved-data-recovery
+
+
+Running 1 test using 1 worker
+(node:4043) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:4043) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+·
+  1 passed (6.0s)
+RUN npm test -- --grep @claim:safe-import-validation
+
+> self-study-proofbook@1.0.0 test
+> playwright test --grep @claim:safe-import-validation
+
+
+Running 1 test using 1 worker
+(node:4148) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:4148) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+·
+  1 passed (3.2s)

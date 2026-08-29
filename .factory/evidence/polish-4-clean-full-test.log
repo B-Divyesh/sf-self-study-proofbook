@@ -1,0 +1,12 @@
+
+> self-study-proofbook@1.0.0 test
+> playwright test
+
+
+Running 33 tests using 1 worker
+(node:4246) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:4246) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+·································
+  33 passed (42.1s)
