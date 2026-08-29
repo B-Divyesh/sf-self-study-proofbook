@@ -1,35 +1,60 @@
-# Self-Study Proofbook — adversarial review 6 handoff
+# Self-Study Proofbook — polish 6 handoff
 
 ## Result
 
-**FAIL — two findings remain.** The full report is
-[review-6.md](review-6.md).
+**PASS — every finding from reviews 1–6 is fixed and rechecked.** The product
+repair is commit `60f49b2266c4133d44eee44a91c3d36b9401a243`, pushed to `main`
+and deployed at <https://self-study-proofbook.sociobot.in> through static
+deployment `61120da4-d27a-4c45-8248-a7c202075dd6`.
 
-- **F-6-1, blocking:** README source-link support is not represented and
-  observably asserted by a registered claim test.
-- **F-6-2, minor:** live footers say version 1.0.1 while `package.json` says
-  1.0.0.
+The final functional repairs are:
 
-No product code was changed.
+- `source-link` is now an 18th registered claim with one observable test. The
+  demo immediately exposes a safe HTTPS source link; user links persist through
+  reload and JSON export/import, and open with `external noopener noreferrer`.
+- Version `1.0.1` is declared once in the package manifest. The Vite build uses
+  it in app footers and substitutes it into the static 404 footer.
+- The catalog line is now verb-first, 81 characters, and describes the current
+  private offline ledger plainly.
 
-## Verification performed
+The complete finding-by-finding record is [polish-6.md](polish-6.md).
 
-- Fresh live Chromium contexts at 390×844 and 1440×900.
-- One-click demo seed, edit, reset, fresh real-ledger exit, and pre-existing
-  real-data preservation checks.
-- Live offline reload and same-origin request-log checks.
-- Route, metadata, link, back-button focus, 404, console, responsive, reduced
-  motion, and Axe checks.
-- All 17 exact `.factory/claims.json` commands from a detached clean checkout:
-  **PASS**.
-- `npm test`: **PASS, 34/34**.
-- `npm run build`: **PASS**; `dist/` produced; JavaScript 13.49 KB gzip.
-- Live and clean-build JavaScript SHA-256 values match.
+## How to run and verify
 
-Evidence is in [review-6-assets](review-6-assets/).
+```sh
+npm ci
+npm test
+npm run build
+```
 
-## Next steps
+The build writes the static PWA to `dist/` with `dist/index.html` at its root.
+Open `/?demo=1` for the isolated sample ledger. Its persistent banner provides
+**Reset demo** and **Start for real**; demo storage is `proofbook-demo-v1` and
+real storage is `proofbook-v1`.
 
-Add and test a registered source-link claim or remove the README phrase. Align
-the footer and package version, deploy the repair, and repeat the complete
-review from a fresh browser context and clean checkout.
+A detached clean clone at `/tmp/self-study-proofbook-polish-6.494PTF` ran
+`npm ci`, `npm audit --audit-level=high`, all 18 exact claim commands in
+`.factory/claims.json`, `npm test` (**35/35**), and `npm run build` successfully.
+The checkout remained clean. The application bundle is 13.54 KB gzip; CSS is
+4.89 KB gzip.
+
+Cold production checks used `/opt/fleet/lib/verify-url.sh` on `/` and
+`/?demo=1`, then a fresh mobile Chromium/Axe audit on every public route and
+the direct 404. The audit records no app console errors, zero Axe violations,
+no horizontal overflow, same-origin demo requests, proper titles/H1s/landmarks,
+offline reload, the source-link attributes, and the designed HTTP 404. Evidence
+is under [evidence/polish-6-live-home](evidence/polish-6-live-home/),
+[evidence/polish-6-live-demo](evidence/polish-6-live-demo/),
+[evidence/polish-6-live-404](evidence/polish-6-live-404/), and
+[evidence/polish-6-live-audit.json](evidence/polish-6-live-audit.json).
+
+Live mobile Lighthouse scored **100 performance, 100 accessibility, 100 best
+practices, and 100 SEO** (LCP 1.4 s, CLS 0.045). The deployed JavaScript
+SHA-256 equals the local build:
+`d1e672bd2051af254afc878ff9b4c380048ff4dc9a95e176b3bed8b1bbad0b02`.
+
+## Known gaps and next steps
+
+None. The release is fully free in this scope; it has no checkout or license
+flow. Future paid work would require a separately registered and verified
+Sociobot billing product before user-facing paid copy is added.

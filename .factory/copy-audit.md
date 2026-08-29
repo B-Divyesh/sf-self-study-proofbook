@@ -1,6 +1,6 @@
 # Landing copy audit
 
-Checked 2026-08-29 for perfection-loop round 5. Counts treat contractions and
+Checked 2026-08-29 for perfection-loop round 6. Counts treat contractions and
 hyphenated terms as one word. Sample records, table headings, navigation labels,
 and version text are labels or data, not sentences. No landing sentence exceeds
 22 words or contains a banned marketing word.
@@ -30,16 +30,16 @@ in one breath: record problems you can solve, then try the separate sample ledge
 | A mastery index points back to sources, time spent, and revision history. | 12 | Pass — `print-index` |
 | Build evidence in three steps | 5 | Pass — section heading |
 | Cite the problem | 3 | Pass — step heading |
-| Name the book, paper, exam, or page. | 8 | Pass — guidance |
+| Name the book, paper, exam, or page. | 7 | Pass — guidance |
 | Do not copy restricted problem text. | 6 | Pass — guidance |
 | Time and revise your solution | 5 | Pass — step heading |
 | Keep each saved version. | 4 | Pass — `revision-history` |
-| Add a short note about what changed. | 8 | Pass — guidance |
+| Add a short note about what changed. | 7 | Pass — guidance |
 | Print your mastery index | 4 | Pass — action |
 | Review a compact list with sources, effort, status, and revision counts. | 11 | Pass — `print-index` |
 | A record, not a credential | 5 | Pass — limit heading |
 | Proofbook records practice; it does not issue credentials. | 8 | Pass — `no-credential-service` |
-| Your entries stay in this browser unless you export them. | 9 | Pass — `privacy-local` |
+| Your entries stay in this browser unless you export them. | 10 | Pass — `privacy-local` |
 | Use source citations. | 3 | Pass — guidance |
 | Do not store copyrighted problem text you cannot redistribute. | 9 | Pass — guidance |
 | Export a password-encrypted backup | 4 | Pass — `encrypted-backup` |
@@ -68,5 +68,5 @@ found**.
 
 ## Catalog description
 
-“Record citations, timed attempts, and revisions in a private offline ledger.”
-— 11 words, 76 characters, starts with a verb.
+"Record cited problems, timed attempts, and revisions in a private offline ledger."
+— 12 words, 81 characters, starts with a verb.
