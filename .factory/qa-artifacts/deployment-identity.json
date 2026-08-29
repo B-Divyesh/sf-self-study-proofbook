@@ -1,0 +1,12 @@
+{
+  "candidate": "026e5dd90e26adbdd90d86337b4e1a147afbd90b",
+  "url": "https://self-study-proofbook.sociobot.in",
+  "freshBuildPublicFilesCompared": 30,
+  "byteExactMatches": 30,
+  "mismatches": 0,
+  "fetchErrors": 0,
+  "excluded": [
+    "staticwebapp.config.json (deployment configuration, not a public asset)"
+  ],
+  "liveServiceWorkerCache": "proofbook-2f24ab8b08a0"
+}

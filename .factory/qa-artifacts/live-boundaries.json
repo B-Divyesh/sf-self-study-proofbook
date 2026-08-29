@@ -1,0 +1,16 @@
+{
+  "blankRequiredRejected": true,
+  "ledgerUnchangedAfterBlank": true,
+  "exactLimits": {
+    "topicName": 60,
+    "topicGoal": 140,
+    "title": 100,
+    "source": 120,
+    "reference": 100,
+    "sourceUrl": 2048,
+    "notes": 100000
+  },
+  "overLimitNotesRejected": true,
+  "persistedValueLength": 100000,
+  "pageErrors": []
+}

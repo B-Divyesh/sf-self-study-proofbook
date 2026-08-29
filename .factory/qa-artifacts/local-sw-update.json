@@ -1,0 +1,8 @@
+{
+  "fixture": "fresh candidate dist served from a temporary directory",
+  "initialCache": "proofbook-2f24ab8b08a0",
+  "replacementCache": "proofbook-qa-update-1788016861973",
+  "toastObserved": "An update is ready. Reload to use it.",
+  "oldCacheRemoved": true,
+  "controllerRetained": true
+}

@@ -1,0 +1,42 @@
+{
+  "home": {
+    "status": 200,
+    "cacheControl": "public, must-revalidate, max-age=30",
+    "contentType": "text/html"
+  },
+  "hashedJavaScript": {
+    "path": "/assets/index-Cn34kN7q.js",
+    "status": 200,
+    "cacheControl": "public, max-age=31536000, immutable",
+    "contentType": "text/javascript"
+  },
+  "serviceWorker": {
+    "status": 200,
+    "cacheControl": "public, must-revalidate, max-age=30",
+    "contentType": "text/javascript"
+  },
+  "manifest": {
+    "status": 200,
+    "contentType": "application/manifest+json"
+  },
+  "unknownRoute": {
+    "status": 404,
+    "title": "Page not found — Self-Study Proofbook"
+  },
+  "securityHeaders": {
+    "strictTransportSecurity": "max-age=10886400; includeSubDomains; preload",
+    "referrerPolicy": "strict-origin-when-cross-origin",
+    "xContentTypeOptions": "nosniff",
+    "permissionsPolicy": "camera=(), microphone=(), geolocation=()",
+    "contentSecurityPolicy": "default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' data: blob:; font-src 'self'; connect-src 'self'; worker-src 'self'; manifest-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self'; frame-ancestors 'none'"
+  },
+  "linkCrawl": {
+    "internalProductRoutes": "all expected routes returned 200",
+    "designedUnknownRoute": 404,
+    "externalFactoryLink": 200,
+    "mailtoLinks": [
+      "privacy@sociobot.in",
+      "support@sociobot.in"
+    ]
+  }
+}

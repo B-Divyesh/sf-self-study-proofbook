@@ -1,0 +1,419 @@
+{
+  "routes": {
+    "/": {
+      "status": 200,
+      "violations": [],
+      "seriousCritical": 0,
+      "h1": 1,
+      "main": 1,
+      "title": "Self-Study Proofbook — Record problems you can solve",
+      "lang": "en"
+    },
+    "/demo": {
+      "status": 200,
+      "violations": [],
+      "seriousCritical": 0,
+      "h1": 1,
+      "main": 1,
+      "title": "Demo — Self-Study Proofbook",
+      "lang": "en"
+    },
+    "/app": {
+      "status": 200,
+      "violations": [],
+      "seriousCritical": 0,
+      "h1": 1,
+      "main": 1,
+      "title": "Your proofbook — Self-Study Proofbook",
+      "lang": "en"
+    },
+    "/print?demo=1": {
+      "status": 200,
+      "violations": [],
+      "seriousCritical": 0,
+      "h1": 1,
+      "main": 1,
+      "title": "Mastery index — Self-Study Proofbook",
+      "lang": "en"
+    },
+    "/privacy": {
+      "status": 200,
+      "violations": [],
+      "seriousCritical": 0,
+      "h1": 1,
+      "main": 1,
+      "title": "Privacy and data storage — Self-Study Proofbook",
+      "lang": "en"
+    },
+    "/terms": {
+      "status": 200,
+      "violations": [],
+      "seriousCritical": 0,
+      "h1": 1,
+      "main": 1,
+      "title": "Terms of use — Self-Study Proofbook",
+      "lang": "en"
+    },
+    "/not-a-proofbook-route": {
+      "status": 404,
+      "violations": [],
+      "seriousCritical": 0,
+      "h1": 1,
+      "main": 1,
+      "title": "Page not found — Self-Study Proofbook",
+      "lang": "en"
+    }
+  },
+  "mobile": {
+    "home": {
+      "clientWidth": 390,
+      "scrollWidth": 390,
+      "targets": [
+        {
+          "tag": "a",
+          "name": "Skip to main content",
+          "width": 236,
+          "height": 48.8,
+          "top": -75.8
+        },
+        {
+          "tag": "a",
+          "name": "Self-Study Proofbook home",
+          "width": 44,
+          "height": 44,
+          "top": 9.5
+        },
+        {
+          "tag": "a",
+          "name": "Demo",
+          "width": 44,
+          "height": 44,
+          "top": 9.5
+        },
+        {
+          "tag": "a",
+          "name": "My proofbook",
+          "width": 84,
+          "height": 44,
+          "top": 9.5
+        },
+        {
+          "tag": "a",
+          "name": "Privacy",
+          "width": 49,
+          "height": 44,
+          "top": 9.5
+        },
+        {
+          "tag": "a",
+          "name": "Try it with sample data",
+          "width": 222,
+          "height": 48,
+          "top": 369.6
+        },
+        {
+          "tag": "a",
+          "name": "Start your proofbook",
+          "width": 160,
+          "height": 20.1,
+          "top": 473.8
+        },
+        {
+          "tag": "a",
+          "name": "Start your proofbook",
+          "width": 198,
+          "height": 48,
+          "top": 3131
+        },
+        {
+          "tag": "a",
+          "name": "Privacy",
+          "width": 60,
+          "height": 44,
+          "top": 3377.5
+        },
+        {
+          "tag": "a",
+          "name": "Terms",
+          "width": 44,
+          "height": 44,
+          "top": 3377.5
+        },
+        {
+          "tag": "a",
+          "name": "Built by Param Factory (external site)",
+          "width": 180,
+          "height": 44,
+          "top": 3377.5
+        }
+      ],
+      "under44": [
+        {
+          "tag": "a",
+          "name": "Start your proofbook",
+          "width": 160,
+          "height": 20.1,
+          "top": 473.8
+        }
+      ]
+    },
+    "demo": {
+      "clientWidth": 390,
+      "scrollWidth": 390,
+      "targets": [
+        {
+          "tag": "a",
+          "name": "Skip to main content",
+          "width": 236,
+          "height": 48.8,
+          "top": -75.8
+        },
+        {
+          "tag": "button",
+          "name": "Reset demo",
+          "width": 96,
+          "height": 44,
+          "top": 50.3
+        },
+        {
+          "tag": "button",
+          "name": "Start for real",
+          "width": 128,
+          "height": 44,
+          "top": 50.3
+        },
+        {
+          "tag": "a",
+          "name": "Self-Study Proofbook home",
+          "width": 44,
+          "height": 44,
+          "top": 111.8
+        },
+        {
+          "tag": "a",
+          "name": "Demo",
+          "width": 44,
+          "height": 44,
+          "top": 111.8
+        },
+        {
+          "tag": "a",
+          "name": "My proofbook",
+          "width": 84,
+          "height": 44,
+          "top": 111.8
+        },
+        {
+          "tag": "a",
+          "name": "Privacy",
+          "width": 49,
+          "height": 44,
+          "top": 111.8
+        },
+        {
+          "tag": "button",
+          "name": "Add topic",
+          "width": 169,
+          "height": 48,
+          "top": 440.5
+        },
+        {
+          "tag": "button",
+          "name": "Record attempt",
+          "width": 169,
+          "height": 48,
+          "top": 440.5
+        },
+        {
+          "tag": "button",
+          "name": "Real analysisWrite complete epsilon arguments without notes.1",
+          "width": 160,
+          "height": 89,
+          "top": 593.5
+        },
+        {
+          "tag": "button",
+          "name": "Graph algorithmsChoose and justify the right invariant.1",
+          "width": 160,
+          "height": 89,
+          "top": 593.5
+        },
+        {
+          "tag": "button",
+          "name": "Abstract algebraConnect definitions to short structural proofs.1",
+          "width": 160,
+          "height": 89,
+          "top": 593.5
+        },
+        {
+          "tag": "button",
+          "name": "Prove Dijkstra’s greedy stepSection 4.4, proof reconstructionRevised",
+          "width": 390,
+          "height": 76,
+          "top": 775.5
+        },
+        {
+          "tag": "button",
+          "name": "Start timer",
+          "width": 140,
+          "height": 48,
+          "top": 1146.5
+        },
+        {
+          "tag": "textarea",
+          "name": "Assume the extracted vertex $v$ has the smallest tentative distance. On a shortest path to",
+          "width": 350,
+          "height": 321.6,
+          "top": 1275.5
+        },
+        {
+          "tag": "textarea",
+          "name": "I can state the cut argument now. I still want to test the proof against zero-weight edges",
+          "width": 350,
+          "height": 98.4,
+          "top": 1885.5
+        },
+        {
+          "tag": "select",
+          "name": "WorkingRevisedMastered",
+          "width": 350,
+          "height": 48,
+          "top": 2060.5
+        },
+        {
+          "tag": "input",
+          "name": "confidence",
+          "width": 390,
+          "height": 48,
+          "top": 2175.3
+        },
+        {
+          "tag": "input",
+          "name": "confidence",
+          "width": 390,
+          "height": 48,
+          "top": 2175.3
+        },
+        {
+          "tag": "input",
+          "name": "confidence",
+          "width": 390,
+          "height": 48,
+          "top": 2175.3
+        },
+        {
+          "tag": "input",
+          "name": "confidence",
+          "width": 390,
+          "height": 48,
+          "top": 2175.3
+        },
+        {
+          "tag": "button",
+          "name": "Save revision",
+          "width": 142,
+          "height": 48,
+          "top": 2240.3
+        },
+        {
+          "tag": "button",
+          "name": "Delete attempt",
+          "width": 116,
+          "height": 44,
+          "top": 2242.3
+        },
+        {
+          "tag": "summary",
+          "name": "Revision 1 · Aug 20, 2026",
+          "width": 350,
+          "height": 48,
+          "top": 2368.7
+        },
+        {
+          "tag": "button",
+          "name": "Export JSON",
+          "width": 350,
+          "height": 48,
+          "top": 2660.7
+        },
+        {
+          "tag": "button",
+          "name": "Export CSV",
+          "width": 350,
+          "height": 48,
+          "top": 2720.7
+        },
+        {
+          "tag": "a",
+          "name": "Print mastery index",
+          "width": 350,
+          "height": 48,
+          "top": 2780.7
+        },
+        {
+          "tag": "button",
+          "name": "Import archive",
+          "width": 350,
+          "height": 48,
+          "top": 2840.7
+        },
+        {
+          "tag": "button",
+          "name": "Export encrypted backup",
+          "width": 350,
+          "height": 48,
+          "top": 2900.7
+        },
+        {
+          "tag": "a",
+          "name": "Privacy",
+          "width": 60,
+          "height": 44,
+          "top": 3083.8
+        },
+        {
+          "tag": "a",
+          "name": "Terms",
+          "width": 44,
+          "height": 44,
+          "top": 3083.8
+        },
+        {
+          "tag": "a",
+          "name": "Built by Param Factory (external site)",
+          "width": 180,
+          "height": 44,
+          "top": 3083.8
+        }
+      ],
+      "under44": []
+    }
+  },
+  "keyboard": {
+    "skipFirst": true,
+    "mainFocusedAfterEnter": true,
+    "firstMainControl": {
+      "id": "new-topic",
+      "tag": "BUTTON",
+      "text": "Add topic",
+      "label": ""
+    },
+    "topicCreatedWithoutPointer": true,
+    "skipStyle": {
+      "outline": "rgb(185, 242, 39) solid 3px",
+      "outlineColor": "rgb(185, 242, 39)",
+      "outlineWidth": "3px",
+      "transform": "matrix(1, 0, 0, 1, 0, 0)"
+    },
+    "addStyle": {
+      "outline": "rgb(185, 242, 39) solid 3px",
+      "outlineColor": "rgb(185, 242, 39)",
+      "outlineWidth": "3px"
+    }
+  },
+  "reducedMotion": {
+    "transitionDuration": "0s",
+    "animationDuration": "0s",
+    "scrollBehavior": "auto"
+  }
+}

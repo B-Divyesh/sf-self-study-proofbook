@@ -1,0 +1,17 @@
+privacy-local	PASS	.factory/qa-artifacts/claims/1-privacy-local.log
+offline-reload	PASS	.factory/qa-artifacts/claims/2-offline-reload.log
+csv-export	PASS	.factory/qa-artifacts/claims/3-csv-export.log
+revision-history	PASS	.factory/qa-artifacts/claims/4-revision-history.log
+print-index	PASS	.factory/qa-artifacts/claims/5-print-index.log
+encrypted-backup	PASS	.factory/qa-artifacts/claims/6-encrypted-backup.log
+json-revisions	PASS	.factory/qa-artifacts/claims/7-json-revisions.log
+demo-isolation	PASS	.factory/qa-artifacts/claims/8-demo-isolation.log
+archive-tools-included	PASS	.factory/qa-artifacts/claims/9-archive-tools-included.log
+cited-attempt	PASS	.factory/qa-artifacts/claims/10-cited-attempt.log
+topics-and-goals	PASS	.factory/qa-artifacts/claims/11-topics-and-goals.log
+attempt-timer	PASS	.factory/qa-artifacts/claims/12-attempt-timer.log
+evidence-status	PASS	.factory/qa-artifacts/claims/13-evidence-status.log
+json-complete-archive	PASS	.factory/qa-artifacts/claims/14-json-complete-archive.log
+no-credential-service	PASS	.factory/qa-artifacts/claims/15-no-credential-service.log
+saved-data-recovery	PASS	.factory/qa-artifacts/claims/16-saved-data-recovery.log
+safe-import-validation	PASS	.factory/qa-artifacts/claims/17-safe-import-validation.log

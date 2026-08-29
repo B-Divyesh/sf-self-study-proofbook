@@ -1,0 +1,113 @@
+{
+  "status": 200,
+  "url": "https://self-study-proofbook.sociobot.in/",
+  "viewport": {
+    "title": "Self-Study Proofbook — Record problems you can solve",
+    "lang": "en",
+    "h1s": [
+      "Record problems you can solve"
+    ],
+    "visible": [
+      {
+        "tag": "a",
+        "text": "P: PROOFBOOK",
+        "top": 14
+      },
+      {
+        "tag": "a",
+        "text": "Demo",
+        "top": 14
+      },
+      {
+        "tag": "a",
+        "text": "My proofbook",
+        "top": 14
+      },
+      {
+        "tag": "a",
+        "text": "Privacy",
+        "top": 14
+      },
+      {
+        "tag": "h1",
+        "text": "Record problems you can solve",
+        "top": 136
+      },
+      {
+        "tag": "p",
+        "text": "For serious math and CS learners who need evidence beyond course badges.",
+        "top": 533
+      },
+      {
+        "tag": "a",
+        "text": "Try it with sample data",
+        "top": 639
+      },
+      {
+        "tag": "a",
+        "text": "Start your proofbook",
+        "top": 707
+      },
+      {
+        "tag": "li",
+        "text": "■ Entries stay in this browser",
+        "top": 769
+      },
+      {
+        "tag": "li",
+        "text": "■ Works offline after your first visit",
+        "top": 795
+      },
+      {
+        "tag": "li",
+        "text": "■ Free in this release; no checkout",
+        "top": 821
+      }
+    ]
+  },
+  "headers": {
+    "cache-control": "public, must-revalidate, max-age=30",
+    "content-encoding": "br",
+    "content-security-policy": "default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' data: blob:; font-src 'self'; connect-src 'self'; worker-src 'self'; manifest-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self'; frame-ancestors 'none'",
+    "content-type": "text/html",
+    "date": "Sat, 29 Aug 2026 15:12:42 GMT",
+    "etag": "\"47684879\"",
+    "last-modified": "Sat, 29 Aug 2026 14:53:27 GMT",
+    "permissions-policy": "camera=(), microphone=(), geolocation=()",
+    "referrer-policy": "strict-origin-when-cross-origin",
+    "strict-transport-security": "max-age=10886400; includeSubDomains; preload",
+    "vary": "Accept-Encoding",
+    "x-content-type-options": "nosniff",
+    "x-dns-prefetch-control": "off",
+    "x-xss-protection": "1; mode=block"
+  },
+  "requests": [
+    {
+      "method": "GET",
+      "resourceType": "document",
+      "url": "https://self-study-proofbook.sociobot.in/"
+    },
+    {
+      "method": "GET",
+      "resourceType": "script",
+      "url": "https://self-study-proofbook.sociobot.in/assets/index-Cn34kN7q.js"
+    },
+    {
+      "method": "GET",
+      "resourceType": "stylesheet",
+      "url": "https://self-study-proofbook.sociobot.in/assets/index-CTvWy7GA.css"
+    },
+    {
+      "method": "GET",
+      "resourceType": "font",
+      "url": "https://self-study-proofbook.sociobot.in/fonts/departure-mono.woff2"
+    },
+    {
+      "method": "GET",
+      "resourceType": "image",
+      "url": "https://self-study-proofbook.sociobot.in/assets/hero-proof-terminal-1120.webp"
+    }
+  ],
+  "consoleEvents": [],
+  "pageErrors": []
+}

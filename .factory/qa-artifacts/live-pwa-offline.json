@@ -1,0 +1,17 @@
+{
+  "online": {
+    "controller": "https://self-study-proofbook.sociobot.in/sw.js",
+    "cacheNames": [
+      "proofbook-2f24ab8b08a0"
+    ],
+    "sample": true
+  },
+  "offline": {
+    "url": "https://self-study-proofbook.sociobot.in/demo",
+    "title": "Demo — Self-Study Proofbook",
+    "controller": "https://self-study-proofbook.sociobot.in/sw.js",
+    "sampleVisible": true
+  },
+  "consoleErrors": [],
+  "pageErrors": []
+}
