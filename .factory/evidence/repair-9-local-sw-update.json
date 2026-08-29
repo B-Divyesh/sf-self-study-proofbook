@@ -1,0 +1,11 @@
+{
+  "notice": "An update is ready. Reload to use it.",
+  "before": [
+    "proofbook-b237ebf96b5c"
+  ],
+  "after": [
+    "proofbook-repair-9-update-v2"
+  ],
+  "summaryAfterReload": "3 attempts across 3 topics.",
+  "oldCacheRemoved": true
+}

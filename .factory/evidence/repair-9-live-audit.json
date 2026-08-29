@@ -1,0 +1,149 @@
+{
+  "origin": "https://self-study-proofbook.sociobot.in",
+  "generatedAt": "2026-08-29T20:14:10.418Z",
+  "routes": {
+    "/": {
+      "status": 200,
+      "title": "Self-Study Proofbook — Record problems you can solve",
+      "lang": "en",
+      "h1": 1,
+      "main": 1,
+      "imgsMissingAlt": 0,
+      "horizontalOverflow": 0,
+      "contactBoxes": [],
+      "undersized": [],
+      "axeViolations": [],
+      "consoleErrors": [],
+      "pageErrors": []
+    },
+    "/demo": {
+      "status": 200,
+      "title": "Demo — Self-Study Proofbook",
+      "lang": "en",
+      "h1": 1,
+      "main": 1,
+      "imgsMissingAlt": 0,
+      "horizontalOverflow": 0,
+      "contactBoxes": [],
+      "undersized": [],
+      "axeViolations": [],
+      "consoleErrors": [],
+      "pageErrors": []
+    },
+    "/app": {
+      "status": 200,
+      "title": "Your proofbook — Self-Study Proofbook",
+      "lang": "en",
+      "h1": 1,
+      "main": 1,
+      "imgsMissingAlt": 0,
+      "horizontalOverflow": 0,
+      "contactBoxes": [],
+      "undersized": [],
+      "axeViolations": [],
+      "consoleErrors": [],
+      "pageErrors": []
+    },
+    "/print?demo=1": {
+      "status": 200,
+      "title": "Mastery index — Self-Study Proofbook",
+      "lang": "en",
+      "h1": 1,
+      "main": 1,
+      "imgsMissingAlt": 0,
+      "horizontalOverflow": 0,
+      "contactBoxes": [],
+      "undersized": [],
+      "axeViolations": [],
+      "consoleErrors": [],
+      "pageErrors": []
+    },
+    "/privacy": {
+      "status": 200,
+      "title": "Privacy and data storage — Self-Study Proofbook",
+      "lang": "en",
+      "h1": 1,
+      "main": 1,
+      "imgsMissingAlt": 0,
+      "horizontalOverflow": 0,
+      "contactBoxes": [
+        {
+          "text": "privacy@sociobot.in",
+          "width": 162.046875,
+          "height": 44
+        }
+      ],
+      "undersized": [],
+      "axeViolations": [],
+      "consoleErrors": [],
+      "pageErrors": []
+    },
+    "/terms": {
+      "status": 200,
+      "title": "Terms of use — Self-Study Proofbook",
+      "lang": "en",
+      "h1": 1,
+      "main": 1,
+      "imgsMissingAlt": 0,
+      "horizontalOverflow": 0,
+      "contactBoxes": [
+        {
+          "text": "support@sociobot.in",
+          "width": 162.078125,
+          "height": 44
+        }
+      ],
+      "undersized": [],
+      "axeViolations": [],
+      "consoleErrors": [],
+      "pageErrors": []
+    },
+    "/repair-9-missing": {
+      "status": 404,
+      "title": "Page not found — Self-Study Proofbook",
+      "lang": "en",
+      "h1": 1,
+      "main": 1,
+      "imgsMissingAlt": 0,
+      "horizontalOverflow": 0,
+      "contactBoxes": [],
+      "undersized": [],
+      "axeViolations": [],
+      "consoleErrors": [
+        "Failed to load resource: the server responded with a status of 404 ()"
+      ],
+      "pageErrors": []
+    }
+  },
+  "mobile": {
+    "viewport": {
+      "width": 390,
+      "height": 844
+    },
+    "keyboard": {
+      "skipFirst": true,
+      "skipMovedToMain": true,
+      "dialogNamed": true,
+      "escapeClosed": true,
+      "focusReturned": true
+    },
+    "privacy": {
+      "requestCount": 11,
+      "origins": [
+        "https://self-study-proofbook.sociobot.in"
+      ],
+      "onlySameOrigin": true
+    },
+    "offline": {
+      "controller": "https://self-study-proofbook.sociobot.in/sw.js",
+      "summary": "3 attempts across 3 topics."
+    },
+    "errors": []
+  },
+  "reducedMotion": {
+    "matches": true,
+    "maxAnimationSeconds": 0,
+    "maxTransitionSeconds": 0,
+    "scrollBehavior": "auto"
+  }
+}

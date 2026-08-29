@@ -1,0 +1,17 @@
+{
+  "origin": "https://self-study-proofbook.sociobot.in",
+  "deployableFilesChecked": 30,
+  "byteIdenticalFiles": 30,
+  "mismatches": [],
+  "javascript": {
+    "path": "assets/index-DtVsakdV.js",
+    "status": 200,
+    "sha256": "4869b04307c1b6a0cf90eaae46028e19433b84e0d51a257a781a6960690afd93"
+  },
+  "staticApp": {
+    "name": "sf-self-study-proofbook",
+    "region": "Central US",
+    "defaultHostname": "ambitious-meadow-0375f5710.7.azurestaticapps.net",
+    "customDomain": "self-study-proofbook.sociobot.in"
+  }
+}
