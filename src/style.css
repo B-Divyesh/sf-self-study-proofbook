@@ -125,6 +125,7 @@ h3 { font-size: 18px; }
 .attempt-editor h2 { max-width: 720px; margin: 20px 0 16px; font-size: clamp(28px, 3vw, 44px); }
 .source-line { color: var(--muted); }
 .source-line > span { color: var(--cyan); font-family: var(--display); font-size: 12px; text-transform: uppercase; }
+.source-link { display: inline-flex; min-width: 44px; min-height: 44px; max-width: 100%; padding-inline: 6px; align-items: center; justify-content: center; overflow-wrap: anywhere; vertical-align: middle; }
 .timer-panel { display: flex; justify-content: space-between; align-items: center; margin: 32px 0; padding: 16px 18px; border-block: 1px solid var(--grid); }
 .timer-panel span, .timer-panel strong { display: block; font-family: var(--display); }
 .timer-panel span { color: var(--muted); font-size: 11px; text-transform: uppercase; }

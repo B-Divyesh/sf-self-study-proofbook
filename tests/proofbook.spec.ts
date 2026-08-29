@@ -565,6 +565,24 @@ test('demo supports keyboard-sized mobile use and has no Axe violations', async 
   expect(results.violations).toEqual([]);
 });
 
+test('every visible source link is at least 44px on mobile without horizontal overflow', async ({ page }) => {
+  await page.setViewportSize({ width: 390, height: 844 });
+  await page.goto('/demo');
+
+  const sourceLinks = page.locator('.source-link:visible');
+  expect(await sourceLinks.count(), 'sample data should expose a source link').toBeGreaterThan(0);
+  for (let index = 0; index < await sourceLinks.count(); index += 1) {
+    const sourceLink = sourceLinks.nth(index);
+    const box = await sourceLink.boundingBox();
+    expect(box, 'source link should be rendered').not.toBeNull();
+    expect(box!.width).toBeGreaterThanOrEqual(44);
+    expect(box!.height).toBeGreaterThanOrEqual(44);
+  }
+
+  const overflow = await page.evaluate(() => document.documentElement.scrollWidth - document.documentElement.clientWidth);
+  expect(overflow).toBeLessThanOrEqual(1);
+});
+
 test('all modal dialogs expose purpose-specific accessible names', async ({ page }) => {
   await page.goto('/demo');
 

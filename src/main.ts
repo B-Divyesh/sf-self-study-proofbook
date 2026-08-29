@@ -208,7 +208,7 @@ function editor(attempt: Attempt): string {
   const history = attempt.revisions.slice().reverse().map((revision, index) => `<details><summary>Revision ${attempt.revisions.length - index} · ${formatDate(revision.at)}</summary><div class="revision-body">${markdown(revision.solution)}${revision.reflection ? `<p class="reflection"><strong>Reflection:</strong> ${escapeHtml(revision.reflection)}</p>` : ''}</div></details>`).join('');
   const sourceUrl = safeExternalUrl(attempt.sourceUrl);
   const source = sourceUrl
-    ? `<a href="${escapeHtml(sourceUrl)}" target="_blank" rel="external noopener noreferrer" aria-label="Open source link for ${escapeHtml(attempt.source)} in a new tab">${escapeHtml(attempt.source)} <span aria-hidden="true">↗</span></a>`
+    ? `<a class="source-link" href="${escapeHtml(sourceUrl)}" target="_blank" rel="external noopener noreferrer" aria-label="Open source link for ${escapeHtml(attempt.source)} in a new tab">${escapeHtml(attempt.source)} <span aria-hidden="true">↗</span></a>`
     : escapeHtml(attempt.source);
   return `
     <article class="attempt-editor">
