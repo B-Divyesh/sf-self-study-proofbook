@@ -7,7 +7,6 @@
       "src_main",
       "src_main_bindapp",
       "src_main_bindarchive",
-      "src_main_bindcommon",
       "src_main_bindcreateforms",
       "src_main_bindeditor",
       "src_main_bindrecovery",
@@ -116,6 +115,7 @@
       "src_db_resetdemo",
       "src_db_saverecoveryandinitialstate",
       "src_db_savestate",
+      "src_main_bindcommon",
       "src_sample",
       "src_sample_samplestate",
       "src_types_proofbookstate"
@@ -154,23 +154,30 @@
       "vite_config_writestaticroutes"
     ],
     "8": [
-      "playwright_config"
+      "factory_review_6_assets_live_audit",
+      "factory_review_6_assets_live_audit_hrefs",
+      "factory_review_6_assets_live_audit_report",
+      "factory_review_6_assets_live_audit_routes"
     ],
     "9": [
+      "playwright_config"
+    ],
+    "10": [
       "tests_proofbook_spec"
     ]
   },
   "cohesion": {
-    "0": 0.16559139784946236,
+    "0": 0.17011494252873563,
     "1": 0.22077922077922077,
     "2": 0.09523809523809523,
     "3": 0.09523809523809523,
-    "4": 0.23809523809523808,
+    "4": 0.225,
     "5": 0.22857142857142856,
     "6": 0.3333333333333333,
     "7": 0.4,
-    "8": 1.0,
-    "9": 1.0
+    "8": 0.5,
+    "9": 1.0,
+    "10": 1.0
   },
   "gods": [
     {
@@ -237,28 +244,6 @@
       "why": "bridges separate communities"
     },
     {
-      "source": "bindCommon()",
-      "target": "clearDemo()",
-      "source_files": [
-        "src/main.ts",
-        "src/db.ts"
-      ],
-      "confidence": "EXTRACTED",
-      "relation": "calls",
-      "why": "bridges separate communities"
-    },
-    {
-      "source": "bindCommon()",
-      "target": "resetDemo()",
-      "source_files": [
-        "src/main.ts",
-        "src/db.ts"
-      ],
-      "confidence": "EXTRACTED",
-      "relation": "calls",
-      "why": "bridges separate communities"
-    },
-    {
       "source": "bindRecovery()",
       "target": "recoverArchive()",
       "source_files": [
@@ -272,6 +257,28 @@
     {
       "source": "commitNextState()",
       "target": "saveState()",
+      "source_files": [
+        "src/main.ts",
+        "src/db.ts"
+      ],
+      "confidence": "EXTRACTED",
+      "relation": "calls",
+      "why": "bridges separate communities"
+    },
+    {
+      "source": "commitNextState()",
+      "target": "validateArchive()",
+      "source_files": [
+        "src/main.ts",
+        "src/schema.ts"
+      ],
+      "confidence": "EXTRACTED",
+      "relation": "calls",
+      "why": "bridges separate communities"
+    },
+    {
+      "source": "navigate()",
+      "target": "listRecoveryRecords()",
       "source_files": [
         "src/main.ts",
         "src/db.ts"

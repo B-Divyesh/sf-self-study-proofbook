@@ -168,17 +168,6 @@
       "source_location": "L546"
     },
     {
-      "id": "src_main_bindcommon",
-      "label": "bindCommon()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 0,
-      "file_type": "code",
-      "norm_label": "bindcommon()",
-      "source_file": "src/main.ts",
-      "source_location": "L306"
-    },
-    {
       "id": "src_main_bindcreateforms",
       "label": "bindCreateForms()",
       "_callable": true,
@@ -641,6 +630,17 @@
       "source_location": "L69"
     },
     {
+      "id": "src_main_bindcommon",
+      "label": "bindCommon()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 4,
+      "file_type": "code",
+      "norm_label": "bindcommon()",
+      "source_file": "src/main.ts",
+      "source_location": "L306"
+    },
+    {
       "id": "src_main_appview",
       "label": "appView()",
       "_callable": true,
@@ -949,6 +949,16 @@
       "file_type": "code",
       "norm_label": "types.ts",
       "source_file": "src/types.ts",
+      "source_location": "L1"
+    },
+    {
+      "id": "tests_proofbook_spec",
+      "label": "proofbook.spec.ts",
+      "_origin": "ast",
+      "community": 10,
+      "file_type": "code",
+      "norm_label": "proofbook.spec.ts",
+      "source_file": "tests/proofbook.spec.ts",
       "source_location": "L1"
     },
     {
@@ -1462,23 +1472,53 @@
       "source_location": "L15"
     },
     {
-      "id": "playwright_config",
-      "label": "playwright.config.ts",
+      "id": "factory_review_6_assets_live_audit",
+      "label": "live-audit.mjs",
       "_origin": "ast",
       "community": 8,
       "file_type": "code",
-      "norm_label": "playwright.config.ts",
-      "source_file": "playwright.config.ts",
+      "norm_label": "live-audit.mjs",
+      "source_file": ".factory/review-6-assets/live-audit.mjs",
       "source_location": "L1"
     },
     {
-      "id": "tests_proofbook_spec",
-      "label": "proofbook.spec.ts",
+      "id": "factory_review_6_assets_live_audit_hrefs",
+      "label": "hrefs",
+      "_origin": "ast",
+      "community": 8,
+      "file_type": "code",
+      "norm_label": "hrefs",
+      "source_file": ".factory/review-6-assets/live-audit.mjs",
+      "source_location": "L97"
+    },
+    {
+      "id": "factory_review_6_assets_live_audit_report",
+      "label": "report",
+      "_origin": "ast",
+      "community": 8,
+      "file_type": "code",
+      "norm_label": "report",
+      "source_file": ".factory/review-6-assets/live-audit.mjs",
+      "source_location": "L7"
+    },
+    {
+      "id": "factory_review_6_assets_live_audit_routes",
+      "label": "routes",
+      "_origin": "ast",
+      "community": 8,
+      "file_type": "code",
+      "norm_label": "routes",
+      "source_file": ".factory/review-6-assets/live-audit.mjs",
+      "source_location": "L96"
+    },
+    {
+      "id": "playwright_config",
+      "label": "playwright.config.ts",
       "_origin": "ast",
       "community": 9,
       "file_type": "code",
-      "norm_label": "proofbook.spec.ts",
-      "source_file": "tests/proofbook.spec.ts",
+      "norm_label": "playwright.config.ts",
+      "source_file": "playwright.config.ts",
       "source_location": "L1"
     }
   ],
@@ -3488,6 +3528,39 @@
       "weight": 1.0
     },
     {
+      "source": "factory_review_6_assets_live_audit",
+      "target": "factory_review_6_assets_live_audit_report",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": ".factory/review-6-assets/live-audit.mjs",
+      "source_location": "L7",
+      "weight": 1.0
+    },
+    {
+      "source": "factory_review_6_assets_live_audit",
+      "target": "factory_review_6_assets_live_audit_routes",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": ".factory/review-6-assets/live-audit.mjs",
+      "source_location": "L96",
+      "weight": 1.0
+    },
+    {
+      "source": "factory_review_6_assets_live_audit",
+      "target": "factory_review_6_assets_live_audit_hrefs",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": ".factory/review-6-assets/live-audit.mjs",
+      "source_location": "L97",
+      "weight": 1.0
+    },
+    {
       "source": "package",
       "target": "package_devdependencies",
       "relation": "contains",
@@ -4802,5 +4875,5 @@
     }
   ],
   "hyperedges": [],
-  "built_at_commit": "b0b5a65746a5fd3b966f5ef1e31850337096ac67"
+  "built_at_commit": "7676c41c27742e8701d49102acf062dbc760ac84"
 }
