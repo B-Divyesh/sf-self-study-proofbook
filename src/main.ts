@@ -178,7 +178,7 @@ function appView(): string {
       <div class="workspace-actions"><button class="button secondary" id="new-topic">Add topic</button><button class="button primary" id="new-attempt">Record attempt</button></div>
     </section>
     <section class="workspace" aria-label="Proofbook workspace">
-      <aside class="topic-rail"><div class="rail-title"><h2>Topics</h2><span>${state.topics.length}</span></div><div class="topic-list">${topicItems || '<p class="empty-small">Add a topic to group your attempts.</p>'}</div></aside>
+      <nav class="topic-rail" aria-label="Topics"><div class="rail-title"><h2>Topics</h2><span>${state.topics.length}</span></div><div class="topic-list">${topicItems || '<p class="empty-small">Add a topic to group your attempts.</p>'}</div></nav>
       <div class="attempt-list"><div class="rail-title"><h2>Attempts</h2><span>${shown.length}</span></div>${attempts || '<p class="empty-small">No attempts in this topic yet.</p>'}</div>
       <div class="editor-panel">${content}</div>
     </section>

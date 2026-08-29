@@ -235,21 +235,21 @@ test('@claim:no-credential-service marks the printed record as a non-credential'
   expect(outgoing.every((url) => new URL(url).origin === 'http://127.0.0.1:4173')).toBe(true);
 });
 
-test('demo supports keyboard-sized mobile use and has no serious accessibility findings', async ({ page }) => {
+test('demo supports keyboard-sized mobile use and has no Axe violations', async ({ page }) => {
   await page.setViewportSize({ width: 390, height: 844 });
   await page.goto('/demo');
   await expect(page.getByRole('heading', { level: 1 })).toBeVisible();
   const overflow = await page.evaluate(() => document.documentElement.scrollWidth - document.documentElement.clientWidth);
   expect(overflow).toBeLessThanOrEqual(1);
   const results = await new AxeBuilder({ page }).analyze();
-  expect(results.violations.filter((item) => ['serious', 'critical'].includes(item.impact ?? ''))).toEqual([]);
+  expect(results.violations).toEqual([]);
 });
 
-test('all public routes have no serious or critical accessibility violations', async ({ page }) => {
+test('all public routes have no Axe violations', async ({ page }) => {
   for (const route of ['/', '/demo', '/app', '/print?demo=1', '/privacy', '/terms', '/not-a-proofbook-route']) {
     await page.goto(route);
     const results = await new AxeBuilder({ page }).analyze();
-    expect(results.violations.filter((item) => ['serious', 'critical'].includes(item.impact ?? ''))).toEqual([]);
+    expect(results.violations).toEqual([]);
   }
 });
 
