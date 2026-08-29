@@ -184,19 +184,14 @@
       "degree": 13
     },
     {
-      "id": "tsconfig_compileroptions",
-      "label": "compilerOptions",
-      "degree": 12
-    },
-    {
       "id": "src_schema_validatearchive",
       "label": "validateArchive()",
       "degree": 12
     },
     {
-      "id": "src_main_editor",
-      "label": "editor()",
-      "degree": 10
+      "id": "tsconfig_compileroptions",
+      "label": "compilerOptions",
+      "degree": 12
     },
     {
       "id": "src_main_bindeditor",
@@ -214,33 +209,27 @@
       "degree": 10
     },
     {
-      "id": "src_db_loadstate",
-      "label": "loadState()",
+      "id": "src_main_editor",
+      "label": "editor()",
+      "degree": 10
+    },
+    {
+      "id": "src_main_bindapp",
+      "label": "bindApp()",
       "degree": 9
     },
     {
-      "id": "src_main_printview",
-      "label": "printView()",
+      "id": "src_main_commitnextstate",
+      "label": "commitNextState()",
       "degree": 9
     }
   ],
   "surprises": [
     {
-      "source": "loadState()",
-      "target": "recoverArchive()",
-      "source_files": [
-        "src/db.ts",
-        "src/schema.ts"
-      ],
-      "confidence": "EXTRACTED",
-      "relation": "calls",
-      "why": "bridges separate communities"
-    },
-    {
-      "source": "loadState()",
+      "source": "bindArchive()",
       "target": "validateArchive()",
       "source_files": [
-        "src/db.ts",
+        "src/main.ts",
         "src/schema.ts"
       ],
       "confidence": "EXTRACTED",
@@ -248,8 +237,8 @@
       "why": "bridges separate communities"
     },
     {
-      "source": "navigate()",
-      "target": "loadState()",
+      "source": "bindCommon()",
+      "target": "clearDemo()",
       "source_files": [
         "src/main.ts",
         "src/db.ts"
@@ -259,10 +248,21 @@
       "why": "bridges separate communities"
     },
     {
-      "source": "saveState()",
-      "target": "validateArchive()",
+      "source": "bindCommon()",
+      "target": "resetDemo()",
       "source_files": [
-        "src/db.ts",
+        "src/main.ts",
+        "src/db.ts"
+      ],
+      "confidence": "EXTRACTED",
+      "relation": "calls",
+      "why": "bridges separate communities"
+    },
+    {
+      "source": "bindRecovery()",
+      "target": "recoverArchive()",
+      "source_files": [
+        "src/main.ts",
         "src/schema.ts"
       ],
       "confidence": "EXTRACTED",
