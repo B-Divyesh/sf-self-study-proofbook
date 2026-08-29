@@ -1,0 +1,219 @@
+[
+  {
+    "file": "404.html",
+    "status": 200,
+    "local": "1c617be5545e74ef0d1f50386418373839d23c63222f87dbdaed0899d3d62d9f",
+    "remote": "1c617be5545e74ef0d1f50386418373839d23c63222f87dbdaed0899d3d62d9f",
+    "match": true
+  },
+  {
+    "file": "app.html",
+    "status": 200,
+    "local": "7ecd4eaf724639bab388d323a2ef47b4f4b0d02e2d2e0f25a2f986a0f7129168",
+    "remote": "7ecd4eaf724639bab388d323a2ef47b4f4b0d02e2d2e0f25a2f986a0f7129168",
+    "match": true
+  },
+  {
+    "file": "app/index.html",
+    "status": 200,
+    "local": "7ecd4eaf724639bab388d323a2ef47b4f4b0d02e2d2e0f25a2f986a0f7129168",
+    "remote": "7ecd4eaf724639bab388d323a2ef47b4f4b0d02e2d2e0f25a2f986a0f7129168",
+    "match": true
+  },
+  {
+    "file": "apple-touch-icon.png",
+    "status": 200,
+    "local": "2f0de7eb3546df6d90fa41a76acf3c987c46c1ed413057ccbd844342b85f468a",
+    "remote": "2f0de7eb3546df6d90fa41a76acf3c987c46c1ed413057ccbd844342b85f468a",
+    "match": true
+  },
+  {
+    "file": "assets/hero-proof-terminal-1120.webp",
+    "status": 200,
+    "local": "fb535e7ca6e1770056ca58df33f81b814af02db54f04e004792824ef15be8011",
+    "remote": "fb535e7ca6e1770056ca58df33f81b814af02db54f04e004792824ef15be8011",
+    "match": true
+  },
+  {
+    "file": "assets/hero-proof-terminal-640.webp",
+    "status": 200,
+    "local": "e681c2d586390df203795ce0c7048d1bec9a0333a7e059903787dfa2ae155b34",
+    "remote": "e681c2d586390df203795ce0c7048d1bec9a0333a7e059903787dfa2ae155b34",
+    "match": true
+  },
+  {
+    "file": "assets/index-CTvWy7GA.css",
+    "status": 200,
+    "local": "cdb831f466decb9a12d86f2df496fdc168c657838b56bc7c3a74e3a3adfa5b3d",
+    "remote": "cdb831f466decb9a12d86f2df496fdc168c657838b56bc7c3a74e3a3adfa5b3d",
+    "match": true
+  },
+  {
+    "file": "assets/index-brASCNhP.js",
+    "status": 200,
+    "local": "19e9453a013b8d3ed534db88d895a16fee3667187200598a53320ca0b089b012",
+    "remote": "19e9453a013b8d3ed534db88d895a16fee3667187200598a53320ca0b089b012",
+    "match": true
+  },
+  {
+    "file": "assets/index-brASCNhP.js.map",
+    "status": 200,
+    "local": "361164bbc870f3c14c81ec72fa8aa7d7f9c8f19cb132966dfdc2d06f36873ccf",
+    "remote": "361164bbc870f3c14c81ec72fa8aa7d7f9c8f19cb132966dfdc2d06f36873ccf",
+    "match": true
+  },
+  {
+    "file": "assets/proofbook-social.webp",
+    "status": 200,
+    "local": "5a0898f8a3f46d454a8b333557152839f477871600f00cd35b298d4ab45d841b",
+    "remote": "5a0898f8a3f46d454a8b333557152839f477871600f00cd35b298d4ab45d841b",
+    "match": true
+  },
+  {
+    "file": "demo.html",
+    "status": 200,
+    "local": "6f89c7ad2fe4e2e049e4b8b6d60e6ec1a693fe7593c2616a46ddd33f1cd58d2e",
+    "remote": "6f89c7ad2fe4e2e049e4b8b6d60e6ec1a693fe7593c2616a46ddd33f1cd58d2e",
+    "match": true
+  },
+  {
+    "file": "demo/index.html",
+    "status": 200,
+    "local": "6f89c7ad2fe4e2e049e4b8b6d60e6ec1a693fe7593c2616a46ddd33f1cd58d2e",
+    "remote": "6f89c7ad2fe4e2e049e4b8b6d60e6ec1a693fe7593c2616a46ddd33f1cd58d2e",
+    "match": true
+  },
+  {
+    "file": "favicon.svg",
+    "status": 200,
+    "local": "61665b66aa76b368565938d27600f466a9d3b8db2c8bfe24212ebbbf3f63955e",
+    "remote": "61665b66aa76b368565938d27600f466a9d3b8db2c8bfe24212ebbbf3f63955e",
+    "match": true
+  },
+  {
+    "file": "fonts/DEPARTURE_MONO_LICENSE.txt",
+    "status": 200,
+    "local": "b65e42750f3cb65437a97f4dfd781c58f199259949db2341012be60e32500e83",
+    "remote": "b65e42750f3cb65437a97f4dfd781c58f199259949db2341012be60e32500e83",
+    "match": true
+  },
+  {
+    "file": "fonts/departure-mono.woff2",
+    "status": 200,
+    "local": "5b4fed1daa90708aa9c6ee1190abca9dc22164a1c1def0020386e46b61038cfb",
+    "remote": "5b4fed1daa90708aa9c6ee1190abca9dc22164a1c1def0020386e46b61038cfb",
+    "match": true
+  },
+  {
+    "file": "icons/icon-192.png",
+    "status": 200,
+    "local": "996913612478bf5ac9713918115d197f6d178d0d95a946acf0718d421a02d099",
+    "remote": "996913612478bf5ac9713918115d197f6d178d0d95a946acf0718d421a02d099",
+    "match": true
+  },
+  {
+    "file": "icons/icon-512.png",
+    "status": 200,
+    "local": "e66e29963c3e3f3f9b7a9dfab8855b127f015f2a72e95cdf7dd1528dd0739b08",
+    "remote": "e66e29963c3e3f3f9b7a9dfab8855b127f015f2a72e95cdf7dd1528dd0739b08",
+    "match": true
+  },
+  {
+    "file": "icons/source-icon.svg",
+    "status": 200,
+    "local": "91c9eb9d1d349c2599fbee920c27c3074f7693cc93b924194294f65a1a1a203c",
+    "remote": "91c9eb9d1d349c2599fbee920c27c3074f7693cc93b924194294f65a1a1a203c",
+    "match": true
+  },
+  {
+    "file": "index.html",
+    "status": 200,
+    "local": "b1190f0fd27469a24a5dcd80c67f6c5c58ebe3fd3dec7bb1f4b5b77ccea6fe7f",
+    "remote": "b1190f0fd27469a24a5dcd80c67f6c5c58ebe3fd3dec7bb1f4b5b77ccea6fe7f",
+    "match": true
+  },
+  {
+    "file": "manifest.webmanifest",
+    "status": 200,
+    "local": "ca605df193a3bb1ffc284438bfc623e35c6e85ff44e6ef67de5a68467463c6b4",
+    "remote": "ca605df193a3bb1ffc284438bfc623e35c6e85ff44e6ef67de5a68467463c6b4",
+    "match": true
+  },
+  {
+    "file": "offline.html",
+    "status": 200,
+    "local": "5f4bdc841527e688abe01d7d840dd82d661ce41b5a762f26e8e666e347b812aa",
+    "remote": "5f4bdc841527e688abe01d7d840dd82d661ce41b5a762f26e8e666e347b812aa",
+    "match": true
+  },
+  {
+    "file": "print.html",
+    "status": 200,
+    "local": "4c2ee5597785c19f64b891441f712761039971dcb75a3e31f4535872f7758d64",
+    "remote": "4c2ee5597785c19f64b891441f712761039971dcb75a3e31f4535872f7758d64",
+    "match": true
+  },
+  {
+    "file": "print/index.html",
+    "status": 200,
+    "local": "4c2ee5597785c19f64b891441f712761039971dcb75a3e31f4535872f7758d64",
+    "remote": "4c2ee5597785c19f64b891441f712761039971dcb75a3e31f4535872f7758d64",
+    "match": true
+  },
+  {
+    "file": "privacy.html",
+    "status": 200,
+    "local": "cc58413bbc6323f14fcf486d8040a150eca4fc21bff5cbd377999f53f79d8753",
+    "remote": "cc58413bbc6323f14fcf486d8040a150eca4fc21bff5cbd377999f53f79d8753",
+    "match": true
+  },
+  {
+    "file": "privacy/index.html",
+    "status": 200,
+    "local": "cc58413bbc6323f14fcf486d8040a150eca4fc21bff5cbd377999f53f79d8753",
+    "remote": "cc58413bbc6323f14fcf486d8040a150eca4fc21bff5cbd377999f53f79d8753",
+    "match": true
+  },
+  {
+    "file": "robots.txt",
+    "status": 200,
+    "local": "9c4ceb97caed951d34332790711c12ae661b6aecda5d3b2c8a0e463277b9b200",
+    "remote": "9c4ceb97caed951d34332790711c12ae661b6aecda5d3b2c8a0e463277b9b200",
+    "match": true
+  },
+  {
+    "file": "sitemap.xml",
+    "status": 200,
+    "local": "01f9040037d201db915d03379daf66bdd7758f081c10bc7ada265d1bcf5ae110",
+    "remote": "01f9040037d201db915d03379daf66bdd7758f081c10bc7ada265d1bcf5ae110",
+    "match": true
+  },
+  {
+    "file": "staticwebapp.config.json",
+    "status": 404,
+    "local": "6d08efc8b55f04beb0e06fe0e48124e8dfb08e4defee7e99d23c7a8cd799c2f4",
+    "remote": "1c617be5545e74ef0d1f50386418373839d23c63222f87dbdaed0899d3d62d9f",
+    "match": false
+  },
+  {
+    "file": "sw.js",
+    "status": 200,
+    "local": "2447713c028d0e2741c61ddd4ee09a18abb3b79c2c6f5359f89655f338d19937",
+    "remote": "2447713c028d0e2741c61ddd4ee09a18abb3b79c2c6f5359f89655f338d19937",
+    "match": true
+  },
+  {
+    "file": "terms.html",
+    "status": 200,
+    "local": "fba9e894ae10d47a1cc3f88e6bb5ac3b23e89cf91875f40fd8c5d628f7ee2745",
+    "remote": "fba9e894ae10d47a1cc3f88e6bb5ac3b23e89cf91875f40fd8c5d628f7ee2745",
+    "match": true
+  },
+  {
+    "file": "terms/index.html",
+    "status": 200,
+    "local": "fba9e894ae10d47a1cc3f88e6bb5ac3b23e89cf91875f40fd8c5d628f7ee2745",
+    "remote": "fba9e894ae10d47a1cc3f88e6bb5ac3b23e89cf91875f40fd8c5d628f7ee2745",
+    "match": true
+  }
+]

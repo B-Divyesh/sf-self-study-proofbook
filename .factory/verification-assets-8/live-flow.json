@@ -1,0 +1,19 @@
+{
+  "demoBanner": true,
+  "sample": true,
+  "saveFeedback": true,
+  "history": 2,
+  "solution": "Live QA revised proof: name the boundary edge first.",
+  "csvRows": 4,
+  "print": {
+    "heading": true,
+    "rows": 3,
+    "disclaimer": true
+  },
+  "invalid": {
+    "invalid": "true",
+    "message": "Topic name cannot be blank."
+  },
+  "requestsSameOrigin": true,
+  "errors": []
+}

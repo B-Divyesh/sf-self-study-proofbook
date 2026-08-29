@@ -1,0 +1,11 @@
+{
+  "before": [
+    "qa-v1"
+  ],
+  "toast": true,
+  "after": [
+    "qa-v1",
+    "qa-v2"
+  ],
+  "controller": "http://127.0.0.1:4488/sw.js"
+}

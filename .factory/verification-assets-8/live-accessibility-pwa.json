@@ -1,0 +1,37 @@
+{
+  "serviceWorker": {
+    "controller": "https://self-study-proofbook.sociobot.in/sw.js",
+    "cacheNames": [
+      "proofbook-9cf81f50d718"
+    ],
+    "hasIndex": true
+  },
+  "offline": {
+    "h1": "Record and review problem attempts.",
+    "sample": true
+  },
+  "keyboard": {
+    "skipFocused": true,
+    "outline": "rgb(185, 242, 39) solid 3px",
+    "mainFocused": true
+  },
+  "mobile": {
+    "scrollWidth": 390,
+    "innerWidth": 390
+  },
+  "axeDemo": [],
+  "errors": [],
+  "reducedMotion": {
+    "transition": "none",
+    "scrollBehavior": "auto"
+  },
+  "axeRoutes": {
+    "/": [],
+    "/demo": [],
+    "/app": [],
+    "/print?demo=1": [],
+    "/privacy": [],
+    "/terms": [],
+    "/not-a-proofbook-route": []
+  }
+}

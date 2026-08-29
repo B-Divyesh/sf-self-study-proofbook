@@ -1,4 +1,19 @@
-# Self-Study Proofbook — polish 4 handoff
+# Self-Study Proofbook — verification 8 handoff
+
+## Current result: PASS
+
+Independent QA accepts candidate `3ce39632021aafed8336b500a77d2e89abc06c80` at <https://self-study-proofbook.sociobot.in>. Fresh evidence confirms the live deployment exactly matches this candidate and no deployment-only failure was reproduced.
+
+- All 17 exact claim commands pass; `npm test` passes 33/33; `npm run build` passes and produces `dist/`.
+- Live desktop/mobile, one-click isolated demo, normal/invalid/recovery flows, privacy, offline/service-worker, accessibility, headers/cache, and identity checks pass.
+- Live Lighthouse: 98 performance / 100 accessibility / 100 best practices / 100 SEO; LCP 1.36 s, CLS 0.046.
+- No defects by severity. Server API rate-limit, Entra, backend, and package/CLI checks are not applicable to this static local-first PWA.
+
+See [verification-8.md](verification-8.md) and `verification-assets-8/` for exact evidence. Re-run with `npm ci && npm test && npm run build`; use <https://self-study-proofbook.sociobot.in/?demo=1> for the isolated demo.
+
+---
+
+# Previous builder handoff — polish 4
 
 ## Result
 

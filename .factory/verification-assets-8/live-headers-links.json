@@ -1,0 +1,104 @@
+{
+  "internalLinks": [
+    {
+      "url": "https://self-study-proofbook.sociobot.in/#main",
+      "status": 200
+    },
+    {
+      "url": "https://self-study-proofbook.sociobot.in/",
+      "status": 200
+    },
+    {
+      "url": "https://self-study-proofbook.sociobot.in/demo",
+      "status": 200
+    },
+    {
+      "url": "https://self-study-proofbook.sociobot.in/app",
+      "status": 200
+    },
+    {
+      "url": "https://self-study-proofbook.sociobot.in/privacy",
+      "status": 200
+    },
+    {
+      "url": "https://self-study-proofbook.sociobot.in/?demo=1",
+      "status": 200
+    },
+    {
+      "url": "https://self-study-proofbook.sociobot.in/terms",
+      "status": 200
+    }
+  ],
+  "headers": {
+    "/": {
+      "status": 200,
+      "cache": "public, must-revalidate, max-age=30",
+      "contentType": "text/html",
+      "csp": "default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' data: blob:; font-src 'self'; connect-src 'self'; worker-src 'self'; manifest-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self'; frame-ancestors 'none'",
+      "hsts": "max-age=10886400; includeSubDomains; preload"
+    },
+    "/demo": {
+      "status": 200,
+      "cache": "public, must-revalidate, max-age=30",
+      "contentType": "text/html",
+      "csp": "default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' data: blob:; font-src 'self'; connect-src 'self'; worker-src 'self'; manifest-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self'; frame-ancestors 'none'",
+      "hsts": "max-age=10886400; includeSubDomains; preload"
+    },
+    "/app": {
+      "status": 200,
+      "cache": "public, must-revalidate, max-age=30",
+      "contentType": "text/html",
+      "csp": "default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' data: blob:; font-src 'self'; connect-src 'self'; worker-src 'self'; manifest-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self'; frame-ancestors 'none'",
+      "hsts": "max-age=10886400; includeSubDomains; preload"
+    },
+    "/print?demo=1": {
+      "status": 200,
+      "cache": "public, must-revalidate, max-age=30",
+      "contentType": "text/html",
+      "csp": "default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' data: blob:; font-src 'self'; connect-src 'self'; worker-src 'self'; manifest-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self'; frame-ancestors 'none'",
+      "hsts": "max-age=10886400; includeSubDomains; preload"
+    },
+    "/privacy": {
+      "status": 200,
+      "cache": "public, must-revalidate, max-age=30",
+      "contentType": "text/html",
+      "csp": "default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' data: blob:; font-src 'self'; connect-src 'self'; worker-src 'self'; manifest-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self'; frame-ancestors 'none'",
+      "hsts": "max-age=10886400; includeSubDomains; preload"
+    },
+    "/terms": {
+      "status": 200,
+      "cache": "public, must-revalidate, max-age=30",
+      "contentType": "text/html",
+      "csp": "default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' data: blob:; font-src 'self'; connect-src 'self'; worker-src 'self'; manifest-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self'; frame-ancestors 'none'",
+      "hsts": "max-age=10886400; includeSubDomains; preload"
+    },
+    "/not-a-proofbook-route": {
+      "status": 404,
+      "cache": "public, must-revalidate, max-age=30",
+      "contentType": "text/html",
+      "csp": "default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' data: blob:; font-src 'self'; connect-src 'self'; worker-src 'self'; manifest-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self'; frame-ancestors 'none'",
+      "hsts": "max-age=10886400; includeSubDomains; preload"
+    },
+    "/manifest.webmanifest": {
+      "status": 200,
+      "cache": "public, must-revalidate, max-age=30",
+      "contentType": "application/manifest+json",
+      "csp": "default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' data: blob:; font-src 'self'; connect-src 'self'; worker-src 'self'; manifest-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self'; frame-ancestors 'none'",
+      "hsts": "max-age=10886400; includeSubDomains; preload"
+    },
+    "/sw.js": {
+      "status": 200,
+      "cache": "public, must-revalidate, max-age=30",
+      "contentType": "text/javascript",
+      "csp": "default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' data: blob:; font-src 'self'; connect-src 'self'; worker-src 'self'; manifest-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self'; frame-ancestors 'none'",
+      "hsts": "max-age=10886400; includeSubDomains; preload"
+    },
+    "/assets/index-brASCNhP.js": {
+      "status": 200,
+      "cache": "public, max-age=31536000, immutable",
+      "contentType": "text/javascript",
+      "csp": "default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' data: blob:; font-src 'self'; connect-src 'self'; worker-src 'self'; manifest-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self'; frame-ancestors 'none'",
+      "hsts": "max-age=10886400; includeSubDomains; preload"
+    }
+  }
+}
