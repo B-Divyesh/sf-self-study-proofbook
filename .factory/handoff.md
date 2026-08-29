@@ -1,4 +1,4 @@
-# Repair 4 handoff — ready for deployment
+# Repair 4 handoff — committed; static deployment pending
 
 - **Base candidate:** `88895f45df4e5eae908162901636936b3bb96a93`
 - **Verifier report repaired:** `.factory/verification-4.md`
@@ -63,6 +63,11 @@ billing path, analytics, or external runtime request is introduced.
 
 ## Known gaps / next step
 
-There are no known product gaps from the verifier report. Deploy the committed
-repair with the factory static-site configuration, then compare the live build
-hashes and repeat the `/demo` malformed-import and 390 px target checks.
+There are no known product gaps from the verifier report. Commit `6a69ded` was
+pushed to `origin/main`. The authenticated Static Web Apps CLI reached project
+settings but did not return from that control-plane request within two 55-second
+safe deployment attempts; the live site still advertises the previous JS asset
+hash. No deployment token, resource group, or additional deployment config is
+present in the repository. Run the factory static deployment for this pushed
+commit, then compare live build hashes and repeat the `/demo` malformed-import
+and 390 px target checks.
