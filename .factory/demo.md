@@ -2,7 +2,8 @@
 
 - URL: `/?demo=1` (the `/demo` route opens the same isolated sample ledger).
 - Sample: three cited attempts across real analysis, graph algorithms, and
-  abstract algebra. The records include working, revised, and mastered states,
+  abstract algebra. The selected graph-algorithms attempt includes a visible
+  HTTPS source link. The records include working, revised, and mastered states,
   timed effort, reflections, and revision history.
 - Storage: IndexedDB database `proofbook-demo-v1`. Real records use the separate
   `proofbook-v1` database. Code in demo mode never opens the real database.

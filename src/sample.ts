@@ -23,7 +23,7 @@ export const sampleState: ProofbookState = {
     },
     {
       id: 'attempt-dijkstra', topicId: 'topic-algorithms', title: 'Prove Dijkstra’s greedy step',
-      source: 'Algorithms, Dasgupta–Papadimitriou–Vazirani', sourceUrl: '', problemRef: 'Section 4.4, proof reconstruction',
+      source: 'Dijkstra’s algorithm reference', sourceUrl: 'https://en.wikipedia.org/wiki/Dijkstra%27s_algorithm', problemRef: 'Section 4.4, proof reconstruction',
       startedAt: '2026-08-20T12:30:00.000Z', elapsedSeconds: 1920, timerStartedAt: null,
       status: 'revised', confidence: 3,
       solution: 'Assume the extracted vertex $v$ has the smallest tentative distance. On a shortest path to $v$, take the first edge leaving the settled set. Its endpoint had a tentative distance no larger than the path prefix, so $v$ cannot be extracted with an overestimate.',

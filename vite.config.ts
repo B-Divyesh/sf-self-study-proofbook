@@ -1,7 +1,10 @@
 import { createHash } from 'node:crypto';
+import { readFileSync } from 'node:fs';
 import { mkdir, readdir, readFile, writeFile } from 'node:fs/promises';
 import { resolve } from 'node:path';
 import { defineConfig, type Plugin } from 'vite';
+
+const packageVersion = (JSON.parse(readFileSync(new URL('./package.json', import.meta.url), 'utf8')) as { version: string }).version;
 
 async function filesBelow(directory: string, prefix = ''): Promise<string[]> {
   const entries = await readdir(directory, { withFileTypes: true });
@@ -79,6 +82,9 @@ function pwaWorker(): Plugin {
           await writeFile(pagePath, html.replace('/assets/style.css', `/assets/${stylesheet}`));
         }
       }
+      const notFoundPath = resolve(outputDirectory, '404.html');
+      const notFound = await readFile(notFoundPath, 'utf8');
+      await writeFile(notFoundPath, notFound.replaceAll('__PROOFBOOK_VERSION__', packageVersion));
       const allFiles = (await filesBelow(outputDirectory))
         // Azure consumes this deployment-only file rather than serving it. Never
         // let an unavailable deployment config prevent worker installation.
@@ -150,6 +156,9 @@ self.addEventListener('fetch', (event) => {
 
 export default defineConfig({
   plugins: [pwaWorker()],
+  define: {
+    __PROOFBOOK_VERSION__: JSON.stringify(packageVersion),
+  },
   build: {
     target: 'es2022',
     sourcemap: true,

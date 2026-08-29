@@ -1,1 +1,1 @@
-Record citations, timed attempts, and revisions in a private offline ledger.
+Record cited problems, timed attempts, and revisions in a private offline ledger.

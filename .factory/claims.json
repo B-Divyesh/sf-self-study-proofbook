@@ -70,6 +70,13 @@
     "sandbox": "fresh /demo data; create a cited attempt, reload, and assert its source and reference in the editor and printable index"
   },
   {
+    "id": "source-link",
+    "claim": "An optional source link survives reload and JSON export/import, and opens safely in a new tab.",
+    "where": "README, demo sample, attempt editor",
+    "test": "npm test -- --grep @claim:source-link",
+    "sandbox": "fresh /demo data; create an HTTPS source link, reload, assert its exact href and safe external-link attributes, export JSON, import into an empty real ledger, and assert the link again"
+  },
+  {
     "id": "topics-and-goals",
     "claim": "Groups problem attempts by topic and study goal.",
     "where": "README",

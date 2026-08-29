@@ -4,7 +4,10 @@ import { decryptArchive, encryptArchive } from './crypto';
 import { ARCHIVE_LIMITS, recoverArchive, validateArchive } from './schema';
 import type { Attempt, AttemptStatus, ProofbookState, Topic } from './types';
 
+declare const __PROOFBOOK_VERSION__: string;
+
 const app = document.querySelector<HTMLDivElement>('#app')!;
+const releaseVersion = __PROOFBOOK_VERSION__;
 const path = location.pathname.replace(/\/$/, '') || '/';
 let demo = path === '/demo' || new URLSearchParams(location.search).get('demo') === '1';
 let state: ProofbookState | null = null;
@@ -98,7 +101,7 @@ function shell(content: string, active = ''): string {
     <footer>
       <p>Private records for math and CS self-study.</p>
       <nav aria-label="Footer navigation"><a href="/privacy" data-route>Privacy</a><a href="/terms" data-route>Terms</a><a href="https://sociobot.in" rel="external">Built by Param Factory <span class="sr-only">(external site)</span></a></nav>
-      <p class="build">Version 1.0.1</p>
+      <p class="build">Version ${releaseVersion}</p>
     </footer>
     <div class="route-status sr-only" aria-live="polite"></div>
     <div id="toast" class="toast" role="status" aria-live="polite" hidden></div>
@@ -204,7 +207,9 @@ function emptyLedger(): string {
 function editor(attempt: Attempt): string {
   const history = attempt.revisions.slice().reverse().map((revision, index) => `<details><summary>Revision ${attempt.revisions.length - index} · ${formatDate(revision.at)}</summary><div class="revision-body">${markdown(revision.solution)}${revision.reflection ? `<p class="reflection"><strong>Reflection:</strong> ${escapeHtml(revision.reflection)}</p>` : ''}</div></details>`).join('');
   const sourceUrl = safeExternalUrl(attempt.sourceUrl);
-  const source = sourceUrl ? `<a href="${escapeHtml(sourceUrl)}" rel="external noreferrer">${escapeHtml(attempt.source)} <span class="sr-only">(external site)</span></a>` : escapeHtml(attempt.source);
+  const source = sourceUrl
+    ? `<a href="${escapeHtml(sourceUrl)}" target="_blank" rel="external noopener noreferrer" aria-label="Open source link for ${escapeHtml(attempt.source)} in a new tab">${escapeHtml(attempt.source)} <span aria-hidden="true">↗</span></a>`
+    : escapeHtml(attempt.source);
   return `
     <article class="attempt-editor">
       <div class="attempt-meta"><span class="status ${attempt.status}">${statusLabel(attempt.status)}</span><span>${escapeHtml(topicName(attempt.topicId))}</span><span>Updated ${formatDate(attempt.updatedAt)}</span></div>

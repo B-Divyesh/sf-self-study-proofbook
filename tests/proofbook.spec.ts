@@ -86,7 +86,7 @@ test('@claim:print-index creates a printable mastery index with its stated evide
   const dijkstra = page.locator('tbody tr').filter({ hasText: 'Prove Dijkstra’s greedy step' });
   await expect(dijkstra).toHaveCount(1);
   await expect(dijkstra.locator('td').nth(0)).toContainText('Prove Dijkstra’s greedy step');
-  await expect(dijkstra.locator('td').nth(1)).toContainText('Algorithms, Dasgupta–Papadimitriou–Vazirani');
+  await expect(dijkstra.locator('td').nth(1)).toContainText('Dijkstra’s algorithm reference');
   await expect(dijkstra.locator('td').nth(1)).toContainText('Section 4.4, proof reconstruction');
   await expect(dijkstra.locator('td').nth(2)).toHaveText('32:00');
   await expect(dijkstra.locator('td').nth(3)).toHaveText('Revised · 3/4');
@@ -190,6 +190,53 @@ test('@claim:cited-attempt persists source and reference in the editor and index
   await page.getByRole('link', { name: 'Print mastery index' }).click();
   await expect(page.locator('tbody')).toContainText('Munkres, Topology');
   await expect(page.locator('tbody')).toContainText('Section 22, Exercise 4');
+});
+
+test('@claim:source-link persists a safe optional source link through reload and JSON import', async ({ page }) => {
+  const sampleUrl = 'https://en.wikipedia.org/wiki/Dijkstra%27s_algorithm';
+  const savedUrl = 'https://example.com/study/quotient-maps';
+
+  await page.goto('/demo');
+  const sampleLink = page.getByRole('link', { name: 'Open source link for Dijkstra’s algorithm reference in a new tab' });
+  await expect(sampleLink).toHaveAttribute('href', sampleUrl);
+  await expect(sampleLink).toHaveAttribute('target', '_blank');
+  await expect(sampleLink).toHaveAttribute('rel', /external/);
+  await expect(sampleLink).toHaveAttribute('rel', /noopener/);
+  await expect(sampleLink).toHaveAttribute('rel', /noreferrer/);
+
+  await page.getByRole('button', { name: 'Record attempt' }).click();
+  await page.getByLabel('Problem title').fill('Show a quotient map is continuous');
+  await page.getByLabel('Source', { exact: true }).fill('Munkres, Topology');
+  await page.getByLabel('Problem reference').fill('Section 22, Exercise 4');
+  await page.getByLabel('Source link Optional', { exact: true }).fill(savedUrl);
+  await page.getByRole('button', { name: 'Start attempt' }).click();
+  await page.getByRole('button', { name: 'Pause timer' }).click();
+  await page.reload();
+
+  const savedLink = page.getByRole('link', { name: 'Open source link for Munkres, Topology in a new tab' });
+  await expect(savedLink).toHaveAttribute('href', savedUrl);
+  await expect(savedLink).toHaveAttribute('target', '_blank');
+  await expect(savedLink).toHaveAttribute('rel', /external/);
+  await expect(savedLink).toHaveAttribute('rel', /noopener/);
+  await expect(savedLink).toHaveAttribute('rel', /noreferrer/);
+
+  const downloadEvent = page.waitForEvent('download');
+  await page.getByRole('button', { name: 'Export JSON' }).click();
+  const archivePath = await (await downloadEvent).path();
+  const archive = JSON.parse(await readFile(archivePath!, 'utf8')) as { attempts: Array<{ title: string; sourceUrl: string }> };
+  expect(archive.attempts.find((attempt) => attempt.title === 'Show a quotient map is continuous')?.sourceUrl).toBe(savedUrl);
+
+  await page.getByRole('button', { name: 'Start for real' }).click();
+  await expect(page.getByText('0 attempts across 0 topics.')).toBeVisible();
+  page.once('dialog', (dialog) => dialog.accept());
+  await page.locator('#import-file').setInputFiles(archivePath!);
+  await expect(page.getByText('Archive imported.')).toBeVisible();
+  const restoredLink = page.getByRole('link', { name: 'Open source link for Munkres, Topology in a new tab' });
+  await expect(restoredLink).toHaveAttribute('href', savedUrl);
+  await expect(restoredLink).toHaveAttribute('target', '_blank');
+  await expect(restoredLink).toHaveAttribute('rel', /external/);
+  await expect(restoredLink).toHaveAttribute('rel', /noopener/);
+  await expect(restoredLink).toHaveAttribute('rel', /noreferrer/);
 });
 
 test('@claim:topics-and-goals persists a topic, its goal, and an assigned attempt', async ({ page }) => {
@@ -583,11 +630,12 @@ test('all public routes have no Axe violations', async ({ page }) => {
 });
 
 test('route names and landing sections use direct, useful wording', async ({ page }) => {
+  const packageManifest = JSON.parse(await readFile('package.json', 'utf8')) as { version: string };
   await page.goto('/');
   await expect(page.getByRole('heading', { level: 1 })).toHaveText('Record problems you can solve');
   await expect(page.locator('.section-index, .paid-price')).toHaveCount(0);
   await expect(page.locator('footer')).toContainText('Private records for math and CS self-study.');
-  await expect(page.locator('footer .build')).toHaveText('Version 1.0.1');
+  await expect(page.locator('footer .build')).toHaveText(`Version ${packageManifest.version}`);
 
   for (const route of ['/demo', '/app']) {
     await page.goto(route);
@@ -692,4 +740,6 @@ test('static delivery makes hashed assets immutable and unknown routes real 404s
   await expect(page.locator('footer')).toHaveCount(1);
   await expect(page.locator('link[rel="canonical"]')).toHaveAttribute('href', 'https://self-study-proofbook.sociobot.in/404');
   await expect(page.locator('link[rel="icon"]')).toHaveCount(1);
+  const packageManifest = JSON.parse(await readFile('package.json', 'utf8')) as { version: string };
+  await expect(page.locator('footer .build')).toHaveText(`Version ${packageManifest.version}`);
 });
