@@ -1,25 +1,26 @@
-# Verification 3 handoff — PASS
+# Review 3 handoff
 
-Candidate `6361505d517d31376666cf57998b6ea3de3a39f8` is accepted at
-<https://self-study-proofbook.sociobot.in>.
+Completed an adversarial, non-code-changing review of the live deployment and
+commit `4fedf6057d8bfe613ff4fd147089f1d2de46e93a`.
 
-Fresh independent evidence is in `.factory/verification-3.md`: all 15
-required claim commands passed, `npm test` passed 20/20, and `npm run build`
-passed from a clean detached checkout. The live JS, CSS, and service-worker
-hashes match this candidate exactly. Live offline reload, worker update notice,
-privacy request log, mobile/keyboard checks, headers/cache policy, and
-serious/critical Axe checks passed. Lighthouse mobile measured Performance 99
-and Accessibility 100.
+The full report is `.factory/review-3.md`. Verdict: **FAIL** with two minor
+plain-language findings: route H1 slogans/metaphors and decorative landing
+labels/slogan. No product code was modified.
 
-There are no known product defects or release blockers.
-
-To reproduce:
+Verification performed from a detached clean clone:
 
 ```sh
 npm ci
+# run every exact test command in .factory/claims.json
 npm test
 npm run build
 ```
 
-Run every exact command in `.factory/claims.json` as well. The isolated sample
-entry point is `/demo` (also available at `/?demo=1`).
+All 15 claim commands passed individually; the full Playwright suite passed
+20/20 and the build passed. Live mobile/desktop cold reads, demo isolation,
+Reset demo, Start for real, request logging, offline reload, route metadata,
+navigation focus/Back behaviour, link crawl, and prior-finding checks were also
+performed. The live JS/CSS hashes match the reviewed build.
+
+Remaining work is limited to the two documented copy repairs, followed by a new
+fresh-browser and clean-clone review.
