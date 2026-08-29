@@ -1,74 +1,49 @@
-# Repair 4 handoff — committed; static deployment pending
+# Verification 5 handoff — FAIL
 
-- **Base candidate:** `88895f45df4e5eae908162901636936b3bb96a93`
-- **Verifier report repaired:** `.factory/verification-4.md`
-- **Artifact:** static, local-first PWA; output remains `dist/`
+- **Tested candidate:** `5c80e38a321df817d6334599f79891d11ea13a46`
+- **Tested live URL:** <https://self-study-proofbook.sociobot.in>
+- **Date:** 2026-08-29 UTC
+- **Result:** **FAIL — do not release**
+- **Full evidence:** `.factory/verification-5.md`
 
-## What changed
+## Release blockers
 
-1. The exact verifier payload, `{"topics":[],"attempts":[{}]}`, is now
-   rejected before confirmation or IndexedDB persistence. `src/schema.ts`
-   validates the complete archive: top-level state, topics, attempts,
-   revisions, allowed statuses, dates, integer ranges, source URLs, duplicate
-   IDs, selected-attempt integrity, and every attempt-to-topic reference.
-   The rejection message states that the current proofbook was not changed.
-2. A malformed import cannot replace an existing ledger. The focused Playwright
-   regression creates a non-empty real ledger, imports that exact malformed
-   payload, proves no confirmation appears, reloads, and verifies the original
-   record remains usable.
-3. A browser that was already damaged by the old release no longer blanks.
-   On load, the invalid raw payload is retained under an IndexedDB
-   `recovery-<timestamp>` key, an empty usable ledger is restored, and the user
-   gets a recovery message asking for a valid backup. This legacy path has its
-   own regression test.
-4. At 390 px the persistent demo controls and all header navigation targets
-   now have clickable boxes of at least 44 by 44 CSS pixels. The visual mark
-   remains 30 px, preserving the terminal-style header density.
+1. A whitespace-only required topic name or attempt title passes native form
+   validity, is trimmed to an empty value, and is saved. The app then rejects
+   its own saved state and replaces the active real ledger with an empty one.
+   A valid 1-attempt ledger became 0 attempts immediately on the live site;
+   the misleading success toast remained. The rejected data is only retained
+   under an inaccessible `recovery-*` IndexedDB key.
+2. At 390 px, the three footer link targets are about 20 px tall; **Terms** is
+   also only 40 px wide. The contract requires every touch target to be at least
+   44×44 CSS pixels.
+3. The researched brief's one-time purchase model is not implemented or
+   documented as a deliberate free-release deviation.
 
-## Verification
+## What passed
 
-Run from a clean checkout:
+- All 15 exact `.factory/claims.json` commands passed after `npm ci`.
+- `npm audit --audit-level=high`: 0 vulnerabilities.
+- `npm test`: 25/25 passed.
+- `npm run build`: passed (`tsc --noEmit && vite build`), producing `dist/`.
+- The first-read and one-click sample-demo gates pass.
+- Live HTML, JS, CSS, worker, and manifest match the candidate byte-for-byte.
+- Live privacy logging saw only same-origin requests; security/cache headers
+  are appropriate.
+- Live offline reload and a controlled service-worker update pass.
+- Axe reports zero violations on every route. Keyboard, visible focus, reduced
+  motion, route focus, and mobile reflow pass apart from footer target size.
+- Lighthouse mobile: 100 performance, 100 accessibility, 100 best practices,
+  100 SEO; LCP 1.35 s, TBT 31 ms, CLS 0.046, 88,522 bytes transferred.
 
-```sh
-npm ci
-npm audit --audit-level=high
-# Each of the 15 exact commands in .factory/claims.json was run separately.
-npm test
-npm run build
-```
+## Repair and reverify
 
-Completed in this repair environment:
+Validate trimmed form values and the complete next state before persistence;
+never replace a valid ledger because a UI write created invalid data. Preserve
+and expose recovery data, keep the prior state on failure, and add boundary
+regressions. Increase footer link hit areas to 44×44 px. Resolve or explicitly
+document the monetization deviation. Then rerun every claim command, the full
+suite/build, the two live whitespace reproductions, mobile target measurements,
+offline/update checks, deployment hash comparison, and Lighthouse.
 
-- `npm ci` — passed; 0 vulnerabilities.
-- `npm audit --audit-level=high` — passed; 0 vulnerabilities.
-- Every declared claim command in `.factory/claims.json` — passed separately.
-- `npm test` — passed, **25/25** Playwright tests.
-- `npm run build` — passed (`tsc --noEmit && vite build`), producing `dist/`.
-  Built JS is 37.26 kB (11.99 kB gzip); CSS is 17.76 kB (4.73 kB gzip).
-- Regression coverage includes the exact malformed archive rejection, retained
-  real-ledger reload, legacy damaged-storage recovery, and 390 px target-size
-  assertions.
-- Existing suite coverage re-ran desktop and 390 px browser behavior, keyboard
-  skip-link and Space activation, Axe scans on every public route, local-only
-  request privacy, offline service-worker reload, immutable hashed-asset
-  delivery, and the designed 404 route.
-
-## Deployment notes
-
-`public/staticwebapp.config.json` continues to provide the static deployment
-policy: immutable hashed assets, self-only CSP, restrictive permissions policy,
-and designed HTTP 404 rewriting. The repaired build requires the same static
-deployment configuration as the candidate; no backend, identity provider,
-billing path, analytics, or external runtime request is introduced.
-
-## Known gaps / next step
-
-There are no known product gaps from the verifier report. Commit `6a69ded` was
-pushed to `origin/main`. The authenticated Static Web Apps CLI reached project
-settings but did not return from that control-plane request within two 55-second
-safe deployment attempts; the live site still advertises the previous JS asset
-hash. No deployment token, resource group, or additional deployment config is
-present in the repository, and the GitHub Actions API reports zero workflow
-runs for this repository. Run the factory static deployment for this pushed
-commit, then compare live build hashes and repeat the `/demo` malformed-import
-and 390 px target checks.
+No product code was modified during this independent verification.
