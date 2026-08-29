@@ -1,0 +1,23 @@
+[
+  {
+    "opener": "Add topic",
+    "role": "dialog",
+    "name": "",
+    "modal": true,
+    "initialFocus": "Close dialog"
+  },
+  {
+    "opener": "Record attempt",
+    "role": "dialog",
+    "name": "",
+    "modal": true,
+    "initialFocus": "Close dialog"
+  },
+  {
+    "opener": "Export encrypted backup",
+    "role": "dialog",
+    "name": "",
+    "modal": true,
+    "initialFocus": "Close dialog"
+  }
+]
