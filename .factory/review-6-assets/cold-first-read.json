@@ -1,0 +1,315 @@
+{
+  "mobile": {
+    "status": 200,
+    "url": "https://self-study-proofbook.sociobot.in/",
+    "title": "Self-Study Proofbook — Record problems you can solve",
+    "h1": [
+      "Record problems you can solve"
+    ],
+    "aboveFold": [
+      {
+        "tag": "span",
+        "text": "P:",
+        "top": 17,
+        "bottom": 47
+      },
+      {
+        "tag": "a",
+        "text": "Demo",
+        "top": 10,
+        "bottom": 54
+      },
+      {
+        "tag": "a",
+        "text": "My proofbook",
+        "top": 10,
+        "bottom": 54
+      },
+      {
+        "tag": "a",
+        "text": "Privacy",
+        "top": 10,
+        "bottom": 54
+      },
+      {
+        "tag": "h1",
+        "text": "Record problems you can solve",
+        "top": 112,
+        "bottom": 255
+      },
+      {
+        "tag": "p",
+        "text": "For serious math and CS learners who need evidence beyond course badges.",
+        "top": 279,
+        "bottom": 334
+      },
+      {
+        "tag": "a",
+        "text": "Try it with sample data",
+        "top": 370,
+        "bottom": 418
+      },
+      {
+        "tag": "span",
+        "text": "Opens a separate sample ledger.",
+        "top": 436,
+        "bottom": 454
+      },
+      {
+        "tag": "a",
+        "text": "Start your proofbook",
+        "top": 474,
+        "bottom": 518
+      },
+      {
+        "tag": "span",
+        "text": "■",
+        "top": 562,
+        "bottom": 579
+      },
+      {
+        "tag": "span",
+        "text": "■",
+        "top": 588,
+        "bottom": 605
+      },
+      {
+        "tag": "span",
+        "text": "■",
+        "top": 614,
+        "bottom": 631
+      }
+    ],
+    "bodyText": [
+      "Skip to main content",
+      "P:",
+      "Demo",
+      "My proofbook",
+      "Privacy",
+      "Record problems you can solve",
+      "For serious math and CS learners who need evidence beyond course badges.",
+      "Try it with sample data",
+      "Opens a separate sample ledger.",
+      "Start your proofbook",
+      "■ Entries stay in this browser",
+      "■ Works offline after your first visit",
+      "■ Free in this release; no checkout",
+      "Each attempt becomes one cited, revisable record.",
+      "Review your cited attempts",
+      "A mastery index points back to sources, time spent, and revision history.",
+      "Uniform limit theorem",
+      "Analysis §6.2.7",
+      "41 min",
+      "MASTERED",
+      "Dijkstra’s greedy step",
+      "Algorithms §4.4",
+      "32 min",
+      "REVISED",
+      "Lagrange from cosets",
+      "Algebra §7",
+      "13 min",
+      "WORKING",
+      "Build evidence in three steps",
+      "01",
+      "Cite the problem",
+      "Name the book, paper, exam, or page. Do not copy restricted problem text.",
+      "02",
+      "Time and revise your solution",
+      "Keep each saved version. Add a short note about what changed.",
+      "03",
+      "Print your mastery index",
+      "Review a compact list with sources, effort, status, and revision counts.",
+      "A record, not a credential",
+      "Proofbook records practice; it does not issue credentials.",
+      "Your entries stay in this browser unless you export them.",
+      "Use source citations. Do not store copyrighted problem text you cannot redistribute.",
+      "Export a password-encrypted backup",
+      "Record attempts, then export JSON, CSV, a print index, or a password-encrypted backup.",
+      "Start your proofbook",
+      "Your archive stays in this browser until you choose to download it.",
+      "Private records for math and CS self-study.",
+      "Privacy",
+      "Terms",
+      "Built by Param Factory",
+      "(external site)",
+      "VERSION 1.0.1",
+      "Record problems you can solve"
+    ],
+    "scrollWidth": 390,
+    "clientWidth": 390,
+    "consoleErrors": [],
+    "pageErrors": [],
+    "requests": [
+      "https://self-study-proofbook.sociobot.in/",
+      "https://self-study-proofbook.sociobot.in/assets/index-COX20jzo.js",
+      "https://self-study-proofbook.sociobot.in/assets/index-BUG2fYI9.css",
+      "https://self-study-proofbook.sociobot.in/fonts/departure-mono.woff2",
+      "https://self-study-proofbook.sociobot.in/assets/hero-proof-terminal-640.webp"
+    ]
+  },
+  "desktop": {
+    "status": 200,
+    "url": "https://self-study-proofbook.sociobot.in/",
+    "title": "Self-Study Proofbook — Record problems you can solve",
+    "h1": [
+      "Record problems you can solve"
+    ],
+    "aboveFold": [
+      {
+        "tag": "span",
+        "text": "P:",
+        "top": 21,
+        "bottom": 51
+      },
+      {
+        "tag": "span",
+        "text": "PROOFBOOK",
+        "top": 29,
+        "bottom": 43
+      },
+      {
+        "tag": "a",
+        "text": "Demo",
+        "top": 14,
+        "bottom": 58
+      },
+      {
+        "tag": "a",
+        "text": "My proofbook",
+        "top": 14,
+        "bottom": 58
+      },
+      {
+        "tag": "a",
+        "text": "Privacy",
+        "top": 14,
+        "bottom": 58
+      },
+      {
+        "tag": "h1",
+        "text": "Record problems you can solve",
+        "top": 136,
+        "bottom": 509
+      },
+      {
+        "tag": "p",
+        "text": "For serious math and CS learners who need evidence beyond course badges.",
+        "top": 533,
+        "bottom": 603
+      },
+      {
+        "tag": "a",
+        "text": "Try it with sample data",
+        "top": 639,
+        "bottom": 687
+      },
+      {
+        "tag": "span",
+        "text": "Opens a separate sample ledger.",
+        "top": 654,
+        "bottom": 672
+      },
+      {
+        "tag": "a",
+        "text": "Start your proofbook",
+        "top": 707,
+        "bottom": 751
+      },
+      {
+        "tag": "span",
+        "text": "■",
+        "top": 795,
+        "bottom": 812
+      },
+      {
+        "tag": "span",
+        "text": "■",
+        "top": 821,
+        "bottom": 838
+      },
+      {
+        "tag": "span",
+        "text": "■",
+        "top": 847,
+        "bottom": 864
+      },
+      {
+        "tag": "figcaption",
+        "text": "Each attempt becomes one cited, revisable record.",
+        "top": 776,
+        "bottom": 830
+      }
+    ],
+    "bodyText": [
+      "Skip to main content",
+      "P:",
+      "PROOFBOOK",
+      "Demo",
+      "My proofbook",
+      "Privacy",
+      "Record problems you can solve",
+      "For serious math and CS learners who need evidence beyond course badges.",
+      "Try it with sample data",
+      "Opens a separate sample ledger.",
+      "Start your proofbook",
+      "■ Entries stay in this browser",
+      "■ Works offline after your first visit",
+      "■ Free in this release; no checkout",
+      "Each attempt becomes one cited, revisable record.",
+      "Review your cited attempts",
+      "A mastery index points back to sources, time spent, and revision history.",
+      "PROBLEM",
+      "SOURCE",
+      "TIME",
+      "EVIDENCE",
+      "Uniform limit theorem",
+      "Analysis §6.2.7",
+      "41 min",
+      "MASTERED",
+      "Dijkstra’s greedy step",
+      "Algorithms §4.4",
+      "32 min",
+      "REVISED",
+      "Lagrange from cosets",
+      "Algebra §7",
+      "13 min",
+      "WORKING",
+      "Build evidence in three steps",
+      "01",
+      "Cite the problem",
+      "Name the book, paper, exam, or page. Do not copy restricted problem text.",
+      "02",
+      "Time and revise your solution",
+      "Keep each saved version. Add a short note about what changed.",
+      "03",
+      "Print your mastery index",
+      "Review a compact list with sources, effort, status, and revision counts.",
+      "A record, not a credential",
+      "Proofbook records practice; it does not issue credentials.",
+      "Your entries stay in this browser unless you export them.",
+      "Use source citations. Do not store copyrighted problem text you cannot redistribute.",
+      "Export a password-encrypted backup",
+      "Record attempts, then export JSON, CSV, a print index, or a password-encrypted backup.",
+      "Start your proofbook",
+      "Your archive stays in this browser until you choose to download it.",
+      "Private records for math and CS self-study.",
+      "Privacy",
+      "Terms",
+      "Built by Param Factory",
+      "(external site)",
+      "VERSION 1.0.1",
+      "Record problems you can solve"
+    ],
+    "scrollWidth": 1440,
+    "clientWidth": 1440,
+    "consoleErrors": [],
+    "pageErrors": [],
+    "requests": [
+      "https://self-study-proofbook.sociobot.in/",
+      "https://self-study-proofbook.sociobot.in/assets/index-COX20jzo.js",
+      "https://self-study-proofbook.sociobot.in/assets/index-BUG2fYI9.css",
+      "https://self-study-proofbook.sociobot.in/fonts/departure-mono.woff2",
+      "https://self-study-proofbook.sociobot.in/assets/hero-proof-terminal-1120.webp"
+    ]
+  }
+}
