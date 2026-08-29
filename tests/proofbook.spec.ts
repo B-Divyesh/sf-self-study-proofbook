@@ -28,10 +28,10 @@ test('@claim:offline-reload works offline after the first visit', async ({ page,
     const cache = await caches.open(names.find((name) => name.startsWith('proofbook-')) ?? 'missing');
     return (await cache.match('/index.html'))?.ok ?? false;
   })).toBe(true);
-  await expect(page.getByRole('heading', { level: 1 })).toHaveText('Build proof you can revisit');
+  await expect(page.getByRole('heading', { level: 1 })).toHaveText('Record and review problem attempts.');
   await context.setOffline(true);
   await page.reload();
-  await expect(page.getByRole('heading', { level: 1 })).toHaveText('Build proof you can revisit');
+  await expect(page.getByRole('heading', { level: 1 })).toHaveText('Record and review problem attempts.');
   await expect(page.getByText('3 attempts across 3 topics.')).toBeVisible();
 });
 
@@ -122,8 +122,14 @@ test('@claim:demo-isolation never copies sample data into the real ledger', asyn
 test('@claim:archive-tools-included makes every archive tool usable without checkout', async ({ page }) => {
   const outgoing: string[] = [];
   page.on('request', (request) => outgoing.push(request.url()));
-  await page.goto('/demo');
+  await page.goto('/');
+  await expect(page.getByText('Free in this release; no checkout')).toBeVisible();
   await expect(page.locator('a[href*="/checkout"], [data-license]')).toHaveCount(0);
+  await page.getByRole('link', { name: 'Try it with sample data' }).click();
+  await expect(page).toHaveURL(/\/?\?demo=1$/);
+  await expect(page).toHaveTitle('Demo — Self-Study Proofbook');
+  await expect(page.getByRole('heading', { level: 1 })).toHaveText('Record and review problem attempts.');
+  await expect(page.getByText('Demo — sample data, nothing is saved to your proofbook.')).toBeVisible();
   const jsonDownload = page.waitForEvent('download');
   await page.getByRole('button', { name: 'Export JSON' }).click();
   expect((await readFile(await (await jsonDownload).path(), 'utf8')).includes('attempts')).toBe(true);
@@ -227,7 +233,7 @@ test('@claim:json-complete-archive restores all local proofbook data', async ({ 
   expect(restoredContents).toEqual(originalContents);
 });
 
-test('rejects the verifier malformed archive before confirmation, preserves a real ledger, and recovers after reload', async ({ page }) => {
+test('@claim:safe-import-validation rejects malformed imports before replacing a real ledger', async ({ page }) => {
   await page.goto('/app');
   await page.getByRole('button', { name: 'Add topic' }).click();
   await page.getByLabel('Topic name').fill('Recovery checks');
@@ -240,20 +246,36 @@ test('rejects the verifier malformed archive before confirmation, preserves a re
   await page.getByLabel('Problem reference').fill('Case 1');
   await page.getByRole('button', { name: 'Start attempt' }).click();
 
-  let confirmationOpened = false;
-  page.on('dialog', (dialog) => { confirmationOpened = true; void dialog.dismiss(); });
-  await page.locator('#import-file').setInputFiles({
-    name: 'verifier-reproduction.json',
-    mimeType: 'application/json',
-    buffer: Buffer.from(JSON.stringify({ topics: [], attempts: [{}] })),
-  });
-
-  await expect(page.getByText(/This archive is invalid.*current proofbook was not changed/)).toBeVisible();
-  expect(confirmationOpened).toBe(false);
-  await expect(page.getByRole('heading', { name: 'Retain the valid ledger' })).toBeVisible();
+  const baselineDownload = page.waitForEvent('download');
+  await page.getByRole('button', { name: 'Export JSON' }).click();
+  const baseline = JSON.parse(await readFile(await (await baselineDownload).path(), 'utf8'));
+  const malformedCases = [
+    ['topic', (archive: any) => { archive.topics[0].name = '   '; }],
+    ['attempt', (archive: any) => { archive.attempts[0].status = 'certified'; }],
+    ['revision', (archive: any) => { archive.attempts[0].revisions.push({ id: 'bad-revision', at: 'not-a-date', solution: '', reflection: '' }); }],
+    ['value', (archive: any) => { archive.attempts[0].elapsedSeconds = -1; }],
+    ['reference', (archive: any) => { archive.attempts[0].topicId = 'missing-topic'; }],
+  ] as const;
+  let confirmationCount = 0;
+  page.on('dialog', (dialog) => { confirmationCount += 1; void dialog.dismiss(); });
+  for (const [name, damage] of malformedCases) {
+    const malformed = structuredClone(baseline);
+    damage(malformed);
+    await page.locator('#import-file').setInputFiles({
+      name: `malformed-${name}.json`,
+      mimeType: 'application/json',
+      buffer: Buffer.from(JSON.stringify(malformed)),
+    });
+    await expect(page.getByText(/This archive is invalid.*current proofbook was not changed/)).toBeVisible();
+    await expect(page.getByRole('heading', { name: 'Retain the valid ledger' })).toBeVisible();
+  }
+  expect(confirmationCount).toBe(0);
   await page.reload();
   await expect(page.getByRole('heading', { name: 'Retain the valid ledger' })).toBeVisible();
   await expect(page.getByText('1 attempt across 1 topic.')).toBeVisible();
+  const afterDownload = page.waitForEvent('download');
+  await page.getByRole('button', { name: 'Export JSON' }).click();
+  expect(JSON.parse(await readFile(await (await afterDownload).path(), 'utf8'))).toEqual(baseline);
 });
 
 for (const requiredField of [
@@ -310,7 +332,7 @@ test('recovers a legacy malformed persisted archive into a usable ledger', async
     };
   }));
   await page.reload();
-  await expect(page.getByRole('heading', { level: 1 })).toHaveText('Build proof you can revisit');
+  await expect(page.getByRole('heading', { level: 1 })).toHaveText('Record and review problem attempts.');
   await expect(page.getByText('0 attempts across 0 topics.')).toBeVisible();
   await expect(page.locator('#toast')).toContainText('A damaged saved copy was kept.');
   await expect(page.getByRole('heading', { name: 'Recovery copies' })).toBeVisible();
@@ -327,7 +349,7 @@ test('recovers a legacy malformed persisted archive into a usable ledger', async
   expect(recoveryStored).toBe(true);
 });
 
-test('salvages the prior valid ledger and exposes download and restore for a quarantined copy', async ({ page }) => {
+test('@claim:saved-data-recovery keeps valid records usable and the original available', async ({ page }) => {
   await page.goto('/app');
   await page.getByRole('button', { name: 'Add topic' }).click();
   await page.getByLabel('Topic name').fill('Preserved topic');
@@ -339,7 +361,7 @@ test('salvages the prior valid ledger and exposes download and restore for a qua
   await page.getByRole('button', { name: 'Start attempt' }).click();
   await expect(page.getByText('1 attempt across 1 topic.')).toBeVisible();
 
-  await page.evaluate(async () => new Promise<void>((resolve, reject) => {
+  const expectedDamaged = await page.evaluate(async () => new Promise<Record<string, unknown>>((resolve, reject) => {
     const request = indexedDB.open('proofbook-v1');
     request.onerror = () => reject(request.error);
     request.onsuccess = () => {
@@ -351,7 +373,7 @@ test('salvages the prior valid ledger and exposes download and restore for a qua
         damaged.topics.push({ id: 'topic-damaged', name: '   ', goal: '' });
         const write = database.transaction('state', 'readwrite');
         write.objectStore('state').put(damaged, 'proofbook');
-        write.oncomplete = () => { database.close(); resolve(); };
+        write.oncomplete = () => { database.close(); resolve(damaged); };
         write.onerror = () => reject(write.error);
       };
     };
@@ -361,16 +383,20 @@ test('salvages the prior valid ledger and exposes download and restore for a qua
   await expect(page.getByRole('heading', { name: 'Preserved attempt' })).toBeVisible();
   await expect(page.getByText('1 attempt across 1 topic.')).toBeVisible();
   await expect(page.getByRole('heading', { name: 'Recovery copies' })).toBeVisible();
+  await page.getByLabel('Solution notes Markdown').fill('The recovered record is still editable.');
+  await page.getByRole('button', { name: 'Save revision' }).click();
+  await expect(page.getByText('Revision saved.')).toBeVisible();
   const downloadEvent = page.waitForEvent('download');
   await page.getByRole('button', { name: 'Download original' }).click();
   const damaged = JSON.parse(await readFile(await (await downloadEvent).path(), 'utf8'));
-  expect(damaged.topics.some((topic: { name: string }) => topic.name === '   ')).toBe(true);
+  expect(damaged).toEqual(expectedDamaged);
 
   page.once('dialog', (dialog) => dialog.accept());
   await page.getByRole('button', { name: 'Restore valid records' }).click();
   await expect(page.locator('#toast')).toContainText('Valid records were restored.');
   await page.reload();
   await expect(page.getByRole('heading', { name: 'Preserved attempt' })).toBeVisible();
+  await expect(page.getByLabel('Solution notes Markdown')).toHaveValue('');
 });
 
 test('UI limits match archive validation, accept exact maxima, and reject overlong notes before writing', async ({ page }) => {
@@ -520,6 +546,11 @@ test('route names and landing sections use direct, useful wording', async ({ pag
   await expect(page.locator('footer')).toContainText('Private records for math and CS self-study.');
   await expect(page.locator('footer .build')).toHaveText('Version 1.0.1');
 
+  for (const route of ['/demo', '/app']) {
+    await page.goto(route);
+    await expect(page.getByRole('heading', { level: 1 })).toHaveText('Record and review problem attempts.');
+  }
+
   for (const [route, heading] of [
     ['/privacy', 'Privacy and data storage'],
     ['/terms', 'Terms of use'],
@@ -532,14 +563,17 @@ test('route names and landing sections use direct, useful wording', async ({ pag
   }
 });
 
-test('documents the researched one-time model and the deliberate free-release deviation', async ({ page }) => {
+test('documents the free release without exposing internal billing instructions', async ({ page }) => {
   const brief = JSON.parse(await readFile('.factory/brief.json', 'utf8')) as { monetization: string; release_scope_decision: string };
   const readme = await readFile('README.md', 'utf8');
   expect(brief.monetization).toBe('one-time');
   expect(brief.release_scope_decision).toContain('deliberately ships every feature free');
-  expect(readme).toContain('The researched business model is a one-time purchase.');
-  expect(readme).toContain('This release deliberately\noffers no paid tier');
+  expect(readme).toContain('This release is free. It has no checkout or license requirement.');
+  expect(readme).not.toContain('researched business model');
+  expect(readme).not.toContain('Sociobot billing product');
+  expect(readme).not.toContain('register and verify the hosted checkout');
   await page.goto('/');
+  await expect(page.getByText('Free in this release; no checkout')).toBeVisible();
   await expect(page.locator('a[href*="/checkout"], [data-license]')).toHaveCount(0);
 });
 
@@ -564,8 +598,17 @@ test('landing page has one h1, working routes, and no console errors', async ({ 
   await expect(page.locator('h1')).toHaveCount(1);
   await expect(page.locator('main')).toHaveCount(1);
   await expect(page.getByRole('link', { name: 'Try it with sample data' })).toBeVisible();
+  await expect(page.locator('footer a[href="/privacy"]')).toBeVisible();
+  await expect(page.locator('footer a[href="/terms"]')).toBeVisible();
   await page.getByRole('link', { name: 'Privacy' }).first().click();
   await expect(page).toHaveTitle('Privacy and data storage — Self-Study Proofbook');
+  await expect(page.getByRole('heading', { level: 1 })).toBeFocused();
+  await expect(page.locator('.route-status')).toHaveText('Privacy and data storage');
+  await page.goBack();
+  await expect(page).toHaveURL(/\/$/);
+  await expect(page.getByRole('heading', { level: 1 })).toHaveText('Record problems you can solve');
+  await expect(page.getByRole('heading', { level: 1 })).toBeFocused();
+  await expect(page.locator('.route-status')).toHaveText('Record problems you can solve');
   expect(errors).toEqual([]);
 });
 

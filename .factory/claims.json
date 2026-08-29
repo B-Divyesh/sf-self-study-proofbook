@@ -36,7 +36,7 @@
   },
   {
     "id": "encrypted-backup",
-    "claim": "A backup uses AES-256-GCM encryption, and its password is not stored.",
+    "claim": "A backup is encrypted in your browser using your password, and the password is not stored.",
     "where": "landing archive section, app archive tools, README",
     "test": "npm test -- --grep @claim:encrypted-backup",
     "sandbox": "fresh /demo data; create a backup, decrypt it with Web Crypto AES-256-GCM, and assert neither persistent storage nor the downloaded bytes retains the password"
@@ -57,8 +57,8 @@
   },
   {
     "id": "archive-tools-included",
-    "claim": "The current release has no paid tier; JSON, CSV, printing, and password-encrypted backups are included in the local ledger.",
-    "where": "landing facts, landing archive section, README purchase model",
+    "claim": "This release is free and has no checkout; JSON, CSV, printing, and password-encrypted backups are included.",
+    "where": "landing facts, landing archive section, README price section",
     "test": "npm test -- --grep @claim:archive-tools-included",
     "sandbox": "fresh /demo data; assert no checkout or license UI, download JSON and CSV, create a password-encrypted backup, and open the printable index without any checkout request"
   },
@@ -103,5 +103,19 @@
     "where": "landing boundaries, README, terms, printable index",
     "test": "npm test -- --grep @claim:no-credential-service",
     "sandbox": "fresh /demo data; open the printable index, assert its learner-maintained non-credential notice, and intercept all requests to confirm no credential service is contacted"
+  },
+  {
+    "id": "saved-data-recovery",
+    "claim": "Proofbook rejects invalid saved data and keeps the original file available for recovery.",
+    "where": "README technical notes, app recovery tools",
+    "test": "npm test -- --grep @claim:saved-data-recovery",
+    "sandbox": "fresh real ledger; corrupt its stored data, reload, use the valid record, download and compare the untouched original, then restore its valid records"
+  },
+  {
+    "id": "safe-import-validation",
+    "claim": "Proofbook rejects a malformed import before it replaces your current ledger.",
+    "where": "README technical notes, app import error",
+    "test": "npm test -- --grep @claim:safe-import-validation",
+    "sandbox": "fresh real ledger; try malformed topics, attempts, revisions, values, and references, then reload and compare the unchanged archive"
   }
 ]

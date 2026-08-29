@@ -1,6 +1,6 @@
 # Demo sandbox
 
-- URL: `/demo`
+- URL: `/?demo=1` (the `/demo` route opens the same isolated sample ledger).
 - Sample: three cited attempts across real analysis, graph algorithms, and
   abstract algebra. The records include working, revised, and mastered states,
   timed effort, reflections, and revision history.

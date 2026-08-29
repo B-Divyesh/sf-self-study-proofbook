@@ -1,6 +1,6 @@
 # Landing copy audit
 
-Checked 2026-08-29 after repair 5. Counts treat contractions and
+Checked 2026-08-29 for perfection-loop round 4. Counts treat contractions and
 hyphenated terms as one word. Sample records, table headings, navigation labels,
 and version text are labels or data, not sentences. No landing sentence exceeds
 22 words or contains a banned marketing word.
@@ -16,11 +16,11 @@ and version text are labels or data, not sentences. No landing sentence exceeds
 | Start your proofbook | 3 | Pass — action |
 | Entries stay in this browser | 5 | Pass — `privacy-local` |
 | Works offline after your first visit | 6 | Pass — `offline-reload` |
-| Exports and backups included | 4 | Pass — `archive-tools-included` |
+| Free in this release; no checkout | 6 | Pass — price and `archive-tools-included` |
 | Each attempt becomes one cited, revisable record. | 7 | Pass — `cited-attempt`, `revision-history` |
 
-Read aloud, the first screen answers the job, audience, and first action in one
-breath: record problems you can solve, then try the separate sample ledger.
+Read aloud, the first screen answers the job, audience, price, and first action
+in one breath: record problems you can solve, then try the separate sample ledger.
 
 ## Remaining landing sentences
 
@@ -46,11 +46,12 @@ breath: record problems you can solve, then try the separate sample ledger.
 | Record attempts, then export JSON, CSV, a print index, or a password-encrypted backup. | 13 | Pass — archive claims |
 | Start your proofbook | 3 | Pass — action |
 | Your archive stays in this browser until you choose to download it. | 12 | Pass — `privacy-local` |
-| Private records for math and CS self-study. | 8 | Pass — useful footer description |
+| Private records for math and CS self-study. | 7 | Pass — useful footer description |
 
-The prior decorative counters, archive ornament, and slogan were removed. The
-direct route headings are **Privacy and data storage**, **Terms of use**, and
-**Page not found**.
+The prior decorative counters, archive ornament, and slogan remain removed. The
+app and demo H1 is **Record and review problem attempts.** Direct legal and 404
+headings remain **Privacy and data storage**, **Terms of use**, and **Page not
+found**.
 
 ## Terminology
 
@@ -67,5 +68,5 @@ direct route headings are **Privacy and data storage**, **Terms of use**, and
 
 ## Catalog description
 
-“Record cited problems, time attempts, and keep revisions in a private offline
-ledger.” — 13 words, 85 characters, starts with a verb.
+“Record cited problems, timed attempts, and revisions in a private offline
+ledger.” — 11 words, 81 characters, starts with a verb.

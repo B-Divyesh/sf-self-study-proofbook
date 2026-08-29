@@ -112,14 +112,14 @@ function landing(): string {
         <h1 tabindex="-1">Record problems you can solve</h1>
         <p class="lede">For serious math and CS learners who need evidence beyond course badges.</p>
         <div class="hero-actions">
-          <a class="button primary" href="/demo" data-route>Try it with sample data</a>
+          <a class="button primary" href="/?demo=1" data-route>Try it with sample data</a>
           <span>Opens a separate sample ledger.</span>
         </div>
         <a class="text-link" href="/app" data-route>Start your proofbook</a>
         <ul class="facts" aria-label="Product facts">
           <li><span aria-hidden="true">■</span> Entries stay in this browser</li>
           <li><span aria-hidden="true">■</span> Works offline after your first visit</li>
-          <li><span aria-hidden="true">■</span> Exports and backups included</li>
+          <li><span aria-hidden="true">■</span> Free in this release; no checkout</li>
         </ul>
       </div>
       <figure class="hero-art">
@@ -179,7 +179,7 @@ function appView(): string {
     </section>` : '';
   return shell(`
     <section class="workspace-head">
-      <div><p class="eyebrow">LOCAL LEDGER / ${demo ? 'DEMO' : 'PRIVATE'}</p><h1 tabindex="-1">Build proof you can revisit</h1><p>${state.attempts.length} attempt${state.attempts.length === 1 ? '' : 's'} across ${state.topics.length} topic${state.topics.length === 1 ? '' : 's'}.</p></div>
+      <div><p class="eyebrow">LOCAL LEDGER / ${demo ? 'DEMO' : 'PRIVATE'}</p><h1 tabindex="-1">Record and review problem attempts.</h1><p>${state.attempts.length} attempt${state.attempts.length === 1 ? '' : 's'} across ${state.topics.length} topic${state.topics.length === 1 ? '' : 's'}.</p></div>
       <div class="workspace-actions"><button class="button secondary" id="new-topic">Add topic</button><button class="button primary" id="new-attempt">Record attempt</button></div>
     </section>
     <section class="workspace" aria-label="Proofbook workspace">

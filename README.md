@@ -8,7 +8,7 @@ can solve. Proofbook records practice; it does not issue credentials.
 
 Live site: <https://self-study-proofbook.sociobot.in>
 
-Demo: <https://self-study-proofbook.sociobot.in/demo>
+Demo: <https://self-study-proofbook.sociobot.in/?demo=1>
 
 ## What it does
 
@@ -18,29 +18,26 @@ Demo: <https://self-study-proofbook.sociobot.in/demo>
 - Adds a learner-set status and confidence score.
 - Exports JSON with every revision and one CSV row per attempt.
 - Creates a printable mastery index with sources, time, status, and revisions.
-- Creates a password-encrypted backup with AES-256-GCM. The password is not saved.
+- Creates a backup protected by your password. The password is not saved.
 - Works offline after the first visit.
 
 JSON, CSV, printing, and password-encrypted backups are included in the local
 ledger.
 
-## Purchase model
+## Price
 
-The researched business model is a one-time purchase. This release deliberately
-offers no paid tier because its Sociobot billing product is not enabled. JSON,
-CSV, printing, and password-encrypted backups remain included, with no checkout
-or license flow. A paid release must register and verify the hosted checkout
-before adding a price.
+This release is free. It has no checkout or license requirement. JSON, CSV,
+printing, and password-encrypted backups are included.
 
 ## Privacy and ownership
 
-Study entries stay in the browser unless the learner exports them. IndexedDB
-stores the ledger. The demo uses a separate database and never copies sample
-records into the real ledger.
+Study entries stay in the browser unless the learner exports them. Your browser
+stores the ledger on this device. The demo uses a separate database and never
+copies sample records into the real ledger.
 
 JSON is the complete archive and keeps every revision. CSV is useful for a
-spreadsheet. Backups use AES-256-GCM encryption with a key derived from the
-learner's password. The password is never stored.
+spreadsheet. Backups are encrypted in your browser using your password. The
+password is never stored.
 
 Read the in-app [privacy page](https://self-study-proofbook.sociobot.in/privacy)
 and [terms](https://self-study-proofbook.sociobot.in/terms).
@@ -63,10 +60,12 @@ Tests use Playwright 1.58.2 and Chromium. They cover every claim in
 [`.factory/claims.json`](.factory/claims.json), including offline reload,
 isolated demo storage, revision history, downloads, and the print route.
 
-## Project notes
+## Technical notes for contributors
 
-- `src/db.ts` owns the two IndexedDB namespaces, validates every write, and keeps visible recovery copies of damaged legacy data.
-- `src/schema.ts` validates every imported topic, attempt, revision, value, and reference before the current ledger can be replaced.
+- Proofbook rejects invalid saved data and keeps the original file available for
+  recovery.
+- Proofbook rejects a malformed import before it replaces your current ledger.
+- `src/db.ts` owns the separate IndexedDB namespaces for real and demo data.
 - `src/crypto.ts` implements password-encrypted archives with Web Crypto.
 - `vite.config.ts` generates the service worker and static route documents.
 - `.factory/design.md` records the product-specific visual system and art
