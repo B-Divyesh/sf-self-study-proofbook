@@ -1,34 +1,44 @@
-# Review 2 handoff — Self-Study Proofbook
-
-## Scope
-
-Independent adversarial review only. No product code was changed. The review is
-recorded in `.factory/review-2.md`.
+# Polish 2 handoff — Self-Study Proofbook
 
 ## Result
 
-**FAIL** with one minor finding: `F-2-1`. The live `/demo` and `/app` topic rail
-is an `<aside>` nested inside `<main>`, producing Axe's moderate
-`landmark-complementary-is-top-level` violation. Replace it with a labelled
-`nav` or non-landmark element, then require zero Axe violations on these routes.
+Release repair commit: `e8e89de5aa1ad6aae0dac344b2d7de63aab94765`.
 
-## Verification performed
+The only outstanding adversarial finding, F-2-1, is repaired. The topic
+selector is now a labelled navigation landmark rather than an `aside` nested
+inside `main`. It keeps the existing pixel-terminal rail layout and gives
+screen-reader landmark navigation an accurate structure.
 
-- Fresh live Chromium at 390px and desktop: clear first screen, no application
-  errors, no mobile overflow, distinct product visual identity.
-- Fresh live demo: three realistic sample attempts, persistent isolated-demo
-  banner, reset restores the original sample, Start for real leads to an empty
-  real ledger.
-- Live request log: demo and offline flows only requested the product origin.
-  Service-worker-controlled `/demo` reloaded successfully while offline.
-- Fresh clone at `/tmp/self-study-proofbook-review-ioxZOp`: `npm ci` completed
-  with zero audit vulnerabilities; all 15 exact claims commands passed;
-  `npm test` passed 20/20; `npm run build` passed and produced `dist/`.
-- Live and built home HTML plus hashed application JavaScript had matching
-  SHA-256 values. Route, metadata, link, focus/back, 404, and prior-findings
-  checks are detailed in the review.
+## Verification
 
-## Next step
+- Clean clone: `/tmp/self-study-proofbook-polish-2-vUrAAJ` at
+  `e8e89de5aa1ad6aae0dac344b2d7de63aab94765`; `npm ci` reported 0
+  vulnerabilities.
+- Every exact command declared in `.factory/claims.json` passed from that
+  clean clone: 15/15 claims (`privacy-local` through `no-credential-service`).
+- Full browser suite: `npm test` passed 20/20. The mobile demo and all public
+  routes now assert **zero Axe violations**, not only serious/critical ones.
+- Production build: `npm run build` passed and produced `dist/index.html`.
+  Initial JavaScript is 10.95 KB gzip and CSS is 4.78 KB gzip.
+- Local URL checks passed for `/` and `/demo`; no console errors, one H1,
+  language, main landmark, and image alt checks are recorded in
+  `.factory/evidence/polish-2-local-home/verify.json` and
+  `.factory/evidence/polish-2-local-demo/verify.json`. Direct local 404 was
+  HTTP 404 and is captured in `.factory/evidence/polish-2-local-404/`.
+- Local Lighthouse mobile audit: Performance 99, Accessibility 100, Best
+  Practices 100, SEO 100; LCP 1.7 s, CLS 0.043, TBT 50 ms. Report:
+  `.factory/evidence/polish-2-local-home/lighthouse.json`.
 
-Repair F-2-1, rerun the claim commands and suite, and perform a new full
-first-read review. Do not treat this handoff as release approval.
+## Run and deploy
+
+```sh
+npm ci
+npm test
+npm run build
+/opt/fleet/lib/deploy-static.sh self-study-proofbook dist
+```
+
+## Known gaps
+
+None. Post-deployment cold checks are recorded below once the static work-order
+deployment completes.
