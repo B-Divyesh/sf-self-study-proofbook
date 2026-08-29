@@ -4,6 +4,9 @@
 
 Release repair commit: `e8e89de5aa1ad6aae0dac344b2d7de63aab94765`.
 
+Static deployment `61bf2c55-9612-4ec3-abc3-9ce0511f742d` completed to
+<https://self-study-proofbook.sociobot.in>.
+
 The only outstanding adversarial finding, F-2-1, is repaired. The topic
 selector is now a labelled navigation landmark rather than an `aside` nested
 inside `main`. It keeps the existing pixel-terminal rail layout and gives
@@ -28,6 +31,19 @@ screen-reader landmark navigation an accurate structure.
 - Local Lighthouse mobile audit: Performance 99, Accessibility 100, Best
   Practices 100, SEO 100; LCP 1.7 s, CLS 0.043, TBT 50 ms. Report:
   `.factory/evidence/polish-2-local-home/lighthouse.json`.
+- Cold live audit: `/`, `/?demo=1`, `/demo`, `/app`, `/print?demo=1`,
+  `/privacy`, and `/terms` returned 200; a deliberate unknown address returned
+  404. Every route had one H1/main/header/footer, no application console error,
+  and zero Axe violations. `/demo`, `/app`, and `/?demo=1` each expose the
+  repaired `NAV` topic rail. Evidence:
+  `.factory/evidence/polish-2-live-audit.json`.
+- Live home and demo URL checks have no console errors and are captured in
+  `.factory/evidence/polish-2-live-home/` and
+  `.factory/evidence/polish-2-live-demo/`. The cold direct-demo screenshot is
+  `.factory/evidence/polish-2-live-demo/query-demo-mobile.png`; the styled
+  404 is `.factory/evidence/polish-2-live-404/screenshot-mobile.png`.
+- Live Privacy navigation moves focus to its H1, and browser Back restores
+  focus to the home H1; see `.factory/evidence/polish-2-live-focus.json`.
 
 ## Run and deploy
 
@@ -40,5 +56,4 @@ npm run build
 
 ## Known gaps
 
-None. Post-deployment cold checks are recorded below once the static work-order
-deployment completes.
+None.
