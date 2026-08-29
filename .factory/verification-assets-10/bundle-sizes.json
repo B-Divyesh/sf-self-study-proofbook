@@ -1,0 +1,37 @@
+[
+  {
+    "file": "assets/hero-proof-terminal-1120.webp",
+    "raw": 45882,
+    "gzip": 45915
+  },
+  {
+    "file": "assets/hero-proof-terminal-640.webp",
+    "raw": 18802,
+    "gzip": 18830
+  },
+  {
+    "file": "assets/index-BUG2fYI9.css",
+    "raw": 18747,
+    "gzip": 4887
+  },
+  {
+    "file": "assets/index-COX20jzo.js",
+    "raw": 43431,
+    "gzip": 13486
+  },
+  {
+    "file": "assets/proofbook-social.webp",
+    "raw": 47930,
+    "gzip": 47963
+  },
+  {
+    "file": "fonts/departure-mono.woff2",
+    "raw": 22496,
+    "gzip": 22524
+  },
+  {
+    "file": "sw.js",
+    "raw": 2188,
+    "gzip": 874
+  }
+]

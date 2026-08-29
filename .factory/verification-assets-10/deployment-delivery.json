@@ -1,0 +1,477 @@
+{
+  "identity": {
+    "matched": 30,
+    "total": 30,
+    "files": [
+      {
+        "file": "404.html",
+        "status": 200,
+        "bytes": 2457,
+        "localSha256": "7526376f72690d2c52e84c6c01387bdb1851033842c33bc35ff91110ea14f1fd",
+        "liveSha256": "7526376f72690d2c52e84c6c01387bdb1851033842c33bc35ff91110ea14f1fd",
+        "match": true
+      },
+      {
+        "file": "app/index.html",
+        "status": 200,
+        "bytes": 1705,
+        "localSha256": "ab26f8b0131c57c40079fc8776819a70e70a51d4a38f3553da5a855862be994d",
+        "liveSha256": "ab26f8b0131c57c40079fc8776819a70e70a51d4a38f3553da5a855862be994d",
+        "match": true
+      },
+      {
+        "file": "app.html",
+        "status": 200,
+        "bytes": 1705,
+        "localSha256": "ab26f8b0131c57c40079fc8776819a70e70a51d4a38f3553da5a855862be994d",
+        "liveSha256": "ab26f8b0131c57c40079fc8776819a70e70a51d4a38f3553da5a855862be994d",
+        "match": true
+      },
+      {
+        "file": "apple-touch-icon.png",
+        "status": 200,
+        "bytes": 914,
+        "localSha256": "2f0de7eb3546df6d90fa41a76acf3c987c46c1ed413057ccbd844342b85f468a",
+        "liveSha256": "2f0de7eb3546df6d90fa41a76acf3c987c46c1ed413057ccbd844342b85f468a",
+        "match": true
+      },
+      {
+        "file": "assets/hero-proof-terminal-1120.webp",
+        "status": 200,
+        "bytes": 45882,
+        "localSha256": "fb535e7ca6e1770056ca58df33f81b814af02db54f04e004792824ef15be8011",
+        "liveSha256": "fb535e7ca6e1770056ca58df33f81b814af02db54f04e004792824ef15be8011",
+        "match": true
+      },
+      {
+        "file": "assets/hero-proof-terminal-640.webp",
+        "status": 200,
+        "bytes": 18802,
+        "localSha256": "e681c2d586390df203795ce0c7048d1bec9a0333a7e059903787dfa2ae155b34",
+        "liveSha256": "e681c2d586390df203795ce0c7048d1bec9a0333a7e059903787dfa2ae155b34",
+        "match": true
+      },
+      {
+        "file": "assets/index-BUG2fYI9.css",
+        "status": 200,
+        "bytes": 18747,
+        "localSha256": "3e9cd6d0a4540fbdf8ccb03be11663ea466db1ea6e469bc48dc89aea186322a2",
+        "liveSha256": "3e9cd6d0a4540fbdf8ccb03be11663ea466db1ea6e469bc48dc89aea186322a2",
+        "match": true
+      },
+      {
+        "file": "assets/index-COX20jzo.js",
+        "status": 200,
+        "bytes": 43431,
+        "localSha256": "9c1f0cb2f8efce437f22fde27bb23af4ae82e7762f75ff9928134aac8332d694",
+        "liveSha256": "9c1f0cb2f8efce437f22fde27bb23af4ae82e7762f75ff9928134aac8332d694",
+        "match": true
+      },
+      {
+        "file": "assets/index-COX20jzo.js.map",
+        "status": 200,
+        "bytes": 93935,
+        "localSha256": "2d3ab2d83c946561973711a906ec5f7ab32f4ed4d726fddcd2fcbb6fc477bdc3",
+        "liveSha256": "2d3ab2d83c946561973711a906ec5f7ab32f4ed4d726fddcd2fcbb6fc477bdc3",
+        "match": true
+      },
+      {
+        "file": "assets/proofbook-social.webp",
+        "status": 200,
+        "bytes": 47930,
+        "localSha256": "5a0898f8a3f46d454a8b333557152839f477871600f00cd35b298d4ab45d841b",
+        "liveSha256": "5a0898f8a3f46d454a8b333557152839f477871600f00cd35b298d4ab45d841b",
+        "match": true
+      },
+      {
+        "file": "demo/index.html",
+        "status": 200,
+        "bytes": 1695,
+        "localSha256": "80716105d99afd75e0132880d34cdcee6e95353902c8b44d02af41568193cddd",
+        "liveSha256": "80716105d99afd75e0132880d34cdcee6e95353902c8b44d02af41568193cddd",
+        "match": true
+      },
+      {
+        "file": "demo.html",
+        "status": 200,
+        "bytes": 1695,
+        "localSha256": "80716105d99afd75e0132880d34cdcee6e95353902c8b44d02af41568193cddd",
+        "liveSha256": "80716105d99afd75e0132880d34cdcee6e95353902c8b44d02af41568193cddd",
+        "match": true
+      },
+      {
+        "file": "favicon.svg",
+        "status": 200,
+        "bytes": 241,
+        "localSha256": "61665b66aa76b368565938d27600f466a9d3b8db2c8bfe24212ebbbf3f63955e",
+        "liveSha256": "61665b66aa76b368565938d27600f466a9d3b8db2c8bfe24212ebbbf3f63955e",
+        "match": true
+      },
+      {
+        "file": "fonts/DEPARTURE_MONO_LICENSE.txt",
+        "status": 200,
+        "bytes": 4357,
+        "localSha256": "b65e42750f3cb65437a97f4dfd781c58f199259949db2341012be60e32500e83",
+        "liveSha256": "b65e42750f3cb65437a97f4dfd781c58f199259949db2341012be60e32500e83",
+        "match": true
+      },
+      {
+        "file": "fonts/departure-mono.woff2",
+        "status": 200,
+        "bytes": 22496,
+        "localSha256": "5b4fed1daa90708aa9c6ee1190abca9dc22164a1c1def0020386e46b61038cfb",
+        "liveSha256": "5b4fed1daa90708aa9c6ee1190abca9dc22164a1c1def0020386e46b61038cfb",
+        "match": true
+      },
+      {
+        "file": "icons/icon-192.png",
+        "status": 200,
+        "bytes": 764,
+        "localSha256": "996913612478bf5ac9713918115d197f6d178d0d95a946acf0718d421a02d099",
+        "liveSha256": "996913612478bf5ac9713918115d197f6d178d0d95a946acf0718d421a02d099",
+        "match": true
+      },
+      {
+        "file": "icons/icon-512.png",
+        "status": 200,
+        "bytes": 428,
+        "localSha256": "e66e29963c3e3f3f9b7a9dfab8855b127f015f2a72e95cdf7dd1528dd0739b08",
+        "liveSha256": "e66e29963c3e3f3f9b7a9dfab8855b127f015f2a72e95cdf7dd1528dd0739b08",
+        "match": true
+      },
+      {
+        "file": "icons/source-icon.svg",
+        "status": 200,
+        "bytes": 264,
+        "localSha256": "91c9eb9d1d349c2599fbee920c27c3074f7693cc93b924194294f65a1a1a203c",
+        "liveSha256": "91c9eb9d1d349c2599fbee920c27c3074f7693cc93b924194294f65a1a1a203c",
+        "match": true
+      },
+      {
+        "file": "index.html",
+        "status": 200,
+        "bytes": 1784,
+        "localSha256": "1dd66aeaa6b4d031501d324f063636695fb4d6b1a63032b111f7236aa8d7a6b2",
+        "liveSha256": "1dd66aeaa6b4d031501d324f063636695fb4d6b1a63032b111f7236aa8d7a6b2",
+        "match": true
+      },
+      {
+        "file": "manifest.webmanifest",
+        "status": 200,
+        "bytes": 581,
+        "localSha256": "3494e95e32f4e9e58ae38e0c23c97d54c9f246e9825c5192a53037223984706d",
+        "liveSha256": "3494e95e32f4e9e58ae38e0c23c97d54c9f246e9825c5192a53037223984706d",
+        "match": true
+      },
+      {
+        "file": "offline.html",
+        "status": 200,
+        "bytes": 509,
+        "localSha256": "207c075f52e7a26a4d64335078737f9273aef71074759cb2325134c14b3ea275",
+        "liveSha256": "207c075f52e7a26a4d64335078737f9273aef71074759cb2325134c14b3ea275",
+        "match": true
+      },
+      {
+        "file": "print/index.html",
+        "status": 200,
+        "bytes": 1712,
+        "localSha256": "816d26abfd9a2ea6336bb6d356f832368eac01ee233ca9920667c8623c1c3fc2",
+        "liveSha256": "816d26abfd9a2ea6336bb6d356f832368eac01ee233ca9920667c8623c1c3fc2",
+        "match": true
+      },
+      {
+        "file": "print.html",
+        "status": 200,
+        "bytes": 1712,
+        "localSha256": "816d26abfd9a2ea6336bb6d356f832368eac01ee233ca9920667c8623c1c3fc2",
+        "liveSha256": "816d26abfd9a2ea6336bb6d356f832368eac01ee233ca9920667c8623c1c3fc2",
+        "match": true
+      },
+      {
+        "file": "privacy/index.html",
+        "status": 200,
+        "bytes": 1746,
+        "localSha256": "a6d65372de941356f6e45ba79efa5c6589e2d6e86c6ec0e9abfa7ca08f4bae33",
+        "liveSha256": "a6d65372de941356f6e45ba79efa5c6589e2d6e86c6ec0e9abfa7ca08f4bae33",
+        "match": true
+      },
+      {
+        "file": "privacy.html",
+        "status": 200,
+        "bytes": 1746,
+        "localSha256": "a6d65372de941356f6e45ba79efa5c6589e2d6e86c6ec0e9abfa7ca08f4bae33",
+        "liveSha256": "a6d65372de941356f6e45ba79efa5c6589e2d6e86c6ec0e9abfa7ca08f4bae33",
+        "match": true
+      },
+      {
+        "file": "robots.txt",
+        "status": 200,
+        "bytes": 86,
+        "localSha256": "9c4ceb97caed951d34332790711c12ae661b6aecda5d3b2c8a0e463277b9b200",
+        "liveSha256": "9c4ceb97caed951d34332790711c12ae661b6aecda5d3b2c8a0e463277b9b200",
+        "match": true
+      },
+      {
+        "file": "sitemap.xml",
+        "status": 200,
+        "bytes": 530,
+        "localSha256": "01f9040037d201db915d03379daf66bdd7758f081c10bc7ada265d1bcf5ae110",
+        "liveSha256": "01f9040037d201db915d03379daf66bdd7758f081c10bc7ada265d1bcf5ae110",
+        "match": true
+      },
+      {
+        "file": "sw.js",
+        "status": 200,
+        "bytes": 2188,
+        "localSha256": "d4ed2531843addb30a6b18bd5e6501d9c9deece12514d123059794f6889e119c",
+        "liveSha256": "d4ed2531843addb30a6b18bd5e6501d9c9deece12514d123059794f6889e119c",
+        "match": true
+      },
+      {
+        "file": "terms/index.html",
+        "status": 200,
+        "bytes": 1655,
+        "localSha256": "c3dfeab95eec485b9992f8d30debf2c50cf85e2465264afd4ae2afb297f43f30",
+        "liveSha256": "c3dfeab95eec485b9992f8d30debf2c50cf85e2465264afd4ae2afb297f43f30",
+        "match": true
+      },
+      {
+        "file": "terms.html",
+        "status": 200,
+        "bytes": 1655,
+        "localSha256": "c3dfeab95eec485b9992f8d30debf2c50cf85e2465264afd4ae2afb297f43f30",
+        "liveSha256": "c3dfeab95eec485b9992f8d30debf2c50cf85e2465264afd4ae2afb297f43f30",
+        "match": true
+      }
+    ]
+  },
+  "routes": [
+    {
+      "route": "/",
+      "status": 200,
+      "title": "Self-Study Proofbook — Record problems you can solve",
+      "canonical": "https://self-study-proofbook.sociobot.in/"
+    },
+    {
+      "route": "/demo",
+      "status": 200,
+      "title": "Demo — Self-Study Proofbook",
+      "canonical": "https://self-study-proofbook.sociobot.in/demo"
+    },
+    {
+      "route": "/app",
+      "status": 200,
+      "title": "Your proofbook — Self-Study Proofbook",
+      "canonical": "https://self-study-proofbook.sociobot.in/app"
+    },
+    {
+      "route": "/print?demo=1",
+      "status": 200,
+      "title": "Mastery index — Self-Study Proofbook",
+      "canonical": "https://self-study-proofbook.sociobot.in/print"
+    },
+    {
+      "route": "/privacy",
+      "status": 200,
+      "title": "Privacy and data storage — Self-Study Proofbook",
+      "canonical": "https://self-study-proofbook.sociobot.in/privacy"
+    },
+    {
+      "route": "/terms",
+      "status": 200,
+      "title": "Terms of use — Self-Study Proofbook",
+      "canonical": "https://self-study-proofbook.sociobot.in/terms"
+    },
+    {
+      "route": "/not-a-proofbook-route",
+      "status": 404,
+      "title": "Page not found — Self-Study Proofbook",
+      "canonical": "https://self-study-proofbook.sociobot.in/404"
+    }
+  ],
+  "links": [
+    {
+      "url": "https://self-study-proofbook.sociobot.in/",
+      "status": 200,
+      "finalUrl": "https://self-study-proofbook.sociobot.in/"
+    },
+    {
+      "url": "https://self-study-proofbook.sociobot.in/?demo=1",
+      "status": 200,
+      "finalUrl": "https://self-study-proofbook.sociobot.in/?demo=1"
+    },
+    {
+      "url": "https://self-study-proofbook.sociobot.in/app",
+      "status": 200,
+      "finalUrl": "https://self-study-proofbook.sociobot.in/app"
+    },
+    {
+      "url": "https://self-study-proofbook.sociobot.in/demo",
+      "status": 200,
+      "finalUrl": "https://self-study-proofbook.sociobot.in/demo"
+    },
+    {
+      "url": "https://self-study-proofbook.sociobot.in/print",
+      "status": 200,
+      "finalUrl": "https://self-study-proofbook.sociobot.in/print"
+    },
+    {
+      "url": "https://self-study-proofbook.sociobot.in/print?demo=1",
+      "status": 200,
+      "finalUrl": "https://self-study-proofbook.sociobot.in/print?demo=1"
+    },
+    {
+      "url": "https://self-study-proofbook.sociobot.in/privacy",
+      "status": 200,
+      "finalUrl": "https://self-study-proofbook.sociobot.in/privacy"
+    },
+    {
+      "url": "https://self-study-proofbook.sociobot.in/terms",
+      "status": 200,
+      "finalUrl": "https://self-study-proofbook.sociobot.in/terms"
+    },
+    {
+      "url": "https://sociobot.in/",
+      "status": 200,
+      "finalUrl": "https://sociobot.in/"
+    }
+  ],
+  "fragments": [
+    {
+      "route": "/",
+      "href": "https://self-study-proofbook.sociobot.in/#main",
+      "targetExists": true
+    },
+    {
+      "route": "/demo",
+      "href": "https://self-study-proofbook.sociobot.in/demo#main",
+      "targetExists": true
+    },
+    {
+      "route": "/app",
+      "href": "https://self-study-proofbook.sociobot.in/app#main",
+      "targetExists": true
+    },
+    {
+      "route": "/print?demo=1",
+      "href": "https://self-study-proofbook.sociobot.in/print?demo=1#main",
+      "targetExists": true
+    },
+    {
+      "route": "/privacy",
+      "href": "https://self-study-proofbook.sociobot.in/privacy#main",
+      "targetExists": true
+    },
+    {
+      "route": "/terms",
+      "href": "https://self-study-proofbook.sociobot.in/terms#main",
+      "targetExists": true
+    },
+    {
+      "route": "/not-a-proofbook-route",
+      "href": "https://self-study-proofbook.sociobot.in/not-a-proofbook-route#main",
+      "targetExists": true
+    }
+  ],
+  "headers": {
+    "home": {
+      "cache-control": "public, must-revalidate, max-age=30",
+      "content-encoding": "br",
+      "content-security-policy": "default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' data: blob:; font-src 'self'; connect-src 'self'; worker-src 'self'; manifest-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self'; frame-ancestors 'none'",
+      "content-type": "text/html",
+      "date": "Sat, 29 Aug 2026 16:25:06 GMT",
+      "etag": "\"60310385\"",
+      "last-modified": "Sat, 29 Aug 2026 15:54:02 GMT",
+      "permissions-policy": "camera=(), microphone=(), geolocation=()",
+      "referrer-policy": "strict-origin-when-cross-origin",
+      "strict-transport-security": "max-age=10886400; includeSubDomains; preload",
+      "transfer-encoding": "chunked",
+      "vary": "Accept-Encoding",
+      "x-content-type-options": "nosniff",
+      "x-dns-prefetch-control": "off",
+      "x-xss-protection": "1; mode=block"
+    },
+    "endpoints": {
+      "asset": {
+        "route": "/assets/index-COX20jzo.js",
+        "status": 200,
+        "headers": {
+          "cache-control": "public, max-age=31536000, immutable",
+          "content-encoding": "br",
+          "content-security-policy": "default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' data: blob:; font-src 'self'; connect-src 'self'; worker-src 'self'; manifest-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self'; frame-ancestors 'none'",
+          "content-type": "text/javascript",
+          "date": "Sat, 29 Aug 2026 16:25:05 GMT",
+          "etag": "\"60310385\"",
+          "last-modified": "Sat, 29 Aug 2026 15:54:02 GMT",
+          "permissions-policy": "camera=(), microphone=(), geolocation=()",
+          "referrer-policy": "strict-origin-when-cross-origin",
+          "strict-transport-security": "max-age=10886400; includeSubDomains; preload",
+          "transfer-encoding": "chunked",
+          "vary": "Accept-Encoding",
+          "x-content-type-options": "nosniff",
+          "x-dns-prefetch-control": "off",
+          "x-xss-protection": "1; mode=block"
+        }
+      },
+      "worker": {
+        "route": "/sw.js",
+        "status": 200,
+        "headers": {
+          "cache-control": "public, must-revalidate, max-age=30",
+          "content-encoding": "br",
+          "content-security-policy": "default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' data: blob:; font-src 'self'; connect-src 'self'; worker-src 'self'; manifest-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self'; frame-ancestors 'none'",
+          "content-type": "text/javascript",
+          "date": "Sat, 29 Aug 2026 16:25:05 GMT",
+          "etag": "\"60310385\"",
+          "last-modified": "Sat, 29 Aug 2026 15:54:02 GMT",
+          "permissions-policy": "camera=(), microphone=(), geolocation=()",
+          "referrer-policy": "strict-origin-when-cross-origin",
+          "strict-transport-security": "max-age=10886400; includeSubDomains; preload",
+          "transfer-encoding": "chunked",
+          "vary": "Accept-Encoding",
+          "x-content-type-options": "nosniff",
+          "x-dns-prefetch-control": "off",
+          "x-xss-protection": "1; mode=block"
+        }
+      },
+      "manifest": {
+        "route": "/manifest.webmanifest",
+        "status": 200,
+        "headers": {
+          "cache-control": "public, must-revalidate, max-age=30",
+          "content-length": "581",
+          "content-security-policy": "default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' data: blob:; font-src 'self'; connect-src 'self'; worker-src 'self'; manifest-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self'; frame-ancestors 'none'",
+          "content-type": "application/manifest+json",
+          "date": "Sat, 29 Aug 2026 16:25:06 GMT",
+          "etag": "\"60310385\"",
+          "last-modified": "Sat, 29 Aug 2026 15:54:02 GMT",
+          "permissions-policy": "camera=(), microphone=(), geolocation=()",
+          "referrer-policy": "strict-origin-when-cross-origin",
+          "strict-transport-security": "max-age=10886400; includeSubDomains; preload",
+          "x-content-type-options": "nosniff",
+          "x-dns-prefetch-control": "off",
+          "x-xss-protection": "1; mode=block"
+        }
+      },
+      "unknown": {
+        "route": "/definitely-missing-qa-route",
+        "status": 404,
+        "headers": {
+          "cache-control": "public, must-revalidate, max-age=30",
+          "content-length": "2457",
+          "content-security-policy": "default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' data: blob:; font-src 'self'; connect-src 'self'; worker-src 'self'; manifest-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self'; frame-ancestors 'none'",
+          "content-type": "text/html",
+          "date": "Sat, 29 Aug 2026 16:25:05 GMT",
+          "etag": "\"60310385\"",
+          "last-modified": "Sat, 29 Aug 2026 15:54:02 GMT",
+          "permissions-policy": "camera=(), microphone=(), geolocation=()",
+          "referrer-policy": "strict-origin-when-cross-origin",
+          "strict-transport-security": "max-age=10886400; includeSubDomains; preload",
+          "x-content-type-options": "nosniff",
+          "x-dns-prefetch-control": "off",
+          "x-xss-protection": "1; mode=block"
+        }
+      }
+    }
+  }
+}

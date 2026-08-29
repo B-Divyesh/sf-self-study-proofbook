@@ -1,0 +1,10 @@
+{
+  "notice": "An update is ready. Reload to use it.",
+  "before": [
+    "proofbook-121a70783e7f"
+  ],
+  "after": [
+    "proofbook-121a70783e7f-qa-update"
+  ],
+  "oldCacheRemoved": true
+}

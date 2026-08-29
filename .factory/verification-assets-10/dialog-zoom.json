@@ -1,0 +1,16 @@
+{
+  "opened": {
+    "labelledBy": "topic-dialog-title",
+    "focusInside": true,
+    "activeTag": "BUTTON",
+    "activeName": "Close dialog"
+  },
+  "focusReturnedToOpener": true,
+  "zoom": {
+    "scale": 2,
+    "width": 640,
+    "height": 400,
+    "h1Visible": true,
+    "mainTextLength": 1212
+  }
+}

@@ -1,0 +1,130 @@
+{
+  "desktop": {
+    "firstRead": {
+      "title": "Self-Study Proofbook — Record problems you can solve",
+      "h1": [
+        "Record problems you can solve"
+      ],
+      "audience": "For serious math and CS learners who need evidence beyond course badges.",
+      "primary": "Try it with sample data",
+      "explanation": "Opens a separate sample ledger."
+    },
+    "flow": {
+      "samplesAfterOneClick": 3,
+      "attemptsAfterCreate": 4,
+      "revisionsOnCreatedAttempt": 1,
+      "csvRowsIncludingHeader": 5,
+      "printIncludedCreatedAttempt": true,
+      "invalidTopicRejected": true,
+      "invalidUrlRejectedAndRecovered": true
+    },
+    "requests": {
+      "count": 9,
+      "origins": [
+        "https://self-study-proofbook.sociobot.in"
+      ]
+    }
+  },
+  "mobile": {
+    "actionBoxes": {
+      "Try it with sample data": {
+        "width": 222,
+        "height": 48
+      },
+      "Start your proofbook": {
+        "width": 180,
+        "height": 44
+      }
+    },
+    "homeOverflow": 0,
+    "demoOverflow": 0,
+    "reducedMotion": {
+      "maxAnimationSeconds": 0,
+      "maxTransitionSeconds": 0,
+      "scrollBehavior": "auto"
+    },
+    "errors": []
+  },
+  "accessibility": {
+    "keyboard": {
+      "skipFirst": true,
+      "skipMovesToMain": true,
+      "spaceActivatesButton": true,
+      "focusOutline": "rgb(185, 242, 39) solid 3px"
+    },
+    "/": {
+      "status": 200,
+      "violations": [],
+      "lang": "en",
+      "title": "Self-Study Proofbook — Record problems you can solve",
+      "h1": 1,
+      "main": 1,
+      "unlabeledImages": 0
+    },
+    "/demo": {
+      "status": 200,
+      "violations": [],
+      "lang": "en",
+      "title": "Demo — Self-Study Proofbook",
+      "h1": 1,
+      "main": 1,
+      "unlabeledImages": 0
+    },
+    "/app": {
+      "status": 200,
+      "violations": [],
+      "lang": "en",
+      "title": "Your proofbook — Self-Study Proofbook",
+      "h1": 1,
+      "main": 1,
+      "unlabeledImages": 0
+    },
+    "/print?demo=1": {
+      "status": 200,
+      "violations": [],
+      "lang": "en",
+      "title": "Mastery index — Self-Study Proofbook",
+      "h1": 1,
+      "main": 1,
+      "unlabeledImages": 0
+    },
+    "/privacy": {
+      "status": 200,
+      "violations": [],
+      "lang": "en",
+      "title": "Privacy and data storage — Self-Study Proofbook",
+      "h1": 1,
+      "main": 1,
+      "unlabeledImages": 0
+    },
+    "/terms": {
+      "status": 200,
+      "violations": [],
+      "lang": "en",
+      "title": "Terms of use — Self-Study Proofbook",
+      "h1": 1,
+      "main": 1,
+      "unlabeledImages": 0
+    },
+    "/not-a-proofbook-route": {
+      "status": 404,
+      "violations": [],
+      "lang": "en",
+      "title": "Page not found — Self-Study Proofbook",
+      "h1": 1,
+      "main": 1,
+      "unlabeledImages": 0
+    }
+  },
+  "pwa": {
+    "scope": "https://self-study-proofbook.sociobot.in/",
+    "controller": "https://self-study-proofbook.sociobot.in/sw.js",
+    "caches": [
+      "proofbook-121a70783e7f"
+    ],
+    "offlineReload": true,
+    "offlineSamples": 3,
+    "errors": []
+  },
+  "errors": []
+}
