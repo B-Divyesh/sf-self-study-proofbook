@@ -1,0 +1,36 @@
+{
+  "readyMs": 170,
+  "demo": {
+    "url": "https://self-study-proofbook.sociobot.in/demo",
+    "h1": "Build proof you can revisit",
+    "banner": true,
+    "reset": true,
+    "startForReal": true,
+    "summary": "3 attempts across 3 topics.",
+    "databases": [
+      "proofbook-demo-v1",
+      "proofbook-v1"
+    ]
+  },
+  "resetRestored": true,
+  "serviceWorker": "https://self-study-proofbook.sociobot.in/sw.js",
+  "offline": {
+    "h1": "Build proof you can revisit",
+    "summary": "3 attempts across 3 topics."
+  },
+  "realAfter": {
+    "url": "https://self-study-proofbook.sociobot.in/app",
+    "summary": "1 attempt across 1 topic.",
+    "attempt": "Real compactness proof",
+    "demoRecordCount": 0,
+    "databases": [
+      "proofbook-v1"
+    ]
+  },
+  "requestOrigins": [
+    "https://self-study-proofbook.sociobot.in"
+  ],
+  "externalRequests": [],
+  "consoleErrors": [],
+  "pageErrors": []
+}

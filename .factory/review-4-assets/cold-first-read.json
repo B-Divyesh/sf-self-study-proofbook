@@ -1,0 +1,204 @@
+[
+  {
+    "vp": {
+      "name": "mobile",
+      "width": 390,
+      "height": 844
+    },
+    "status": 200,
+    "url": "https://self-study-proofbook.sociobot.in/",
+    "title": "Self-Study Proofbook — Record problems you can solve",
+    "h1": [
+      "Record problems you can solve"
+    ],
+    "main": 1,
+    "bodyScrollWidth": 390,
+    "bodyClientWidth": 390,
+    "visible": [
+      {
+        "tag": "SPAN",
+        "text": "P:",
+        "top": 17,
+        "bottom": 47
+      },
+      {
+        "tag": "A",
+        "text": "Demo",
+        "top": 10,
+        "bottom": 54
+      },
+      {
+        "tag": "A",
+        "text": "My proofbook",
+        "top": 10,
+        "bottom": 54
+      },
+      {
+        "tag": "A",
+        "text": "Privacy",
+        "top": 10,
+        "bottom": 54
+      },
+      {
+        "tag": "H1",
+        "text": "Record problems you can solve",
+        "top": 112,
+        "bottom": 255
+      },
+      {
+        "tag": "P",
+        "text": "For serious math and CS learners who need evidence beyond course badges.",
+        "top": 279,
+        "bottom": 334
+      },
+      {
+        "tag": "A",
+        "text": "Try it with sample data",
+        "top": 370,
+        "bottom": 418
+      },
+      {
+        "tag": "SPAN",
+        "text": "Opens a separate sample ledger.",
+        "top": 436,
+        "bottom": 454
+      },
+      {
+        "tag": "A",
+        "text": "Start your proofbook",
+        "top": 474,
+        "bottom": 494
+      },
+      {
+        "tag": "SPAN",
+        "text": "■",
+        "top": 540,
+        "bottom": 557
+      },
+      {
+        "tag": "SPAN",
+        "text": "■",
+        "top": 566,
+        "bottom": 583
+      },
+      {
+        "tag": "SPAN",
+        "text": "■",
+        "top": 592,
+        "bottom": 609
+      }
+    ],
+    "consoleErrors": [],
+    "pageErrors": [],
+    "requestOrigins": [
+      "https://self-study-proofbook.sociobot.in"
+    ]
+  },
+  {
+    "vp": {
+      "name": "desktop",
+      "width": 1440,
+      "height": 900
+    },
+    "status": 200,
+    "url": "https://self-study-proofbook.sociobot.in/",
+    "title": "Self-Study Proofbook — Record problems you can solve",
+    "h1": [
+      "Record problems you can solve"
+    ],
+    "main": 1,
+    "bodyScrollWidth": 1440,
+    "bodyClientWidth": 1440,
+    "visible": [
+      {
+        "tag": "SPAN",
+        "text": "P:",
+        "top": 21,
+        "bottom": 51
+      },
+      {
+        "tag": "SPAN",
+        "text": "PROOFBOOK",
+        "top": 29,
+        "bottom": 43
+      },
+      {
+        "tag": "A",
+        "text": "Demo",
+        "top": 14,
+        "bottom": 58
+      },
+      {
+        "tag": "A",
+        "text": "My proofbook",
+        "top": 14,
+        "bottom": 58
+      },
+      {
+        "tag": "A",
+        "text": "Privacy",
+        "top": 14,
+        "bottom": 58
+      },
+      {
+        "tag": "H1",
+        "text": "Record problems you can solve",
+        "top": 136,
+        "bottom": 509
+      },
+      {
+        "tag": "P",
+        "text": "For serious math and CS learners who need evidence beyond course badges.",
+        "top": 533,
+        "bottom": 603
+      },
+      {
+        "tag": "A",
+        "text": "Try it with sample data",
+        "top": 639,
+        "bottom": 687
+      },
+      {
+        "tag": "SPAN",
+        "text": "Opens a separate sample ledger.",
+        "top": 654,
+        "bottom": 672
+      },
+      {
+        "tag": "A",
+        "text": "Start your proofbook",
+        "top": 707,
+        "bottom": 727
+      },
+      {
+        "tag": "SPAN",
+        "text": "■",
+        "top": 773,
+        "bottom": 790
+      },
+      {
+        "tag": "SPAN",
+        "text": "■",
+        "top": 799,
+        "bottom": 816
+      },
+      {
+        "tag": "SPAN",
+        "text": "■",
+        "top": 825,
+        "bottom": 842
+      },
+      {
+        "tag": "FIGCAPTION",
+        "text": "Each attempt becomes one cited, revisable record.",
+        "top": 765,
+        "bottom": 819
+      }
+    ],
+    "consoleErrors": [],
+    "pageErrors": [],
+    "requestOrigins": [
+      "https://self-study-proofbook.sociobot.in"
+    ]
+  }
+]
