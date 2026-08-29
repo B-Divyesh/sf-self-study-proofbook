@@ -1,0 +1,21 @@
+{
+  "initial": {
+    "controller": "http://127.0.0.1:35395/sw.js",
+    "caches": [
+      "proofbook-qa-update-a"
+    ],
+    "attempts": true
+  },
+  "toast": "An update is ready. Reload to use it.",
+  "updated": {
+    "controller": "http://127.0.0.1:35395/sw.js",
+    "caches": [
+      "proofbook-qa-update-b"
+    ]
+  },
+  "offline": {
+    "attempts": true,
+    "banner": true
+  },
+  "errors": []
+}

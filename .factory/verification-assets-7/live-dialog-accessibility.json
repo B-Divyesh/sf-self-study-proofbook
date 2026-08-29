@@ -1,0 +1,44 @@
+{
+  "Add a topic": {
+    "roleNameMatchCount": 1,
+    "dom": {
+      "open": true,
+      "ariaLabelledby": "topic-dialog-title",
+      "heading": "Add a topic",
+      "active": {
+        "tag": "BUTTON",
+        "label": "Close dialog"
+      }
+    },
+    "ariaSnapshot": "- dialog \"Add a topic\":\n  - heading \"Add a topic\" [level=2]\n  - button \"Close dialog\": ×\n  - text: Topic name\n  - textbox \"Topic name\"\n  - paragraph\n  - text: Study goal\n  - textbox \"Study goal\"\n  - paragraph\n  - button \"Cancel\"\n  - button \"Add topic\"",
+    "focusReturnedTo": "Add topic"
+  },
+  "Record an attempt": {
+    "roleNameMatchCount": 1,
+    "dom": {
+      "open": true,
+      "ariaLabelledby": "attempt-dialog-title",
+      "heading": "Record an attempt",
+      "active": {
+        "tag": "BUTTON",
+        "label": "Close dialog"
+      }
+    },
+    "ariaSnapshot": "- dialog \"Record an attempt\":\n  - heading \"Record an attempt\" [level=2]\n  - button \"Close dialog\": ×\n  - text: Topic\n  - combobox \"Topic\":\n    - option \"Real analysis\" [selected]\n    - option \"Graph algorithms\"\n    - option \"Abstract algebra\"\n  - text: Problem title\n  - textbox \"Problem title\"\n  - paragraph\n  - text: Source\n  - textbox \"Source\"\n  - paragraph\n  - text: Problem reference\n  - textbox \"Problem reference\"\n  - paragraph\n  - text: Source link Optional\n  - textbox \"Source link Optional\"\n  - paragraph\n  - paragraph: Cite the source. Do not paste copyrighted problem text.\n  - button \"Cancel\"\n  - button \"Start attempt\"",
+    "focusReturnedTo": "Record attempt"
+  },
+  "Password-protect this backup": {
+    "roleNameMatchCount": 1,
+    "dom": {
+      "open": true,
+      "ariaLabelledby": "password-dialog-title",
+      "heading": "Password-protect this backup",
+      "active": {
+        "tag": "BUTTON",
+        "label": "Close dialog"
+      }
+    },
+    "ariaSnapshot": "- dialog \"Password-protect this backup\":\n  - heading \"Password-protect this backup\" [level=2]\n  - button \"Close dialog\": ×\n  - paragraph: You need this password to open the backup. It cannot be recovered.\n  - text: Password\n  - textbox \"Password\"\n  - button \"Cancel\"\n  - button \"Download encrypted backup\"",
+    "focusReturnedTo": "Export encrypted backup"
+  }
+}

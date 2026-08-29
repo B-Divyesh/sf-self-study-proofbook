@@ -1,0 +1,192 @@
+{
+  "routes": {
+    "/": {
+      "status": 200,
+      "semantics": {
+        "lang": "en",
+        "title": "Self-Study Proofbook — Record problems you can solve",
+        "h1": [
+          "Record problems you can solve"
+        ],
+        "main": 1,
+        "overflow": 0,
+        "images": [
+          {
+            "alt": "A pixel-art study desk where problem cards form an ordered evidence map.",
+            "src": "https://self-study-proofbook.sociobot.in/assets/hero-proof-terminal-1120.webp"
+          }
+        ]
+      },
+      "axeViolations": [],
+      "seriousCritical": 0,
+      "consoleErrors": [],
+      "pageErrors": []
+    },
+    "/demo": {
+      "status": 200,
+      "semantics": {
+        "lang": "en",
+        "title": "Demo — Self-Study Proofbook",
+        "h1": [
+          "Build proof you can revisit"
+        ],
+        "main": 1,
+        "overflow": 0,
+        "images": []
+      },
+      "axeViolations": [],
+      "seriousCritical": 0,
+      "consoleErrors": [],
+      "pageErrors": []
+    },
+    "/app": {
+      "status": 200,
+      "semantics": {
+        "lang": "en",
+        "title": "Your proofbook — Self-Study Proofbook",
+        "h1": [
+          "Build proof you can revisit"
+        ],
+        "main": 1,
+        "overflow": 0,
+        "images": []
+      },
+      "axeViolations": [],
+      "seriousCritical": 0,
+      "consoleErrors": [],
+      "pageErrors": []
+    },
+    "/print?demo=1": {
+      "status": 200,
+      "semantics": {
+        "lang": "en",
+        "title": "Mastery index — Self-Study Proofbook",
+        "h1": [
+          "Mastery index"
+        ],
+        "main": 1,
+        "overflow": 0,
+        "images": []
+      },
+      "axeViolations": [],
+      "seriousCritical": 0,
+      "consoleErrors": [],
+      "pageErrors": []
+    },
+    "/privacy": {
+      "status": 200,
+      "semantics": {
+        "lang": "en",
+        "title": "Privacy and data storage — Self-Study Proofbook",
+        "h1": [
+          "Privacy and data storage"
+        ],
+        "main": 1,
+        "overflow": 0,
+        "images": []
+      },
+      "axeViolations": [],
+      "seriousCritical": 0,
+      "consoleErrors": [],
+      "pageErrors": []
+    },
+    "/terms": {
+      "status": 200,
+      "semantics": {
+        "lang": "en",
+        "title": "Terms of use — Self-Study Proofbook",
+        "h1": [
+          "Terms of use"
+        ],
+        "main": 1,
+        "overflow": 0,
+        "images": []
+      },
+      "axeViolations": [],
+      "seriousCritical": 0,
+      "consoleErrors": [],
+      "pageErrors": []
+    },
+    "/not-a-real-route-qa7": {
+      "status": 404,
+      "semantics": {
+        "lang": "en",
+        "title": "Page not found — Self-Study Proofbook",
+        "h1": [
+          "Page not found"
+        ],
+        "main": 1,
+        "overflow": 0,
+        "images": []
+      },
+      "axeViolations": [],
+      "seriousCritical": 0,
+      "consoleErrors": [
+        "Failed to load resource: the server responded with a status of 404 ()"
+      ],
+      "pageErrors": []
+    }
+  },
+  "keyboard": {
+    "skip": {
+      "text": "Skip to main content",
+      "outline": "rgb(185, 242, 39) solid 3px",
+      "box": {
+        "x": 16,
+        "y": 12,
+        "width": 236,
+        "height": 48.796875
+      },
+      "afterEnter": {
+        "id": "main",
+        "tag": "MAIN"
+      }
+    }
+  },
+  "dialogs": {
+    "Add a topic": {
+      "roleCountAfterClose": 0,
+      "initialFocus": {
+        "tag": "BUTTON",
+        "label": "Close dialog"
+      },
+      "returnedFocus": "Add topic"
+    },
+    "Record an attempt": {
+      "roleCountAfterClose": 0,
+      "initialFocus": {
+        "tag": "BUTTON",
+        "label": "Close dialog"
+      },
+      "returnedFocus": "Record attempt"
+    },
+    "Password-protect this backup": {
+      "roleCountAfterClose": 0,
+      "initialFocus": {
+        "tag": "BUTTON",
+        "label": "Close dialog"
+      },
+      "returnedFocus": "Export encrypted backup"
+    }
+  },
+  "reducedMotion": {
+    "animations": [],
+    "nonzeroTransitions": [],
+    "scrollBehavior": "auto"
+  },
+  "mobile": {
+    "cta": {
+      "x": 20,
+      "y": 369.640625,
+      "width": 222,
+      "height": 48
+    },
+    "targets": 28,
+    "undersized": [],
+    "zoom200At390Effective": {
+      "physicalViewport": 780,
+      "contentCssWidth": 390,
+      "overflow": 0
+    }
+  }
+}

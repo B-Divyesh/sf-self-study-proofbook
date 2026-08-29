@@ -1,0 +1,26 @@
+{
+  "measurements": [
+    {
+      "action": "switch topic to Abstract algebra",
+      "ms": 12
+    },
+    {
+      "action": "switch topic to Real analysis",
+      "ms": 8.900000000372529
+    },
+    {
+      "action": "switch topic to Graph algorithms",
+      "ms": 52.200000000186265
+    },
+    {
+      "action": "switch topic to Abstract algebra",
+      "ms": 9
+    },
+    {
+      "action": "switch topic to Real analysis",
+      "ms": 12.199999999720603
+    }
+  ],
+  "maxMs": 52.200000000186265,
+  "note": "In-page click-to-updated-editor timing; Lighthouse has no lab INP."
+}

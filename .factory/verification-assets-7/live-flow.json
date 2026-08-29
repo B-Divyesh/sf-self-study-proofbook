@@ -1,0 +1,76 @@
+{
+  "url": "https://self-study-proofbook.sociobot.in/app",
+  "timer": "00:01",
+  "archive": {
+    "topics": 1,
+    "attempts": 1,
+    "revisions": 1
+  },
+  "csvRows": 2,
+  "backupBytes": 1162,
+  "requestsCount": 8,
+  "origins": [
+    "https://self-study-proofbook.sociobot.in"
+  ],
+  "requestLog": [
+    {
+      "method": "GET",
+      "url": "https://self-study-proofbook.sociobot.in/app",
+      "type": "document"
+    },
+    {
+      "method": "GET",
+      "url": "https://self-study-proofbook.sociobot.in/assets/index-B-LXHcfq.js",
+      "type": "script"
+    },
+    {
+      "method": "GET",
+      "url": "https://self-study-proofbook.sociobot.in/assets/index-CTvWy7GA.css",
+      "type": "stylesheet"
+    },
+    {
+      "method": "GET",
+      "url": "https://self-study-proofbook.sociobot.in/fonts/departure-mono.woff2",
+      "type": "font"
+    },
+    {
+      "method": "GET",
+      "url": "https://self-study-proofbook.sociobot.in/app",
+      "type": "document"
+    },
+    {
+      "method": "GET",
+      "url": "https://self-study-proofbook.sociobot.in/assets/index-B-LXHcfq.js",
+      "type": "script"
+    },
+    {
+      "method": "GET",
+      "url": "https://self-study-proofbook.sociobot.in/assets/index-CTvWy7GA.css",
+      "type": "stylesheet"
+    },
+    {
+      "method": "GET",
+      "url": "https://self-study-proofbook.sociobot.in/fonts/departure-mono.woff2",
+      "type": "font"
+    }
+  ],
+  "consoleErrors": [],
+  "pageErrors": [],
+  "indexedDB": [
+    "proofbook-v1"
+  ],
+  "checks": [
+    "blank field rejection",
+    "non-http URL rejection",
+    "create and timer",
+    "solution revision history",
+    "literal script escaped",
+    "reload persistence",
+    "JSON/CSV export",
+    "encrypted backup",
+    "wrong-password recovery",
+    "malformed import recovery",
+    "print index",
+    "cancelled deletion"
+  ]
+}

@@ -1,0 +1,387 @@
+{
+  "candidate": "952f2f4c0d45ebe926d8a124804a1bba22a710dc",
+  "filesCompared": 29,
+  "mismatches": [],
+  "comparisons": [
+    {
+      "file": "404.html",
+      "status": 200,
+      "localBytes": 2457,
+      "remoteBytes": 2457,
+      "localSha256": "1c617be5545e74ef0d1f50386418373839d23c63222f87dbdaed0899d3d62d9f",
+      "remoteSha256": "1c617be5545e74ef0d1f50386418373839d23c63222f87dbdaed0899d3d62d9f",
+      "match": true
+    },
+    {
+      "file": "app/index.html",
+      "status": 200,
+      "localBytes": 1705,
+      "remoteBytes": 1705,
+      "localSha256": "67fef1d0d08fa962172fc5f9e88b8c677db4975a5d8d2f638b8ea81e4d6b47f1",
+      "remoteSha256": "67fef1d0d08fa962172fc5f9e88b8c677db4975a5d8d2f638b8ea81e4d6b47f1",
+      "match": true
+    },
+    {
+      "file": "app.html",
+      "status": 200,
+      "localBytes": 1705,
+      "remoteBytes": 1705,
+      "localSha256": "67fef1d0d08fa962172fc5f9e88b8c677db4975a5d8d2f638b8ea81e4d6b47f1",
+      "remoteSha256": "67fef1d0d08fa962172fc5f9e88b8c677db4975a5d8d2f638b8ea81e4d6b47f1",
+      "match": true
+    },
+    {
+      "file": "apple-touch-icon.png",
+      "status": 200,
+      "localBytes": 914,
+      "remoteBytes": 914,
+      "localSha256": "2f0de7eb3546df6d90fa41a76acf3c987c46c1ed413057ccbd844342b85f468a",
+      "remoteSha256": "2f0de7eb3546df6d90fa41a76acf3c987c46c1ed413057ccbd844342b85f468a",
+      "match": true
+    },
+    {
+      "file": "assets/hero-proof-terminal-1120.webp",
+      "status": 200,
+      "localBytes": 45882,
+      "remoteBytes": 45882,
+      "localSha256": "fb535e7ca6e1770056ca58df33f81b814af02db54f04e004792824ef15be8011",
+      "remoteSha256": "fb535e7ca6e1770056ca58df33f81b814af02db54f04e004792824ef15be8011",
+      "match": true
+    },
+    {
+      "file": "assets/hero-proof-terminal-640.webp",
+      "status": 200,
+      "localBytes": 18802,
+      "remoteBytes": 18802,
+      "localSha256": "e681c2d586390df203795ce0c7048d1bec9a0333a7e059903787dfa2ae155b34",
+      "remoteSha256": "e681c2d586390df203795ce0c7048d1bec9a0333a7e059903787dfa2ae155b34",
+      "match": true
+    },
+    {
+      "file": "assets/index-B-LXHcfq.js",
+      "status": 200,
+      "localBytes": 43414,
+      "remoteBytes": 43414,
+      "localSha256": "5278868f49822cf0b2387967656f06ca02ac529ba87318b9a8af9c8345bc331a",
+      "remoteSha256": "5278868f49822cf0b2387967656f06ca02ac529ba87318b9a8af9c8345bc331a",
+      "match": true
+    },
+    {
+      "file": "assets/index-CTvWy7GA.css",
+      "status": 200,
+      "localBytes": 18693,
+      "remoteBytes": 18693,
+      "localSha256": "cdb831f466decb9a12d86f2df496fdc168c657838b56bc7c3a74e3a3adfa5b3d",
+      "remoteSha256": "cdb831f466decb9a12d86f2df496fdc168c657838b56bc7c3a74e3a3adfa5b3d",
+      "match": true
+    },
+    {
+      "file": "assets/proofbook-social.webp",
+      "status": 200,
+      "localBytes": 47930,
+      "remoteBytes": 47930,
+      "localSha256": "5a0898f8a3f46d454a8b333557152839f477871600f00cd35b298d4ab45d841b",
+      "remoteSha256": "5a0898f8a3f46d454a8b333557152839f477871600f00cd35b298d4ab45d841b",
+      "match": true
+    },
+    {
+      "file": "demo/index.html",
+      "status": 200,
+      "localBytes": 1695,
+      "remoteBytes": 1695,
+      "localSha256": "7df87aa272a5bd6435d99323b78a5a5e11938ea95a38e8d14f998daa365098f6",
+      "remoteSha256": "7df87aa272a5bd6435d99323b78a5a5e11938ea95a38e8d14f998daa365098f6",
+      "match": true
+    },
+    {
+      "file": "demo.html",
+      "status": 200,
+      "localBytes": 1695,
+      "remoteBytes": 1695,
+      "localSha256": "7df87aa272a5bd6435d99323b78a5a5e11938ea95a38e8d14f998daa365098f6",
+      "remoteSha256": "7df87aa272a5bd6435d99323b78a5a5e11938ea95a38e8d14f998daa365098f6",
+      "match": true
+    },
+    {
+      "file": "favicon.svg",
+      "status": 200,
+      "localBytes": 241,
+      "remoteBytes": 241,
+      "localSha256": "61665b66aa76b368565938d27600f466a9d3b8db2c8bfe24212ebbbf3f63955e",
+      "remoteSha256": "61665b66aa76b368565938d27600f466a9d3b8db2c8bfe24212ebbbf3f63955e",
+      "match": true
+    },
+    {
+      "file": "fonts/DEPARTURE_MONO_LICENSE.txt",
+      "status": 200,
+      "localBytes": 4357,
+      "remoteBytes": 4357,
+      "localSha256": "b65e42750f3cb65437a97f4dfd781c58f199259949db2341012be60e32500e83",
+      "remoteSha256": "b65e42750f3cb65437a97f4dfd781c58f199259949db2341012be60e32500e83",
+      "match": true
+    },
+    {
+      "file": "fonts/departure-mono.woff2",
+      "status": 200,
+      "localBytes": 22496,
+      "remoteBytes": 22496,
+      "localSha256": "5b4fed1daa90708aa9c6ee1190abca9dc22164a1c1def0020386e46b61038cfb",
+      "remoteSha256": "5b4fed1daa90708aa9c6ee1190abca9dc22164a1c1def0020386e46b61038cfb",
+      "match": true
+    },
+    {
+      "file": "icons/icon-192.png",
+      "status": 200,
+      "localBytes": 764,
+      "remoteBytes": 764,
+      "localSha256": "996913612478bf5ac9713918115d197f6d178d0d95a946acf0718d421a02d099",
+      "remoteSha256": "996913612478bf5ac9713918115d197f6d178d0d95a946acf0718d421a02d099",
+      "match": true
+    },
+    {
+      "file": "icons/icon-512.png",
+      "status": 200,
+      "localBytes": 428,
+      "remoteBytes": 428,
+      "localSha256": "e66e29963c3e3f3f9b7a9dfab8855b127f015f2a72e95cdf7dd1528dd0739b08",
+      "remoteSha256": "e66e29963c3e3f3f9b7a9dfab8855b127f015f2a72e95cdf7dd1528dd0739b08",
+      "match": true
+    },
+    {
+      "file": "icons/source-icon.svg",
+      "status": 200,
+      "localBytes": 264,
+      "remoteBytes": 264,
+      "localSha256": "91c9eb9d1d349c2599fbee920c27c3074f7693cc93b924194294f65a1a1a203c",
+      "remoteSha256": "91c9eb9d1d349c2599fbee920c27c3074f7693cc93b924194294f65a1a1a203c",
+      "match": true
+    },
+    {
+      "file": "index.html",
+      "status": 200,
+      "localBytes": 1784,
+      "remoteBytes": 1784,
+      "localSha256": "3fd66cd51ac8414e4dbd8462ac7769175ee2c2eb0e2f0baa11383b21b051fee4",
+      "remoteSha256": "3fd66cd51ac8414e4dbd8462ac7769175ee2c2eb0e2f0baa11383b21b051fee4",
+      "match": true
+    },
+    {
+      "file": "manifest.webmanifest",
+      "status": 200,
+      "localBytes": 581,
+      "remoteBytes": 581,
+      "localSha256": "3b2dbb51155a2d2730f40e0f33270f4e67fb260154b408fb5221c9b8230dc45f",
+      "remoteSha256": "3b2dbb51155a2d2730f40e0f33270f4e67fb260154b408fb5221c9b8230dc45f",
+      "match": true
+    },
+    {
+      "file": "offline.html",
+      "status": 200,
+      "localBytes": 509,
+      "remoteBytes": 509,
+      "localSha256": "5f4bdc841527e688abe01d7d840dd82d661ce41b5a762f26e8e666e347b812aa",
+      "remoteSha256": "5f4bdc841527e688abe01d7d840dd82d661ce41b5a762f26e8e666e347b812aa",
+      "match": true
+    },
+    {
+      "file": "print/index.html",
+      "status": 200,
+      "localBytes": 1712,
+      "remoteBytes": 1712,
+      "localSha256": "f95f97f3b0f9418266bcd4202aeca77cb4c5f3be64dc6611134e44a26f77340c",
+      "remoteSha256": "f95f97f3b0f9418266bcd4202aeca77cb4c5f3be64dc6611134e44a26f77340c",
+      "match": true
+    },
+    {
+      "file": "print.html",
+      "status": 200,
+      "localBytes": 1712,
+      "remoteBytes": 1712,
+      "localSha256": "f95f97f3b0f9418266bcd4202aeca77cb4c5f3be64dc6611134e44a26f77340c",
+      "remoteSha256": "f95f97f3b0f9418266bcd4202aeca77cb4c5f3be64dc6611134e44a26f77340c",
+      "match": true
+    },
+    {
+      "file": "privacy/index.html",
+      "status": 200,
+      "localBytes": 1746,
+      "remoteBytes": 1746,
+      "localSha256": "c3c29a182ea61dca5ca00dea79806b4a5617db0dce428438fa01febd72d742bd",
+      "remoteSha256": "c3c29a182ea61dca5ca00dea79806b4a5617db0dce428438fa01febd72d742bd",
+      "match": true
+    },
+    {
+      "file": "privacy.html",
+      "status": 200,
+      "localBytes": 1746,
+      "remoteBytes": 1746,
+      "localSha256": "c3c29a182ea61dca5ca00dea79806b4a5617db0dce428438fa01febd72d742bd",
+      "remoteSha256": "c3c29a182ea61dca5ca00dea79806b4a5617db0dce428438fa01febd72d742bd",
+      "match": true
+    },
+    {
+      "file": "robots.txt",
+      "status": 200,
+      "localBytes": 86,
+      "remoteBytes": 86,
+      "localSha256": "9c4ceb97caed951d34332790711c12ae661b6aecda5d3b2c8a0e463277b9b200",
+      "remoteSha256": "9c4ceb97caed951d34332790711c12ae661b6aecda5d3b2c8a0e463277b9b200",
+      "match": true
+    },
+    {
+      "file": "sitemap.xml",
+      "status": 200,
+      "localBytes": 530,
+      "remoteBytes": 530,
+      "localSha256": "01f9040037d201db915d03379daf66bdd7758f081c10bc7ada265d1bcf5ae110",
+      "remoteSha256": "01f9040037d201db915d03379daf66bdd7758f081c10bc7ada265d1bcf5ae110",
+      "match": true
+    },
+    {
+      "file": "sw.js",
+      "status": 200,
+      "localBytes": 2188,
+      "remoteBytes": 2188,
+      "localSha256": "ba840b486fa4b36d09229c2d583d12dfeec4fead08e3dd5eff4c0fe94f253058",
+      "remoteSha256": "ba840b486fa4b36d09229c2d583d12dfeec4fead08e3dd5eff4c0fe94f253058",
+      "match": true
+    },
+    {
+      "file": "terms/index.html",
+      "status": 200,
+      "localBytes": 1655,
+      "remoteBytes": 1655,
+      "localSha256": "4d6f1c9bbcff0c70f2c8fabb9dee1cd0da7c360392018ccb3039b60756d327df",
+      "remoteSha256": "4d6f1c9bbcff0c70f2c8fabb9dee1cd0da7c360392018ccb3039b60756d327df",
+      "match": true
+    },
+    {
+      "file": "terms.html",
+      "status": 200,
+      "localBytes": 1655,
+      "remoteBytes": 1655,
+      "localSha256": "4d6f1c9bbcff0c70f2c8fabb9dee1cd0da7c360392018ccb3039b60756d327df",
+      "remoteSha256": "4d6f1c9bbcff0c70f2c8fabb9dee1cd0da7c360392018ccb3039b60756d327df",
+      "match": true
+    }
+  ],
+  "headers": {
+    "/": {
+      "status": 200,
+      "contentType": "text/html",
+      "contentLength": null,
+      "cacheControl": "public, must-revalidate, max-age=30",
+      "etag": "\"17677864\"",
+      "lastModified": "Sat, 29 Aug 2026 12:21:21 GMT",
+      "strictTransportSecurity": "max-age=10886400; includeSubDomains; preload",
+      "contentSecurityPolicy": "default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' data: blob:; font-src 'self'; connect-src 'self'; worker-src 'self'; manifest-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self'; frame-ancestors 'none'",
+      "xContentTypeOptions": "nosniff",
+      "referrerPolicy": "strict-origin-when-cross-origin",
+      "permissionsPolicy": "camera=(), microphone=(), geolocation=()"
+    },
+    "/demo": {
+      "status": 200,
+      "contentType": "text/html",
+      "contentLength": null,
+      "cacheControl": "public, must-revalidate, max-age=30",
+      "etag": "\"17677864\"",
+      "lastModified": "Sat, 29 Aug 2026 12:21:21 GMT",
+      "strictTransportSecurity": "max-age=10886400; includeSubDomains; preload",
+      "contentSecurityPolicy": "default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' data: blob:; font-src 'self'; connect-src 'self'; worker-src 'self'; manifest-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self'; frame-ancestors 'none'",
+      "xContentTypeOptions": "nosniff",
+      "referrerPolicy": "strict-origin-when-cross-origin",
+      "permissionsPolicy": "camera=(), microphone=(), geolocation=()"
+    },
+    "/manifest.webmanifest": {
+      "status": 200,
+      "contentType": "application/manifest+json",
+      "contentLength": "581",
+      "cacheControl": "public, must-revalidate, max-age=30",
+      "etag": "\"17677864\"",
+      "lastModified": "Sat, 29 Aug 2026 12:21:21 GMT",
+      "strictTransportSecurity": "max-age=10886400; includeSubDomains; preload",
+      "contentSecurityPolicy": "default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' data: blob:; font-src 'self'; connect-src 'self'; worker-src 'self'; manifest-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self'; frame-ancestors 'none'",
+      "xContentTypeOptions": "nosniff",
+      "referrerPolicy": "strict-origin-when-cross-origin",
+      "permissionsPolicy": "camera=(), microphone=(), geolocation=()"
+    },
+    "/sw.js": {
+      "status": 200,
+      "contentType": "text/javascript",
+      "contentLength": null,
+      "cacheControl": "public, must-revalidate, max-age=30",
+      "etag": "\"17677864\"",
+      "lastModified": "Sat, 29 Aug 2026 12:21:21 GMT",
+      "strictTransportSecurity": "max-age=10886400; includeSubDomains; preload",
+      "contentSecurityPolicy": "default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' data: blob:; font-src 'self'; connect-src 'self'; worker-src 'self'; manifest-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self'; frame-ancestors 'none'",
+      "xContentTypeOptions": "nosniff",
+      "referrerPolicy": "strict-origin-when-cross-origin",
+      "permissionsPolicy": "camera=(), microphone=(), geolocation=()"
+    },
+    "/assets/index-B-LXHcfq.js": {
+      "status": 200,
+      "contentType": "text/javascript",
+      "contentLength": null,
+      "cacheControl": "public, max-age=31536000, immutable",
+      "etag": "\"17677864\"",
+      "lastModified": "Sat, 29 Aug 2026 12:21:21 GMT",
+      "strictTransportSecurity": "max-age=10886400; includeSubDomains; preload",
+      "contentSecurityPolicy": "default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' data: blob:; font-src 'self'; connect-src 'self'; worker-src 'self'; manifest-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self'; frame-ancestors 'none'",
+      "xContentTypeOptions": "nosniff",
+      "referrerPolicy": "strict-origin-when-cross-origin",
+      "permissionsPolicy": "camera=(), microphone=(), geolocation=()"
+    },
+    "/assets/index-CTvWy7GA.css": {
+      "status": 200,
+      "contentType": "text/css",
+      "contentLength": null,
+      "cacheControl": "public, max-age=31536000, immutable",
+      "etag": "\"17677864\"",
+      "lastModified": "Sat, 29 Aug 2026 12:21:21 GMT",
+      "strictTransportSecurity": "max-age=10886400; includeSubDomains; preload",
+      "contentSecurityPolicy": "default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' data: blob:; font-src 'self'; connect-src 'self'; worker-src 'self'; manifest-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self'; frame-ancestors 'none'",
+      "xContentTypeOptions": "nosniff",
+      "referrerPolicy": "strict-origin-when-cross-origin",
+      "permissionsPolicy": "camera=(), microphone=(), geolocation=()"
+    },
+    "/fonts/departure-mono.woff2": {
+      "status": 200,
+      "contentType": "font/woff2",
+      "contentLength": "22496",
+      "cacheControl": "public, must-revalidate, max-age=30",
+      "etag": "\"17677864\"",
+      "lastModified": "Sat, 29 Aug 2026 12:21:21 GMT",
+      "strictTransportSecurity": "max-age=10886400; includeSubDomains; preload",
+      "contentSecurityPolicy": "default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' data: blob:; font-src 'self'; connect-src 'self'; worker-src 'self'; manifest-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self'; frame-ancestors 'none'",
+      "xContentTypeOptions": "nosniff",
+      "referrerPolicy": "strict-origin-when-cross-origin",
+      "permissionsPolicy": "camera=(), microphone=(), geolocation=()"
+    },
+    "/assets/hero-proof-terminal-640.webp": {
+      "status": 200,
+      "contentType": "image/webp",
+      "contentLength": "18802",
+      "cacheControl": "public, max-age=31536000, immutable",
+      "etag": "\"17677864\"",
+      "lastModified": "Sat, 29 Aug 2026 12:21:21 GMT",
+      "strictTransportSecurity": "max-age=10886400; includeSubDomains; preload",
+      "contentSecurityPolicy": "default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' data: blob:; font-src 'self'; connect-src 'self'; worker-src 'self'; manifest-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self'; frame-ancestors 'none'",
+      "xContentTypeOptions": "nosniff",
+      "referrerPolicy": "strict-origin-when-cross-origin",
+      "permissionsPolicy": "camera=(), microphone=(), geolocation=()"
+    },
+    "/not-a-real-route-qa7": {
+      "status": 404,
+      "contentType": "text/html",
+      "contentLength": "2457",
+      "cacheControl": "public, must-revalidate, max-age=30",
+      "etag": "\"17677864\"",
+      "lastModified": "Sat, 29 Aug 2026 12:21:21 GMT",
+      "strictTransportSecurity": "max-age=10886400; includeSubDomains; preload",
+      "contentSecurityPolicy": "default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' data: blob:; font-src 'self'; connect-src 'self'; worker-src 'self'; manifest-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self'; frame-ancestors 'none'",
+      "xContentTypeOptions": "nosniff",
+      "referrerPolicy": "strict-origin-when-cross-origin",
+      "permissionsPolicy": "camera=(), microphone=(), geolocation=()"
+    }
+  }
+}
