@@ -24,6 +24,14 @@ Demo: <https://self-study-proofbook.sociobot.in/demo>
 JSON, CSV, printing, and password-encrypted backups are included in the local
 ledger.
 
+## Purchase model
+
+The researched business model is a one-time purchase. This release deliberately
+offers no paid tier because its Sociobot billing product is not enabled. JSON,
+CSV, printing, and password-encrypted backups remain included, with no checkout
+or license flow. A paid release must register and verify the hosted checkout
+before adding a price.
+
 ## Privacy and ownership
 
 Study entries stay in the browser unless the learner exports them. IndexedDB
@@ -57,7 +65,7 @@ isolated demo storage, revision history, downloads, and the print route.
 
 ## Project notes
 
-- `src/db.ts` owns the two IndexedDB namespaces and recovers a legacy damaged archive into a usable ledger.
+- `src/db.ts` owns the two IndexedDB namespaces, validates every write, and keeps visible recovery copies of damaged legacy data.
 - `src/schema.ts` validates every imported topic, attempt, revision, value, and reference before the current ledger can be replaced.
 - `src/crypto.ts` implements password-encrypted archives with Web Crypto.
 - `vite.config.ts` generates the service worker and static route documents.

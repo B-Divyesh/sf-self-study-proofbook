@@ -57,10 +57,10 @@
   },
   {
     "id": "archive-tools-included",
-    "claim": "JSON, CSV, printing, and password-encrypted backups are included in the local ledger.",
-    "where": "landing facts, landing archive section, README",
+    "claim": "The current release has no paid tier; JSON, CSV, printing, and password-encrypted backups are included in the local ledger.",
+    "where": "landing facts, landing archive section, README purchase model",
     "test": "npm test -- --grep @claim:archive-tools-included",
-    "sandbox": "fresh /demo data; download JSON and CSV, create a password-encrypted backup, and open the printable index without any checkout request"
+    "sandbox": "fresh /demo data; assert no checkout or license UI, download JSON and CSV, create a password-encrypted backup, and open the printable index without any checkout request"
   },
   {
     "id": "cited-attempt",

@@ -1,6 +1,6 @@
 # Landing copy audit
 
-Checked 2026-08-29 after the round-3 repair. Counts treat contractions and
+Checked 2026-08-29 after repair 5. Counts treat contractions and
 hyphenated terms as one word. Sample records, table headings, navigation labels,
 and version text are labels or data, not sentences. No landing sentence exceeds
 22 words or contains a banned marketing word.

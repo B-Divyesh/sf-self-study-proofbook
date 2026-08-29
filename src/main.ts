@@ -1,7 +1,7 @@
 import './style.css';
-import { clearDemo, loadState, resetDemo, saveState } from './db';
+import { clearDemo, listRecoveryRecords, loadState, resetDemo, saveState, type RecoveryRecord } from './db';
 import { decryptArchive, encryptArchive } from './crypto';
-import { validateArchive } from './schema';
+import { ARCHIVE_LIMITS, recoverArchive, validateArchive } from './schema';
 import type { Attempt, AttemptStatus, ProofbookState, Topic } from './types';
 
 const app = document.querySelector<HTMLDivElement>('#app')!;
@@ -9,7 +9,9 @@ const path = location.pathname.replace(/\/$/, '') || '/';
 let demo = path === '/demo' || new URLSearchParams(location.search).get('demo') === '1';
 let state: ProofbookState | null = null;
 let timerTick: number | undefined;
-let recoveryNotice = false;
+let toastTimer: number | undefined;
+let recoveryNotice = '';
+let recoveryRecords: RecoveryRecord[] = [];
 
 const routeInfo: Record<string, { title: string; description: string }> = {
   '/': { title: 'Self-Study Proofbook — Record problems you can solve', description: 'Record cited math and CS problems, timed attempts, solution revisions, and a printable mastery index in your browser.' },
@@ -170,6 +172,11 @@ function appView(): string {
   const shown = selected ? state.attempts.filter((attempt) => attempt.topicId === selected.topicId) : state.attempts;
   const attempts = shown.map((attempt) => `<button class="attempt-row" data-attempt="${attempt.id}" ${attempt.id === selected?.id ? 'aria-current="true"' : ''}><span><strong>${escapeHtml(attempt.title)}</strong><small>${escapeHtml(attempt.problemRef)}</small></span><span class="status ${attempt.status}">${statusLabel(attempt.status)}</span></button>`).join('');
   const content = selected ? editor(selected) : emptyLedger();
+  const recoveryTools = recoveryRecords.length ? `
+    <section class="recovery-tools" aria-labelledby="recovery-title">
+      <div><h2 id="recovery-title">Recovery copies</h2><p>A damaged saved copy was kept before valid records were restored. Download the original or restore its valid records.</p></div>
+      <ul>${recoveryRecords.map((record, index) => `<li><span>Saved copy ${recoveryRecords.length - index}</span><span class="recovery-actions"><button class="text-button" data-download-recovery="${escapeHtml(record.key)}">Download original</button><button class="text-button" data-restore-recovery="${escapeHtml(record.key)}">Restore valid records</button></span></li>`).join('')}</ul>
+    </section>` : '';
   return shell(`
     <section class="workspace-head">
       <div><p class="eyebrow">LOCAL LEDGER / ${demo ? 'DEMO' : 'PRIVATE'}</p><h1 tabindex="-1">Build proof you can revisit</h1><p>${state.attempts.length} attempt${state.attempts.length === 1 ? '' : 's'} across ${state.topics.length} topic${state.topics.length === 1 ? '' : 's'}.</p></div>
@@ -185,6 +192,7 @@ function appView(): string {
       <div class="tool-actions"><button class="button secondary" id="export-json">Export JSON</button><button class="button secondary" id="export-csv">Export CSV</button><a class="button secondary" href="/print${demo ? '?demo=1' : ''}" data-route>Print mastery index</a><button class="button secondary" id="import-json">Import archive</button><button class="button secondary" id="encrypt-export">Export encrypted backup</button></div>
       <input type="file" id="import-file" accept=".json,.proofbook" hidden />
     </section>
+    ${recoveryTools}
     ${dialogs()}
   `, demo ? 'demo' : 'app');
 }
@@ -204,9 +212,9 @@ function editor(attempt: Attempt): string {
       <p class="source-line"><span>Source</span> ${source} · ${escapeHtml(attempt.problemRef)}</p>
       <div class="timer-panel"><div><span>Attempt time</span><strong data-timer-display="${attempt.id}">${duration(secondsFor(attempt))}</strong></div><button class="button timer" id="toggle-timer">${attempt.timerStartedAt ? 'Pause timer' : 'Start timer'}</button></div>
       <form id="attempt-form">
-        <div class="field"><label for="solution">Solution notes <span>Markdown</span></label><textarea id="solution" name="solution" rows="12">${escapeHtml(attempt.solution)}</textarea></div>
+        <div class="field"><label for="solution">Solution notes <span>Markdown</span></label><textarea id="solution" name="solution" rows="12" maxlength="${ARCHIVE_LIMITS.notes}" aria-describedby="solution-error">${escapeHtml(attempt.solution)}</textarea><p class="form-error" id="solution-error" aria-live="polite"></p></div>
         <div class="preview"><div class="preview-label">Preview</div><div id="markdown-preview" class="prose">${markdown(attempt.solution) || '<p>Your formatted solution appears here.</p>'}</div></div>
-        <div class="field"><label for="reflection">What changed or remains uncertain?</label><textarea id="reflection" name="reflection" rows="3">${escapeHtml(attempt.reflection)}</textarea></div>
+        <div class="field"><label for="reflection">What changed or remains uncertain?</label><textarea id="reflection" name="reflection" rows="3" maxlength="${ARCHIVE_LIMITS.notes}" aria-describedby="reflection-error">${escapeHtml(attempt.reflection)}</textarea><p class="form-error" id="reflection-error" aria-live="polite"></p></div>
         <div class="editor-grid">
           <div class="field"><label for="status">Evidence status</label><select id="status" name="status"><option value="working" ${attempt.status === 'working' ? 'selected' : ''}>Working</option><option value="revised" ${attempt.status === 'revised' ? 'selected' : ''}>Revised</option><option value="mastered" ${attempt.status === 'mastered' ? 'selected' : ''}>Mastered</option></select></div>
           <fieldset><legend>Confidence</legend><div class="confidence">${[1,2,3,4].map((n) => `<label><input type="radio" name="confidence" value="${n}" ${attempt.confidence === n ? 'checked' : ''} /><span>${n}</span></label>`).join('')}</div></fieldset>
@@ -220,8 +228,8 @@ function editor(attempt: Attempt): string {
 function dialogs(): string {
   const topicOptions = state?.topics.map((topic) => `<option value="${topic.id}">${escapeHtml(topic.name)}</option>`).join('') ?? '';
   return `
-    <dialog id="topic-dialog"><form method="dialog" id="topic-form"><div class="dialog-head"><h2>Add a topic</h2><button class="icon-button" value="cancel" aria-label="Close dialog">×</button></div><div class="field"><label for="topic-name">Topic name</label><input id="topic-name" name="name" required maxlength="60" /></div><div class="field"><label for="topic-goal">Study goal</label><input id="topic-goal" name="goal" maxlength="140" /></div><div class="dialog-actions"><button class="button secondary" value="cancel">Cancel</button><button class="button primary" value="default" id="save-topic">Add topic</button></div></form></dialog>
-    <dialog id="attempt-dialog"><form method="dialog" id="new-attempt-form"><div class="dialog-head"><h2>Record an attempt</h2><button class="icon-button" value="cancel" aria-label="Close dialog">×</button></div><div class="field"><label for="attempt-topic">Topic</label><select id="attempt-topic" name="topicId" required>${topicOptions}</select></div><div class="field"><label for="attempt-title">Problem title</label><input id="attempt-title" name="title" required maxlength="100" /></div><div class="field"><label for="attempt-source">Source</label><input id="attempt-source" name="source" required maxlength="120" /></div><div class="field"><label for="attempt-ref">Problem reference</label><input id="attempt-ref" name="problemRef" required maxlength="100" /></div><div class="field"><label for="attempt-url">Source link <span>Optional</span></label><input id="attempt-url" name="sourceUrl" type="url" /></div><p class="form-help">Cite the source. Do not paste copyrighted problem text.</p><div class="dialog-actions"><button class="button secondary" value="cancel">Cancel</button><button class="button primary" value="default" id="save-attempt">Start attempt</button></div></form></dialog>
+    <dialog id="topic-dialog"><form method="dialog" id="topic-form"><div class="dialog-head"><h2>Add a topic</h2><button class="icon-button" value="cancel" aria-label="Close dialog">×</button></div><div class="field"><label for="topic-name">Topic name</label><input id="topic-name" name="name" required maxlength="${ARCHIVE_LIMITS.topicName}" aria-describedby="topic-name-error" /><p class="form-error" id="topic-name-error" aria-live="polite"></p></div><div class="field"><label for="topic-goal">Study goal</label><input id="topic-goal" name="goal" maxlength="${ARCHIVE_LIMITS.topicGoal}" aria-describedby="topic-goal-error" /><p class="form-error" id="topic-goal-error" aria-live="polite"></p></div><div class="dialog-actions"><button class="button secondary" value="cancel">Cancel</button><button class="button primary" value="default" id="save-topic">Add topic</button></div></form></dialog>
+    <dialog id="attempt-dialog"><form method="dialog" id="new-attempt-form"><div class="dialog-head"><h2>Record an attempt</h2><button class="icon-button" value="cancel" aria-label="Close dialog">×</button></div><div class="field"><label for="attempt-topic">Topic</label><select id="attempt-topic" name="topicId" required>${topicOptions}</select></div><div class="field"><label for="attempt-title">Problem title</label><input id="attempt-title" name="title" required maxlength="${ARCHIVE_LIMITS.attemptTitle}" aria-describedby="attempt-title-error" /><p class="form-error" id="attempt-title-error" aria-live="polite"></p></div><div class="field"><label for="attempt-source">Source</label><input id="attempt-source" name="source" required maxlength="${ARCHIVE_LIMITS.source}" aria-describedby="attempt-source-error" /><p class="form-error" id="attempt-source-error" aria-live="polite"></p></div><div class="field"><label for="attempt-ref">Problem reference</label><input id="attempt-ref" name="problemRef" required maxlength="${ARCHIVE_LIMITS.problemReference}" aria-describedby="attempt-ref-error" /><p class="form-error" id="attempt-ref-error" aria-live="polite"></p></div><div class="field"><label for="attempt-url">Source link <span>Optional</span></label><input id="attempt-url" name="sourceUrl" type="url" maxlength="${ARCHIVE_LIMITS.sourceUrl}" aria-describedby="attempt-url-error" /><p class="form-error" id="attempt-url-error" aria-live="polite"></p></div><p class="form-help">Cite the source. Do not paste copyrighted problem text.</p><div class="dialog-actions"><button class="button secondary" value="cancel">Cancel</button><button class="button primary" value="default" id="save-attempt">Start attempt</button></div></form></dialog>
     <dialog id="password-dialog"><form method="dialog" id="password-form"><div class="dialog-head"><h2>Password-protect this backup</h2><button class="icon-button" value="cancel" aria-label="Close dialog">×</button></div><p>You need this password to open the backup. It cannot be recovered.</p><div class="field"><label for="backup-password">Password</label><input id="backup-password" name="password" type="password" minlength="10" required /></div><div class="dialog-actions"><button class="button secondary" value="cancel">Cancel</button><button class="button primary" id="make-backup" value="default">Download encrypted backup</button></div></form></dialog>
   `;
 }
@@ -277,7 +285,10 @@ async function navigate(next: string, push = true, focusHeading = true): Promise
   if (route === '/app' || route === '/demo' || route === '/print' || demoEntry) {
     const loaded = await loadState(demo);
     state = loaded.state;
-    recoveryNotice = loaded.recovered;
+    recoveryNotice = loaded.recovered
+      ? `A damaged saved copy was kept. ${state.topics.length} valid topic${state.topics.length === 1 ? '' : 's'} and ${state.attempts.length} valid attempt${state.attempts.length === 1 ? '' : 's'} were restored.`
+      : '';
+    recoveryRecords = await listRecoveryRecords(demo);
   }
   app.innerHTML = demoEntry || route === '/app' || route === '/demo' ? appView() : route === '/' ? landing() : route === '/print' ? printView() : route === '/privacy' ? legalView('privacy') : route === '/terms' ? legalView('terms') : notFound();
   bindCommon();
@@ -286,8 +297,8 @@ async function navigate(next: string, push = true, focusHeading = true): Promise
   if (focusHeading) document.querySelector<HTMLElement>('h1')?.focus({ preventScroll: true });
   document.querySelector('.route-status')!.textContent = document.querySelector('h1')?.textContent ?? '';
   if (recoveryNotice) {
-    showToast('A damaged archive was set aside and a usable empty proofbook was restored. Import a valid backup to continue.');
-    recoveryNotice = false;
+    showToast(recoveryNotice);
+    recoveryNotice = '';
   }
   scrollTo({ top: 0, behavior: matchMedia('(prefers-reduced-motion: reduce)').matches ? 'instant' : 'smooth' });
 }
@@ -313,13 +324,15 @@ function openDialog(id: string): void {
 function bindApp(): void {
   if (!state) return;
   document.querySelectorAll<HTMLButtonElement>('[data-topic]').forEach((button) => button.addEventListener('click', async () => {
-    const first = state!.attempts.find((attempt) => attempt.topicId === button.dataset.topic);
-    state!.selectedAttemptId = first?.id ?? null;
-    await persistAndRender();
+    const next = structuredClone(state!);
+    const first = next.attempts.find((attempt) => attempt.topicId === button.dataset.topic);
+    next.selectedAttemptId = first?.id ?? null;
+    await persistAndRender(next);
   }));
   document.querySelectorAll<HTMLButtonElement>('[data-attempt]').forEach((button) => button.addEventListener('click', async () => {
-    state!.selectedAttemptId = button.dataset.attempt ?? null;
-    await persistAndRender();
+    const next = structuredClone(state!);
+    next.selectedAttemptId = button.dataset.attempt ?? null;
+    await persistAndRender(next);
   }));
   const openTopic = () => openDialog('topic-dialog');
   document.querySelector('#new-topic')?.addEventListener('click', openTopic);
@@ -328,32 +341,98 @@ function bindApp(): void {
   bindCreateForms();
   bindEditor();
   bindArchive();
+  bindRecovery();
   timerTick = window.setInterval(updateTimerDisplay, 1000);
+}
+
+interface FieldRule {
+  id: string;
+  label: string;
+  maximum: number;
+  required?: boolean;
+}
+
+function validateFields(rules: FieldRule[]): boolean {
+  let firstInvalid: HTMLInputElement | HTMLTextAreaElement | null = null;
+  for (const rule of rules) {
+    const control = document.querySelector<HTMLInputElement | HTMLTextAreaElement>(`#${rule.id}`);
+    if (!control) continue;
+    const trimmed = control.value.trim();
+    const message = rule.required && !trimmed
+      ? `${rule.label} cannot be blank.`
+      : control.value.length > rule.maximum
+        ? `${rule.label} must be ${rule.maximum.toLocaleString()} characters or fewer.`
+        : '';
+    control.setCustomValidity(message);
+    if (message) control.setAttribute('aria-invalid', 'true');
+    else control.removeAttribute('aria-invalid');
+    const error = document.querySelector<HTMLElement>(`#${rule.id}-error`);
+    if (error) error.textContent = message;
+    if (message && !firstInvalid) firstInvalid = control;
+    control.addEventListener('input', () => {
+      control.setCustomValidity('');
+      control.removeAttribute('aria-invalid');
+      if (error) error.textContent = '';
+    }, { once: true });
+  }
+  if (firstInvalid) {
+    hideToast();
+    firstInvalid.reportValidity();
+    firstInvalid.focus();
+    return false;
+  }
+  return true;
+}
+
+async function commitNextState(next: ProofbookState): Promise<boolean> {
+  try {
+    // Validate a detached candidate first. The current in-memory state and the
+    // last valid IndexedDB value remain untouched if any field is invalid.
+    const validated = validateArchive(next);
+    state = await saveState(demo, validated);
+    return true;
+  } catch (error) {
+    showToast(error instanceof Error ? error.message : 'The change was not saved. Your current proofbook was not changed.');
+    return false;
+  }
 }
 
 function bindCreateForms(): void {
   const topicForm = document.querySelector<HTMLFormElement>('#topic-form');
   document.querySelector('#save-topic')?.addEventListener('click', async (event) => {
-    if (!topicForm?.reportValidity()) { event.preventDefault(); return; }
+    event.preventDefault();
+    if (!validateFields([
+      { id: 'topic-name', label: 'Topic name', maximum: ARCHIVE_LIMITS.topicName, required: true },
+      { id: 'topic-goal', label: 'Study goal', maximum: ARCHIVE_LIMITS.topicGoal },
+    ]) || !topicForm?.reportValidity()) return;
     const data = new FormData(topicForm);
     const topic: Topic = { id: uid('topic'), name: String(data.get('name')).trim(), goal: String(data.get('goal')).trim() };
-    state!.topics.push(topic);
-    state!.updatedAt = new Date().toISOString();
-    await saveState(demo, state!);
+    const next = structuredClone(state!);
+    next.topics.push(topic);
+    next.updatedAt = new Date().toISOString();
+    if (!await commitNextState(next)) return;
     await navigate(demo ? '/demo' : '/app', false);
     showToast(`${topic.name} added.`);
   });
   const attemptForm = document.querySelector<HTMLFormElement>('#new-attempt-form');
   document.querySelector('#save-attempt')?.addEventListener('click', async (event) => {
-    if (!attemptForm?.reportValidity()) { event.preventDefault(); return; }
+    event.preventDefault();
+    if (!validateFields([
+      { id: 'attempt-title', label: 'Problem title', maximum: ARCHIVE_LIMITS.attemptTitle, required: true },
+      { id: 'attempt-source', label: 'Source', maximum: ARCHIVE_LIMITS.source, required: true },
+      { id: 'attempt-ref', label: 'Problem reference', maximum: ARCHIVE_LIMITS.problemReference, required: true },
+      { id: 'attempt-url', label: 'Source link', maximum: ARCHIVE_LIMITS.sourceUrl },
+    ]) || !attemptForm?.reportValidity()) return;
     const data = new FormData(attemptForm);
     const timestamp = new Date().toISOString();
     const attempt: Attempt = {
       id: uid('attempt'), topicId: String(data.get('topicId')), title: String(data.get('title')).trim(), source: String(data.get('source')).trim(), sourceUrl: String(data.get('sourceUrl')).trim(), problemRef: String(data.get('problemRef')).trim(), startedAt: timestamp, elapsedSeconds: 0, timerStartedAt: timestamp, status: 'working', confidence: 1, solution: '', reflection: '', revisions: [], createdAt: timestamp, updatedAt: timestamp,
     };
-    state!.attempts.unshift(attempt);
-    state!.selectedAttemptId = attempt.id;
-    await saveState(demo, state!);
+    const next = structuredClone(state!);
+    next.attempts.unshift(attempt);
+    next.selectedAttemptId = attempt.id;
+    next.updatedAt = timestamp;
+    if (!await commitNextState(next)) return;
     await navigate(demo ? '/demo' : '/app', false);
     showToast('Attempt started. The timer is running.');
   });
@@ -365,40 +444,49 @@ function bindEditor(): void {
   const solution = document.querySelector<HTMLTextAreaElement>('#solution');
   solution?.addEventListener('input', () => { document.querySelector('#markdown-preview')!.innerHTML = markdown(solution.value) || '<p>Your formatted solution appears here.</p>'; });
   document.querySelector('#toggle-timer')?.addEventListener('click', async () => {
-    if (attempt.timerStartedAt) {
-      attempt.elapsedSeconds = secondsFor(attempt);
-      attempt.timerStartedAt = null;
-      showToast('Timer paused.');
+    const next = structuredClone(state!);
+    const nextAttempt = next.attempts.find((item) => item.id === attempt.id)!;
+    const message = nextAttempt.timerStartedAt ? 'Timer paused.' : 'Timer started.';
+    if (nextAttempt.timerStartedAt) {
+      nextAttempt.elapsedSeconds = secondsFor(nextAttempt);
+      nextAttempt.timerStartedAt = null;
     } else {
-      attempt.timerStartedAt = new Date().toISOString();
-      showToast('Timer started.');
+      nextAttempt.timerStartedAt = new Date().toISOString();
     }
-    await persistAndRender();
+    if (!await persistAndRender(next)) return;
+    showToast(message);
   });
   document.querySelector<HTMLFormElement>('#attempt-form')?.addEventListener('submit', async (event) => {
     event.preventDefault();
+    if (!validateFields([
+      { id: 'solution', label: 'Solution notes', maximum: ARCHIVE_LIMITS.notes },
+      { id: 'reflection', label: 'Reflection', maximum: ARCHIVE_LIMITS.notes },
+    ]) || !(event.currentTarget as HTMLFormElement).reportValidity()) return;
     const data = new FormData(event.currentTarget as HTMLFormElement);
     const nextSolution = String(data.get('solution'));
     const nextReflection = String(data.get('reflection'));
-    if ((attempt.solution || attempt.reflection) && (nextSolution !== attempt.solution || nextReflection !== attempt.reflection)) {
-      attempt.revisions.push({ id: uid('revision'), at: attempt.updatedAt, solution: attempt.solution, reflection: attempt.reflection });
+    const next = structuredClone(state!);
+    const nextAttempt = next.attempts.find((item) => item.id === attempt.id)!;
+    if ((nextAttempt.solution || nextAttempt.reflection) && (nextSolution !== nextAttempt.solution || nextReflection !== nextAttempt.reflection)) {
+      nextAttempt.revisions.push({ id: uid('revision'), at: nextAttempt.updatedAt, solution: nextAttempt.solution, reflection: nextAttempt.reflection });
     }
-    attempt.solution = nextSolution;
-    attempt.reflection = nextReflection;
-    attempt.status = String(data.get('status')) as AttemptStatus;
-    attempt.confidence = Number(data.get('confidence')) as 1 | 2 | 3 | 4;
-    attempt.updatedAt = new Date().toISOString();
-    state!.updatedAt = attempt.updatedAt;
-    await saveState(demo, state!);
+    nextAttempt.solution = nextSolution;
+    nextAttempt.reflection = nextReflection;
+    nextAttempt.status = String(data.get('status')) as AttemptStatus;
+    nextAttempt.confidence = Number(data.get('confidence')) as 1 | 2 | 3 | 4;
+    nextAttempt.updatedAt = new Date().toISOString();
+    next.updatedAt = nextAttempt.updatedAt;
+    if (!await commitNextState(next)) return;
     await navigate(demo ? '/demo' : '/app', false);
     document.querySelector('.attempt-editor')?.classList.add('just-saved');
     showToast('Revision saved.');
   });
   document.querySelector('#delete-attempt')?.addEventListener('click', async () => {
     if (!confirm(`Delete “${attempt.title}” and its ${attempt.revisions.length} earlier revision${attempt.revisions.length === 1 ? '' : 's'}?`)) return;
-    state!.attempts = state!.attempts.filter((item) => item.id !== attempt.id);
-    state!.selectedAttemptId = state!.attempts[0]?.id ?? null;
-    await persistAndRender();
+    const next = structuredClone(state!);
+    next.attempts = next.attempts.filter((item) => item.id !== attempt.id);
+    next.selectedAttemptId = next.attempts[0]?.id ?? null;
+    if (!await persistAndRender(next)) return;
     showToast('Attempt deleted.');
   });
 }
@@ -409,11 +497,11 @@ function updateTimerDisplay(): void {
   if (attempt && display) display.textContent = duration(secondsFor(attempt));
 }
 
-async function persistAndRender(): Promise<void> {
-  if (!state) return;
-  state.updatedAt = new Date().toISOString();
-  await saveState(demo, state);
+async function persistAndRender(next: ProofbookState): Promise<boolean> {
+  next.updatedAt = new Date().toISOString();
+  if (!await commitNextState(next)) return false;
   await navigate(demo ? '/demo' : '/app', false);
+  return true;
 }
 
 function download(blob: Blob, filename: string): void {
@@ -427,6 +515,32 @@ function download(blob: Blob, filename: string): void {
 
 function csvValue(value: string | number): string {
   return `"${String(value).replaceAll('"', '""')}"`;
+}
+
+function bindRecovery(): void {
+  document.querySelectorAll<HTMLButtonElement>('[data-download-recovery]').forEach((button) => button.addEventListener('click', () => {
+    const record = recoveryRecords.find((entry) => entry.key === button.dataset.downloadRecovery);
+    if (!record) return;
+    try {
+      download(new Blob([JSON.stringify(record.value, null, 2)], { type: 'application/json' }), `${record.key}.json`);
+      showToast('The original recovery copy was downloaded.');
+    } catch {
+      showToast('This recovery copy could not be downloaded. Your current proofbook was not changed.');
+    }
+  }));
+  document.querySelectorAll<HTMLButtonElement>('[data-restore-recovery]').forEach((button) => button.addEventListener('click', async () => {
+    const record = recoveryRecords.find((entry) => entry.key === button.dataset.restoreRecovery);
+    if (!record) return;
+    const recovered = recoverArchive(record.value);
+    if (recovered.state.topics.length === 0 && recovered.state.attempts.length === 0) {
+      showToast('This copy has no valid topics or attempts to restore. Download the original to inspect it.');
+      return;
+    }
+    if (!confirm(`Replace this ledger with ${recovered.state.attempts.length} valid recovered attempt${recovered.state.attempts.length === 1 ? '' : 's'}?`)) return;
+    if (!await commitNextState(recovered.state)) return;
+    await navigate(demo ? '/demo' : '/app', false);
+    showToast('Valid records were restored. The original recovery copy is still available.');
+  }));
 }
 
 function bindArchive(): void {
@@ -450,10 +564,9 @@ function bindArchive(): void {
       } else text = await file.text();
       const parsed = validateArchive(JSON.parse(text));
       if (!confirm(`Replace this ledger with ${parsed.attempts.length} imported attempts?`)) return;
-      state = parsed;
       // Import is a byte-for-byte restoration of the learner's archive; do not
       // rewrite its archive timestamp while merely opening it in this browser.
-      await saveState(demo, state);
+      if (!await commitNextState(parsed)) return;
       await navigate(demo ? '/demo' : '/app', false);
       showToast('Archive imported.');
     } catch (error) { showToast(error instanceof Error ? error.message : 'The archive could not be imported.'); }
@@ -477,9 +590,16 @@ function bindArchive(): void {
 function showToast(message: string): void {
   const toast = document.querySelector<HTMLElement>('#toast');
   if (!toast) return;
+  clearTimeout(toastTimer);
   toast.textContent = message;
   toast.hidden = false;
-  setTimeout(() => { toast.hidden = true; }, 3500);
+  toastTimer = window.setTimeout(() => { toast.hidden = true; }, 3500);
+}
+
+function hideToast(): void {
+  clearTimeout(toastTimer);
+  const toast = document.querySelector<HTMLElement>('#toast');
+  if (toast) toast.hidden = true;
 }
 
 function registerServiceWorker(): void {

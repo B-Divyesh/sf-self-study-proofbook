@@ -7,6 +7,7 @@
   "smallest_useful_product": "Local Markdown-first proof/problem ledger with source citation, attempt timer, solution revision history, and printable mastery index.",
   "artifact_class": "pwa-offline",
   "monetization": "one-time",
+  "release_scope_decision": "The one-time purchase remains the researched business model, but this release deliberately ships every feature free. The Sociobot billing product is not enabled, so the app must not advertise a price or send users to an unavailable checkout. A later paid release requires product registration and a verified hosted checkout before paid copy is restored.",
   "constraints": "Do not redistribute textbook or exam content; support local encrypted export; clearly state that records are not accredited credentials.",
   "state": "BUILT"
 }

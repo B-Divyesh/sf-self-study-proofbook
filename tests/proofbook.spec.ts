@@ -123,6 +123,7 @@ test('@claim:archive-tools-included makes every archive tool usable without chec
   const outgoing: string[] = [];
   page.on('request', (request) => outgoing.push(request.url()));
   await page.goto('/demo');
+  await expect(page.locator('a[href*="/checkout"], [data-license]')).toHaveCount(0);
   const jsonDownload = page.waitForEvent('download');
   await page.getByRole('button', { name: 'Export JSON' }).click();
   expect((await readFile(await (await jsonDownload).path(), 'utf8')).includes('attempts')).toBe(true);
@@ -255,6 +256,47 @@ test('rejects the verifier malformed archive before confirmation, preserves a re
   await expect(page.getByText('1 attempt across 1 topic.')).toBeVisible();
 });
 
+for (const requiredField of [
+  { label: 'Topic name', action: 'Add topic' },
+  { label: 'Problem title', action: 'Start attempt' },
+  { label: 'Source', action: 'Start attempt' },
+  { label: 'Problem reference', action: 'Start attempt' },
+] as const) {
+  test(`rejects whitespace-only ${requiredField.label.toLowerCase()} before persistence and preserves the real ledger`, async ({ page }) => {
+    await page.goto('/app');
+    await page.getByRole('button', { name: 'Add topic' }).click();
+    await page.getByLabel('Topic name').fill('Valid topic');
+    await page.getByLabel('Study goal').fill('Keep this valid ledger.');
+    await page.getByRole('button', { name: 'Add topic' }).last().click();
+    await page.getByRole('button', { name: 'Record attempt' }).click();
+    await page.getByLabel('Problem title').fill('Valid problem');
+    await page.getByLabel('Source', { exact: true }).fill('Valid source');
+    await page.getByLabel('Problem reference').fill('Valid reference');
+    await page.getByRole('button', { name: 'Start attempt' }).click();
+    await expect(page.getByText('1 attempt across 1 topic.')).toBeVisible();
+
+    if (requiredField.label === 'Topic name') {
+      await page.getByRole('button', { name: 'Add topic' }).click();
+    } else {
+      await page.getByRole('button', { name: 'Record attempt' }).click();
+      await page.getByLabel('Problem title').fill('Another valid problem');
+      await page.getByLabel('Source', { exact: true }).fill('Another valid source');
+      await page.getByLabel('Problem reference').fill('Another valid reference');
+    }
+    await page.getByLabel(requiredField.label, { exact: true }).fill('   ');
+    expect(await page.getByLabel(requiredField.label, { exact: true }).evaluate((input) => input.checkValidity())).toBe(true);
+    await page.getByRole('button', { name: requiredField.action }).last().click();
+
+    await expect(page.getByLabel(requiredField.label, { exact: true })).toHaveAttribute('aria-invalid', 'true');
+    await expect(page.getByText(`${requiredField.label} cannot be blank.`)).toBeVisible();
+    await expect(page.locator('#toast')).toBeHidden();
+    await expect(page.getByText('1 attempt across 1 topic.')).toBeVisible();
+    await page.reload();
+    await expect(page.getByRole('heading', { name: 'Valid problem' })).toBeVisible();
+    await expect(page.getByText('1 attempt across 1 topic.')).toBeVisible();
+  });
+}
+
 test('recovers a legacy malformed persisted archive into a usable ledger', async ({ page }) => {
   await page.goto('/app');
   await page.evaluate(async () => new Promise<void>((resolve, reject) => {
@@ -270,7 +312,8 @@ test('recovers a legacy malformed persisted archive into a usable ledger', async
   await page.reload();
   await expect(page.getByRole('heading', { level: 1 })).toHaveText('Build proof you can revisit');
   await expect(page.getByText('0 attempts across 0 topics.')).toBeVisible();
-  await expect(page.getByText(/A damaged archive was set aside/)).toBeVisible();
+  await expect(page.locator('#toast')).toContainText('A damaged saved copy was kept.');
+  await expect(page.getByRole('heading', { name: 'Recovery copies' })).toBeVisible();
   const recoveryStored = await page.evaluate(async () => new Promise<boolean>((resolve, reject) => {
     const request = indexedDB.open('proofbook-v1');
     request.onerror = () => reject(request.error);
@@ -282,6 +325,127 @@ test('recovers a legacy malformed persisted archive into a usable ledger', async
     };
   }));
   expect(recoveryStored).toBe(true);
+});
+
+test('salvages the prior valid ledger and exposes download and restore for a quarantined copy', async ({ page }) => {
+  await page.goto('/app');
+  await page.getByRole('button', { name: 'Add topic' }).click();
+  await page.getByLabel('Topic name').fill('Preserved topic');
+  await page.getByRole('button', { name: 'Add topic' }).last().click();
+  await page.getByRole('button', { name: 'Record attempt' }).click();
+  await page.getByLabel('Problem title').fill('Preserved attempt');
+  await page.getByLabel('Source', { exact: true }).fill('Recovery source');
+  await page.getByLabel('Problem reference').fill('Recovery case');
+  await page.getByRole('button', { name: 'Start attempt' }).click();
+  await expect(page.getByText('1 attempt across 1 topic.')).toBeVisible();
+
+  await page.evaluate(async () => new Promise<void>((resolve, reject) => {
+    const request = indexedDB.open('proofbook-v1');
+    request.onerror = () => reject(request.error);
+    request.onsuccess = () => {
+      const database = request.result;
+      const read = database.transaction('state', 'readonly').objectStore('state').get('proofbook');
+      read.onerror = () => reject(read.error);
+      read.onsuccess = () => {
+        const damaged = structuredClone(read.result);
+        damaged.topics.push({ id: 'topic-damaged', name: '   ', goal: '' });
+        const write = database.transaction('state', 'readwrite');
+        write.objectStore('state').put(damaged, 'proofbook');
+        write.oncomplete = () => { database.close(); resolve(); };
+        write.onerror = () => reject(write.error);
+      };
+    };
+  }));
+  await page.reload();
+
+  await expect(page.getByRole('heading', { name: 'Preserved attempt' })).toBeVisible();
+  await expect(page.getByText('1 attempt across 1 topic.')).toBeVisible();
+  await expect(page.getByRole('heading', { name: 'Recovery copies' })).toBeVisible();
+  const downloadEvent = page.waitForEvent('download');
+  await page.getByRole('button', { name: 'Download original' }).click();
+  const damaged = JSON.parse(await readFile(await (await downloadEvent).path(), 'utf8'));
+  expect(damaged.topics.some((topic: { name: string }) => topic.name === '   ')).toBe(true);
+
+  page.once('dialog', (dialog) => dialog.accept());
+  await page.getByRole('button', { name: 'Restore valid records' }).click();
+  await expect(page.locator('#toast')).toContainText('Valid records were restored.');
+  await page.reload();
+  await expect(page.getByRole('heading', { name: 'Preserved attempt' })).toBeVisible();
+});
+
+test('UI limits match archive validation, accept exact maxima, and reject overlong notes before writing', async ({ page }) => {
+  await page.goto('/app');
+  await page.getByRole('button', { name: 'Add topic' }).click();
+  const topicName = 'T'.repeat(60);
+  const topicGoal = 'G'.repeat(140);
+  await expect(page.getByLabel('Topic name')).toHaveAttribute('maxlength', '60');
+  await expect(page.getByLabel('Study goal')).toHaveAttribute('maxlength', '140');
+  await page.getByLabel('Topic name').fill(topicName);
+  await page.getByLabel('Study goal').fill(topicGoal);
+  await page.getByRole('button', { name: 'Add topic' }).last().click();
+
+  await page.getByRole('button', { name: 'Record attempt' }).click();
+  const title = 'P'.repeat(100);
+  const source = 'S'.repeat(120);
+  const reference = 'R'.repeat(100);
+  const sourceUrl = `https://example.com/${'u'.repeat(2_028)}`;
+  for (const [label, maximum] of [['Problem title', 100], ['Source', 120], ['Problem reference', 100], ['Source link Optional', 2_048]] as const) {
+    await expect(page.getByLabel(label, { exact: true })).toHaveAttribute('maxlength', String(maximum));
+  }
+  await page.getByLabel('Problem title').fill(title);
+  await page.getByLabel('Source', { exact: true }).fill(source);
+  await page.getByLabel('Problem reference').fill(reference);
+  await page.getByLabel('Source link Optional', { exact: true }).fill(sourceUrl);
+  await page.getByRole('button', { name: 'Start attempt' }).click();
+  await expect(page.getByText('1 attempt across 1 topic.')).toBeVisible();
+
+  const maximumNotes = 'N'.repeat(100_000);
+  await expect(page.getByLabel('Solution notes Markdown')).toHaveAttribute('maxlength', '100000');
+  await expect(page.getByLabel('What changed or remains uncertain?')).toHaveAttribute('maxlength', '100000');
+  await page.getByLabel('Solution notes Markdown').fill(maximumNotes);
+  await page.getByLabel('What changed or remains uncertain?').fill(maximumNotes);
+  await page.getByRole('button', { name: 'Save revision' }).click();
+  await page.reload();
+  await expect(page.getByLabel('Solution notes Markdown')).toHaveValue(maximumNotes);
+  await expect(page.getByLabel('What changed or remains uncertain?')).toHaveValue(maximumNotes);
+
+  await page.getByLabel('Solution notes Markdown').evaluate((control, value) => {
+    control.removeAttribute('maxlength');
+    control.value = value;
+    control.dispatchEvent(new Event('input', { bubbles: true }));
+  }, `${maximumNotes}X`);
+  await page.getByRole('button', { name: 'Save revision' }).click();
+  await expect(page.getByLabel('Solution notes Markdown')).toHaveAttribute('aria-invalid', 'true');
+  await expect(page.getByText('Solution notes must be 100,000 characters or fewer.')).toBeVisible();
+  await page.reload();
+  await expect(page.getByLabel('Solution notes Markdown')).toHaveValue(maximumNotes);
+
+  await page.getByLabel('What changed or remains uncertain?').evaluate((control, value) => {
+    control.removeAttribute('maxlength');
+    control.value = value;
+    control.dispatchEvent(new Event('input', { bubbles: true }));
+  }, `${maximumNotes}X`);
+  await page.getByRole('button', { name: 'Save revision' }).click();
+  await expect(page.getByLabel('What changed or remains uncertain?')).toHaveAttribute('aria-invalid', 'true');
+  await expect(page.getByText('Reflection must be 100,000 characters or fewer.')).toBeVisible();
+  await page.reload();
+  await expect(page.getByLabel('What changed or remains uncertain?')).toHaveValue(maximumNotes);
+
+  await page.getByRole('button', { name: 'Record attempt' }).click();
+  await page.getByLabel('Problem title').fill('Still valid');
+  await page.getByLabel('Source', { exact: true }).fill('Still valid');
+  await page.getByLabel('Problem reference').fill('Still valid');
+  await page.getByLabel('Source link Optional', { exact: true }).evaluate((control, value) => {
+    control.removeAttribute('maxlength');
+    control.value = value;
+    control.dispatchEvent(new Event('input', { bubbles: true }));
+  }, `${sourceUrl}X`);
+  await page.getByRole('button', { name: 'Start attempt' }).click();
+  await expect(page.getByLabel('Source link Optional', { exact: true })).toHaveAttribute('aria-invalid', 'true');
+  await expect(page.getByText('Source link must be 2,048 characters or fewer.')).toBeVisible();
+  await expect(page.getByText('1 attempt across 1 topic.')).toBeVisible();
+  await page.reload();
+  await expect(page.getByText('1 attempt across 1 topic.')).toBeVisible();
 });
 
 test('@claim:no-credential-service marks the printed record as a non-credential', async ({ page }) => {
@@ -313,6 +477,9 @@ test('persistent mobile demo controls and navigation targets are at least 44px',
     page.getByRole('link', { name: 'Demo', exact: true }),
     page.getByRole('link', { name: 'My proofbook', exact: true }),
     page.getByRole('link', { name: 'Privacy', exact: true }).first(),
+    page.getByRole('link', { name: 'Privacy', exact: true }).last(),
+    page.getByRole('link', { name: 'Terms', exact: true }),
+    page.getByRole('link', { name: /Built by Param Factory/ }),
   ]) {
     const box = await control.boundingBox();
     expect(box, 'persistent control should be rendered').not.toBeNull();
@@ -346,6 +513,17 @@ test('route names and landing sections use direct, useful wording', async ({ pag
     expect(await page.locator('meta[property="og:title"]').getAttribute('content')).toContain(heading);
     expect(await page.locator('meta[name="twitter:title"]').getAttribute('content')).toContain(heading);
   }
+});
+
+test('documents the researched one-time model and the deliberate free-release deviation', async ({ page }) => {
+  const brief = JSON.parse(await readFile('.factory/brief.json', 'utf8')) as { monetization: string; release_scope_decision: string };
+  const readme = await readFile('README.md', 'utf8');
+  expect(brief.monetization).toBe('one-time');
+  expect(brief.release_scope_decision).toContain('deliberately ships every feature free');
+  expect(readme).toContain('The researched business model is a one-time purchase.');
+  expect(readme).toContain('This release deliberately\noffers no paid tier');
+  await page.goto('/');
+  await expect(page.locator('a[href*="/checkout"], [data-license]')).toHaveCount(0);
 });
 
 test('demo remains usable with a keyboard', async ({ page }) => {
