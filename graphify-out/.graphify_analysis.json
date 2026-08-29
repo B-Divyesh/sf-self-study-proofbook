@@ -1,6 +1,63 @@
 {
   "communities": {
     "0": [
+      "src_crypto",
+      "src_crypto_decryptarchive",
+      "src_crypto_encryptarchive",
+      "src_main",
+      "src_main_bindapp",
+      "src_main_bindarchive",
+      "src_main_bindcommon",
+      "src_main_bindcreateforms",
+      "src_main_bindeditor",
+      "src_main_bindrecovery",
+      "src_main_commitnextstate",
+      "src_main_csvvalue",
+      "src_main_download",
+      "src_main_fieldrule",
+      "src_main_hidetoast",
+      "src_main_landing",
+      "src_main_legalview",
+      "src_main_navigate",
+      "src_main_notfound",
+      "src_main_opendialog",
+      "src_main_persistandrender",
+      "src_main_recoveryrecords",
+      "src_main_registerserviceworker",
+      "src_main_resetinitialfocus",
+      "src_main_routeinfo",
+      "src_main_setmeta",
+      "src_main_shell",
+      "src_main_showtoast",
+      "src_main_uid",
+      "src_main_validatefields",
+      "src_schema_archive_limits"
+    ],
+    "1": [
+      "src_schema",
+      "src_schema_archivevalidationerror",
+      "src_schema_archivevalidationerror_constructor",
+      "src_schema_attempt",
+      "src_schema_id",
+      "src_schema_record",
+      "src_schema_recoverarchive",
+      "src_schema_recoveredarchive",
+      "src_schema_requiredtext",
+      "src_schema_revision",
+      "src_schema_statuses",
+      "src_schema_text",
+      "src_schema_timestamp",
+      "src_schema_topic",
+      "src_schema_url",
+      "src_schema_validatearchive",
+      "src_schema_wholenumber",
+      "src_types",
+      "src_types_attempt",
+      "src_types_attemptstatus",
+      "src_types_revision",
+      "src_types_topic"
+    ],
+    "2": [
       "axe_core_playwright",
       "package",
       "package_devdependencies",
@@ -23,7 +80,7 @@
       "typescript",
       "vite"
     ],
-    "1": [
+    "3": [
       "ref_dom",
       "ref_dom_iterable",
       "ref_esnext",
@@ -46,84 +103,41 @@
       "tsconfig_compileroptions_usedefineforclassfields",
       "tsconfig_include"
     ],
-    "2": [
-      "src_schema",
-      "src_schema_archivevalidationerror",
-      "src_schema_archivevalidationerror_constructor",
-      "src_schema_attempt",
-      "src_schema_id",
-      "src_schema_record",
-      "src_schema_revision",
-      "src_schema_statuses",
-      "src_schema_text",
-      "src_schema_timestamp",
-      "src_schema_topic",
-      "src_schema_url",
-      "src_schema_validatearchive",
-      "src_schema_wholenumber",
-      "src_types",
-      "src_types_attempt",
-      "src_types_attemptstatus",
-      "src_types_revision",
-      "src_types_topic"
-    ],
-    "3": [
+    "4": [
       "src_db",
       "src_db_cleardemo",
       "src_db_empty_state",
+      "src_db_listrecoveryrecords",
       "src_db_loadedstate",
       "src_db_loadstate",
       "src_db_opendb",
       "src_db_readraw",
+      "src_db_recoveryrecord",
       "src_db_resetdemo",
       "src_db_saverecoveryandinitialstate",
       "src_db_savestate",
-      "src_main_bindcommon",
       "src_sample",
       "src_sample_samplestate",
       "src_types_proofbookstate"
     ],
-    "4": [
+    "5": [
       "src_main_appview",
       "src_main_dialogs",
+      "src_main_duration",
       "src_main_editor",
       "src_main_emptyledger",
       "src_main_escapehtml",
+      "src_main_formatdate",
       "src_main_inline",
       "src_main_markdown",
+      "src_main_printview",
       "src_main_safeexternalurl",
-      "src_main_statuslabel"
-    ],
-    "5": [
-      "src_main_bindapp",
-      "src_main_bindcreateforms",
-      "src_main_bindeditor",
-      "src_main_navigate",
-      "src_main_persistandrender",
-      "src_main_registerserviceworker",
-      "src_main_setmeta",
-      "src_main_showtoast",
-      "src_main_uid"
+      "src_main_secondsfor",
+      "src_main_statuslabel",
+      "src_main_topicname",
+      "src_main_updatetimerdisplay"
     ],
     "6": [
-      "src_crypto",
-      "src_crypto_decryptarchive",
-      "src_crypto_encryptarchive",
-      "src_main_bindarchive",
-      "src_main_csvvalue",
-      "src_main_download",
-      "src_main_opendialog"
-    ],
-    "7": [
-      "src_main",
-      "src_main_landing",
-      "src_main_legalview",
-      "src_main_notfound",
-      "src_main_resetinitialfocus",
-      "src_main_routeinfo",
-      "src_main_shell"
-    ],
-    "8": [
       "scripts_test_server",
       "scripts_test_server_existing",
       "scripts_test_server_port",
@@ -131,15 +145,7 @@
       "scripts_test_server_types",
       "scripts_test_server_withinroot"
     ],
-    "9": [
-      "src_main_duration",
-      "src_main_formatdate",
-      "src_main_printview",
-      "src_main_secondsfor",
-      "src_main_topicname",
-      "src_main_updatetimerdisplay"
-    ],
-    "10": [
+    "7": [
       "vite_config",
       "vite_config_filesbelow",
       "vite_config_pwaworker",
@@ -147,33 +153,30 @@
       "vite_config_routemetadata",
       "vite_config_writestaticroutes"
     ],
-    "11": [
+    "8": [
       "playwright_config"
     ],
-    "12": [
+    "9": [
       "tests_proofbook_spec"
     ]
   },
   "cohesion": {
-    "0": 0.09523809523809523,
-    "1": 0.09523809523809523,
-    "2": 0.23391812865497075,
-    "3": 0.26373626373626374,
-    "4": 0.3333333333333333,
-    "5": 0.4166666666666667,
+    "0": 0.16559139784946236,
+    "1": 0.22077922077922077,
+    "2": 0.09523809523809523,
+    "3": 0.09523809523809523,
+    "4": 0.23809523809523808,
+    "5": 0.22857142857142856,
     "6": 0.3333333333333333,
-    "7": 0.42857142857142855,
-    "8": 0.3333333333333333,
-    "9": 0.4,
-    "10": 0.4,
-    "11": 1.0,
-    "12": 1.0
+    "7": 0.4,
+    "8": 1.0,
+    "9": 1.0
   },
   "gods": [
     {
       "id": "src_main_navigate",
       "label": "navigate()",
-      "degree": 15
+      "degree": 17
     },
     {
       "id": "src_main_bindarchive",
@@ -186,45 +189,45 @@
       "degree": 12
     },
     {
+      "id": "src_schema_validatearchive",
+      "label": "validateArchive()",
+      "degree": 12
+    },
+    {
       "id": "src_main_editor",
       "label": "editor()",
       "degree": 10
     },
     {
-      "id": "src_schema_validatearchive",
-      "label": "validateArchive()",
-      "degree": 9
-    },
-    {
-      "id": "src_db_savestate",
-      "label": "saveState()",
-      "degree": 9
-    },
-    {
       "id": "src_main_bindeditor",
       "label": "bindEditor()",
+      "degree": 10
+    },
+    {
+      "id": "src_schema_attempt",
+      "label": "attempt()",
+      "degree": 10
+    },
+    {
+      "id": "src_schema_recoverarchive",
+      "label": "recoverArchive()",
+      "degree": 10
+    },
+    {
+      "id": "src_db_loadstate",
+      "label": "loadState()",
       "degree": 9
     },
     {
       "id": "src_main_printview",
       "label": "printView()",
       "degree": 9
-    },
-    {
-      "id": "src_schema_attempt",
-      "label": "attempt()",
-      "degree": 8
-    },
-    {
-      "id": "src_db_loadstate",
-      "label": "loadState()",
-      "degree": 8
     }
   ],
   "surprises": [
     {
       "source": "loadState()",
-      "target": "validateArchive()",
+      "target": "recoverArchive()",
       "source_files": [
         "src/db.ts",
         "src/schema.ts"
@@ -234,10 +237,10 @@
       "why": "bridges separate communities"
     },
     {
-      "source": "bindArchive()",
+      "source": "loadState()",
       "target": "validateArchive()",
       "source_files": [
-        "src/main.ts",
+        "src/db.ts",
         "src/schema.ts"
       ],
       "confidence": "EXTRACTED",
@@ -256,18 +259,18 @@
       "why": "bridges separate communities"
     },
     {
-      "source": "bindArchive()",
-      "target": "saveState()",
+      "source": "saveState()",
+      "target": "validateArchive()",
       "source_files": [
-        "src/main.ts",
-        "src/db.ts"
+        "src/db.ts",
+        "src/schema.ts"
       ],
       "confidence": "EXTRACTED",
       "relation": "calls",
       "why": "bridges separate communities"
     },
     {
-      "source": "bindCreateForms()",
+      "source": "commitNextState()",
       "target": "saveState()",
       "source_files": [
         "src/main.ts",
