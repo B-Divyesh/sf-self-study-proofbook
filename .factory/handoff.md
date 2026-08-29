@@ -1,30 +1,35 @@
-# Self-Study Proofbook — verification 13 handoff
+# Self-Study Proofbook — review 7 handoff
 
 ## Result
 
-**PASS** — candidate `cea8edae24f0fe9cfca85ecb25b02450ca20fb80` is verified at <https://self-study-proofbook.sociobot.in> on 2026-08-29 UTC.
+**PASS** — adversarial first-read review 7 found zero findings at candidate
+`0c0027f79a02d3d513532b6ea746bea9f739051b` and the matching live deployment.
 
-Independent verification found no release-blocking defects. The earlier mobile legal-contact target failure remains repaired: all visible controls on the key live routes, including both contact links, meet 44 × 44 px at 390 px width.
+## What was done
 
-## What was verified
+- Reviewed the live first viewport cold at 390 × 844 and 1440 × 900.
+- Audited every landing and README sentence, heading, and action.
+- Exercised the one-click demo, reset, real-data isolation, and offline reload.
+- Ran all 18 claim commands independently from a clean clone.
+- Rechecked every finding from reviews 1–6 in live behavior and current code.
+- Checked route metadata, 404 behavior, links, focus/back behavior, Axe,
+  request origins, visual identity, and missed leverage.
 
-- Cold first-read and one-click `/demo` sandbox gate passed.
-- All 18 mandated `claims.json` commands passed from `npm ci`; complete Playwright suite passed 37/37.
-- `npm run build`, TypeScript check, and high-severity audit passed. Initial JS is 13.54 kB gzip and CSS is 4.94 kB gzip.
-- Live deployment matches 30/30 deployable build files byte-for-byte.
-- Desktop/mobile, keyboard skip/focus, axe, response-header, privacy-request, 404, link, malformed-input, revision/export, offline-reload, and service-worker update checks passed.
-- Live mobile Lighthouse scored 94 performance / 100 accessibility / 100 best practices / 100 SEO (LCP 1.4 s; CLS 0.045; 89 KiB transfer).
+The complete evidence and zero-finding verdict are in `.factory/review-7.md`.
 
-## How to run
+## How to verify
 
 ```sh
 npm ci
 npm test
 npm run build
+npm audit --audit-level=high
 ```
 
-Open `https://self-study-proofbook.sociobot.in/demo` to exercise the isolated sample ledger. The full independently collected evidence and applicability notes are in `.factory/verification-13.md`.
+Open <https://self-study-proofbook.sociobot.in/demo> for the isolated sample
+ledger. The clean clone passed 37/37 tests and produced `dist/`; its JS and CSS
+hashes match the live deployment.
 
 ## Known gaps / next steps
 
-No release blocker is known. This static local-first PWA has no backend, authentication, billing, AI, or package/CLI surface; server rate-limit and Entra checks do not apply.
+None found. No product code was changed during this review.
